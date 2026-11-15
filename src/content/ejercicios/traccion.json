@@ -1,0 +1,327 @@
+[
+  {
+    "id": "remo-banda",
+    "nombre": "Remo con banda",
+    "patron": "traccion",
+    "principal": ["espalda alta", "dorsales"],
+    "secundarios": ["bíceps", "hombros (parte de atrás)"],
+    "equipo": ["bandas"],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "banda",
+    "rango": [12, 20],
+    "inicial": "Sentado en el piso con las piernas estiradas y la banda pasada por los pies, o de pie con la banda anclada a la puerta a la altura del pecho.",
+    "pasos": [
+      "Espalda recta, pecho arriba.",
+      "Tirá los codos hacia atrás, pegados al cuerpo, juntando los omóplatos.",
+      "Pausa de 1 segundo y volvé despacio hasta estirar los brazos."
+    ],
+    "respiracion": "Soltá el aire al tirar.",
+    "errores": [
+      { "error": "Tirar con el cuerpo", "detectar": "Te inclinás hacia atrás en cada repetición." },
+      { "error": "Hombros a las orejas", "detectar": "Los hombros suben al tirar; llevalos abajo y atrás." },
+      { "error": "Volver rápido", "detectar": "La banda te lleva los brazos." }
+    ],
+    "facil": null,
+    "dificil": "remo-mancuerna",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Banda apoyada en la palma, muñeca recta, agarre neutro." },
+      "espalda-baja": { "nivel": "adaptar", "texto": "Hacelo de pie con anclaje, no sentado en el piso si molesta." }
+    },
+    "subir": "Todas las series en el tope del rango con 2 en reserva: banda más dura o alejate.",
+    "pesoInicial": "Elegí la banda con la que hagas 15 con 4 en reserva.",
+    "video": "remo con banda elastica sentado"
+  },
+  {
+    "id": "remo-mancuerna",
+    "nombre": "Remo a una mano con mancuerna",
+    "patron": "traccion",
+    "principal": ["dorsales", "espalda alta"],
+    "secundarios": ["bíceps", "antebrazos"],
+    "equipo": ["mancuernas"],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [8, 12],
+    "inicial": "Una mano y una rodilla sobre una cama, banco o silla firme; la otra mano con la mancuerna colgando; espalda recta, casi paralela al piso.",
+    "pasos": [
+      "Tirá el codo hacia la cadera (no hacia el hombro).",
+      "Llevá la mancuerna hasta el costado de la cintura.",
+      "Bajá despacio hasta estirar el brazo. Hacé todas con un lado y después el otro."
+    ],
+    "respiracion": "Soltá el aire al tirar.",
+    "errores": [
+      { "error": "Girar el torso", "detectar": "El pecho se abre hacia el costado al subir." },
+      { "error": "Tirar con el bíceps", "detectar": "La mancuerna va hacia el hombro en vez de la cadera." },
+      { "error": "Espalda redonda", "detectar": "La espalda forma una joroba." }
+    ],
+    "facil": "remo-banda",
+    "dificil": "remo-invertido",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Agarre neutro y muñeca recta; podés apoyar el antebrazo en vez de la mano." },
+      "espalda-baja": { "nivel": "adaptar", "texto": "Apoyo firme con mano y rodilla, sin redondear." }
+    },
+    "subir": "3 series de 12 con 2 en reserva en dos sesiones: subí 2 kg.",
+    "pesoInicial": "Serie de prueba: con el kit, probá 6 a 10 kg y hacé 10.",
+    "video": "remo con mancuerna a una mano tecnica"
+  },
+  {
+    "id": "remo-invertido",
+    "nombre": "Remo invertido",
+    "patron": "traccion",
+    "principal": ["espalda alta", "dorsales"],
+    "secundarios": ["bíceps", "abdomen"],
+    "equipo": ["barras-plaza"],
+    "espacio": "amplio",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [6, 15],
+    "inicial": "Colgado de una barra baja (a la altura de la cadera), brazos estirados, talones en el piso, cuerpo recto.",
+    "pasos": [
+      "Apretá glúteos y abdomen.",
+      "Tirá el pecho hacia la barra llevando los codos atrás.",
+      "Bajá despacio hasta estirar los brazos."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      { "error": "Cadera caída", "detectar": "Te doblás en la cadera al subir." },
+      { "error": "Subir solo la cabeza", "detectar": "El mentón llega a la barra pero el pecho no." },
+      { "error": "Barra inestable", "detectar": "Nunca uses una mesa o algo que pueda volcar." }
+    ],
+    "facil": "remo-mancuerna",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Si la barra lo permite, agarre neutro o con anillas/toalla." },
+      "hombro": { "nivel": "adaptar", "texto": "Más fácil con el cuerpo más vertical." }
+    },
+    "subir": "Cuanto más horizontal el cuerpo, más difícil. 3 series de 15 con 2 en reserva: bajá la barra o adelantá los pies.",
+    "video": "remo invertido australiano tecnica"
+  },
+  {
+    "id": "remo-polea",
+    "nombre": "Remo sentado en polea",
+    "patron": "traccion",
+    "principal": ["espalda alta", "dorsales"],
+    "secundarios": ["bíceps"],
+    "equipo": ["poleas"],
+    "espacio": "amplio",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [8, 15],
+    "inicial": "Sentado, pies en el apoyo, rodillas apenas dobladas, manija en las manos con los brazos estirados.",
+    "pasos": [
+      "Pecho arriba, espalda recta.",
+      "Tirá los codos hacia atrás hasta llevar la manija a la panza.",
+      "Volvé despacio dejando que los omóplatos se separen."
+    ],
+    "respiracion": "Soltá el aire al tirar.",
+    "errores": [
+      { "error": "Balancearse", "detectar": "Te tirás para atrás en cada repetición." },
+      { "error": "Espalda redonda al volver", "detectar": "Te vas encorvando hacia adelante." },
+      { "error": "Hombros a las orejas", "detectar": "Los hombros suben al tirar." }
+    ],
+    "facil": "remo-banda",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Manija de agarre neutro (en V)." },
+      "espalda-baja": { "nivel": "adaptar", "texto": "Peso moderado y torso quieto." }
+    },
+    "subir": "Todas las series en el tope del rango con 2 en reserva: subí una placa.",
+    "pesoInicial": "Serie de prueba de 10 con un peso liviano.",
+    "video": "remo sentado polea tecnica"
+  },
+  {
+    "id": "colgado-activo",
+    "nombre": "Colgado activo",
+    "patron": "traccion-vertical",
+    "principal": ["dorsales", "antebrazos"],
+    "secundarios": ["espalda alta", "abdomen"],
+    "equipo": ["barra-dominadas"],
+    "espacio": "1x1",
+    "tipo": "segundos",
+    "carga": "corporal",
+    "rango": [15, 40],
+    "inicial": "Colgado de la barra con las palmas hacia adelante, brazos estirados.",
+    "pasos": [
+      "Sin doblar los codos, bajá los hombros alejándolos de las orejas: el cuerpo sube un poco.",
+      "Mantené esa posición con el abdomen firme.",
+      "Bajá a un banco o silla para soltarte."
+    ],
+    "respiracion": "Respirá normal, sin aguantar el aire.",
+    "errores": [
+      { "error": "Hombros pegados a las orejas", "detectar": "Ese es el colgado pasivo; buscá bajar los hombros." },
+      { "error": "Doblar los codos", "detectar": "Los brazos tienen que quedar estirados." },
+      { "error": "Barra mal fijada", "detectar": "Antes de colgarte, tirá fuerte hacia abajo con las manos: no se tiene que mover." }
+    ],
+    "facil": null,
+    "dificil": "dominada-negativa",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Si la barra tiene agarre neutro, usalo. Si duele, apoyá los pies y quitá peso." },
+      "hombro": { "nivel": "adaptar", "texto": "Apoyá los pies en una silla para colgar solo parte del peso." }
+    },
+    "subir": "3 series de 40 segundos: pasá a las negativas.",
+    "video": "active hang scapular pull up"
+  },
+  {
+    "id": "dominada-negativa",
+    "nombre": "Dominada negativa",
+    "patron": "traccion-vertical",
+    "principal": ["dorsales"],
+    "secundarios": ["bíceps", "espalda alta", "antebrazos"],
+    "equipo": ["barra-dominadas"],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [3, 6],
+    "inicial": "Subite a una silla para quedar con el mentón por encima de la barra, agarrándola con las palmas hacia adelante.",
+    "pasos": [
+      "Sacá los pies de la silla y quedate arriba un segundo.",
+      "Bajá lo más lento que puedas (apuntá a 5 segundos) hasta estirar los brazos.",
+      "Volvé a subir con la silla. No saltes para subir."
+    ],
+    "respiracion": "Respirá normal mientras bajás.",
+    "errores": [
+      { "error": "Caer de golpe al final", "detectar": "El último tramo dura menos de un segundo." },
+      { "error": "Balancearse", "detectar": "Las piernas se mueven hacia adelante y atrás." },
+      { "error": "Silla inestable", "detectar": "Usá algo firme que no se vuelque." }
+    ],
+    "facil": "colgado-activo",
+    "dificil": "dominada-asistida-banda",
+    "limitaciones": {
+      "hombro": { "nivel": "adaptar", "texto": "Bajá solo hasta donde no duela y no estires del todo arriba." },
+      "muneca": { "nivel": "adaptar", "texto": "Agarre neutro si la barra lo permite." }
+    },
+    "subir": "3 series de 6 negativas de 5 segundos: pasá a la asistida con banda.",
+    "video": "negative pull ups tutorial"
+  },
+  {
+    "id": "dominada-asistida-banda",
+    "nombre": "Dominada asistida con banda",
+    "patron": "traccion-vertical",
+    "principal": ["dorsales"],
+    "secundarios": ["bíceps", "espalda alta"],
+    "equipo": ["barra-dominadas", "bandas"],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "banda",
+    "rango": [5, 10],
+    "inicial": "Banda atada a la barra, un pie o la rodilla apoyados en la banda, colgado con las palmas hacia adelante.",
+    "pasos": [
+      "Bajá los hombros y tirá los codos hacia las costillas.",
+      "Subí hasta que el mentón pase la barra.",
+      "Bajá despacio hasta estirar los brazos."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      { "error": "Medio recorrido", "detectar": "No llegás a estirar los brazos abajo." },
+      { "error": "Rebotar con la banda", "detectar": "La banda te lanza hacia arriba desde abajo; bajá lento." },
+      { "error": "Banda que se suelta", "detectar": "Revisá el nudo antes de cada serie." }
+    ],
+    "facil": "dominada-negativa",
+    "dificil": "dominada",
+    "limitaciones": {
+      "hombro": { "nivel": "adaptar", "texto": "Banda más gruesa y recorrido sin dolor." },
+      "muneca": { "nivel": "adaptar", "texto": "Agarre neutro si la barra lo permite." }
+    },
+    "subir": "3 series de 10 con 2 en reserva: banda más fina. Con la más fina, pasá a la dominada.",
+    "pesoInicial": "Usá la banda más gruesa con la que llegues a 8 con buena técnica.",
+    "video": "band assisted pull up"
+  },
+  {
+    "id": "dominada",
+    "nombre": "Dominada",
+    "patron": "traccion-vertical",
+    "principal": ["dorsales"],
+    "secundarios": ["bíceps", "espalda alta", "antebrazos", "abdomen"],
+    "equipo": ["barra-dominadas"],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [3, 10],
+    "inicial": "Colgado con las palmas hacia adelante, un poco más abiertas que los hombros, brazos estirados.",
+    "pasos": [
+      "Bajá los hombros y apretá abdomen.",
+      "Tirá los codos hacia las costillas hasta que el mentón pase la barra.",
+      "Bajá controlado hasta estirar los brazos."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      { "error": "Patear o balancearse", "detectar": "Las piernas dan impulso." },
+      { "error": "Medio recorrido", "detectar": "No estirás los brazos abajo." },
+      { "error": "Estirar el cuello para llegar", "detectar": "El mentón se adelanta en vez de subir el cuerpo." }
+    ],
+    "facil": "dominada-asistida-banda",
+    "dificil": null,
+    "limitaciones": {
+      "hombro": { "nivel": "adaptar", "texto": "Agarre neutro o palmas hacia vos, y recorrido sin dolor." },
+      "muneca": { "nivel": "adaptar", "texto": "Agarre neutro si la barra lo permite." }
+    },
+    "subir": "3 series de 10 con 2 en reserva: sumá peso con una mochila.",
+    "video": "dominada tecnica correcta principiantes"
+  },
+  {
+    "id": "jalon-polea",
+    "nombre": "Jalón al pecho en polea",
+    "patron": "traccion-vertical",
+    "principal": ["dorsales"],
+    "secundarios": ["bíceps", "espalda alta"],
+    "equipo": ["poleas"],
+    "espacio": "amplio",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [8, 15],
+    "inicial": "Sentado con los muslos trabados bajo el apoyo, barra agarrada un poco más abierta que los hombros.",
+    "pasos": [
+      "Inclinate apenas hacia atrás, pecho arriba.",
+      "Tirá la barra hasta la parte alta del pecho, llevando los codos hacia abajo.",
+      "Subí despacio hasta estirar los brazos."
+    ],
+    "respiracion": "Soltá el aire al tirar.",
+    "errores": [
+      { "error": "Tirar detrás de la nuca", "detectar": "La barra va a la nuca: llevala adelante, al pecho." },
+      { "error": "Balancearse hacia atrás", "detectar": "Te tirás atrás para mover más peso." },
+      { "error": "No estirar arriba", "detectar": "Los codos quedan doblados al volver." }
+    ],
+    "facil": "remo-banda",
+    "dificil": "dominada",
+    "limitaciones": {
+      "hombro": { "nivel": "adaptar", "texto": "Agarre neutro o supino, y no estires del todo arriba si molesta." },
+      "muneca": { "nivel": "adaptar", "texto": "Manija neutra si hay." }
+    },
+    "subir": "Todas las series en el tope del rango con 2 en reserva: subí una placa.",
+    "pesoInicial": "Serie de prueba de 10 con un peso liviano.",
+    "video": "jalon al pecho tecnica"
+  },
+  {
+    "id": "face-pull-banda",
+    "nombre": "Face pull con banda",
+    "patron": "traccion",
+    "principal": ["hombros (parte de atrás)", "espalda alta"],
+    "secundarios": ["manguito rotador"],
+    "equipo": ["bandas", "anclaje"],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "banda",
+    "rango": [12, 20],
+    "inicial": "Banda anclada a la altura de la cara, una punta en cada mano, palmas hacia abajo, brazos estirados.",
+    "pasos": [
+      "Tirá la banda hacia la cara separando las manos.",
+      "Terminá con los codos altos y las manos a los costados de las orejas, como mostrando los bíceps.",
+      "Volvé despacio."
+    ],
+    "respiracion": "Soltá el aire al tirar.",
+    "errores": [
+      { "error": "Codos bajos", "detectar": "Se transforma en un remo común." },
+      { "error": "Arquear la espalda", "detectar": "Te inclinás hacia atrás." },
+      { "error": "Demasiada tensión", "detectar": "Si no podés hacer 15 limpias, la banda es muy dura." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "hombro": { "nivel": "adaptar", "texto": "Suele ayudar a los hombros de escritorio; banda liviana y sin dolor." }
+    },
+    "subir": "Todas las series en el tope del rango con 2 en reserva: banda más dura.",
+    "pesoInicial": "Banda liviana: es un ejercicio de control, no de fuerza máxima.",
+    "video": "face pull con banda elastica"
+  }
+]

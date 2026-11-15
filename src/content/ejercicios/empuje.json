@@ -1,0 +1,459 @@
+[
+  {
+    "id": "flexion-pared",
+    "nombre": "Flexión en la pared",
+    "patron": "empuje",
+    "principal": ["pecho"],
+    "secundarios": ["hombros", "tríceps", "abdomen"],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [10, 20],
+    "inicial": "De pie a un paso largo de la pared, manos apoyadas a la altura del pecho, un poco más abiertas que los hombros.",
+    "pasos": [
+      "Cuerpo recto de la cabeza a los talones, abdomen firme.",
+      "Doblá los codos y acercá el pecho a la pared, con los codos a unos 45° del cuerpo.",
+      "Empujá la pared hasta estirar los brazos."
+    ],
+    "respiracion": "Tomá aire al bajar, soltalo al empujar.",
+    "errores": [
+      { "error": "Cadera que se va hacia atrás", "detectar": "Si te ves de costado formás una V en vez de una línea." },
+      { "error": "Codos abiertos en T", "detectar": "Los codos quedan a la altura de los hombros y molesta el hombro." },
+      { "error": "Recorrido corto", "detectar": "La nariz no llega cerca de la pared." }
+    ],
+    "facil": null,
+    "dificil": "flexion-inclinada-alta",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Apoyá los puños o los antebrazos en la pared: la muñeca queda recta." },
+      "hombro": { "nivel": "adaptar", "texto": "Codos pegados al cuerpo y recorrido sin dolor." }
+    },
+    "subir": "3 series de 20 con 2 en reserva, dos sesiones seguidas: pasá a la inclinada en mesa.",
+    "video": "flexion en la pared tecnica"
+  },
+  {
+    "id": "flexion-inclinada-alta",
+    "nombre": "Flexión inclinada en mesa",
+    "patron": "empuje",
+    "principal": ["pecho"],
+    "secundarios": ["hombros", "tríceps", "abdomen"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [8, 15],
+    "inicial": "Manos en el borde de una mesa firme o mesada (a la altura de la cadera), pies atrás, cuerpo recto.",
+    "pasos": [
+      "Apretá glúteos y abdomen para que el cuerpo sea una tabla.",
+      "Bajá el pecho hasta casi tocar el borde, codos a 45°.",
+      "Empujá hasta estirar los brazos sin perder la línea."
+    ],
+    "respiracion": "Aire al bajar, soltarlo al subir.",
+    "errores": [
+      { "error": "Cadera hundida", "detectar": "La panza llega antes que el pecho." },
+      { "error": "Cabeza adelantada", "detectar": "El mentón busca la mesa; mirá un poco más allá de las manos." },
+      { "error": "Mesa que se mueve", "detectar": "Si se desliza, usá una mesada o apoyala contra la pared." }
+    ],
+    "facil": "flexion-pared",
+    "dificil": "flexion-inclinada-baja",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Agarrá el borde con los dedos o apoyá puños: la muñeca no se dobla." },
+      "hombro": { "nivel": "adaptar", "texto": "Codos más cerca del cuerpo y bajá solo hasta donde no duela." }
+    },
+    "subir": "3 series de 15 con 2 en reserva, dos sesiones seguidas.",
+    "video": "flexion inclinada tecnica"
+  },
+  {
+    "id": "flexion-inclinada-baja",
+    "nombre": "Flexión inclinada baja",
+    "patron": "empuje",
+    "principal": ["pecho"],
+    "secundarios": ["hombros", "tríceps", "abdomen"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [8, 15],
+    "inicial": "Manos sobre un escalón, el asiento de una silla firme contra la pared o un banco bajo.",
+    "pasos": [
+      "Cuerpo recto, manos un poco más abiertas que los hombros.",
+      "Bajá hasta que el pecho quede a un puño del apoyo.",
+      "Empujá hasta estirar los brazos."
+    ],
+    "respiracion": "Aire al bajar, soltarlo al subir.",
+    "errores": [
+      { "error": "Cadera hundida", "detectar": "La panza toca o se acerca antes que el pecho." },
+      { "error": "Silla que se mueve", "detectar": "Si patina, apoyala contra la pared." },
+      { "error": "Bajar poco", "detectar": "Los codos no llegan a 90°." }
+    ],
+    "facil": "flexion-inclinada-alta",
+    "dificil": "flexion-rodillas",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Agarrá el borde del escalón o usá puños." },
+      "hombro": { "nivel": "adaptar", "texto": "Codos cerca del cuerpo, recorrido sin dolor." }
+    },
+    "subir": "3 series de 15 con 2 en reserva, dos sesiones seguidas.",
+    "video": "incline push up step technique"
+  },
+  {
+    "id": "flexion-rodillas",
+    "nombre": "Flexión con rodillas apoyadas",
+    "patron": "empuje",
+    "principal": ["pecho"],
+    "secundarios": ["hombros", "tríceps", "abdomen"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [8, 15],
+    "inicial": "Rodillas en el piso (con algo blando abajo), manos bajo los hombros un poco más abiertas, cuerpo recto de rodillas a cabeza.",
+    "pasos": [
+      "Apretá glúteos: la cadera queda en línea, no doblada.",
+      "Bajá el pecho hasta un puño del piso, codos a 45°.",
+      "Empujá el piso hasta estirar los brazos."
+    ],
+    "respiracion": "Aire al bajar, soltarlo al subir.",
+    "errores": [
+      { "error": "Cola arriba", "detectar": "Te quedás doblado en la cadera; la línea es de rodillas a hombros." },
+      { "error": "Bajar solo la cabeza", "detectar": "El pecho queda lejos del piso." },
+      { "error": "Manos muy adelante", "detectar": "Las manos deben quedar debajo de los hombros al bajar." }
+    ],
+    "facil": "flexion-inclinada-baja",
+    "dificil": "flexion",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Apoyá los puños o agarrá dos mancuernas: muñeca recta." },
+      "rodilla": { "nivel": "adaptar", "texto": "Poné una almohada bajo las rodillas o usá la inclinada baja." },
+      "hombro": { "nivel": "adaptar", "texto": "Codos más pegados y recorrido sin dolor." }
+    },
+    "subir": "3 series de 15 con 2 en reserva, dos sesiones seguidas.",
+    "video": "flexion con rodillas tecnica"
+  },
+  {
+    "id": "flexion",
+    "nombre": "Flexión de brazos",
+    "patron": "empuje",
+    "principal": ["pecho"],
+    "secundarios": ["hombros", "tríceps", "abdomen"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [6, 15],
+    "inicial": "Manos en el piso un poco más abiertas que los hombros, puntas de pie, cuerpo recto de la cabeza a los talones.",
+    "pasos": [
+      "Apretá glúteos y abdomen.",
+      "Bajá en bloque hasta que el pecho quede a un puño del piso, codos a 45°.",
+      "Empujá el piso y estirá los brazos sin que la cadera se quede atrás."
+    ],
+    "respiracion": "Aire al bajar, soltarlo al subir.",
+    "errores": [
+      { "error": "Cadera hundida o arriba", "detectar": "Filmate de costado: tiene que ser una línea recta." },
+      { "error": "Recorrido corto", "detectar": "Los codos no pasan de 90°." },
+      { "error": "Codos en T", "detectar": "Los codos se abren a la altura de los hombros." }
+    ],
+    "facil": "flexion-rodillas",
+    "dificil": "flexion-pies-elevados",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Sobre puños o agarrando dos mancuernas: la muñeca queda recta." },
+      "hombro": { "nivel": "adaptar", "texto": "Codos pegados y recorrido sin dolor. Si duele, volvé a la inclinada." }
+    },
+    "subir": "3 series de 15 con 2 en reserva, dos sesiones seguidas.",
+    "video": "flexion de brazos tecnica correcta"
+  },
+  {
+    "id": "flexion-pies-elevados",
+    "nombre": "Flexión con pies elevados",
+    "patron": "empuje",
+    "principal": ["pecho"],
+    "secundarios": ["hombros", "tríceps", "abdomen"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [6, 15],
+    "inicial": "Manos en el piso y pies sobre un escalón, silla o cama.",
+    "pasos": [
+      "Cuerpo recto, abdomen firme.",
+      "Bajá hasta que el pecho o la frente queden cerca del piso.",
+      "Empujá hasta estirar los brazos."
+    ],
+    "respiracion": "Aire al bajar, soltarlo al subir.",
+    "errores": [
+      { "error": "Cadera caída", "detectar": "La espalda baja se arquea." },
+      { "error": "Manos muy adelante", "detectar": "Al bajar, las manos tienen que quedar bajo el pecho." },
+      { "error": "Apoyo muy alto de entrada", "detectar": "Empezá con un escalón bajo y subí de a poco." }
+    ],
+    "facil": "flexion",
+    "dificil": "flexion-arquera",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Sobre puños o mancuernas." },
+      "hombro": { "nivel": "evitar", "texto": "Carga más el hombro: quedate en la flexión común." }
+    },
+    "subir": "3 series de 15 con 2 en reserva, dos sesiones seguidas.",
+    "video": "decline push up technique"
+  },
+  {
+    "id": "flexion-arquera",
+    "nombre": "Flexión arquera",
+    "patron": "empuje",
+    "principal": ["pecho"],
+    "secundarios": ["hombros", "tríceps", "abdomen"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [4, 10],
+    "inicial": "Posición de flexión con las manos muy abiertas (casi el doble del ancho de hombros).",
+    "pasos": [
+      "Bajá hacia una mano, doblando ese codo; el otro brazo queda casi estirado.",
+      "Subí empujando con el brazo doblado.",
+      "Alterná lados. Cada lado cuenta como una repetición."
+    ],
+    "respiracion": "Aire al bajar, soltarlo al subir.",
+    "errores": [
+      { "error": "Rotar el cuerpo", "detectar": "Los hombros tienen que quedar paralelos al piso." },
+      { "error": "Doblar el brazo de apoyo", "detectar": "Si se dobla mucho, es una flexión abierta común." },
+      { "error": "Cadera hundida", "detectar": "Igual que en la flexión: línea recta." }
+    ],
+    "facil": "flexion-pies-elevados",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Sobre puños o mancuernas." },
+      "hombro": { "nivel": "evitar", "texto": "Abre mucho el hombro: elegí otra variante." }
+    },
+    "subir": "3 series de 10 por lado con 2 en reserva. El siguiente paso es la flexión a un brazo asistida (próximamente).",
+    "video": "archer push up tutorial"
+  },
+  {
+    "id": "press-piso-mancuernas",
+    "nombre": "Press de pecho en el piso con mancuernas",
+    "patron": "empuje",
+    "principal": ["pecho"],
+    "secundarios": ["tríceps", "hombros"],
+    "equipo": ["mancuernas"],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [8, 12],
+    "inicial": "Acostado boca arriba, rodillas dobladas, una mancuerna en cada mano a los costados del pecho, codos apoyados en el piso a 45° del cuerpo.",
+    "pasos": [
+      "Empujá las mancuernas hacia arriba hasta estirar los brazos sobre el pecho.",
+      "Bajá despacio (2 segundos) hasta que los codos toquen suave el piso.",
+      "Pausa corta y volvé a subir."
+    ],
+    "respiracion": "Soltá el aire al subir, tomalo al bajar.",
+    "errores": [
+      { "error": "Rebotar los codos", "detectar": "Escuchás el golpe en el piso; tienen que apoyarse suave." },
+      { "error": "Codos en T", "detectar": "Los codos quedan en línea con los hombros." },
+      { "error": "Muñecas dobladas hacia atrás", "detectar": "Los nudillos tienen que mirar al techo, muñeca recta." }
+    ],
+    "facil": "flexion-rodillas",
+    "dificil": "press-banca-mancuernas",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Agarre neutro (palmas enfrentadas) y muñeca recta." },
+      "hombro": { "nivel": "adaptar", "texto": "Es de las opciones más amables para el hombro: el piso limita el recorrido. Agarre neutro." }
+    },
+    "subir": "3 series de 12 con 2 en reserva en dos sesiones: subí 1 a 2 kg por mano.",
+    "pesoInicial": "Serie de prueba: con el kit, probá 5 a 8 kg por mano y hacé 10. Si te quedaban más de 4, subí; menos de 2, bajá.",
+    "video": "dumbbell floor press technique"
+  },
+  {
+    "id": "press-banca-mancuernas",
+    "nombre": "Press de banco con mancuernas",
+    "patron": "empuje",
+    "principal": ["pecho"],
+    "secundarios": ["tríceps", "hombros"],
+    "equipo": ["mancuernas", "banco"],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [8, 12],
+    "inicial": "Acostado en el banco, pies firmes en el piso, mancuernas a los costados del pecho.",
+    "pasos": [
+      "Juntá un poco los omóplatos y apoyalos en el banco.",
+      "Empujá hacia arriba hasta estirar los brazos.",
+      "Bajá en 2 segundos hasta que las mancuernas queden a los lados del pecho."
+    ],
+    "respiracion": "Soltá el aire al subir, tomalo al bajar.",
+    "errores": [
+      { "error": "Despegar la cola del banco", "detectar": "La cadera se levanta al empujar." },
+      { "error": "Bajar sin control", "detectar": "Las mancuernas caen rápido y rebotan." },
+      { "error": "Codos en T", "detectar": "Los codos quedan en línea con los hombros." }
+    ],
+    "facil": "press-piso-mancuernas",
+    "dificil": "press-banca-barra",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Agarre neutro y muñeca recta." },
+      "hombro": { "nivel": "adaptar", "texto": "Agarre neutro y no bajes más allá del nivel del pecho." }
+    },
+    "subir": "3 series de 12 con 2 en reserva en dos sesiones: subí 1 a 2 kg por mano.",
+    "pesoInicial": "Serie de prueba de 10 con un peso que creas cómodo. Ajustá según cuántas te quedaban.",
+    "video": "press banca mancuernas tecnica"
+  },
+  {
+    "id": "press-banca-barra",
+    "nombre": "Press de banco con barra",
+    "patron": "empuje",
+    "principal": ["pecho"],
+    "secundarios": ["tríceps", "hombros"],
+    "equipo": ["barra", "banco"],
+    "espacio": "amplio",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [5, 10],
+    "inicial": "Acostado bajo la barra con los ojos debajo de ella, manos un poco más abiertas que los hombros, pies firmes. Con seguros o con alguien que te asista.",
+    "pasos": [
+      "Omóplatos juntos y apoyados, sacá la barra con los brazos estirados.",
+      "Bajala controlada hasta tocar suave la parte baja del pecho.",
+      "Empujá hacia arriba y un poco hacia atrás, hasta sobre los hombros."
+    ],
+    "respiracion": "Tomá aire antes de bajar y soltalo al pasar la parte más difícil de la subida.",
+    "errores": [
+      { "error": "Rebotar en el pecho", "detectar": "La barra pega y salta." },
+      { "error": "Muñecas dobladas", "detectar": "La barra tiene que quedar sobre el antebrazo, no en los dedos." },
+      { "error": "Entrenar pesado sin seguros", "detectar": "Si no hay seguros ni alguien que te asista, dejá 3 en reserva." }
+    ],
+    "facil": "press-banca-mancuernas",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": { "nivel": "evitar", "texto": "La barra fija la muñeca: mejor mancuernas con agarre neutro." },
+      "hombro": { "nivel": "evitar", "texto": "Mejor mancuernas con agarre neutro o máquina." }
+    },
+    "subir": "Todas las series en el tope del rango con 2 en reserva: subí 2,5 kg en total.",
+    "pesoInicial": "Empezá con la barra sola (suele pesar 20 kg) para aprender. Después serie de prueba de 10.",
+    "video": "press banca tecnica principiantes"
+  },
+  {
+    "id": "press-pecho-maquina",
+    "nombre": "Press de pecho en máquina",
+    "patron": "empuje",
+    "principal": ["pecho"],
+    "secundarios": ["tríceps", "hombros"],
+    "equipo": ["maquinas"],
+    "espacio": "amplio",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [8, 15],
+    "inicial": "Ajustá el asiento para que las manijas queden a la altura de la mitad del pecho. Espalda apoyada.",
+    "pasos": [
+      "Empujá las manijas hasta casi estirar los brazos.",
+      "Volvé en 2 segundos hasta sentir el estiramiento en el pecho.",
+      "No dejes que las placas choquen entre repeticiones."
+    ],
+    "respiracion": "Soltá el aire al empujar, tomalo al volver.",
+    "errores": [
+      { "error": "Asiento mal regulado", "detectar": "Las manijas quedan a la altura del cuello o del ombligo." },
+      { "error": "Despegar la espalda", "detectar": "Los hombros se van hacia adelante al empujar." },
+      { "error": "Golpear las placas", "detectar": "Escuchás el choque del peso." }
+    ],
+    "facil": null,
+    "dificil": "press-banca-mancuernas",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Si tiene manijas verticales, usalas (agarre neutro)." },
+      "hombro": { "nivel": "adaptar", "texto": "Recorrido corto, sin estirar de más." }
+    },
+    "subir": "Todas las series en el tope del rango con 2 en reserva: subí una placa.",
+    "pesoInicial": "Serie de prueba de 10 con un peso liviano; ajustá de a una placa.",
+    "video": "chest press machine technique"
+  },
+  {
+    "id": "press-banda",
+    "nombre": "Press de pecho con banda",
+    "patron": "empuje",
+    "principal": ["pecho"],
+    "secundarios": ["tríceps", "hombros"],
+    "equipo": ["bandas", "anclaje"],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "banda",
+    "rango": [10, 20],
+    "inicial": "Banda anclada a la puerta a la altura del pecho, de espaldas a la puerta, una punta en cada mano, un pie adelante.",
+    "pasos": [
+      "Codos a 45°, manos a la altura del pecho.",
+      "Empujá hacia adelante hasta estirar los brazos.",
+      "Volvé despacio sin dejar que la banda te tire."
+    ],
+    "respiracion": "Soltá el aire al empujar.",
+    "errores": [
+      { "error": "Anclaje flojo", "detectar": "Revisá que la puerta esté cerrada con llave hacia el lado que tirás." },
+      { "error": "Arquear la espalda", "detectar": "La panza se va adelante; apretá abdomen." },
+      { "error": "Volver rápido", "detectar": "La banda te lleva los brazos para atrás." }
+    ],
+    "facil": "flexion-inclinada-alta",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Muñeca recta, banda apoyada en la palma." },
+      "hombro": { "nivel": "adaptar", "texto": "Codos más cerca del cuerpo." }
+    },
+    "subir": "Todas las series en el tope del rango con 2 en reserva: banda más dura o alejate un paso.",
+    "pesoInicial": "Elegí la banda con la que hagas 15 con 4 en reserva.",
+    "video": "resistance band chest press door anchor"
+  },
+  {
+    "id": "press-hombros-mancuernas",
+    "nombre": "Press de hombros con mancuernas",
+    "patron": "empuje-vertical",
+    "principal": ["hombros"],
+    "secundarios": ["tríceps", "abdomen"],
+    "equipo": ["mancuernas"],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [8, 12],
+    "inicial": "Sentado con la espalda apoyada o de pie, mancuernas a la altura de los hombros, palmas enfrentadas o hacia adelante.",
+    "pasos": [
+      "Apretá abdomen y glúteos para no arquear la espalda.",
+      "Empujá las mancuernas hacia arriba hasta estirar los brazos.",
+      "Bajá en 2 segundos hasta la altura de las orejas o los hombros."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      { "error": "Arquear la espalda baja", "detectar": "La panza se va hacia adelante al empujar." },
+      { "error": "Subir con impulso de piernas", "detectar": "Doblás las rodillas para ayudarte (eso es otro ejercicio)." },
+      { "error": "Bajar poco", "detectar": "Las mancuernas no pasan de la altura de la cabeza." }
+    ],
+    "facil": "flexion-pica",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Agarre neutro (palmas enfrentadas), muñeca recta." },
+      "hombro": { "nivel": "evitar", "texto": "Los empujes sobre la cabeza suelen molestar: consultá antes y priorizá press de pecho y face pull." },
+      "espalda-baja": { "nivel": "adaptar", "texto": "Hacelo sentado con la espalda apoyada." }
+    },
+    "subir": "3 series de 12 con 2 en reserva en dos sesiones: subí 1 a 2 kg por mano.",
+    "pesoInicial": "Serie de prueba: con el kit, probá 3 a 5 kg por mano.",
+    "video": "press militar mancuernas sentado tecnica"
+  },
+  {
+    "id": "flexion-pica",
+    "nombre": "Flexión en pica",
+    "patron": "empuje-vertical",
+    "principal": ["hombros"],
+    "secundarios": ["tríceps", "pecho"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [6, 12],
+    "inicial": "Desde la flexión, caminá los pies hacia las manos y subí la cadera: el cuerpo forma una V invertida.",
+    "pasos": [
+      "Doblá los codos y llevá la cabeza hacia el piso, por delante de las manos.",
+      "La cabeza y las manos forman un triángulo.",
+      "Empujá hasta estirar los brazos."
+    ],
+    "respiracion": "Aire al bajar, soltarlo al subir.",
+    "errores": [
+      { "error": "Cadera baja", "detectar": "Termina pareciendo una flexión común." },
+      { "error": "Cabeza entre las manos", "detectar": "La cabeza tiene que ir por delante, no en la línea de las manos." },
+      { "error": "Codos muy abiertos", "detectar": "Apuntan hacia los costados en vez de hacia atrás." }
+    ],
+    "facil": "flexion-rodillas",
+    "dificil": "press-hombros-mancuernas",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Sobre puños o mancuernas." },
+      "hombro": { "nivel": "evitar", "texto": "Carga el hombro sobre la cabeza: elegí otra opción." },
+      "cuello": { "nivel": "adaptar", "texto": "No apoyes la cabeza en el piso; bajá solo hasta donde controles." }
+    },
+    "subir": "3 series de 12 con 2 en reserva: subí los pies a un escalón.",
+    "video": "pike push up tutorial"
+  }
+]

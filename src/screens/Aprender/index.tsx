@@ -1,9 +1,12 @@
 import { Proximamente } from '../../components/Proximamente'
+import { Biblioteca } from '../Ejercicios/Biblioteca'
 
 export function Aprender() {
   return (
     <>
       <h1 className="titulo-pantalla">Aprender</h1>
+      <p className="etiqueta">Ejercicios</p>
+      <Biblioteca />
       <Proximamente
         entrega="entrega 5"
         items={[

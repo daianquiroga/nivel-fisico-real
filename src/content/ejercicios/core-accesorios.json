@@ -1,0 +1,291 @@
+[
+  {
+    "id": "bird-dog",
+    "nombre": "Bird dog (cuadrupedia con brazo y pierna)",
+    "patron": "core",
+    "principal": ["abdomen", "zona lumbar"],
+    "secundarios": ["glúteos", "hombros"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [6, 12],
+    "inicial": "En cuatro patas: manos bajo los hombros, rodillas bajo la cadera, espalda recta.",
+    "pasos": [
+      "Estirá un brazo adelante y la pierna contraria atrás, a la altura del cuerpo.",
+      "Quedate 2 segundos sin que la cadera gire.",
+      "Volvé despacio y cambiá de lado. Cada lado es una repetición."
+    ],
+    "respiracion": "Soltá el aire al estirar.",
+    "errores": [
+      { "error": "Cadera que gira", "detectar": "Imaginá un vaso de agua en la espalda baja: no se tiene que caer." },
+      { "error": "Arquear la espalda", "detectar": "La pierna sube por encima de la cadera." },
+      { "error": "Apurarse", "detectar": "Sin la pausa de 2 segundos." }
+    ],
+    "facil": null,
+    "dificil": "dead-bug",
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Apoyá los puños o los antebrazos." },
+      "rodilla": { "nivel": "adaptar", "texto": "Algo blando bajo las rodillas." }
+    },
+    "subir": "3 series de 12 con pausa limpia: pasá al dead bug.",
+    "video": "bird dog exercise technique"
+  },
+  {
+    "id": "dead-bug",
+    "nombre": "Dead bug (bicho muerto)",
+    "patron": "core",
+    "principal": ["abdomen"],
+    "secundarios": ["flexores de cadera"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [6, 12],
+    "inicial": "Boca arriba, brazos estirados hacia el techo, rodillas dobladas a 90° en el aire.",
+    "pasos": [
+      "Apoyá bien la espalda baja contra el piso.",
+      "Estirá un brazo hacia atrás y la pierna contraria hacia adelante, sin tocar el piso.",
+      "Volvé y cambiá de lado. La espalda baja no se despega."
+    ],
+    "respiracion": "Soltá todo el aire al estirar.",
+    "errores": [
+      { "error": "Espalda baja despegada", "detectar": "Poné una mano debajo: si deja de sentir presión, achicá el recorrido." },
+      { "error": "Ir rápido", "detectar": "Cada repetición tiene que durar unos 3 segundos." },
+      { "error": "Aguantar el aire", "detectar": "Soltalo al estirar." }
+    ],
+    "facil": "bird-dog",
+    "dificil": "plancha",
+    "limitaciones": {
+      "espalda-baja": { "nivel": "adaptar", "texto": "Suele ser seguro: recorrido corto y espalda pegada al piso." }
+    },
+    "subir": "3 series de 12 con la espalda pegada: pasá a la plancha.",
+    "video": "dead bug ejercicio tecnica"
+  },
+  {
+    "id": "plancha",
+    "nombre": "Plancha",
+    "patron": "core",
+    "principal": ["abdomen"],
+    "secundarios": ["hombros", "glúteos"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "segundos",
+    "carga": "corporal",
+    "rango": [20, 60],
+    "inicial": "Antebrazos en el piso con los codos bajo los hombros, puntas de pie, cuerpo recto.",
+    "pasos": [
+      "Apretá glúteos y llevá el ombligo hacia la columna.",
+      "Empujá el piso con los antebrazos para no hundirte entre los hombros.",
+      "Mantené la línea; cortá cuando la cadera se mueva."
+    ],
+    "respiracion": "Respirá corto y tranquilo, sin aguantar.",
+    "errores": [
+      { "error": "Cadera caída", "detectar": "Sentís la espalda baja; apretá glúteos." },
+      { "error": "Cola muy arriba", "detectar": "Formás una V." },
+      { "error": "Aguantar de más", "detectar": "Más de un minuto con mala técnica no suma." }
+    ],
+    "facil": "dead-bug",
+    "dificil": "plancha-lateral",
+    "limitaciones": {
+      "hombro": { "nivel": "adaptar", "texto": "Apoyá las rodillas o hacela inclinada contra una mesa." },
+      "espalda-baja": { "nivel": "adaptar", "texto": "Con las rodillas apoyadas y sin hundir la cadera." }
+    },
+    "subir": "3 series de 60 segundos limpias: pasá a la plancha lateral o subí los pies.",
+    "video": "plancha abdominal tecnica correcta"
+  },
+  {
+    "id": "plancha-lateral",
+    "nombre": "Plancha lateral",
+    "patron": "core",
+    "principal": ["oblicuos"],
+    "secundarios": ["glúteos", "hombros"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "segundos",
+    "carga": "corporal",
+    "rango": [15, 45],
+    "inicial": "De costado, codo bajo el hombro, rodillas dobladas (más fácil) o piernas estiradas con los pies uno sobre el otro.",
+    "pasos": [
+      "Subí la cadera hasta formar una línea de la cabeza a las rodillas o los pies.",
+      "Mantené sin que la cadera baje ni se vaya hacia atrás.",
+      "Cambiá de lado."
+    ],
+    "respiracion": "Respirá corto y tranquilo.",
+    "errores": [
+      { "error": "Cadera caída", "detectar": "El costado de abajo toca o se acerca al piso." },
+      { "error": "Cadera hacia atrás", "detectar": "Te doblás como una L." },
+      { "error": "Hombro hundido", "detectar": "Empujá el piso con el antebrazo." }
+    ],
+    "facil": "plancha",
+    "dificil": null,
+    "limitaciones": {
+      "hombro": { "nivel": "adaptar", "texto": "Con rodillas apoyadas y tiempo corto." }
+    },
+    "subir": "3 series de 45 segundos por lado: piernas estiradas o subí la pierna de arriba.",
+    "video": "plancha lateral tecnica"
+  },
+  {
+    "id": "pallof-banda",
+    "nombre": "Press Pallof con banda",
+    "patron": "core",
+    "principal": ["oblicuos", "abdomen"],
+    "secundarios": ["hombros"],
+    "equipo": ["bandas", "anclaje"],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "banda",
+    "rango": [8, 15],
+    "inicial": "Banda anclada a la altura del pecho, de costado a la puerta, las dos manos sosteniendo la banda contra el pecho.",
+    "pasos": [
+      "Alejate un paso para que la banda tire.",
+      "Empujá las manos al frente hasta estirar los brazos sin dejar que el cuerpo gire.",
+      "Quedate 2 segundos y volvé al pecho. Cambiá de lado."
+    ],
+    "respiracion": "Soltá el aire al empujar.",
+    "errores": [
+      { "error": "Girar hacia la puerta", "detectar": "Los hombros se van hacia el anclaje." },
+      { "error": "Banda muy dura", "detectar": "No podés mantener los brazos al frente." },
+      { "error": "Rodillas trabadas", "detectar": "Mantenelas apenas dobladas." }
+    ],
+    "facil": "dead-bug",
+    "dificil": null,
+    "limitaciones": {
+      "espalda-baja": { "nivel": "adaptar", "texto": "Muy recomendado: entrena el tronco sin moverlo." }
+    },
+    "subir": "Todas las series en el tope con 2 en reserva: banda más dura o alejate más.",
+    "pesoInicial": "Banda liviana hasta que el cuerpo no gire nada.",
+    "video": "pallof press con banda"
+  },
+  {
+    "id": "caminata-granjero",
+    "nombre": "Caminata del granjero",
+    "patron": "transporte",
+    "principal": ["antebrazos", "abdomen"],
+    "secundarios": ["trapecios", "glúteos"],
+    "equipo": ["mancuernas"],
+    "espacio": "2x2",
+    "tipo": "segundos",
+    "carga": "externa",
+    "rango": [20, 45],
+    "inicial": "Una mancuerna pesada en cada mano, a los costados, parado derecho.",
+    "pasos": [
+      "Hombros abajo y atrás, abdomen firme.",
+      "Caminá con pasos cortos (en un espacio chico, ida y vuelta o en el lugar).",
+      "Dejá las pesas en el piso con la espalda recta (doblando las rodillas)."
+    ],
+    "respiracion": "Respirá corto, sin aguantar.",
+    "errores": [
+      { "error": "Inclinarse de un lado", "detectar": "Mirate al espejo: hombros nivelados." },
+      { "error": "Encorvarse", "detectar": "Los hombros se van hacia adelante." },
+      { "error": "Levantar mal del piso", "detectar": "Doblá las rodillas para agarrar las pesas." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Muñeca recta, peso que no la doble." },
+      "espalda-baja": { "nivel": "adaptar", "texto": "Peso moderado y espalda derecha." }
+    },
+    "subir": "3 series de 45 segundos limpias: más peso.",
+    "pesoInicial": "Con el kit, probá 10 a 15 kg por mano por 30 segundos.",
+    "video": "farmer walk tecnica"
+  },
+  {
+    "id": "curl-biceps",
+    "nombre": "Curl de bíceps con mancuernas",
+    "patron": "accesorio",
+    "principal": ["bíceps"],
+    "secundarios": ["antebrazos"],
+    "equipo": ["mancuernas"],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [8, 15],
+    "inicial": "De pie, una mancuerna en cada mano con los brazos estirados, codos pegados al cuerpo.",
+    "pasos": [
+      "Subí las mancuernas doblando los codos, sin moverlos de lugar.",
+      "Apretá arriba 1 segundo.",
+      "Bajá en 2 segundos hasta estirar del todo."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      { "error": "Balancearse", "detectar": "La espalda ayuda a subir." },
+      { "error": "Codos hacia adelante", "detectar": "Los codos se despegan del cuerpo al subir." },
+      { "error": "No estirar abajo", "detectar": "Te quedás con los codos doblados." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Hacelo en martillo (palmas enfrentadas) y muñeca recta." }
+    },
+    "subir": "3 series de 15 con 2 en reserva en dos sesiones: subí 1 kg por mano.",
+    "pesoInicial": "Serie de prueba: con el kit, probá 3 a 6 kg por mano.",
+    "video": "curl de biceps mancuernas tecnica"
+  },
+  {
+    "id": "extension-triceps",
+    "nombre": "Extensión de tríceps sobre la cabeza",
+    "patron": "accesorio",
+    "principal": ["tríceps"],
+    "secundarios": [],
+    "equipo": ["mancuernas"],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [8, 15],
+    "inicial": "Sentado o de pie, una mancuerna agarrada con las dos manos por encima de la cabeza.",
+    "pasos": [
+      "Bajá la mancuerna detrás de la cabeza doblando los codos.",
+      "Codos apuntando al techo, cerca de la cabeza.",
+      "Estirá los brazos hasta arriba."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      { "error": "Codos abiertos", "detectar": "Se van a los costados." },
+      { "error": "Arquear la espalda", "detectar": "Apretá abdomen o hacelo sentado." },
+      { "error": "Medio recorrido", "detectar": "No bajás detrás de la cabeza." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "hombro": { "nivel": "evitar", "texto": "Brazos sobre la cabeza: elegí la patada de tríceps o el press cerrado." },
+      "muneca": { "nivel": "adaptar", "texto": "Agarrá la mancuerna por el disco con las palmas, muñecas rectas." }
+    },
+    "subir": "3 series de 15 con 2 en reserva en dos sesiones: subí 1 a 2 kg.",
+    "pesoInicial": "Serie de prueba: con el kit, probá 5 a 8 kg.",
+    "video": "extension triceps mancuerna sobre la cabeza"
+  },
+  {
+    "id": "elevaciones-laterales",
+    "nombre": "Elevaciones laterales",
+    "patron": "accesorio",
+    "principal": ["hombros (parte del costado)"],
+    "secundarios": ["trapecios"],
+    "equipo": ["mancuernas"],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [10, 20],
+    "inicial": "De pie, una mancuerna liviana en cada mano a los costados, codos apenas doblados.",
+    "pasos": [
+      "Subí los brazos hacia los costados hasta la altura de los hombros.",
+      "Los codos guían el movimiento, no las manos.",
+      "Bajá en 2 a 3 segundos."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      { "error": "Subir los hombros a las orejas", "detectar": "Los trapecios hacen el trabajo." },
+      { "error": "Peso de más", "detectar": "Necesitás balancearte para subir." },
+      { "error": "Subir por encima de los hombros", "detectar": "No hace falta y puede molestar." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "hombro": { "nivel": "adaptar", "texto": "Subí solo hasta donde no duela, muy liviano." },
+      "muneca": { "nivel": "adaptar", "texto": "Muñeca recta, palmas mirando al piso." }
+    },
+    "subir": "3 series de 20 con 2 en reserva: subí 1 kg.",
+    "pesoInicial": "Muy liviano: con el kit, probá 2 a 4 kg por mano.",
+    "video": "elevaciones laterales tecnica"
+  }
+]

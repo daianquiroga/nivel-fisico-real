@@ -1,0 +1,519 @@
+[
+  {
+    "id": "sentadilla-silla",
+    "nombre": "Sentarse y pararse de la silla",
+    "patron": "sentadilla",
+    "principal": ["cuádriceps", "glúteos"],
+    "secundarios": ["aductores"],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [10, 20],
+    "inicial": "Silla firme contra la pared, pies al ancho de la cadera, brazos cruzados o adelante.",
+    "pasos": [
+      "Llevá la cola hacia atrás y abajo hasta tocar la silla, sin dejarte caer.",
+      "Rodillas en la dirección de los pies.",
+      "Pará empujando el piso con todo el pie hasta estirar las rodillas."
+    ],
+    "respiracion": "Aire al bajar, soltarlo al subir.",
+    "errores": [
+      { "error": "Dejarse caer", "detectar": "Escuchás el golpe en la silla." },
+      { "error": "Rodillas hacia adentro", "detectar": "Al subir, las rodillas se juntan." },
+      { "error": "Talones arriba", "detectar": "El peso se va a las puntas." }
+    ],
+    "facil": null,
+    "dificil": "sentadilla",
+    "limitaciones": {
+      "rodilla": { "nivel": "adaptar", "texto": "Usá una silla más alta o un almohadón: menos recorrido." }
+    },
+    "subir": "3 series de 20 con 2 en reserva, dos sesiones seguidas: pasá a la sentadilla sin silla.",
+    "video": "sit to stand exercise technique"
+  },
+  {
+    "id": "sentadilla",
+    "nombre": "Sentadilla",
+    "patron": "sentadilla",
+    "principal": ["cuádriceps", "glúteos"],
+    "secundarios": ["aductores", "abdomen"],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [12, 25],
+    "inicial": "De pie, pies un poco más abiertos que la cadera y apenas hacia afuera, brazos adelante.",
+    "pasos": [
+      "Bajá llevando la cadera atrás y abajo, con el pecho arriba.",
+      "Bajá hasta donde mantengas la espalda recta y los talones apoyados (ideal: muslos paralelos al piso o más).",
+      "Subí empujando el piso, rodillas en la dirección de los pies."
+    ],
+    "respiracion": "Aire al bajar, soltarlo al subir.",
+    "errores": [
+      { "error": "Talones arriba", "detectar": "El peso se va a las puntas: falta movilidad de tobillo o bajás de más." },
+      { "error": "Rodillas hacia adentro", "detectar": "Filmate de frente: las rodillas siguen la línea de los pies." },
+      { "error": "Espalda redonda abajo", "detectar": "La cola 'se mete' al final de la bajada; bajá un poco menos." }
+    ],
+    "facil": "sentadilla-silla",
+    "dificil": "zancada-atras",
+    "limitaciones": {
+      "rodilla": { "nivel": "adaptar", "texto": "Bajá solo hasta donde no duela; podés usar una silla como tope." },
+      "tobillo": { "nivel": "adaptar", "texto": "Poné un libro fino bajo los talones." }
+    },
+    "subir": "3 series de 25 con 2 en reserva: pasá a la zancada o sumá una mancuerna (goblet).",
+    "video": "sentadilla tecnica correcta principiantes"
+  },
+  {
+    "id": "sentadilla-goblet",
+    "nombre": "Sentadilla goblet con mancuerna",
+    "patron": "sentadilla",
+    "principal": ["cuádriceps", "glúteos"],
+    "secundarios": ["abdomen", "espalda alta"],
+    "equipo": ["mancuernas"],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [8, 15],
+    "inicial": "Una mancuerna sostenida vertical contra el pecho, con las dos manos debajo del disco de arriba. Pies un poco más abiertos que la cadera.",
+    "pasos": [
+      "Codos apuntando abajo, pecho arriba.",
+      "Bajá entre las rodillas hasta que los codos queden cerca de las rodillas.",
+      "Subí empujando el piso con todo el pie."
+    ],
+    "respiracion": "Tomá aire arriba, bajá con el abdomen firme y soltalo al subir.",
+    "errores": [
+      { "error": "Mancuerna lejos del cuerpo", "detectar": "Te tira hacia adelante y se redondea la espalda." },
+      { "error": "Rodillas hacia adentro", "detectar": "Al subir se juntan." },
+      { "error": "Talones arriba", "detectar": "El peso se va a las puntas." }
+    ],
+    "facil": "sentadilla",
+    "dificil": "sentadilla-barra",
+    "limitaciones": {
+      "rodilla": { "nivel": "adaptar", "texto": "Recorrido sin dolor, con una silla de tope." },
+      "muneca": { "nivel": "adaptar", "texto": "Sostené la mancuerna apoyada contra el pecho con las palmas, sin doblar la muñeca." }
+    },
+    "subir": "3 series de 15 con 2 en reserva en dos sesiones: subí 2 kg.",
+    "pesoInicial": "Serie de prueba: con el kit, armá una mancuerna de 8 a 12 kg y hacé 10.",
+    "video": "goblet squat tecnica"
+  },
+  {
+    "id": "sentadilla-barra",
+    "nombre": "Sentadilla con barra",
+    "patron": "sentadilla",
+    "principal": ["cuádriceps", "glúteos"],
+    "secundarios": ["aductores", "zona lumbar", "abdomen"],
+    "equipo": ["barra"],
+    "espacio": "amplio",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [5, 10],
+    "inicial": "Barra apoyada en la parte alta de la espalda (no en el cuello), dentro de un rack con los seguros a la altura de la sentadilla baja.",
+    "pasos": [
+      "Sacá la barra, dos pasos atrás, pies un poco más abiertos que la cadera.",
+      "Tomá aire, apretá abdomen y bajá con la cadera atrás y abajo.",
+      "Subí manteniendo el pecho arriba y la barra sobre la mitad del pie."
+    ],
+    "respiracion": "Tomá aire arriba, aguantá el abdomen firme al bajar y soltá al pasar la parte difícil.",
+    "errores": [
+      { "error": "Sin seguros", "detectar": "Si no hay seguros, no vayas cerca del fallo." },
+      { "error": "Cadera sube antes que el pecho", "detectar": "Al subir, terminás inclinado hacia adelante." },
+      { "error": "Rodillas hacia adentro", "detectar": "Filmate de frente." }
+    ],
+    "facil": "sentadilla-goblet",
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": { "nivel": "adaptar", "texto": "Recorrido sin dolor; mejor prensa o goblet." },
+      "espalda-baja": { "nivel": "evitar", "texto": "Carga la columna: mejor goblet, prensa o sentadilla búlgara." },
+      "hombro": { "nivel": "adaptar", "texto": "Si no podés llevar las manos atrás, agarrá la barra más abierta." },
+      "muneca": { "nivel": "adaptar", "texto": "Agarre más abierto y muñeca recta: el peso va en la espalda, no en las manos." }
+    },
+    "subir": "Todas las series en el tope del rango con 2 en reserva: subí 2,5 a 5 kg.",
+    "pesoInicial": "Barra sola para aprender (suele pesar 20 kg). Después serie de prueba de 10.",
+    "video": "sentadilla con barra tecnica principiantes"
+  },
+  {
+    "id": "prensa",
+    "nombre": "Prensa de piernas",
+    "patron": "sentadilla",
+    "principal": ["cuádriceps", "glúteos"],
+    "secundarios": ["aductores"],
+    "equipo": ["maquinas"],
+    "espacio": "amplio",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [8, 15],
+    "inicial": "Espalda y cola bien apoyadas, pies en el medio de la plataforma al ancho de la cadera.",
+    "pasos": [
+      "Destrabá los seguros con las piernas estiradas (sin trabar las rodillas).",
+      "Bajá la plataforma hasta que las rodillas estén a 90° o un poco más, sin que se despegue la cola.",
+      "Empujá con todo el pie hasta casi estirar las piernas."
+    ],
+    "respiracion": "Aire al bajar, soltarlo al empujar.",
+    "errores": [
+      { "error": "Despegar la cola", "detectar": "Al bajar, la cadera se levanta del asiento: bajá menos." },
+      { "error": "Trabar las rodillas arriba", "detectar": "Las rodillas quedan 'bloqueadas' hacia atrás." },
+      { "error": "Rodillas hacia adentro", "detectar": "Se juntan al empujar." }
+    ],
+    "facil": "sentadilla",
+    "dificil": "sentadilla-barra",
+    "limitaciones": {
+      "rodilla": { "nivel": "adaptar", "texto": "Pies más arriba en la plataforma y recorrido sin dolor." },
+      "espalda-baja": { "nivel": "adaptar", "texto": "Es una buena opción: cuidá que la cola no se despegue." }
+    },
+    "subir": "Todas las series en el tope del rango con 2 en reserva: subí 5 a 10 kg.",
+    "pesoInicial": "Serie de prueba de 10 con un peso liviano.",
+    "video": "prensa de piernas tecnica"
+  },
+  {
+    "id": "zancada-atras",
+    "nombre": "Zancada hacia atrás",
+    "patron": "zancada",
+    "principal": ["cuádriceps", "glúteos"],
+    "secundarios": ["aductores", "pantorrillas"],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [8, 15],
+    "inicial": "De pie, pies al ancho de la cadera, manos en la cintura. Una pared o silla cerca por si perdés el equilibrio.",
+    "pasos": [
+      "Dá un paso largo hacia atrás con un pie.",
+      "Bajá hasta que la rodilla de atrás casi toque el piso, torso derecho.",
+      "Volvé empujando con el talón de la pierna de adelante. Alterná o hacé todas de un lado."
+    ],
+    "respiracion": "Aire al bajar, soltarlo al subir.",
+    "errores": [
+      { "error": "Paso corto", "detectar": "La rodilla de adelante se va muy por delante del pie y molesta." },
+      { "error": "Rodilla de adelante hacia adentro", "detectar": "Filmate de frente." },
+      { "error": "Torso muy inclinado", "detectar": "El pecho se va hacia el muslo." }
+    ],
+    "facil": "sentadilla",
+    "dificil": "sentadilla-bulgara",
+    "limitaciones": {
+      "rodilla": { "nivel": "adaptar", "texto": "Recorrido corto y sin dolor, agarrado de una silla." },
+      "tobillo": { "nivel": "adaptar", "texto": "Agarrate de algo para el equilibrio." }
+    },
+    "subir": "3 series de 15 por pierna con 2 en reserva: pasá a la búlgara o sumá mancuernas.",
+    "video": "zancada hacia atras tecnica"
+  },
+  {
+    "id": "subida-banco",
+    "nombre": "Subida al banco o escalón",
+    "patron": "zancada",
+    "principal": ["glúteos", "cuádriceps"],
+    "secundarios": ["pantorrillas"],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [8, 15],
+    "inicial": "Frente a un escalón o banco firme (a la altura de la rodilla o más bajo), un pie arriba.",
+    "pasos": [
+      "Empujá con el pie de arriba hasta pararte sobre el escalón.",
+      "No te impulses con el pie de abajo: que trabaje la pierna de arriba.",
+      "Bajá despacio el pie de atrás. Hacé todas de un lado y cambiá."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      { "error": "Impulsarse con la pierna de abajo", "detectar": "Rebotás desde el piso." },
+      { "error": "Rodilla hacia adentro", "detectar": "La rodilla de arriba se cierra al subir." },
+      { "error": "Escalón inestable", "detectar": "Usá algo que no se mueva ni patine." }
+    ],
+    "facil": "sentadilla",
+    "dificil": "sentadilla-bulgara",
+    "limitaciones": {
+      "rodilla": { "nivel": "adaptar", "texto": "Escalón más bajo." },
+      "tobillo": { "nivel": "adaptar", "texto": "Agarrate de la pared." }
+    },
+    "subir": "3 series de 15 por pierna con 2 en reserva: escalón más alto o mancuernas en las manos.",
+    "video": "step up exercise technique"
+  },
+  {
+    "id": "sentadilla-bulgara",
+    "nombre": "Sentadilla búlgara",
+    "patron": "zancada",
+    "principal": ["cuádriceps", "glúteos"],
+    "secundarios": ["aductores"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [6, 12],
+    "inicial": "De espaldas a una silla o cama, el empeine de un pie apoyado atrás, el otro pie un paso largo adelante.",
+    "pasos": [
+      "Bajá hasta que el muslo de adelante quede casi paralelo al piso.",
+      "Torso apenas inclinado, rodilla de adelante en la dirección del pie.",
+      "Subí empujando con el pie de adelante. Todas de un lado y cambiá."
+    ],
+    "respiracion": "Aire al bajar, soltarlo al subir.",
+    "errores": [
+      { "error": "Pie de adelante muy cerca", "detectar": "El talón se levanta al bajar." },
+      { "error": "Empujar con la pierna de atrás", "detectar": "Sentís que trabaja más el pie apoyado atrás." },
+      { "error": "Perder el equilibrio", "detectar": "Agarrate de una pared las primeras veces." }
+    ],
+    "facil": "zancada-atras",
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": { "nivel": "adaptar", "texto": "Recorrido corto y sin dolor." },
+      "tobillo": { "nivel": "adaptar", "texto": "Apoyo bajo para el pie de atrás y agarrado de la pared." }
+    },
+    "subir": "3 series de 12 por pierna con 2 en reserva: sumá mancuernas en las manos.",
+    "pesoInicial": "Al sumar carga: serie de prueba de 10 con 4 a 6 kg por mano.",
+    "video": "sentadilla bulgara tecnica"
+  },
+  {
+    "id": "puente-gluteo",
+    "nombre": "Puente de glúteos",
+    "patron": "bisagra",
+    "principal": ["glúteos"],
+    "secundarios": ["isquiotibiales", "abdomen"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [12, 25],
+    "inicial": "Acostado boca arriba, rodillas dobladas, pies apoyados al ancho de la cadera, brazos a los costados.",
+    "pasos": [
+      "Apretá glúteos y subí la cadera hasta formar una línea de hombros a rodillas.",
+      "Pausa de 1 a 2 segundos arriba.",
+      "Bajá despacio."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      { "error": "Arquear la espalda baja", "detectar": "Las costillas se abren y la espalda trabaja en vez del glúteo." },
+      { "error": "Empujar con las puntas", "detectar": "Empujá con los talones." },
+      { "error": "Sin pausa arriba", "detectar": "Rebotás sin apretar." }
+    ],
+    "facil": null,
+    "dificil": "puente-una-pierna",
+    "limitaciones": {
+      "espalda-baja": { "nivel": "adaptar", "texto": "Suele ser amable: subí solo hasta la línea, sin arquear." }
+    },
+    "subir": "3 series de 25 con 2 en reserva: pasá al puente a una pierna o hacé el hip thrust.",
+    "video": "puente de gluteos tecnica"
+  },
+  {
+    "id": "puente-una-pierna",
+    "nombre": "Puente de glúteos a una pierna",
+    "patron": "bisagra",
+    "principal": ["glúteos"],
+    "secundarios": ["isquiotibiales", "abdomen"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [8, 15],
+    "inicial": "Como el puente, pero con una pierna estirada en el aire o la rodilla abrazada al pecho.",
+    "pasos": [
+      "Empujá con el talón de la pierna apoyada y subí la cadera.",
+      "Mantené la cadera nivelada, sin que se caiga de un lado.",
+      "Bajá despacio. Todas de un lado y cambiá."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      { "error": "Cadera torcida", "detectar": "Un lado queda más bajo." },
+      { "error": "Arquear la espalda", "detectar": "La espalda trabaja en vez del glúteo." },
+      { "error": "Calambre atrás del muslo", "detectar": "Acercá un poco el pie a la cola." }
+    ],
+    "facil": "puente-gluteo",
+    "dificil": "peso-muerto-una-pierna",
+    "limitaciones": {
+      "espalda-baja": { "nivel": "adaptar", "texto": "Sin arquear arriba." }
+    },
+    "subir": "3 series de 15 por pierna con 2 en reserva: apoyá los hombros en una cama o banco.",
+    "video": "single leg glute bridge"
+  },
+  {
+    "id": "hip-thrust",
+    "nombre": "Hip thrust",
+    "patron": "bisagra",
+    "principal": ["glúteos"],
+    "secundarios": ["isquiotibiales", "cuádriceps"],
+    "equipo": ["banco"],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [8, 15],
+    "inicial": "Espalda alta apoyada en el borde de un banco o sillón firme, rodillas dobladas, mancuerna o barra sobre la cadera (con algo blando).",
+    "pasos": [
+      "Mentón un poco hacia el pecho.",
+      "Subí la cadera hasta que el torso quede paralelo al piso y las rodillas a 90°.",
+      "Pausa arriba apretando glúteos y bajá controlado."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      { "error": "Arquear la espalda arriba", "detectar": "Las costillas se abren y la cabeza va para atrás." },
+      { "error": "Pies muy adelante", "detectar": "Sentís más el atrás del muslo que el glúteo." },
+      { "error": "Banco que se desliza", "detectar": "Apoyalo contra la pared." }
+    ],
+    "facil": "puente-gluteo",
+    "dificil": null,
+    "limitaciones": {
+      "espalda-baja": { "nivel": "adaptar", "texto": "Peso moderado y sin arquear arriba." }
+    },
+    "subir": "3 series de 15 con 2 en reserva en dos sesiones: subí 2 a 5 kg.",
+    "pesoInicial": "Serie de prueba: con el kit, probá 10 a 15 kg sobre la cadera.",
+    "video": "hip thrust tecnica en casa"
+  },
+  {
+    "id": "peso-muerto-rumano-mancuernas",
+    "nombre": "Peso muerto rumano con mancuernas",
+    "patron": "bisagra",
+    "principal": ["isquiotibiales", "glúteos"],
+    "secundarios": ["zona lumbar", "antebrazos"],
+    "equipo": ["mancuernas"],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [8, 12],
+    "inicial": "De pie, una mancuerna en cada mano delante de los muslos, rodillas apenas dobladas.",
+    "pasos": [
+      "Llevá la cola hacia atrás como para cerrar una puerta con ella, espalda recta.",
+      "Bajá las mancuernas pegadas a las piernas hasta sentir que se estira atrás del muslo (suele ser debajo de la rodilla).",
+      "Subí empujando la cadera hacia adelante."
+    ],
+    "respiracion": "Tomá aire arriba, bajá con el abdomen firme, soltalo al terminar de subir.",
+    "errores": [
+      { "error": "Espalda redonda", "detectar": "Filmate de costado: la espalda tiene que quedar recta." },
+      { "error": "Doblar mucho las rodillas", "detectar": "Se transforma en sentadilla." },
+      { "error": "Mancuernas lejos de las piernas", "detectar": "Se van hacia adelante y tiran de la espalda." }
+    ],
+    "facil": "puente-gluteo",
+    "dificil": "peso-muerto-barra",
+    "limitaciones": {
+      "espalda-baja": { "nivel": "adaptar", "texto": "Poco peso, recorrido corto y espalda recta. Si duele, quedate con puentes." },
+      "muneca": { "nivel": "adaptar", "texto": "Agarre neutro, muñeca recta." }
+    },
+    "subir": "3 series de 12 con 2 en reserva en dos sesiones: subí 1 a 2 kg por mano.",
+    "pesoInicial": "Serie de prueba: con el kit, probá 6 a 10 kg por mano.",
+    "video": "peso muerto rumano mancuernas tecnica"
+  },
+  {
+    "id": "peso-muerto-una-pierna",
+    "nombre": "Peso muerto a una pierna",
+    "patron": "bisagra",
+    "principal": ["isquiotibiales", "glúteos"],
+    "secundarios": ["equilibrio", "abdomen"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [8, 12],
+    "inicial": "De pie sobre una pierna, rodilla apenas doblada, una mano en una pared o silla si hace falta.",
+    "pasos": [
+      "Inclinate hacia adelante llevando la otra pierna estirada hacia atrás.",
+      "Bajá hasta que el torso y la pierna de atrás queden casi paralelos al piso, cadera nivelada.",
+      "Volvé a pararte apretando el glúteo de la pierna de apoyo."
+    ],
+    "respiracion": "Aire al bajar, soltarlo al subir.",
+    "errores": [
+      { "error": "Cadera que se abre", "detectar": "El pie de atrás apunta al costado en vez de al piso." },
+      { "error": "Espalda redonda", "detectar": "Te curvás para llegar más abajo." },
+      { "error": "Rodilla de apoyo trabada", "detectar": "Mantenela apenas doblada." }
+    ],
+    "facil": "puente-una-pierna",
+    "dificil": "peso-muerto-rumano-mancuernas",
+    "limitaciones": {
+      "tobillo": { "nivel": "adaptar", "texto": "Agarrate de algo firme." },
+      "espalda-baja": { "nivel": "adaptar", "texto": "Recorrido corto, espalda recta." }
+    },
+    "subir": "3 series de 12 por pierna con 2 en reserva y sin apoyo: sumá una mancuerna en la mano opuesta.",
+    "video": "single leg romanian deadlift bodyweight"
+  },
+  {
+    "id": "peso-muerto-barra",
+    "nombre": "Peso muerto con barra",
+    "patron": "bisagra",
+    "principal": ["glúteos", "isquiotibiales", "zona lumbar"],
+    "secundarios": ["cuádriceps", "espalda alta", "antebrazos"],
+    "equipo": ["barra"],
+    "espacio": "amplio",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [3, 8],
+    "inicial": "Barra en el piso sobre la mitad del pie, pies al ancho de la cadera, manos justo por fuera de las piernas.",
+    "pasos": [
+      "Bajá la cadera hasta que las canillas toquen la barra; pecho arriba, espalda recta.",
+      "Tomá aire, apretá abdomen y empujá el piso: la barra sube pegada a las piernas.",
+      "Terminá parado derecho, sin tirarte para atrás. Bajala por el mismo camino."
+    ],
+    "respiracion": "Tomá aire y apretá antes de cada repetición; soltalo arriba.",
+    "errores": [
+      { "error": "Espalda redonda", "detectar": "Filmate de costado; si se curva, bajá el peso." },
+      { "error": "Barra lejos del cuerpo", "detectar": "La barra se separa de las piernas al subir." },
+      { "error": "Tirarse atrás arriba", "detectar": "Terminás con la espalda arqueada." }
+    ],
+    "facil": "peso-muerto-rumano-mancuernas",
+    "dificil": null,
+    "limitaciones": {
+      "espalda-baja": { "nivel": "evitar", "texto": "Mejor puentes, hip thrust o rumano liviano hasta consultarlo." },
+      "muneca": { "nivel": "adaptar", "texto": "Muñeca recta, la barra cuelga; podés usar correas." }
+    },
+    "subir": "Todas las series en el tope del rango con 2 en reserva: subí 5 kg.",
+    "pesoInicial": "Barra con discos livianos (que quede a la altura correcta). Serie de prueba de 8.",
+    "video": "peso muerto convencional tecnica principiantes"
+  },
+  {
+    "id": "swing-kettlebell",
+    "nombre": "Swing con kettlebell",
+    "patron": "bisagra",
+    "principal": ["glúteos", "isquiotibiales"],
+    "secundarios": ["abdomen", "antebrazos", "cardio"],
+    "equipo": ["kettlebell"],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [10, 20],
+    "inicial": "Pies un poco más abiertos que la cadera, kettlebell en el piso un paso delante, agarrada con las dos manos.",
+    "pasos": [
+      "Tirala hacia atrás entre las piernas, como un pase de rugby, cadera atrás.",
+      "Empujá la cadera adelante con fuerza: la pesa sube por el impulso hasta la altura del pecho.",
+      "Dejala caer y recibila llevando la cadera atrás otra vez."
+    ],
+    "respiracion": "Soltá el aire fuerte al empujar la cadera.",
+    "errores": [
+      { "error": "Levantar con los brazos", "detectar": "Los hombros hacen la fuerza; los brazos solo guían." },
+      { "error": "Sentadilla en vez de bisagra", "detectar": "Doblás mucho las rodillas." },
+      { "error": "Espalda redonda abajo", "detectar": "La pesa pasa muy baja y te curvás." }
+    ],
+    "facil": "peso-muerto-rumano-mancuernas",
+    "dificil": null,
+    "limitaciones": {
+      "espalda-baja": { "nivel": "evitar", "texto": "Es explosivo para la zona lumbar: mejor puentes." },
+      "hombro": { "nivel": "adaptar", "texto": "Que la pesa no pase de la altura del pecho." }
+    },
+    "subir": "Todas las series en el tope del rango con 2 en reserva: pesa más pesada.",
+    "pesoInicial": "Arrancá liviano (8 a 12 kg) hasta dominar la técnica.",
+    "video": "kettlebell swing tecnica"
+  },
+  {
+    "id": "elevacion-talones",
+    "nombre": "Elevación de talones",
+    "patron": "accesorio",
+    "principal": ["pantorrillas"],
+    "secundarios": [],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [12, 25],
+    "inicial": "Parado con las puntas de los pies en el borde de un escalón, agarrado de la pared.",
+    "pasos": [
+      "Bajá los talones por debajo del escalón hasta sentir el estiramiento.",
+      "Subí lo más alto que puedas sobre las puntas.",
+      "Pausa de 1 segundo arriba."
+    ],
+    "respiracion": "Respirá normal.",
+    "errores": [
+      { "error": "Rebotar", "detectar": "No hay pausa abajo ni arriba." },
+      { "error": "Medio recorrido", "detectar": "No bajás del nivel del escalón." },
+      { "error": "Pies hacia afuera", "detectar": "Apuntá los pies al frente." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "tobillo": { "nivel": "adaptar", "texto": "Hacelo en el piso, sin escalón, y agarrado." }
+    },
+    "subir": "3 series de 25 con 2 en reserva: a una pierna o con una mancuerna.",
+    "video": "elevacion de talones en escalon"
+  }
+]

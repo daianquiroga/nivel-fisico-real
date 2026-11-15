@@ -1,0 +1,30 @@
+{
+  "criterio": "Pasás al escalón siguiente cuando hacés 3 series en el tope del rango, con técnica limpia y 2 repeticiones en reserva, en dos sesiones seguidas.",
+  "escaleras": [
+    {
+      "id": "empuje",
+      "nombre": "Empuje (flexiones)",
+      "pasos": ["flexion-pared", "flexion-inclinada-alta", "flexion-inclinada-baja", "flexion-rodillas", "flexion", "flexion-pies-elevados", "flexion-arquera"]
+    },
+    {
+      "id": "traccion-vertical",
+      "nombre": "Tracción (dominadas)",
+      "pasos": ["colgado-activo", "dominada-negativa", "dominada-asistida-banda", "dominada"]
+    },
+    {
+      "id": "piernas",
+      "nombre": "Piernas (sentadilla y zancada)",
+      "pasos": ["sentadilla-silla", "sentadilla", "zancada-atras", "sentadilla-bulgara"]
+    },
+    {
+      "id": "bisagra",
+      "nombre": "Cadera (puente y bisagra)",
+      "pasos": ["puente-gluteo", "puente-una-pierna", "peso-muerto-una-pierna"]
+    },
+    {
+      "id": "core",
+      "nombre": "Tronco (core)",
+      "pasos": ["bird-dog", "dead-bug", "plancha", "plancha-lateral"]
+    }
+  ]
+}
