@@ -6,6 +6,13 @@ import { Aviso, Boton, Tarjeta, estilos } from '../../components/ui'
 import type { Lugar, Perfil, Sexo } from '../../lib/db/db'
 import {
   EQUIPO,
+  EQUIPO_AIRE_LIBRE,
+  METODOS_SERIES,
+  NOMBRES_DIAS,
+  PREFERENCIAS_GYM,
+  TIPOS_LUGAR,
+  normalizarSemana,
+  tipoDeLugar,
   ESPACIOS,
   LIMITACIONES,
   NOMBRES_TIPO_DIA,
@@ -89,8 +96,27 @@ export function Inicio() {
   }, [])
 
   const lugar = lugares[lugarActivo] ?? lugares[0]
-  const cambiarLugar = (cambios: Partial<Lugar>) =>
+  const cambiarLugar = (cambios: Partial<Lugar>) => {
+    const anterior = lugares[lugarActivo]?.nombre
     setLugares((ls) => ls.map((l, i) => (i === lugarActivo ? { ...l, ...cambios } : l)))
+    if (cambios.nombre !== undefined && anterior !== undefined && cambios.nombre !== anterior) {
+      const nuevo = cambios.nombre
+      setSemana((sem) => ({ ...sem, lugaresPorDia: sem.lugaresPorDia.map((d) => d.map((n) => (n === anterior ? nuevo : n))) }))
+    }
+  }
+  const tipoLugar = tipoDeLugar(lugar ?? { nombre: '', equipo: [], espacio: '1x1' })
+  const gym = lugar?.gimnasio ?? { prefiere: [], metodo: 'app' as const }
+
+  function alternarLugarDelDia(dia: number, nombre: string) {
+    setSemana((sem) => ({
+      ...sem,
+      lugaresPorDia: sem.lugaresPorDia.map((d, i) => {
+        if (i !== dia) return d
+        if (d.includes(nombre)) return d.filter((n) => n !== nombre)
+        return [...d, nombre].slice(-2)
+      }),
+    }))
+  }
 
   const tipo = semana.tipos[tipoActivo]
   const cambiarTipo = (cambios: Partial<Semana['tipos'][TipoDia]>) =>
@@ -131,13 +157,7 @@ export function Inicio() {
       creado,
       actualizado: ahora,
     }
-    const nombresLugares = lugares.map((l) => l.nombre)
-    const semanaFinal: Semana = {
-      ...semana,
-      tipos: Object.fromEntries(
-        Object.entries(semana.tipos).map(([k, v]) => [k, { ...v, lugar: nombresLugares.includes(v.lugar) ? v.lugar : nombresLugares[0] }]),
-      ) as Semana['tipos'],
-    }
+    const semanaFinal = normalizarSemana(semana, lugares.map((l) => l.nombre))
     await guardarInicio(perfil, lugares, semanaFinal)
     navegar('/', { replace: true })
   }
@@ -267,10 +287,73 @@ export function Inicio() {
                 onChange={(e) => cambiarLugar({ nombre: e.target.value })}
               />
               <p className="etiqueta" style={{ marginTop: 6 }}>
-                Espacio libre
+                Qué tipo de lugar es
               </p>
-              <Segmentado etiqueta="Espacio" valor={lugar.espacio} onCambio={(v) => cambiarLugar({ espacio: v })} opciones={ESPACIOS} />
+              <Segmentado
+                etiqueta="Tipo de lugar"
+                valor={tipoLugar}
+                onCambio={(v) => cambiarLugar(v === 'gimnasio' ? { tipo: v, gimnasio: gym } : { tipo: v })}
+                opciones={TIPOS_LUGAR}
+              />
+              {tipoLugar === 'casa' && (
+                <>
+                  <p className="etiqueta" style={{ marginTop: 6 }}>
+                    Espacio libre
+                  </p>
+                  <Segmentado etiqueta="Espacio" valor={lugar.espacio} onCambio={(v) => cambiarLugar({ espacio: v })} opciones={ESPACIOS} />
+                </>
+              )}
             </Tarjeta>
+            {tipoLugar === 'gimnasio' && (
+              <>
+                <Tarjeta>
+                  <p className="etiqueta">¿Qué preferís usar?</p>
+                  <Chips
+                    etiqueta="Qué preferís usar"
+                    opciones={PREFERENCIAS_GYM}
+                    elegidas={gym.prefiere}
+                    onCambio={(v) => cambiarLugar({ gimnasio: { ...gym, prefiere: v } })}
+                  />
+                  {gym.prefiere.length === 0 ? (
+                    <p className={estilos.chico}>
+                      Podés elegir varias. Si no elegís ninguna, la app mezcla: pesos libres para los ejercicios principales y máquinas o
+                      poleas para el resto, que es lo que mejor funciona para la mayoría.
+                    </p>
+                  ) : (
+                    PREFERENCIAS_GYM.filter((o) => gym.prefiere.includes(o.valor)).map((o) => (
+                      <p key={o.valor} className={estilos.chico}>
+                        <b style={{ color: 'var(--text-2)' }}>{o.texto}:</b> {o.consejo}
+                      </p>
+                    ))
+                  )}
+                </Tarjeta>
+                <Tarjeta>
+                  <p className="etiqueta">¿Cómo armamos las series?</p>
+                  <div className={s.metodos} role="radiogroup" aria-label="Cómo armar las series">
+                    {METODOS_SERIES.map((m) => (
+                      <button
+                        key={m.valor}
+                        type="button"
+                        role="radio"
+                        aria-checked={gym.metodo === m.valor}
+                        className={`${s.metodo} ${gym.metodo === m.valor ? s.metodoOn : ''}`}
+                        onClick={() => cambiarLugar({ gimnasio: { ...gym, metodo: m.valor } })}
+                      >
+                        <b>{m.texto}</b>
+                        <span>{m.consejo}</span>
+                      </button>
+                    ))}
+                  </div>
+                </Tarjeta>
+              </>
+            )}
+            {tipoLugar === 'aire-libre' && (
+              <Tarjeta>
+                <p className="etiqueta">Qué hay o qué llevás</p>
+                <Chips etiqueta="Equipo al aire libre" opciones={EQUIPO_AIRE_LIBRE} elegidas={lugar.equipo} onCambio={(v) => cambiarLugar({ equipo: v })} />
+              </Tarjeta>
+            )}
+            {tipoLugar === 'casa' && (
             <Tarjeta>
               <p className="etiqueta">Equipo que tenés ahí</p>
               <Chips etiqueta="Equipo" opciones={EQUIPO} elegidas={lugar.equipo} onCambio={(v) => cambiarLugar({ equipo: v })} />
@@ -287,11 +370,12 @@ export function Inicio() {
               )}
               <p className={estilos.chico}>Si no tenés nada, dejalo así: hay muchísimos ejercicios con tu propio peso.</p>
             </Tarjeta>
+            )}
             <div className={estilos.fila}>
               {lugares.length < 4 && (
                 <Boton
                   onClick={() => {
-                    setLugares([...lugares, { nombre: '', equipo: [], espacio: '1x1' }])
+                    setLugares([...lugares, { nombre: '', tipo: 'casa', equipo: [], espacio: '1x1' }])
                     setLugarActivo(lugares.length)
                   }}
                 >
@@ -301,7 +385,9 @@ export function Inicio() {
               {lugares.length > 1 && (
                 <Boton
                   onClick={() => {
+                    const quitado = lugares[lugarActivo].nombre
                     setLugares(lugares.filter((_, i) => i !== lugarActivo))
+                    setSemana((sem) => ({ ...sem, lugaresPorDia: sem.lugaresPorDia.map((d) => d.filter((n) => n !== quitado)) }))
                     setLugarActivo(0)
                   }}
                 >
@@ -314,6 +400,38 @@ export function Inicio() {
 
         {paso === 3 && (
           <>
+            <Tarjeta>
+              <p className="etiqueta">Dónde entrenás cada día</p>
+              {semana.lugaresPorDia.map((d, i) => (
+                <div key={i} className={s.filaDia}>
+                  <span>
+                    {NOMBRES_DIAS[i]}
+                    {d.length === 0 && <small className={s.descanso}>Descanso</small>}
+                  </span>
+                  <div className={s.chipsDia} role="group" aria-label={`Dónde entrenás el ${NOMBRES_DIAS[i]}`}>
+                    {lugares.map((l) => {
+                      const on = d.includes(l.nombre)
+                      return (
+                        <button
+                          key={l.nombre}
+                          type="button"
+                          aria-pressed={on}
+                          className={`${s.chipDia} ${on ? s.chipDiaOn : ''}`}
+                          onClick={() => alternarLugarDelDia(i, l.nombre)}
+                        >
+                          {l.nombre}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+              ))}
+              <p className={estilos.chico}>
+                Tocá para marcar o desmarcar. Si marcás dos lugares el mismo día, la app pone la sesión principal donde tenés más equipo
+                y una sesión corta en el otro. Sin nada marcado, es día de descanso.
+              </p>
+            </Tarjeta>
+
             <Tarjeta>
               <p className="etiqueta">Qué tipo de día es cada uno</p>
               <div className={s.dias}>
@@ -349,19 +467,6 @@ export function Inicio() {
                 </Aviso>
               ) : (
                 <p className={estilos.chico}>{String(Math.round(sueno * 10) / 10).replace('.', ',')} horas para dormir.</p>
-              )}
-              {lugares.length > 1 && (
-                <>
-                  <p className="etiqueta" style={{ marginTop: 4 }}>
-                    Dónde estás esos días
-                  </p>
-                  <Segmentado
-                    etiqueta="Lugar"
-                    valor={lugares.some((l) => l.nombre === tipo.lugar) ? tipo.lugar : lugares[0].nombre}
-                    onCambio={(v) => cambiarTipo({ lugar: v })}
-                    opciones={lugares.map((l) => ({ valor: l.nombre, texto: l.nombre }))}
-                  />
-                </>
               )}
             </Tarjeta>
 

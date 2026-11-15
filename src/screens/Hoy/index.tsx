@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Aviso, Tarjeta, estilos } from '../../components/ui'
 import { diasSinFumar, formatoPesos, plataAhorrada } from '../../lib/fumar'
-import { LIMITACIONES } from '../../lib/perfil'
+import { LIMITACIONES, TIPOS_LUGAR, diaDeHoy, tipoDeLugar } from '../../lib/perfil'
 import { usarInicio } from '../../lib/usarInicio'
 import s from './hoy.module.css'
 
@@ -11,12 +11,20 @@ function fechaDeHoy(): string {
 }
 
 export function Hoy() {
-  const { cargado, perfil } = usarInicio()
+  const { cargado, perfil, semana, lugares } = usarInicio()
   if (!cargado) return null
   const listo = Boolean(perfil?.inicioCompleto)
   const fumar = perfil?.fumar
   const dias = fumar?.activo && fumar.fechaDejo ? diasSinFumar(fumar.fechaDejo) : null
   const ahorro = dias !== null && fumar?.precioAtado ? plataAhorrada(dias, fumar.precioAtado, fumar.atadosPorDia ?? 1) : null
+  const lugaresHoy = semana?.lugaresPorDia[diaDeHoy()] ?? []
+  const textoLugares = lugaresHoy
+    .map((n) => {
+      const l = lugares.find((x) => x.nombre === n)
+      const tipo = l ? TIPOS_LUGAR.find((t) => t.valor === tipoDeLugar(l))?.texto : undefined
+      return tipo && tipo.toLowerCase() !== n.toLowerCase() ? `${n} (${tipo.toLowerCase()})` : n
+    })
+    .join(' y ')
   const limitaciones = (perfil?.limitaciones ?? []).map((l) => LIMITACIONES.find((x) => x.valor === l)?.texto ?? l)
 
   return (
@@ -25,6 +33,12 @@ export function Hoy() {
         <span className={estilos.chico}>{fechaDeHoy()}</span>
         <h1 className="titulo-pantalla">Hoy</h1>
       </header>
+
+      {listo && (
+        <div className={s.chips}>
+          <span className={s.chip}>{lugaresHoy.length ? `Hoy entrenás en ${textoLugares}` : 'Hoy es día de descanso'}</span>
+        </div>
+      )}
 
       {listo && dias !== null && (
         <div className={s.chips}>

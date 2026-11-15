@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Icono } from '../../components/Icono'
 import { Tarjeta, estilos } from '../../components/ui'
-import { LIMITACIONES, OBJETIVOS } from '../../lib/perfil'
+import { LIMITACIONES, OBJETIVOS, TIPOS_LUGAR, tipoDeLugar } from '../../lib/perfil'
 import { usarInicio } from '../../lib/usarInicio'
 import s from '../Hoy/hoy.module.css'
 import { Respaldo } from './Respaldo'
@@ -29,7 +29,10 @@ export function Perfil() {
                 {OBJETIVOS.map((o) => `${o.nombre.toLowerCase()} ${perfil.objetivos![o.clave]}`).join(' · ')}
               </p>
             )}
-            <p className={estilos.texto2}>Lugares: {lugares.map((l) => l.nombre).join(', ') || 'ninguno'}.</p>
+            <p className={estilos.texto2}>
+              Lugares:{' '}
+              {lugares.map((l) => `${l.nombre} (${TIPOS_LUGAR.find((t) => t.valor === tipoDeLugar(l))?.texto.toLowerCase()})`).join(', ') || 'ninguno'}.
+            </p>
             {(perfil.limitaciones?.length ?? 0) > 0 && (
               <p className={estilos.texto2}>
                 Cuidar: {perfil.limitaciones!.map((l) => LIMITACIONES.find((x) => x.valor === l)?.texto ?? l).join(', ').toLowerCase()}.

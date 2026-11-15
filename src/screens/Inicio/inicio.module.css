@@ -157,3 +157,80 @@
   color: var(--muted);
   cursor: pointer;
 }
+
+.metodos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metodo {
+  text-align: left;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--text-2);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  font-size: 13.5px;
+  line-height: 1.4;
+}
+
+.metodo b {
+  color: var(--text);
+  font-size: 15px;
+}
+
+.metodoOn {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}
+
+.filaDia {
+  display: grid;
+  grid-template-columns: 86px 1fr;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  border-bottom: 1px solid var(--line);
+}
+
+.filaDia > span {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.chipsDia {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.chipDia {
+  min-height: 40px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.chipDiaOn {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+  color: var(--accent-soft);
+}
+
+.descanso {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--soft);
+}

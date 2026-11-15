@@ -27,3 +27,31 @@ describe('horas de sueño', () => {
     expect(horasDeSueno('23:30', '07:00')).toBe(7.5)
   })
 })
+
+import { diaDeHoy, normalizarSemana, semanaPorDefecto } from './perfil'
+
+describe('lugares por día', () => {
+  it('completa semanas guardadas antes de la versión 0.3', () => {
+    const vieja = semanaPorDefecto('Depto') as unknown as Record<string, unknown>
+    delete vieja.lugaresPorDia
+    const tipos = vieja.tipos as Record<string, { lugar?: string }>
+    tipos.laboral.lugar = 'Depto'
+    tipos.sabado.lugar = 'Mi casa'
+    const s = normalizarSemana(vieja as never, ['Depto', 'Mi casa'])
+    expect(s.lugaresPorDia[0]).toEqual(['Depto'])
+    expect(s.lugaresPorDia[5]).toEqual(['Mi casa'])
+    expect(s.lugaresPorDia[6]).toEqual([])
+  })
+  it('saca lugares borrados, repetidos y deja como máximo 2', () => {
+    const s = semanaPorDefecto('Casa')
+    s.lugaresPorDia[0] = ['Casa', 'Gym', 'Casa', 'Plaza']
+    s.lugaresPorDia[1] = ['Viejo']
+    const n = normalizarSemana(s, ['Casa', 'Gym', 'Plaza'])
+    expect(n.lugaresPorDia[0]).toEqual(['Casa', 'Gym'])
+    expect(n.lugaresPorDia[1]).toEqual([])
+  })
+  it('lunes es el día 0', () => {
+    expect(diaDeHoy(new Date(2026, 10, 16))).toBe(0)
+    expect(diaDeHoy(new Date(2026, 10, 15))).toBe(6)
+  })
+})

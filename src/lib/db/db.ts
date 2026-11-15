@@ -22,9 +22,16 @@ export interface Perfil {
   actualizado: string
 }
 
+export type TipoLugar = 'casa' | 'gimnasio' | 'aire-libre'
+export type MetodoSeries = 'clasico' | 'superseries' | 'circuito' | 'app'
+
 export interface Lugar {
   id?: number
   nombre: string
+  /** Sin valor = casa (datos guardados antes de la versión 0.3). */
+  tipo?: TipoLugar
+  /** Solo para gimnasios: qué prefiere usar y cómo armar las series. */
+  gimnasio?: { prefiere: string[]; metodo: MetodoSeries }
   equipo: string[]
   /** Peso total de mancuernas y discos, si tiene. */
   pesoTotalKg?: number

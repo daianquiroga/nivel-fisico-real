@@ -1,5 +1,5 @@
 /* Datos del primer inicio: opciones, valores por defecto y guardado. */
-import { db, type Lugar, type Perfil } from './db/db'
+import { db, type Lugar, type MetodoSeries, type Perfil, type TipoLugar } from './db/db'
 
 export type Objetivos = { estetica: number; condicion: number; combate: number }
 export type ClaveObjetivo = keyof Objetivos
@@ -56,6 +56,73 @@ export const EQUIPO = [
   { valor: 'colchoneta', texto: 'Colchoneta' },
 ]
 
+export const EQUIPO_AIRE_LIBRE = [
+  { valor: 'barras-plaza', texto: 'Barras de plaza' },
+  { valor: 'paralelas', texto: 'Paralelas' },
+  { valor: 'escaleras', texto: 'Escaleras' },
+  { valor: 'banco', texto: 'Banco' },
+  { valor: 'pista', texto: 'Lugar para correr' },
+  { valor: 'bandas', texto: 'Llevo bandas' },
+  { valor: 'soga', texto: 'Llevo soga' },
+]
+
+export const TIPOS_LUGAR: { valor: TipoLugar; texto: string }[] = [
+  { valor: 'casa', texto: 'Casa' },
+  { valor: 'gimnasio', texto: 'Gimnasio' },
+  { valor: 'aire-libre', texto: 'Aire libre' },
+]
+
+export const PREFERENCIAS_GYM: { valor: string; texto: string; consejo: string }[] = [
+  {
+    valor: 'maquinas',
+    texto: 'Máquinas',
+    consejo: 'Fáciles de aprender y seguras para empezar: el recorrido ya viene guiado. Contra: dependés de que estén libres y no entrenan tanto el equilibrio.',
+  },
+  {
+    valor: 'barra',
+    texto: 'Barra y discos',
+    consejo: 'La mejor herramienta para ganar fuerza en sentadilla, peso muerto y press. Pide aprender bien la técnica: los primeros meses, cargas cómodas.',
+  },
+  {
+    valor: 'mancuernas',
+    texto: 'Mancuernas',
+    consejo: 'Trabajan cada lado por separado y corrigen diferencias entre brazos o piernas. Permiten agarres con la muñeca recta, buenos si te molesta la muñeca.',
+  },
+  {
+    valor: 'poleas',
+    texto: 'Poleas',
+    consejo: 'Tensión pareja en todo el recorrido y mucha variedad de ángulos. Buenas para trabajar músculos puntuales y para la postura (por ejemplo, tirones a la cara).',
+  },
+  {
+    valor: 'peso-corporal',
+    texto: 'Peso corporal',
+    consejo: 'Dominadas, fondos y similares: lo que aprendas te sirve en cualquier lado, incluso en casa.',
+  },
+]
+
+export const METODOS_SERIES: { valor: MetodoSeries; texto: string; consejo: string }[] = [
+  {
+    valor: 'clasico',
+    texto: 'Clásico con pausa',
+    consejo: 'Una serie, descanso y otra serie del mismo ejercicio. Lo mejor para ganar fuerza: en ejercicios pesados conviene descansar 2 a 3 minutos.',
+  },
+  {
+    valor: 'superseries',
+    texto: 'Superseries',
+    consejo: 'Dos ejercicios seguidos de músculos distintos (por ejemplo, empuje y tirón) y después la pausa. Ahorrás tiempo casi sin perder rendimiento.',
+  },
+  {
+    valor: 'circuito',
+    texto: 'Circuito',
+    consejo: 'Varios ejercicios seguidos con poca pausa. Más cardio y menos tiempo, pero se levanta menos peso. Bueno para días con poco tiempo.',
+  },
+  {
+    valor: 'app',
+    texto: 'Que decida la app',
+    consejo: 'La app elige según el día: clásico en los ejercicios pesados, superseries en los accesorios y circuito si tenés poco tiempo.',
+  },
+]
+
 export const ESPACIOS = [
   { valor: '1x1' as const, texto: '1 × 1 m' },
   { valor: '2x2' as const, texto: '2 × 2 m' },
@@ -89,7 +156,8 @@ export interface Hueco {
 export interface DiaTipo {
   despertar: string
   dormir: string
-  lugar: string
+  /** Obsoleto desde la versión 0.3: ahora se usa Semana.lugaresPorDia. */
+  lugar?: string
   huecos: Hueco[]
 }
 
@@ -97,7 +165,11 @@ export interface Semana {
   /** Tipo de día de lunes (0) a domingo (6). */
   dias: TipoDia[]
   tipos: Record<TipoDia, DiaTipo>
+  /** Dónde entrena cada día, de lunes (0) a domingo (6). Lista vacía = descanso. Puede haber más de un lugar. */
+  lugaresPorDia: string[][]
 }
+
+export const NOMBRES_DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']
 
 export const NOMBRES_TIPO_DIA: Record<TipoDia, string> = {
   laboral: 'Días de semana',
@@ -106,7 +178,7 @@ export const NOMBRES_TIPO_DIA: Record<TipoDia, string> = {
 }
 
 export function semanaPorDefecto(lugar = 'Casa'): Semana {
-  const dia = (despertar: string, dormir: string, huecos: Hueco[]): DiaTipo => ({ despertar, dormir, lugar, huecos })
+  const dia = (despertar: string, dormir: string, huecos: Hueco[]): DiaTipo => ({ despertar, dormir, huecos })
   return {
     dias: ['laboral', 'laboral', 'laboral', 'laboral', 'laboral', 'sabado', 'domingo'],
     tipos: {
@@ -114,7 +186,31 @@ export function semanaPorDefecto(lugar = 'Casa'): Semana {
       sabado: dia('08:30', '00:00', [{ desde: '10:00', hasta: '11:00' }]),
       domingo: dia('09:00', '23:30', []),
     },
+    lugaresPorDia: [[lugar], [lugar], [lugar], [lugar], [lugar], [lugar], []],
   }
+}
+
+/** Ajusta la semana a los lugares actuales: completa datos viejos (sin lugaresPorDia),
+    saca lugares borrados o renombrados y deja como máximo 2 lugares por día. */
+export function normalizarSemana(semana: Semana, nombres: string[]): Semana {
+  const validos = (xs: string[]) => [...new Set(xs.filter((x) => nombres.includes(x)))].slice(0, 2)
+  let porDia = semana.lugaresPorDia
+  if (!porDia || porDia.length !== 7) {
+    porDia = semana.dias.map((t) => {
+      const viejo = semana.tipos[t]?.lugar
+      return viejo ? [viejo] : []
+    })
+  }
+  return { ...semana, lugaresPorDia: porDia.map(validos) }
+}
+
+export function tipoDeLugar(l: Lugar): TipoLugar {
+  return l.tipo ?? 'casa'
+}
+
+/** Índice de hoy con lunes = 0. */
+export function diaDeHoy(fecha = new Date()): number {
+  return (fecha.getDay() + 6) % 7
 }
 
 /** Horas disponibles para dormir entre la hora de acostarse y la de despertarse. */
@@ -132,7 +228,9 @@ export async function cargarInicio(): Promise<{ perfil?: Perfil; lugares: Lugar[
     db.lugares.toArray(),
     db.ajustes.get('semana'),
   ])
-  return { perfil, lugares, semana: ajusteSemana?.valor as Semana | undefined }
+  const guardada = ajusteSemana?.valor as Semana | undefined
+  const semana = guardada ? normalizarSemana(guardada, lugares.map((l) => l.nombre)) : undefined
+  return { perfil, lugares, semana }
 }
 
 export async function guardarInicio(perfil: Perfil, lugares: Lugar[], semana: Semana): Promise<void> {

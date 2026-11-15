@@ -26,8 +26,11 @@ Pasos, uno por pantalla, con barra de progreso y opción de completar después:
 
 1. **Datos básicos:** sexo (para las tablas de referencia), edad, altura. Peso opcional.
 2. **Objetivos:** repartir 100 puntos entre los tres objetivos con botones +/−. Elegir zonas a mejorar (panza, postura, espalda, brazos, pecho, piernas, glúteos, definición general). Mostrar el aviso: "la grasa no se baja por zonas; el músculo sí se trabaja por zona".
-3. **Lugares y equipo:** uno o más lugares (ej. "Depto", "Mi casa"), cada uno con su lista de equipo tildable: nada, bandas elásticas (con o sin anclaje), mancuernas y discos (peso total), barra de dominadas, kettlebell, soga, bolsa, banco, silla firme, colchoneta. Y el espacio disponible: 1 × 1 m, 2 × 2 m, más amplio.
-4. **Tu semana:** horarios fijos (trabajo, estudio, viajes, comidas, sueño) por tipo de día (laboral, sábado, domingo), en qué lugar está cada día y los huecos disponibles para entrenar.
+3. **Lugares y equipo:** uno o más lugares (ej. "Depto", "Mi casa", "Gym"), cada uno con su **tipo**:
+   - **Casa:** equipo tildable (bandas elásticas con o sin anclaje, mancuernas y discos con su peso total, barra de dominadas, kettlebell, soga, bolsa, banco, silla firme, colchoneta) y espacio disponible (1 × 1 m, 2 × 2 m, más amplio).
+   - **Gimnasio:** qué prefiere usar (máquinas, barra y discos, mancuernas, poleas, peso corporal; varias a la vez) y cómo armar las series (clásico con pausa, superseries, circuito o que decida la app), con un consejo corto para cada opción. Sin preferencias marcadas, la app mezcla: pesos libres en los ejercicios principales y máquinas o poleas en el resto.
+   - **Aire libre:** barras de plaza, paralelas, escaleras, banco, lugar para correr, y si lleva bandas o soga.
+4. **Tu semana:** **dónde entrena cada día** (uno o dos lugares por día, o descanso), horarios por tipo de día (laboral, sábado, domingo: levantarse, acostarse) y huecos disponibles para entrenar. Si un día tiene dos lugares, el plan pone la sesión principal donde hay más equipo y una sesión corta (microsesión, movilidad o cardio) en el otro. Los bloques fijos detallados (trabajo, comidas) se cargan en la agenda de la entrega 3.
 5. **Salud:** cuestionario previo (ver `EVALUACION.md`), limitaciones o dolores (muñeca, rodilla, hombro, espalda baja, cuello, otra) y hábitos: si dejó de fumar y desde cuándo (opcional, activa el seguimiento).
 
 Al terminar: ofrecer hacer la evaluación ahora o más tarde.
@@ -108,7 +111,7 @@ El usuario puede pedir "armámelo vos" y después editar todo. El generador:
 2. Elige frecuencia: fuerza 2 a 3 veces por semana para cada patrón principal; cardio que sume entre 150 y 300 minutos semanales de actividad moderada, **contando las caminatas que el usuario ya hace**; movilidad corta casi todos los días.
 3. Si "Verme mejor" pesa más: prioriza series semanales por grupo muscular (meta inicial 10 series por grupo prioritario, subiendo con el nivel).
 4. Alterna días fuertes y suaves; nunca dos días fuertes seguidos si se puede evitar.
-5. Encaja cada sesión en un hueco del lugar correcto y con ejercicios posibles con ese equipo y espacio.
+5. Encaja cada sesión en un hueco del lugar correcto y con ejercicios posibles con ese equipo y espacio. En el gimnasio respeta las preferencias del usuario (máquinas, pesos libres, poleas) y el método de series elegido; con "que decida la app": series clásicas con 2 a 3 minutos de pausa en los ejercicios pesados, superseries de músculos distintos en los accesorios y circuito si el hueco es corto. Si la muñeca está marcada, prioriza mancuernas con agarre neutro y máquinas que no carguen la muñeca.
 6. Agrega microsesiones en huecos chicos (mañana, pausas de trabajo).
 
 ### 7.3 Validador (avisos automáticos)
