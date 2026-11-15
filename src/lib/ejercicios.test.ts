@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import { tieneDibujo } from '../content/dibujos-ejercicios'
 import type { Lugar } from './db/db'
 import { EJERCICIOS, avisosLimitacion, ejercicio, equipoDisponible, escaleraDe, evitarPorLimitacion, revisarContenido, sePuedeHacer } from './ejercicios'
 
@@ -6,6 +7,10 @@ describe('biblioteca de ejercicios', () => {
   it('el contenido es coherente', () => {
     expect(revisarContenido()).toEqual([])
     expect(EJERCICIOS.length).toBeGreaterThanOrEqual(40)
+  })
+
+  it('todos los ejercicios tienen dibujo (regla 8 de CLAUDE.md)', () => {
+    expect(EJERCICIOS.filter((e) => !tieneDibujo(e.id)).map((e) => e.id)).toEqual([])
   })
 
   it('equipo disponible y qué se puede hacer', () => {

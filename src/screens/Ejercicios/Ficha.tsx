@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { Aviso, Tarjeta, estilos } from '../../components/ui'
+import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
 import {
   CRITERIO_ESCALERA,
   NOMBRES_EQUIPO,
@@ -87,6 +88,9 @@ export function Ficha() {
       {falta.length > 0 && <p className={estilos.chico}>En tus lugares no está: {falta.map((x) => NOMBRES_EQUIPO[x] ?? x).join(', ')}.</p>}
 
       <Tarjeta>
+        <div className={e.dibujo}>
+          <DibujoEjercicio id={ej.id} />
+        </div>
         <p className="etiqueta">Posición inicial</p>
         <p className={estilos.texto2}>{ej.inicial}</p>
         <p className="etiqueta">Cómo se hace</p>
