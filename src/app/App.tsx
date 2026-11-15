@@ -3,6 +3,7 @@ import { Icono } from '../components/Icono'
 import { Aprender } from '../screens/Aprender'
 import { Evaluacion } from '../screens/Evaluacion'
 import { Ficha } from '../screens/Ejercicios/Ficha'
+import { Registrar } from '../screens/Ejercicios/Registrar'
 import { Hoy } from '../screens/Hoy'
 import { Inicio } from '../screens/Inicio'
 import { Perfil } from '../screens/Perfil'
@@ -58,6 +59,7 @@ export default function App() {
         <Route path="/evaluacion" element={<Evaluacion />} />
         <Route path="/resultado/:id" element={<Resultado />} />
         <Route path="/ejercicio/:id" element={<Ficha />} />
+        <Route path="/registrar/:id" element={<Registrar />} />
         <Route path="/tipo-cuerpo" element={<TipoCuerpo />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

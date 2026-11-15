@@ -114,6 +114,8 @@ El usuario puede pedir "armámelo vos" y después editar todo. El generador:
 5. Encaja cada sesión en un hueco del lugar correcto y con ejercicios posibles con ese equipo y espacio. En el gimnasio respeta las preferencias del usuario (máquinas, pesos libres, poleas) y el método de series elegido; con "que decida la app": series clásicas con 2 a 3 minutos de pausa en los ejercicios pesados, superseries de músculos distintos en los accesorios y circuito si el hueco es corto. Si la muñeca está marcada, prioriza mancuernas con agarre neutro y máquinas que no carguen la muñeca.
 6. Agrega microsesiones en huecos chicos (mañana, pausas de trabajo).
 
+El generador también prioriza los "ejercicios base" del tipo de cuerpo de la persona (`src/content/tipos-cuerpo.json`) y aplica su enfoque (por ejemplo, más actividad diaria de bajo impacto si el tipo dominante es endomorfo), sin pasar por encima de objetivos, equipo y limitaciones.
+
 ### 7.3 Validador (avisos automáticos)
 
 - Dos días fuertes seguidos.

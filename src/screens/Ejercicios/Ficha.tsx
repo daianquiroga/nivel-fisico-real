@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { GraficoLinea } from '../../components/GraficoLinea'
 import { Aviso, Tarjeta, estilos } from '../../components/ui'
 import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
 import {
@@ -13,7 +14,10 @@ import {
   urlVideo,
 } from '../../lib/ejercicios'
 import { ESPACIOS, LIMITACIONES } from '../../lib/perfil'
+import { records, rendimiento } from '../../lib/calc/progresion'
+import { usarSesiones } from '../../lib/registroEjercicios'
 import { usarInicio } from '../../lib/usarInicio'
+import { resumenSeries } from './Registrar'
 import e from '../Evaluacion/evaluacion.module.css'
 import s from './ejercicios.module.css'
 
@@ -24,6 +28,7 @@ export function Ficha() {
   const navegar = useNavigate()
   const { perfil, lugares } = usarInicio()
   const ej = ejercicio(id)
+  const { sesiones } = usarSesiones(id)
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [id])
@@ -86,6 +91,9 @@ export function Ficha() {
         ),
       )}
       {falta.length > 0 && <p className={estilos.chico}>En tus lugares no está: {falta.map((x) => NOMBRES_EQUIPO[x] ?? x).join(', ')}.</p>}
+      <Link to={`/registrar/${ej.id}`} className={`${estilos.boton} ${estilos.principal}`}>
+        Anotar series
+      </Link>
 
       <Tarjeta>
         <div className={e.dibujo}>
@@ -152,6 +160,47 @@ export function Ficha() {
           </>
         )}
       </Tarjeta>
+
+      {sesiones && sesiones.length > 0 && (
+        <Tarjeta>
+          <p className="etiqueta">Tu historial</p>
+          {(() => {
+            const r = records(sesiones)
+            const n = (v: number) => String(Math.round(v * 10) / 10).replace('.', ',')
+            return (
+              <div className={s.etiquetas}>
+                {r.cargaMax !== undefined && <span className={`${s.tag} ${s.tagBase}`}>Más peso: {n(r.cargaMax)} kg</span>}
+                {r.maximoEstimado !== undefined && <span className={`${s.tag} ${s.tagBase}`}>Máximo estimado: {n(r.maximoEstimado)} kg</span>}
+                {r.repsMax !== undefined && (
+                  <span className={`${s.tag} ${s.tagBase}`}>
+                    Mejor serie: {r.repsMax} {ej.tipo === 'segundos' ? 's' : 'reps'}
+                  </span>
+                )}
+              </div>
+            )
+          })()}
+          {ej.carga !== 'banda' && <GraficoLinea
+            etiqueta={`Evolución en ${ej.nombre}`}
+            unidad={ej.carga === 'externa' ? ' kg' : ''}
+            puntos={sesiones.map((x) => ({ fecha: x.fecha, valor: rendimiento(x, ej.carga) }))}
+          />}
+          {ej.carga === 'externa' && sesiones.length > 1 && (
+            <p className={estilos.chico}>La línea es tu máximo estimado (fórmula de Epley): cuánto podrías levantar una vez, sin tener que probarlo.</p>
+          )}
+          {ej.carga === 'corporal' && sesiones.length > 1 && <p className={estilos.chico}>La línea es el total de repeticiones de cada sesión.</p>}
+          <div>
+            {[...sesiones]
+              .reverse()
+              .slice(0, 5)
+              .map((x) => (
+                <div key={x.id} className={s.sesion}>
+                  <span>{resumenSeries(x.series, ej.tipo === 'segundos')}</span>
+                  <small>{new Intl.DateTimeFormat('es-AR', { day: 'numeric', month: 'short' }).format(new Date(x.fecha))}</small>
+                </div>
+              ))}
+          </div>
+        </Tarjeta>
+      )}
 
       {(facil || dificil) && (
         <div className={s.vecinos}>

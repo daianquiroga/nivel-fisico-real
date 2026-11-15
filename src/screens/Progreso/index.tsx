@@ -2,9 +2,45 @@ import { Link } from 'react-router-dom'
 import { GraficoCondicion, VistaResultados, fechaCorta, resultadosDe } from '../../components/Resultados'
 import { Tarjeta, estilos } from '../../components/ui'
 import r from '../../components/resultados.module.css'
+import { records } from '../../lib/calc/progresion'
+import { ejercicio } from '../../lib/ejercicios'
+import { usarSesiones } from '../../lib/registroEjercicios'
 import { diasParaProxima, usarEvaluaciones } from '../../lib/usarEvaluaciones'
 import { usarInicio } from '../../lib/usarInicio'
 import h from '../Hoy/hoy.module.css'
+
+function TusEjercicios() {
+  const { sesiones } = usarSesiones()
+  if (!sesiones?.length) return null
+  const ids = [...new Set([...sesiones].reverse().map((x) => x.ejercicio))]
+  const n = (v: number) => String(Math.round(v * 10) / 10).replace('.', ',')
+  return (
+    <Tarjeta>
+      <p className="etiqueta">Tus ejercicios</p>
+      <div className={r.historial}>
+        {ids.map((id) => {
+          const ej = ejercicio(id)
+          const propias = sesiones.filter((x) => x.ejercicio === id)
+          const rec = records(propias)
+          return (
+            <Link key={id} to={`/ejercicio/${id}`} className={r.itemHistorial}>
+              <span>
+                {ej?.nombre ?? id}
+                <small>
+                  {propias.length} {propias.length === 1 ? 'sesión' : 'sesiones'}
+                </small>
+              </span>
+              <b style={{ fontSize: 20 }}>
+                {rec.cargaMax !== undefined ? `${n(rec.cargaMax)} kg` : `${rec.repsMax ?? 0}${ej?.tipo === 'segundos' ? ' s' : ''}`}
+              </b>
+            </Link>
+          )
+        })}
+      </div>
+      <p className={estilos.chico}>A la derecha, tu mejor marca: el peso más alto o la mejor serie.</p>
+    </Tarjeta>
+  )
+}
 
 export function Progreso() {
   const lista = usarEvaluaciones()
@@ -27,6 +63,7 @@ export function Progreso() {
             Empezar
           </Link>
         </Tarjeta>
+        <TusEjercicios />
       </>
     )
   }
@@ -51,8 +88,10 @@ export function Progreso() {
         </Tarjeta>
       )}
 
+      <TusEjercicios />
+
       <Tarjeta>
-        <p className="etiqueta">Historial</p>
+        <p className="etiqueta">Historial de evaluaciones</p>
         <div className={r.historial}>
           {[...lista].reverse().map((e) => {
             const c = resultadosDe(e).condicion

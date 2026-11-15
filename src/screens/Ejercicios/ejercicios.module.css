@@ -212,3 +212,33 @@
   background: var(--done-tint);
   color: #f3dfb2;
 }
+
+.rir {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+}
+
+.rir button {
+  padding: 0;
+  min-height: 48px;
+}
+
+.sesion {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--text-2);
+}
+
+.sesion:last-child {
+  border-bottom: 0;
+}
+
+.sesion small {
+  color: var(--muted);
+  white-space: nowrap;
+}

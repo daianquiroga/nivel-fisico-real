@@ -379,3 +379,27 @@ export function PuntosSomatotipo() {
     </Lienzo>
   )
 }
+
+/** Qué son las repeticiones en reserva: las que hiciste y las que te quedaban. */
+export function EnReserva({ hechas = 8, reserva = 2 }: { hechas?: number; reserva?: number }) {
+  const total = hechas + reserva
+  const paso = Math.min(28, 290 / total)
+  return (
+    <Lienzo etiqueta={`Hiciste ${hechas} y te quedaban ${reserva} en reserva`} alto={78}>
+      {Array.from({ length: total }, (_, i) => (
+        <circle
+          key={i}
+          cx={20 + i * paso}
+          cy={26}
+          r={Math.min(11, paso / 2 - 2)}
+          fill={i < hechas ? 'var(--done)' : 'none'}
+          stroke={i < hechas ? 'none' : 'var(--accent)'}
+          strokeWidth={2.5}
+          strokeDasharray={i < hechas ? undefined : '4 3'}
+        />
+      ))}
+      <Texto x={20 + ((hechas - 1) * paso) / 2} y={62}>{`hiciste ${hechas}`}</Texto>
+      <Texto x={20 + (hechas + (reserva - 1) / 2) * paso} y={62} color="var(--accent)">{`${reserva} en reserva`}</Texto>
+    </Lienzo>
+  )
+}

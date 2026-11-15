@@ -4,13 +4,14 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Entrega actual
 
-**Entrega 2 — Ejercicios**, parte 1 de 3 terminada (versión 0.6.0): biblioteca de fichas y escaleras. La parte 3 (dibujos de los 49 ejercicios) ya está (versión 0.8.0). Falta la parte 2: registro de series y pesos, sugerencia de la carga siguiente, historial y récords. La entrega 1 está terminada; solo quedan datos de tablas por completar.
+**Entrega 2 — Ejercicios**, terminada (versión 0.9.0). Próxima: **Entrega 3 — Plan y agenda** (agenda hora por hora, generador del plan que use lugares, equipo, limitaciones y tipo de cuerpo, Entrenar ahora con temporizadores y voz, control diario).
 
 ## Hecho
 
 - Parte 1 de la entrega 1: base técnica, tema, navegación, respaldo, publicación.
 - Parte 2 de la entrega 1 (versión 0.2.0): primer inicio en 5 pasos (datos, objetivos, lugares y equipo, semana, salud), tablas de referencia en `src/content/normas/` y todos los cálculos de la evaluación en `src/lib/calc/` con 30 pruebas automáticas que reproducen los casos de `EVALUACION.md`. Hoy muestra días sin fumar, plata ahorrada, avisos de salud y limitaciones; Perfil muestra el resumen y permite editar.
 - Parte 3 de la entrega 1 (versión 0.4.0): evaluación guiada en `/evaluacion` (modo completo de 9 pruebas y rápido de 6), con cuenta regresiva, cronómetro, pitidos, vibración y pantalla siempre encendida. Se guarda a medias y se puede seguir después. Resultados en `/resultado/:id` (condición física, edad física, VO2máx estimado, composición, nivel 1 a 5 por área). Progreso muestra la última evaluación, un gráfico de la evolución y el historial. Hoy invita a evaluarse o muestra el nivel y los días hasta la próxima evaluación. Lógica en `src/lib/evaluacion.ts` con tests (37 en total).
+- Versión 0.9.0 (entrega 2, parte 2): anotar series desde la ficha (`/registrar/:id`): peso, banda o repeticiones/segundos y repeticiones en reserva (0 a 5+, con dibujo que lo explica), con los valores de la vez anterior precargados. Sugerencia automática (`src/lib/calc/progresion.ts`, con tests): serie de prueba y ajuste ±10 %, doble progresión (+3,5 %, mínimo 0,5 kg), escalón siguiente tras dos sesiones en el tope, estancamiento a las 3 sesiones. Historial y récords en la ficha (máximo estimado con Epley y gráfico) y "Tus ejercicios" en Progreso. Se guarda en `registros` con tipo `ejercicio`.
 - Versión 0.8.0: dibujo de inicio y final para los 49 ejercicios (`src/content/dibujos-ejercicios.tsx`), en la ficha. Un test verifica que ningún ejercicio quede sin dibujo.
 - Versión 0.7.0: pantalla Tipo de cuerpo (`/tipo-cuerpo`, también desde Aprender y desde los resultados): ectomorfo, mesomorfo y endomorfo con dibujos, cómo reconocerlos, estimación casera desde la evaluación, medición completa de Heath-Carter con plicómetro (8 medidas con dibujo de los puntos) y categoría de Carter, cómo entrenar según el tipo y ejercicios base (marcados en la biblioteca). Regla nueva en `CLAUDE.md`: todo va con ejemplo gráfico.
 - Entrega 2, parte 1 (versión 0.6.0): 49 fichas de ejercicios en `src/content/ejercicios/*.json` (posición inicial, pasos, respiración, 3 errores con cómo detectarlos, versión más fácil y más difícil, adaptaciones por limitación, criterio para subir, peso inicial y búsqueda de video) y 5 escaleras de progresión (`escaleras.json`). Lógica en `src/lib/ejercicios.ts` con tests (`revisarContenido` verifica que todo el contenido sea coherente). Biblioteca en Aprender con buscador, filtros por tipo y "solo lo que puedo hacer con mi equipo"; ficha en `/ejercicio/:id`.
@@ -58,6 +59,8 @@ Claude Code actualiza este archivo al final de cada sesión.
 - Arreglo: un `useEffect` que devolvía el resultado de `window.scrollTo` rompía la pantalla en Chrome nuevo (ahí devuelve una promesa); los efectos siempre con llaves.
 - Tipo de cuerpo: si hay medición completa se usa esa; si no, la estimación de la última evaluación con peso. Las mediciones completas se guardan en `ajustes` con la clave `somatotipos` (entran en el respaldo).
 - Tipo de cuerpo: las evaluaciones de la versión 0.5.0 guardaron lineal/intermedia/robusta/redondeada; se leen como ectomorfo/mixto/mesomorfo/endomorfo (`tendenciaActual`).
+- Progresión: al llegar al tope del rango se sube un 3,5 % (punto medio del 2,5 a 5 % de la especificación), redondeado a 0,5 kg y nunca menos de 0,5 kg.
+- Progresión: con banda, el nivel se anota de 1 (muy liviana) a 5 (muy dura); no hay gráfico de evolución para bandas.
 - GitHub Pages activado con origen "GitHub Actions" (lo activa el dueño de la cuenta en Configuración → Páginas).
 
 ## Cómo probar
@@ -70,3 +73,4 @@ Dirección: https://daianquiroga.github.io/nivel-fisico-real/
 4. Hoy → Empezar evaluación → elegir Rápida o Completa → seguir las pruebas → Ver mis resultados.
 5. Progreso: aparece la última evaluación y el historial; tocar una fecha abre sus resultados.
 6. Aprender: buscar un ejercicio, filtrar por tipo, abrir la ficha y moverse por la escalera.
+7. Ficha de un ejercicio → Anotar series → Guardar; volver a anotar y ver la sugerencia, el historial y Progreso → Tus ejercicios.
