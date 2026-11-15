@@ -1,0 +1,255 @@
+[
+  {
+    "id": "gato-camello",
+    "nombre": "Gato-camello",
+    "patron": "movilidad",
+    "principal": ["columna"],
+    "secundarios": ["zona lumbar", "espalda alta"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [6, 10],
+    "inicial": "En cuatro patas: manos bajo los hombros, rodillas bajo la cadera.",
+    "pasos": [
+      "Redondeá la espalda hacia el techo llevando el mentón al pecho (gato).",
+      "Después hundí la espalda despacio, mirando un poco hacia adelante (camello).",
+      "Movete lento, vértebra por vértebra."
+    ],
+    "respiracion": "Soltá el aire al redondear, tomalo al hundir.",
+    "errores": [
+      { "error": "Ir rápido", "detectar": "Cada ida y vuelta tiene que durar unos 4 segundos." },
+      { "error": "Mover solo el cuello", "detectar": "La espalda casi no cambia de forma." },
+      { "error": "Forzar el final", "detectar": "Es suave: hasta donde llegues cómodo." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Apoyá los puños o los antebrazos." },
+      "rodilla": { "nivel": "adaptar", "texto": "Algo blando bajo las rodillas." }
+    },
+    "subir": "Es de movilidad: no hace falta subir. Hacelo casi todos los días.",
+    "video": "cat camel exercise"
+  },
+  {
+    "id": "rotacion-toracica",
+    "nombre": "Rotación de la espalda alta en cuatro patas",
+    "patron": "movilidad",
+    "principal": ["espalda alta"],
+    "secundarios": ["hombros"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [6, 10],
+    "inicial": "En cuatro patas, una mano detrás de la cabeza.",
+    "pasos": [
+      "Llevá el codo hacia la mano de apoyo, girando el pecho hacia abajo.",
+      "Después abrí el codo hacia el techo, siguiéndolo con la mirada.",
+      "La cadera no se mueve. Hacé todas de un lado y cambiá."
+    ],
+    "respiracion": "Soltá el aire al abrir hacia el techo.",
+    "errores": [
+      { "error": "Girar la cadera", "detectar": "La cola se va hacia un costado." },
+      { "error": "Ir rápido", "detectar": "Lento y con pausa arriba." },
+      { "error": "Mover solo el brazo", "detectar": "El pecho tiene que girar, no solo el codo." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Apoyá el antebrazo en vez de la mano." }
+    },
+    "subir": "Es de movilidad: buscá más recorrido sin forzar.",
+    "video": "quadruped thoracic rotation"
+  },
+  {
+    "id": "movilidad-tobillo",
+    "nombre": "Movilidad de tobillo contra la pared",
+    "patron": "movilidad",
+    "principal": ["tobillo"],
+    "secundarios": ["pantorrillas"],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [8, 12],
+    "inicial": "De frente a la pared, un pie adelante a unos 10 cm, manos en la pared.",
+    "pasos": [
+      "Llevá la rodilla hacia la pared sin levantar el talón.",
+      "Volvé y repetí. Cuando toque fácil, alejá el pie un poco.",
+      "Hacé las dos piernas."
+    ],
+    "respiracion": "Respirá normal.",
+    "errores": [
+      { "error": "Levantar el talón", "detectar": "Mirá o tocá el talón: tiene que quedar apoyado." },
+      { "error": "Rodilla hacia adentro", "detectar": "La rodilla va hacia el dedo gordo o el del medio." },
+      { "error": "Rebotar", "detectar": "Movimiento controlado, con pausa." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "tobillo": { "nivel": "adaptar", "texto": "Recorrido corto y sin dolor." }
+    },
+    "subir": "Medí cada 4 semanas en la evaluación (rodilla a la pared).",
+    "video": "knee to wall ankle mobility"
+  },
+  {
+    "id": "estiramiento-flexor-cadera",
+    "nombre": "Estocada baja para el frente de la cadera",
+    "patron": "movilidad",
+    "principal": ["flexores de cadera"],
+    "secundarios": ["cuádriceps"],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "segundos",
+    "carga": "corporal",
+    "rango": [30, 60],
+    "inicial": "Una rodilla en el piso (con algo blando) y el otro pie adelante, como en una estocada.",
+    "pasos": [
+      "Apretá el glúteo de la pierna de atrás.",
+      "Llevá la cadera un poco hacia adelante hasta sentir que se estira el frente de la cadera de atrás.",
+      "Mantené y cambiá de lado. Muy bueno si pasás muchas horas sentado."
+    ],
+    "respiracion": "Respirá lento y profundo.",
+    "errores": [
+      { "error": "Arquear la espalda baja", "detectar": "La panza se va hacia adelante; apretá glúteo y abdomen." },
+      { "error": "Rodilla de adelante pasada", "detectar": "Que la rodilla quede sobre el tobillo." },
+      { "error": "Rebotar", "detectar": "Posición quieta." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": { "nivel": "adaptar", "texto": "Almohada gruesa bajo la rodilla o hacelo de pie." }
+    },
+    "subir": "Es de movilidad: sumá segundos, sin forzar.",
+    "video": "half kneeling hip flexor stretch"
+  },
+  {
+    "id": "caminata-rapida",
+    "nombre": "Caminata rápida",
+    "patron": "cardio",
+    "principal": ["corazón y pulmones"],
+    "secundarios": ["piernas"],
+    "equipo": [],
+    "espacio": "amplio",
+    "tipo": "minutos",
+    "carga": "corporal",
+    "rango": [20, 45],
+    "inicial": "Zapatillas cómodas, postura derecha, mirada al frente.",
+    "pasos": [
+      "Caminá a un ritmo en el que puedas hablar pero no cantar (intensidad moderada).",
+      "Brazos doblados y moviéndose con el paso.",
+      "Los últimos 3 minutos, más tranquilo."
+    ],
+    "respiracion": "Respirá por la nariz y la boca, con ritmo.",
+    "errores": [
+      { "error": "Ir muy lento", "detectar": "Si podés cantar, subí el ritmo." },
+      { "error": "Mirar el celular", "detectar": "La cabeza baja y se encorva la espalda." },
+      { "error": "Pasos muy largos", "detectar": "Mejor pasos más cortos y rápidos." }
+    ],
+    "facil": null,
+    "dificil": "trote-suave",
+    "limitaciones": {
+      "rodilla": { "nivel": "adaptar", "texto": "Terreno plano y sin bajadas largas." },
+      "tobillo": { "nivel": "adaptar", "texto": "Terreno parejo." }
+    },
+    "subir": "Cuando 45 minutos te resulten fáciles, alterná minutos de trote.",
+    "video": "caminata rapida tecnica"
+  },
+  {
+    "id": "trote-suave",
+    "nombre": "Trote suave",
+    "patron": "cardio",
+    "principal": ["corazón y pulmones"],
+    "secundarios": ["piernas"],
+    "equipo": [],
+    "espacio": "amplio",
+    "tipo": "minutos",
+    "carga": "corporal",
+    "rango": [15, 40],
+    "inicial": "Después de 5 minutos de caminata.",
+    "pasos": [
+      "Trotá a un ritmo en el que puedas decir frases cortas.",
+      "Pasos cortos, el pie cae debajo del cuerpo, no adelante.",
+      "Si te falta el aire, caminá 1 minuto y seguí."
+    ],
+    "respiracion": "Respiración con ritmo, sin aguantar.",
+    "errores": [
+      { "error": "Arrancar fuerte", "detectar": "A los 5 minutos no podés hablar." },
+      { "error": "Talonear con pasos largos", "detectar": "El pie cae muy adelante y frena." },
+      { "error": "Subir de golpe", "detectar": "Sumá como máximo un 10 % de minutos por semana." }
+    ],
+    "facil": "caminata-rapida",
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": { "nivel": "evitar", "texto": "El impacto carga la rodilla: mejor caminata o bici." },
+      "tobillo": { "nivel": "evitar", "texto": "El impacto carga el tobillo: mejor caminata o bici." }
+    },
+    "subir": "Sumá minutos de a poco (hasta un 10 % por semana).",
+    "video": "como empezar a trotar principiantes"
+  },
+  {
+    "id": "soga",
+    "nombre": "Saltar la soga",
+    "patron": "cardio",
+    "principal": ["corazón y pulmones"],
+    "secundarios": ["pantorrillas", "coordinación"],
+    "equipo": ["soga"],
+    "espacio": "2x2",
+    "tipo": "minutos",
+    "carga": "corporal",
+    "rango": [5, 20],
+    "inicial": "Soga del largo justo: pisándola en el medio, las manijas llegan a las axilas. Techo alto.",
+    "pasos": [
+      "Saltá bajito, sobre las puntas, rodillas apenas dobladas.",
+      "La soga la giran las muñecas, no los brazos.",
+      "Empezá con bloques: 30 segundos saltando y 30 descansando."
+    ],
+    "respiracion": "Respirá con ritmo.",
+    "errores": [
+      { "error": "Saltar alto", "detectar": "Alcanzan 2 o 3 cm." },
+      { "error": "Girar con los brazos", "detectar": "Los codos se abren; pegalos al cuerpo." },
+      { "error": "Caer con los talones", "detectar": "Escuchás el golpe; caé en puntas." }
+    ],
+    "facil": "caminata-rapida",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": { "nivel": "adaptar", "texto": "Soga liviana y giro suave." },
+      "rodilla": { "nivel": "evitar", "texto": "Mucho impacto repetido: mejor caminata o bici." },
+      "tobillo": { "nivel": "evitar", "texto": "Mucho impacto repetido: mejor caminata o bici." }
+    },
+    "subir": "Bloques más largos (1 minuto) y menos pausa.",
+    "video": "como saltar la soga principiantes"
+  },
+  {
+    "id": "marcha-rodillas-altas",
+    "nombre": "Marcha en el lugar con rodillas altas",
+    "patron": "cardio",
+    "principal": ["corazón y pulmones"],
+    "secundarios": ["piernas", "abdomen"],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "minutos",
+    "carga": "corporal",
+    "rango": [5, 20],
+    "inicial": "De pie, en tu metro cuadrado.",
+    "pasos": [
+      "Marchá en el lugar subiendo las rodillas a la altura de la cadera.",
+      "Mové los brazos como al correr.",
+      "Ritmo moderado: podés hablar pero no cantar. Sin saltos: no molesta a los vecinos."
+    ],
+    "respiracion": "Respirá con ritmo.",
+    "errores": [
+      { "error": "Encorvarse", "detectar": "Pecho arriba, mirada al frente." },
+      { "error": "Rodillas bajas", "detectar": "Que lleguen cerca de la cadera." },
+      { "error": "Ir muy despacio", "detectar": "Si podés cantar, aumentá el ritmo." }
+    ],
+    "facil": null,
+    "dificil": "soga",
+    "limitaciones": {
+      "rodilla": { "nivel": "adaptar", "texto": "Rodillas más bajas." }
+    },
+    "subir": "Más minutos o bloques de 30 segundos más rápidos.",
+    "video": "high knee march in place"
+  }
+]

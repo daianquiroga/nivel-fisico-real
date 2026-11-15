@@ -173,7 +173,7 @@ export function Ficha() {
                 {r.maximoEstimado !== undefined && <span className={`${s.tag} ${s.tagBase}`}>Máximo estimado: {n(r.maximoEstimado)} kg</span>}
                 {r.repsMax !== undefined && (
                   <span className={`${s.tag} ${s.tagBase}`}>
-                    Mejor serie: {r.repsMax} {ej.tipo === 'segundos' ? 's' : 'reps'}
+                    Mejor serie: {r.repsMax} {ej.tipo === 'segundos' ? 's' : ej.tipo === 'minutos' ? 'min' : 'reps'}
                   </span>
                 )}
               </div>
@@ -194,7 +194,7 @@ export function Ficha() {
               .slice(0, 5)
               .map((x) => (
                 <div key={x.id} className={s.sesion}>
-                  <span>{resumenSeries(x.series, ej.tipo === 'segundos')}</span>
+                  <span>{resumenSeries(x.series, ej.tipo)}</span>
                   <small>{new Intl.DateTimeFormat('es-AR', { day: 'numeric', month: 'short' }).format(new Date(x.fecha))}</small>
                 </div>
               ))}

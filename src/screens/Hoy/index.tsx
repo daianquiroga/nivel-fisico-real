@@ -5,6 +5,7 @@ import { LIMITACIONES, TIPOS_LUGAR, diaDeHoy, tipoDeLugar } from '../../lib/perf
 import { nivelPorPercentil } from '../../lib/calc/puntajes'
 import type { Resultados } from '../../lib/evaluacion'
 import { diasParaProxima, usarEvaluaciones } from '../../lib/usarEvaluaciones'
+import { usarPlan } from '../../lib/plan/usarPlan'
 import { usarInicio } from '../../lib/usarInicio'
 import s from './hoy.module.css'
 
@@ -16,6 +17,7 @@ function fechaDeHoy(): string {
 export function Hoy() {
   const { cargado, perfil, semana, lugares } = usarInicio()
   const evaluaciones = usarEvaluaciones()
+  const { plan } = usarPlan()
   if (!cargado || evaluaciones === null) return null
   const ultima = evaluaciones[evaluaciones.length - 1]
   const res = ultima?.resultados as Resultados | undefined
@@ -108,6 +110,32 @@ export function Hoy() {
               </Link>
             </>
           )}
+        </Tarjeta>
+      )}
+
+      {listo && plan === null && (
+        <Tarjeta>
+          <p className="etiqueta">Tu semana</p>
+          <p className={estilos.texto2}>Todavía no armaste tu plan de entrenamiento.</p>
+          <Link to="/plan" className={estilos.boton}>
+            Armar mi plan
+          </Link>
+        </Tarjeta>
+      )}
+
+      {listo && plan && (
+        <Tarjeta>
+          <p className="etiqueta">Hoy te toca</p>
+          {plan.dias[diaDeHoy()].sesiones.map((x) => (
+            <p key={x.id} className={estilos.texto2}>
+              <b>{x.titulo}</b>
+              {x.desde ? ` · ${x.desde}` : ''}
+              {x.lugar ? ` · ${x.lugar}` : ''}
+            </p>
+          ))}
+          <Link to={`/plan?dia=${diaDeHoy()}`} className={estilos.boton}>
+            Ver la sesión de hoy
+          </Link>
         </Tarjeta>
       )}
 

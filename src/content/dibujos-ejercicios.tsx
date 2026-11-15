@@ -237,6 +237,16 @@ function colgado(arriba: number): Pose {
   })
 }
 
+const cuadrupediaBase: Base = {
+  cabeza: [124, 108],
+  cuello: [110, 116],
+  cadera: [52, 118],
+  rod: [52, 160],
+  pie: [22, 164],
+  codo: [110, 140],
+  mano: [110, 164],
+}
+
 /* ---------- Ejercicios ---------- */
 
 const DIBUJOS: Record<string, () => ReactNode> = {
@@ -590,6 +600,72 @@ const DIBUJOS: Record<string, () => ReactNode> = {
       a={{ pose: pose({ cabeza: [80, 30], cuello: [80, 44], cadera: [80, 98], rod: [72, 132], pie: [70, 165], rodI: [88, 132], pieI: [90, 165], codo: [62, 72], mano: [58, 98], codoI: [98, 72], manoI: [102, 98] }), adelante: <><Mancuerna en={[58, 102]} vertical /><Mancuerna en={[102, 102]} vertical /></> }}
       b={{ pose: pose({ cabeza: [80, 30], cuello: [80, 44], cadera: [80, 98], rod: [72, 132], pie: [70, 165], rodI: [88, 132], pieI: [90, 165], codo: [52, 48], mano: [26, 50], codoI: [108, 48], manoI: [134, 50] }), adelante: <><Mancuerna en={[24, 50]} vertical /><Mancuerna en={[136, 50]} vertical /></> }}
       textos={['Inicio (de frente)', 'Final']}
+    />
+  ),
+  /* Movilidad */
+  'gato-camello': () => (
+    <Dos
+      etiqueta="Gato-camello: espalda redondeada hacia el techo y después hundida"
+      a={{ pose: pose({ ...cuadrupediaBase, cabeza: [118, 124], cuello: [110, 116] }), adelante: <path d="M52,118 Q82,86 110,116" fill="none" stroke={acento} strokeWidth={3} strokeDasharray="5 4" /> }}
+      b={{ pose: pose({ ...cuadrupediaBase, cabeza: [124, 98], cuello: [110, 112] }), adelante: <path d="M52,116 Q82,140 110,112" fill="none" stroke={acento} strokeWidth={3} strokeDasharray="5 4" /> }}
+      textos={['Gato: redondeá', 'Camello: hundí']}
+    />
+  ),
+  'rotacion-toracica': () => (
+    <Dos
+      etiqueta="Rotación de la espalda alta: codo hacia abajo y después hacia el techo"
+      a={{ pose: pose({ ...cuadrupediaBase, codoI: [100, 134], manoI: [116, 118] }) }}
+      b={{ pose: pose({ ...cuadrupediaBase, codoI: [112, 76], manoI: [122, 98] }), adelante: <path d="M128,128 A26,26 0 0 0 126,80" fill="none" stroke="var(--done)" strokeWidth={2.5} /> }}
+    />
+  ),
+  'movilidad-tobillo': () => (
+    <Dos
+      etiqueta="Movilidad de tobillo: la rodilla va hacia la pared sin levantar el talón"
+      a={{ atras: <ParedL x={150} />, pose: pose({ cabeza: [104, 30], cuello: [100, 44], cadera: [86, 96], rod: [112, 126], pie: [120, 165], punta: [138, 165], rodI: [64, 130], pieI: [44, 162], puntaI: [56, 165], codo: [124, 56], mano: [149, 54] }) }}
+      b={{ atras: <ParedL x={150} />, pose: pose({ cabeza: [110, 32], cuello: [106, 46], cadera: [92, 98], rod: [146, 122], pie: [120, 165], punta: [138, 165], rodI: [66, 132], pieI: [44, 162], puntaI: [56, 165], codo: [128, 58], mano: [149, 56] }), adelante: <circle cx={120} cy={165} r={5} fill={acento} /> }}
+      textos={['Inicio', 'Rodilla a la pared']}
+    />
+  ),
+  'estiramiento-flexor-cadera': () => (
+    <Dos
+      etiqueta="Estocada baja: rodilla atrás en el piso y cadera hacia adelante"
+      a={{ pose: pose({ cabeza: [80, 56], cuello: [80, 70], cadera: [76, 120], rod: [110, 122], pie: [112, 165], punta: [126, 165], rodI: [52, 162], pieI: [24, 164], codo: [86, 96], mano: [80, 120] }) }}
+      b={{ pose: pose({ cabeza: [90, 56], cuello: [90, 70], cadera: [88, 122], rod: [116, 124], pie: [114, 165], punta: [128, 165], rodI: [56, 163], pieI: [26, 164], codo: [96, 96], mano: [90, 120] }), adelante: <path d="M70,140 L90,132" stroke={acento} strokeWidth={3} strokeLinecap="round" /> }}
+      textos={['Inicio', 'Cadera adelante']}
+    />
+  ),
+
+  /* Cardio */
+  'caminata-rapida': () => (
+    <Dos
+      etiqueta="Caminata rápida: postura derecha y brazos doblados"
+      a={{ pose: pose({ cabeza: [82, 30], cuello: [80, 44], cadera: [78, 98], rod: [92, 130], pie: [100, 164], punta: [114, 165], rodI: [70, 132], pieI: [58, 160], puntaI: [68, 165], codo: [68, 70], mano: [76, 90], codoI: [92, 70], manoI: [104, 62] }) }}
+      b={{ pose: pose({ cabeza: [82, 30], cuello: [80, 44], cadera: [78, 98], rod: [70, 132], pie: [60, 162], punta: [70, 165], rodI: [92, 130], pieI: [100, 164], puntaI: [114, 165], codo: [92, 70], mano: [104, 62], codoI: [68, 70], manoI: [76, 90] }) }}
+      textos={['Paso', 'Otro paso']}
+    />
+  ),
+  'trote-suave': () => (
+    <Dos
+      etiqueta="Trote suave: pasos cortos y el pie cae debajo del cuerpo"
+      a={{ pose: pose({ cabeza: [86, 30], cuello: [83, 44], cadera: [78, 96], rod: [96, 118], pie: [88, 150], punta: [100, 152], rodI: [70, 126], pieI: [52, 136], codo: [70, 66], mano: [82, 82], codoI: [96, 64], manoI: [108, 54] }) }}
+      b={{ pose: pose({ cabeza: [86, 32], cuello: [83, 46], cadera: [78, 98], rod: [80, 132], pie: [80, 165], punta: [94, 165], rodI: [92, 118], pieI: [74, 132], codo: [96, 66], mano: [108, 56], codoI: [70, 68], manoI: [82, 84] }) }}
+      textos={['En el aire', 'Pie debajo del cuerpo']}
+    />
+  ),
+  soga: () => (
+    <Dos
+      etiqueta="Saltar la soga: saltos bajitos sobre las puntas"
+      a={{ pose: pose({ ...DE_PIE, codo: [86, 74], mano: [96, 90], pie: [80, 165], punta: [94, 165] }), adelante: <path d="M96,90 Q140,160 82,168 Q30,160 64,90" fill="none" stroke={acento} strokeWidth={2.5} /> }}
+      b={{ pose: pose({ ...DE_PIE, cabeza: [80, 24], cuello: [80, 38], cadera: [80, 92], rod: [82, 126], pie: [80, 158], punta: [92, 160], codo: [86, 68], mano: [96, 84] }), adelante: <path d="M96,84 Q130,20 80,12 Q40,20 64,84" fill="none" stroke={acento} strokeWidth={2.5} /> }}
+      textos={['Soga abajo', 'Saltito de 2 o 3 cm']}
+    />
+  ),
+  'marcha-rodillas-altas': () => (
+    <Dos
+      etiqueta="Marcha en el lugar con rodillas altas"
+      a={{ pose: pose({ ...DE_PIE, rod: [104, 98], pie: [104, 132], punta: [116, 134], codo: [70, 68], mano: [76, 88], codoI: [94, 68], manoI: [104, 58] }) }}
+      b={{ pose: pose({ ...DE_PIE, rodI: [104, 98], pieI: [104, 132], puntaI: [116, 134], rod: [80, 132], pie: [80, 165], codo: [94, 68], mano: [104, 58], codoI: [70, 68], manoI: [76, 88] }) }}
+      textos={['Una rodilla', 'La otra']}
     />
   ),
 }

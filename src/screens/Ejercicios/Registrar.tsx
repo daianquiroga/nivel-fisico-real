@@ -14,8 +14,8 @@ import s from './ejercicios.module.css'
 export const BANDAS = ['Muy liviana', 'Liviana', 'Media', 'Dura', 'Muy dura']
 const coma = (x: number) => String(Math.round(x * 10) / 10).replace('.', ',')
 
-export function resumenSeries(series: Serie[], segundos: boolean): string {
-  const u = segundos ? 's' : ''
+export function resumenSeries(series: Serie[], tipo: 'reps' | 'segundos' | 'minutos' | boolean): string {
+  const u = tipo === 'minutos' ? ' min' : tipo === 'segundos' || tipo === true ? 's' : ''
   return series
     .map((x) => `${x.carga ? `${coma(x.carga)} kg × ` : x.banda ? `${BANDAS[x.banda - 1].toLowerCase()} × ` : ''}${x.reps}${u}`)
     .join(' · ')
@@ -50,6 +50,7 @@ export function Registrar() {
 
   if (!ej || !sesiones || !series) return null
   const segundos = ej.tipo === 'segundos'
+  const minutos = ej.tipo === 'minutos'
 
   const cambiar = (i: number, c: Partial<Serie>) => setSeries(series.map((x, j) => (j === i ? { ...x, ...c } : x)))
 
@@ -111,7 +112,7 @@ export function Registrar() {
       <header>
         <h1 className={e.titulo}>{ej.nombre}</h1>
         <p className={e.para}>
-          Objetivo: {ej.rango[0]} a {ej.rango[1]} {segundos ? 'segundos' : 'repeticiones'} por serie.
+          Objetivo: {ej.rango[0]} a {ej.rango[1]} {segundos ? 'segundos' : minutos ? 'minutos' : 'repeticiones'}{minutos ? '' : ' por serie'}.
         </p>
       </header>
       <Tarjeta>
@@ -129,7 +130,7 @@ export function Registrar() {
             Hoy
           </p>
           <p className={estilos.texto2}>{sug.texto}</p>
-          {ultima && <p className={estilos.chico}>La vez pasada: {resumenSeries(ultima.series, segundos)}</p>}
+          {ultima && <p className={estilos.chico}>La vez pasada: {resumenSeries(ultima.series, ej.tipo)}</p>}
         </Tarjeta>
       )}
 
@@ -170,12 +171,12 @@ export function Registrar() {
             </div>
           )}
           <Stepper
-            etiqueta={segundos ? 'Segundos' : 'Repeticiones'}
+            etiqueta={segundos ? 'Segundos' : minutos ? 'Minutos' : 'Repeticiones'}
             valor={x.reps}
             min={0}
-            max={segundos ? 600 : 100}
+            max={segundos ? 600 : minutos ? 180 : 100}
             paso={segundos ? 5 : 1}
-            unidad={segundos ? 's' : 'reps'}
+            unidad={segundos ? 's' : minutos ? 'min' : 'reps'}
             onCambio={(v) => cambiar(i, { reps: v })}
           />
           <p className={estilos.chico}>¿Cuántas más podías hacer bien?</p>

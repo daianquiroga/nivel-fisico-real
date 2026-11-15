@@ -1,0 +1,7 @@
+{
+  "fuente": "OMS, Directrices sobre actividad física y comportamientos sedentarios (2020): adultos, 150 a 300 minutos semanales de actividad aeróbica moderada y fortalecimiento muscular de los grandes grupos 2 o más días por semana.",
+  "enlace": "https://www.who.int/publications/i/item/9789240015128",
+  "cardioMinutos": { "min": 150, "max": 300 },
+  "fuerzaDias": { "min": 2, "max": 4 },
+  "nota": "Movilidad casi todos los días (5 o más) y al menos 1 día sin entrenamiento fuerte son decisiones de diseño de la app, no parte de la directriz."
+}

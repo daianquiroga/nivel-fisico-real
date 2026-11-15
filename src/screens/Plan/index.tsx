@@ -1,18 +1,260 @@
-import { Proximamente } from '../../components/Proximamente'
+import { useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
+import { Aviso, Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
+import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
+import { ejercicio } from '../../lib/ejercicios'
+import { NOMBRES_DIAS, diaDeHoy } from '../../lib/perfil'
+import { alternativas, type EjercicioPlan, type PlanSemana, type SesionPlan } from '../../lib/plan/generador'
+import { usarPlan } from '../../lib/plan/usarPlan'
+import { equilibrio, validarPlan } from '../../lib/plan/validador'
+import { usarInicio } from '../../lib/usarInicio'
+import h from '../Hoy/hoy.module.css'
+import s from './plan.module.css'
+
+const LETRAS = ['L', 'M', 'X', 'J', 'V', 'S', 'D']
+
+export function textoEjercicio(x: EjercicioPlan): string {
+  const e = ejercicio(x.id)
+  if (!e) return ''
+  if (e.tipo === 'minutos') return `${x.rango[0]} minutos`
+  const u = e.tipo === 'segundos' ? ' s' : ''
+  const rango = x.rango[0] === x.rango[1] ? `${x.rango[0]}${u}` : `${x.rango[0]}–${x.rango[1]}${u}`
+  const pausa = x.descansoSeg >= 60 ? `${String(x.descansoSeg / 60).replace(".", ",")} min` : `${x.descansoSeg} s`
+  return x.series > 1 ? `${x.series} × ${rango} · pausa ${pausa}` : rango
+}
+
+function Sesion({
+  sesion,
+  onCambiar,
+}: {
+  sesion: SesionPlan
+  onCambiar: (i: number) => void
+}) {
+  const unico = sesion.tipo === 'cardio' ? sesion.ejercicios[0] : undefined
+  return (
+    <Tarjeta destacada={sesion.intensidad === 'fuerte'}>
+      <div className={s.cabeza}>
+        <h2>{sesion.titulo}</h2>
+      </div>
+      <p className={s.meta}>
+        {[sesion.lugar, sesion.desde && sesion.hasta ? `${sesion.desde} a ${sesion.hasta}` : null, `unos ${sesion.minutos} min`].filter(Boolean).join(' · ')}
+      </p>
+      {unico && (
+        <div style={{ background: 'var(--bg)', borderRadius: 12, padding: '8px 6px 4px' }}>
+          <DibujoEjercicio id={unico.id} />
+        </div>
+      )}
+      <div>
+        {sesion.ejercicios.map((x, i) => {
+          const e = ejercicio(x.id)
+          if (!e) return null
+          return (
+            <div key={`${x.id}-${i}`} className={s.ejercicio}>
+              {x.grupo ? <span className={s.letra}>{x.grupo === 'C' ? '↻' : x.grupo}</span> : <span className={s.letra}>{i + 1}</span>}
+              <Link to={`/ejercicio/${x.id}`} className={s.info}>
+                <b>{e.nombre}</b>
+                <span>{textoEjercicio(x)}</span>
+              </Link>
+              {x.rol !== 'movilidad' && x.rol !== 'cardio' && (
+                <button type="button" className={s.accion} onClick={() => onCambiar(i)} aria-label={`Cambiar ${e.nombre}`}>
+                  Cambiar
+                </button>
+              )}
+              <Link to={`/registrar/${x.id}`} className={s.accion} aria-label={`Anotar ${e.nombre}`}>
+                Anotar
+              </Link>
+            </div>
+          )
+        })}
+      </div>
+      {sesion.nota && <p className={estilos.chico}>{sesion.nota}</p>}
+    </Tarjeta>
+  )
+}
 
 export function Plan() {
+  const [params, setParams] = useSearchParams()
+  const { cargado, perfil } = usarInicio()
+  const { plan, entrada, generar, cambiar } = usarPlan()
+  const [rearmar, setRearmar] = useState(false)
+  const [cambiando, setCambiando] = useState<{ sesion: number; ej: number } | null>(null)
+  const hoy = diaDeHoy()
+  const dia = params.get('dia') !== null ? Number(params.get('dia')) : hoy
+
+  if (!cargado || plan === undefined) return null
+
+  if (!perfil?.inicioCompleto || !entrada) {
+    return (
+      <>
+        <h1 className="titulo-pantalla">Plan</h1>
+        <Tarjeta destacada>
+          <h2 className={h.tituloTarjeta}>Primero, tus datos</h2>
+          <p className={estilos.texto2}>Para armar tu semana necesitamos tus días, lugares, equipo y horarios.</p>
+          <Link to="/inicio" className={h.botonPrincipal}>
+            Configurar
+          </Link>
+        </Tarjeta>
+      </>
+    )
+  }
+
+  if (!plan) {
+    return (
+      <>
+        <h1 className="titulo-pantalla">Plan</h1>
+        <Tarjeta destacada>
+          <p className="etiqueta" style={{ color: 'var(--accent)' }}>
+            Tu semana
+          </p>
+          <h2 className={h.tituloTarjeta}>Te armo el plan</h2>
+          <p className={estilos.texto2}>
+            Con los días y lugares que elegiste, tu equipo, tus horarios libres, tus objetivos, tu muñeca y demás limitaciones, tu nivel y tu tipo
+            de cuerpo. Después podés cambiar cualquier ejercicio.
+          </p>
+          <Boton variante="principal" ancho onClick={() => void generar()}>
+            Armame el plan
+          </Boton>
+        </Tarjeta>
+      </>
+    )
+  }
+
+  const avisos = validarPlan(plan, entrada.semana)
+  const eq = equilibrio(plan)
+  const delDia = plan.dias[dia]
+
+  async function reemplazar(nuevoId: string) {
+    if (!cambiando || !plan) return
+    const copia: PlanSemana = structuredClone(plan)
+    const x = copia.dias[dia].sesiones[cambiando.sesion].ejercicios[cambiando.ej]
+    const e = ejercicio(nuevoId)
+    if (e) {
+      x.id = nuevoId
+      x.rango = e.rango
+    }
+    await cambiar(copia)
+    setCambiando(null)
+  }
+
+  const sesionCambio = cambiando ? delDia.sesiones[cambiando.sesion] : undefined
+  const ejCambio = sesionCambio && cambiando ? sesionCambio.ejercicios[cambiando.ej] : undefined
+  const opciones =
+    sesionCambio && ejCambio
+      ? alternativas(
+          entrada,
+          sesionCambio.lugar,
+          ejCambio,
+          sesionCambio.ejercicios.map((x) => x.id),
+        ).slice(0, 8)
+      : []
+
   return (
     <>
-      <h1 className="titulo-pantalla">Mi semana</h1>
-      <Proximamente
-        entrega="entrega 3"
-        items={[
-          'Tu agenda hora por hora, con tus horarios fijos y tus huecos libres.',
-          'Plan armado automáticamente y editable día a día.',
-          'Microsesiones de 5 a 10 minutos para los días complicados.',
-          'Avisos si algo no encaja: dos días fuertes seguidos, poco sueño, entrenar muy tarde.',
-        ]}
-      />
+      <h1 className="titulo-pantalla">Plan</h1>
+      <div className={s.semana} role="tablist" aria-label="Días de la semana">
+        {plan.dias.map((d, i) => (
+          <button
+            key={i}
+            type="button"
+            role="tab"
+            aria-selected={i === dia}
+            aria-label={NOMBRES_DIAS[i]}
+            className={`${s.dia} ${i === dia ? s.diaOn : ''}`}
+            onClick={() => setParams({ dia: String(i) }, { replace: true })}
+          >
+            <span className={i === hoy ? s.hoy : undefined}>{LETRAS[i]}</span>
+            <span className={s.puntos} aria-hidden="true">
+              {d.sesiones
+                .filter((x) => !x.titulo.includes('opcional'))
+                .map((x) => (
+                  <i key={x.id} className={s[x.tipo]} />
+                ))}
+            </span>
+          </button>
+        ))}
+      </div>
+      <p className={estilos.chico}>
+        <span style={{ color: 'var(--accent)' }}>●</span> fuerza · <span style={{ color: 'var(--done)' }}>●</span> cardio ·{' '}
+        <span style={{ color: 'var(--soft)' }}>●</span> movilidad
+      </p>
+
+      <h2 className="etiqueta" style={{ margin: 0 }}>
+        {NOMBRES_DIAS[dia]}
+        {dia === hoy ? ' · hoy' : ''}
+        {!delDia.sesiones.some((x) => x.intensidad === 'fuerte') && !delDia.sesiones.some((x) => x.tipo === 'cardio') ? ' · descanso' : ''}
+      </h2>
+      {delDia.sesiones.map((ses, i) => (
+        <Sesion key={ses.id} sesion={ses} onCambiar={(ej) => setCambiando({ sesion: i, ej })} />
+      ))}
+
+      {avisos.length > 0 && (
+        <Tarjeta>
+          <p className="etiqueta">Avisos de la semana</p>
+          {avisos.map((a) => (
+            <Aviso key={a.texto} tipo={a.tipo === 'cuidado' ? 'error' : 'ok'}>
+              {a.texto}
+            </Aviso>
+          ))}
+        </Tarjeta>
+      )}
+
+      <Tarjeta>
+        <p className="etiqueta">Equilibrio de la semana</p>
+        {eq.map((a) => {
+          const tope = a.max * 1.2
+          const ancho = Math.min(100, (a.valor / tope) * 100)
+          return (
+            <div key={a.area} className={s.barra}>
+              <span>{a.nombre}</span>
+              <span className={s.pista} aria-hidden="true">
+                <b className={a.valor >= a.min ? s.ok : s.falta} style={{ width: `${Math.max(3, ancho)}%` }} />
+                <i style={{ left: `${(a.min / tope) * 100}%` }} />
+              </span>
+              <span className={s.meta}>
+                {a.valor} {a.unidad}
+              </span>
+            </div>
+          )
+        })}
+        <p className={estilos.chico}>La rayita marca el mínimo recomendado. Fuerza y cardio: OMS 2020. Movilidad y recuperación: criterio de la app.</p>
+      </Tarjeta>
+
+      <Boton ancho onClick={() => setRearmar(true)}>
+        Volver a armar el plan
+      </Boton>
+      <p className={estilos.chico}>Si cambiás días, lugares u horarios en Perfil, volvé a armarlo para que se actualice.</p>
+
+      {rearmar && (
+        <Dialogo titulo="¿Volver a armar el plan?" onCerrar={() => setRearmar(false)}>
+          <p className={estilos.texto2}>Se arma de nuevo con tus datos actuales y se pierden los ejercicios que cambiaste a mano.</p>
+          <div className={estilos.fila}>
+            <Boton onClick={() => setRearmar(false)}>Cancelar</Boton>
+            <Boton
+              variante="principal"
+              onClick={() => {
+                void generar().then(() => setRearmar(false))
+              }}
+            >
+              Armar
+            </Boton>
+          </div>
+        </Dialogo>
+      )}
+
+      {cambiando && ejCambio && (
+        <Dialogo titulo={`Cambiar ${ejercicio(ejCambio.id)?.nombre.toLowerCase() ?? ''}`} onCerrar={() => setCambiando(null)}>
+          {opciones.length === 0 && <p className={estilos.texto2}>No hay otro ejercicio equivalente con el equipo de ese lugar.</p>}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: '55vh', overflowY: 'auto' }}>
+            {opciones.map((o) => (
+              <button key={o.id} type="button" className={s.alternativa} onClick={() => void reemplazar(o.id)}>
+                <b>{o.nombre}</b>
+                <span>{o.principal.join(', ')}</span>
+              </button>
+            ))}
+          </div>
+          <Boton onClick={() => setCambiando(null)}>Cancelar</Boton>
+        </Dialogo>
+      )}
     </>
   )
 }
