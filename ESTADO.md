@@ -37,6 +37,7 @@ Claude Code actualiza este archivo al final de cada sesión.
 - Dejar de fumar: se pide también cuántos atados por día se fumaban, para calcular la plata ahorrada.
 - Equilibrio: percentil con normal sobre el logaritmo del tiempo (Springer da media y desvío de tiempos sesgados).
 - Rodilla a la pared: referencia provisional de menores de 50 años para todas las edades hasta cargar la tabla completa.
+- Actualización automática (versión 0.2.1): la app busca versiones nuevas al abrirse y al volver a primer plano, y se recarga sola cuando hay una (`src/lib/actualizar.ts`).
 - GitHub Pages activado con origen "GitHub Actions" (lo activa el dueño de la cuenta en Configuración → Páginas).
 
 ## Cómo probar
