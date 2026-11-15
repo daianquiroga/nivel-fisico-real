@@ -1,0 +1,185 @@
+.pantalla {
+  min-height: 100dvh;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: calc(16px + env(safe-area-inset-top)) var(--pad) calc(20px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.arriba {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.volver {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  border: 0;
+  background: var(--surface-2);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.barra {
+  flex: 1;
+  display: flex;
+  gap: 4px;
+}
+
+.barra span {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--line);
+}
+
+.barra .hecho {
+  background: var(--done);
+}
+
+.barra .actual {
+  background: var(--accent);
+}
+
+.contador {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.titulo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.para {
+  color: var(--text-2);
+  margin: 6px 0 0;
+}
+
+.pasos {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--text-2);
+  font-size: 14.5px;
+  line-height: 1.45;
+}
+
+.errores summary {
+  cursor: pointer;
+  color: var(--accent-soft);
+  font-weight: 600;
+  font-size: 14px;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+.errores ul {
+  margin: 6px 0 0;
+  padding-left: 20px;
+  color: var(--text-2);
+  font-size: 14px;
+}
+
+.opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.opcion {
+  text-align: left;
+  min-height: 48px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--text-2);
+  padding: 10px 12px;
+  font-size: 14.5px;
+  cursor: pointer;
+}
+
+.opcionOn {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+  color: var(--text);
+}
+
+.intentos {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.intento {
+  background: var(--surface-2);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 13.5px;
+  font-variant-numeric: tabular-nums;
+}
+
+.mejor {
+  background: var(--done-tint);
+  color: #f3dfb2;
+}
+
+.saltear {
+  background: none;
+  border: 0;
+  color: var(--muted);
+  text-decoration: underline;
+  font-size: 14px;
+  min-height: 44px;
+  cursor: pointer;
+}
+
+.modos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modo {
+  text-align: left;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--text);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.modo b {
+  font-size: 17px;
+}
+
+.modo span {
+  color: var(--text-2);
+  font-size: 14px;
+}
+
+.modoOn {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}

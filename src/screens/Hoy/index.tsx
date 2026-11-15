@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom'
 import { Aviso, Tarjeta, estilos } from '../../components/ui'
 import { diasSinFumar, formatoPesos, plataAhorrada } from '../../lib/fumar'
 import { LIMITACIONES, TIPOS_LUGAR, diaDeHoy, tipoDeLugar } from '../../lib/perfil'
+import { nivelPorPercentil } from '../../lib/calc/puntajes'
+import type { Resultados } from '../../lib/evaluacion'
+import { diasParaProxima, usarEvaluaciones } from '../../lib/usarEvaluaciones'
 import { usarInicio } from '../../lib/usarInicio'
 import s from './hoy.module.css'
 
@@ -12,7 +15,11 @@ function fechaDeHoy(): string {
 
 export function Hoy() {
   const { cargado, perfil, semana, lugares } = usarInicio()
-  if (!cargado) return null
+  const evaluaciones = usarEvaluaciones()
+  if (!cargado || evaluaciones === null) return null
+  const ultima = evaluaciones[evaluaciones.length - 1]
+  const res = ultima?.resultados as Resultados | undefined
+  const faltan = ultima ? diasParaProxima(ultima.fecha) : 0
   const listo = Boolean(perfil?.inicioCompleto)
   const fumar = perfil?.fumar
   const dias = fumar?.activo && fumar.fechaDejo ? diasSinFumar(fumar.fechaDejo) : null
@@ -68,14 +75,39 @@ export function Hoy() {
         </Tarjeta>
       ) : (
         <Tarjeta destacada>
-          <p className="etiqueta" style={{ color: 'var(--accent)' }}>
-            Próximo paso
-          </p>
-          <h2 className={s.tituloTarjeta}>Tu evaluación inicial</h2>
-          <p className={estilos.texto2}>
-            En unos 40 minutos y en tu habitación vas a saber tu condición física, tu edad física y tu nivel en cada área. Llega en la
-            próxima actualización de la app.
-          </p>
+          {!ultima ? (
+            <>
+              <p className="etiqueta" style={{ color: 'var(--accent)' }}>
+                Próximo paso
+              </p>
+              <h2 className={s.tituloTarjeta}>Tu evaluación inicial</h2>
+              <p className={estilos.texto2}>
+                En tu habitación, sin equipos: vas a saber tu condición física, tu edad física y tu nivel en cada área. La completa lleva unos
+                40 minutos; la rápida, 15.
+              </p>
+              <Link to="/evaluacion" className={s.botonPrincipal}>
+                Empezar evaluación
+              </Link>
+            </>
+          ) : (
+            <>
+              <p className="etiqueta" style={{ color: 'var(--done)' }}>
+                Tu nivel hoy
+              </p>
+              <h2 className={s.tituloTarjeta}>
+                {res?.condicion !== undefined
+                  ? `${Math.round(res.condicion)} / 100 · ${nivelPorPercentil(res.condicion).nombre}`
+                  : 'Evaluación guardada'}
+              </h2>
+              <p className={estilos.texto2}>
+                {res?.edadFisica !== undefined ? `Edad física: ${Math.round(res.edadFisica)} años. ` : ''}
+                {faltan > 0 ? `Próxima evaluación en ${faltan} ${faltan === 1 ? 'día' : 'días'}.` : 'Ya toca repetir la evaluación.'}
+              </p>
+              <Link to={faltan > 0 ? '/progreso' : '/evaluacion'} className={s.botonPrincipal}>
+                {faltan > 0 ? 'Ver mis resultados' : 'Evaluarme otra vez'}
+              </Link>
+            </>
+          )}
         </Tarjeta>
       )}
 

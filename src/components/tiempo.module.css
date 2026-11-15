@@ -1,0 +1,88 @@
+.caja {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.reloj {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 1px;
+}
+
+.corriendo {
+  color: var(--accent);
+}
+
+.terminado {
+  color: var(--done);
+}
+
+.estado {
+  font-size: 14px;
+  color: var(--muted);
+  min-height: 20px;
+  text-align: center;
+}
+
+.botonGrande {
+  width: 100%;
+  min-height: 72px;
+  border-radius: var(--radius);
+  border: 0;
+  background: var(--action);
+  color: var(--action-text);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.botonGrande.parar {
+  background: var(--surface-2);
+  color: var(--text);
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.toque {
+  width: 100%;
+  min-height: 140px;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--accent);
+  background: var(--accent-tint);
+  color: var(--text);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 64px;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+}
+
+.toque small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-soft);
+}
+
+.fila {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.fila > * {
+  flex: 1;
+}

@@ -1,11 +1,13 @@
 import { HashRouter, NavLink, Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import { Icono } from '../components/Icono'
 import { Aprender } from '../screens/Aprender'
+import { Evaluacion } from '../screens/Evaluacion'
 import { Hoy } from '../screens/Hoy'
 import { Inicio } from '../screens/Inicio'
 import { Perfil } from '../screens/Perfil'
 import { Plan } from '../screens/Plan'
 import { Progreso } from '../screens/Progreso'
+import { Resultado } from '../screens/Resultado'
 import s from './layout.module.css'
 
 const PESTANAS = [
@@ -51,6 +53,8 @@ export default function App() {
           <Route path="/perfil" element={<Perfil />} />
         </Route>
         <Route path="/inicio" element={<Inicio />} />
+        <Route path="/evaluacion" element={<Evaluacion />} />
+        <Route path="/resultado/:id" element={<Resultado />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </HashRouter>
