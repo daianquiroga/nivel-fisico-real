@@ -1,0 +1,138 @@
+.tarjeta {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.destacada {
+  background: linear-gradient(160deg, var(--deep) 0%, var(--surface) 72%);
+  border-color: var(--deep-border);
+  border-radius: var(--radius-lg);
+}
+
+.boton {
+  min-height: var(--tap);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.boton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.principal {
+  background: var(--action);
+  border-color: var(--action);
+  color: var(--action-text);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  min-height: 56px;
+}
+
+.ancho {
+  width: 100%;
+}
+
+.fila {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.fila > * {
+  flex: 1 1 220px;
+}
+
+.texto2 {
+  color: var(--text-2);
+  margin: 0;
+}
+
+.chico {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0;
+}
+
+.aviso {
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.ok {
+  background: var(--done-tint);
+  border: 1px solid rgba(226, 184, 97, 0.45);
+  color: #f3dfb2;
+}
+
+.error {
+  background: var(--accent-tint);
+  border: 1px solid rgba(224, 74, 104, 0.45);
+  color: var(--accent-soft);
+}
+
+.fondoDialogo {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 16px;
+  z-index: 50;
+}
+
+.dialogo {
+  width: 100%;
+  max-width: 480px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: env(safe-area-inset-bottom);
+}
+
+.dialogo h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.areaTexto {
+  width: 100%;
+  min-height: 110px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  padding: 10px 12px;
+  font-family: ui-monospace, monospace;
+  font-size: 12.5px;
+  resize: vertical;
+}
+
+.boton svg {
+  flex-shrink: 0;
+}
