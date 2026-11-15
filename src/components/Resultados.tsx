@@ -1,6 +1,7 @@
 import { NOMBRES_AREA, PESOS, nivelPorPercentil, type Area } from '../lib/calc/puntajes'
 import type { Evaluacion } from '../lib/db/db'
 import type { Prueba, Resultados } from '../lib/evaluacion'
+import { TiposDeCuerpo } from '../content/ilustraciones'
 import { Tarjeta } from './ui'
 import s from './resultados.module.css'
 
@@ -141,6 +142,8 @@ export function VistaResultados({ r, edad }: { r: Resultados; edad: number }) {
         )}
       </div>
 
+      {r.tipoCuerpo && <TipoCuerpo t={r.tipoCuerpo} />}
+
       <Tarjeta>
         <p className="etiqueta">Tu nivel por área</p>
         {(Object.keys(PESOS) as Area[]).map((a) => {
@@ -203,5 +206,71 @@ export function GraficoCondicion({ puntos }: { puntos: { fecha: string; valor: n
         {fechaCorta(puntos[puntos.length - 1].fecha)}
       </text>
     </svg>
+  )
+}
+
+const TENDENCIAS = {
+  lineal: { nombre: 'Lineal', texto: 'Mucha altura para tu peso: un cuerpo largo y liviano.' },
+  intermedia: { nombre: 'Intermedia', texto: 'Ni muy lineal ni muy robusta: el término medio, el más común.' },
+  robusta: {
+    nombre: 'Robusta',
+    texto: 'Mucho peso para tu altura sin que la grasa estimada sea alta: probablemente más músculo y hueso.',
+  },
+  redondeada: {
+    nombre: 'Redondeada',
+    texto: 'Mucho peso para tu altura con la grasa estimada por encima del umbral. Es la parte del cuerpo que más cambia con entrenamiento y alimentación.',
+  },
+} as const
+
+const CONTEXTURAS = { chica: 'Chica', mediana: 'Mediana', grande: 'Grande' } as const
+
+function TipoCuerpo({ t }: { t: NonNullable<Resultados['tipoCuerpo']> }) {
+  return (
+    <Tarjeta>
+      <p className="etiqueta">Tu tipo de cuerpo</p>
+      {t.tendencia && <TiposDeCuerpo activa={t.tendencia} />}
+      {t.tendencia && (
+        <p style={{ margin: 0 }}>
+          <b>Tendencia {TENDENCIAS[t.tendencia].nombre.toLowerCase()}.</b> {TENDENCIAS[t.tendencia].texto}
+        </p>
+      )}
+      <div className={s.grilla}>
+        {t.linealidad !== undefined && (
+          <div className={s.dato}>
+            <span>Linealidad</span>
+            <b>{coma(t.linealidad, 1)}</b>
+            <span>{t.nivelLinealidad} (escala de 0,5 a 9)</span>
+          </div>
+        )}
+        {t.contextura && (
+          <div className={s.dato}>
+            <span>Contextura ósea</span>
+            <b>{CONTEXTURAS[t.contextura]}</b>
+            <span>según tu muñeca y altura</span>
+          </div>
+        )}
+      </div>
+      {!t.tendencia && <p className={s.nota}>Sumá tu peso en la próxima evaluación para ver tu tendencia.</p>}
+      <details className={s.explicacion}>
+        <summary>¿Cómo se sabe tu tipo de cuerpo?</summary>
+        <p>
+          El método científico es el <b>somatotipo de Heath-Carter</b>. Describe el cuerpo con tres números: grasa (endomorfia), músculo y hueso
+          (mesomorfia) y linealidad (ectomorfia). Por ejemplo, 3-5-2 es un cuerpo con grasa moderada, bastante músculo y poco lineal.
+        </p>
+        <p>
+          Medir los tres bien necesita calibres para los pliegues de piel y el ancho de los huesos, en manos de un profesional. En casa se puede
+          calcular con exactitud solo la <b>linealidad</b>: tu altura dividida por la raíz cúbica de tu peso. La app la combina con tu grasa
+          estimada por la cintura para darte una <b>tendencia</b>. Es una estimación, no el somatotipo completo.
+        </p>
+        <p>
+          La <b>contextura ósea</b> sale de tu muñeca: ahí casi no hay grasa ni músculo, así que muestra el tamaño de tu esqueleto. No cambia
+          con el entrenamiento.
+        </p>
+        <p>
+          El tipo de cuerpo no es un destino. La grasa y el músculo cambian con lo que hacés, y la vieja idea de que cada tipo trae una
+          personalidad o un metabolismo fijo no tiene respaldo. Usalo para ver cómo cambia tu cuerpo de una evaluación a la otra.
+        </p>
+      </details>
+    </Tarjeta>
   )
 }

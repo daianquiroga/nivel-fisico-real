@@ -1,0 +1,30 @@
+{
+  "linealidad": {
+    "fuente": "Carter JEL. The Heath-Carter Anthropometric Somatotype: Instruction Manual (2002); Carter y Heath, Somatotyping: Development and Applications (1990)",
+    "enlace": "https://ebooks.inflibnet.ac.in/antp06/chapter/heath-carter-methods-of-somatotyping/",
+    "nota": "Ectomorfia = componente de linealidad. Se calcula con HWR = altura (cm) / raíz cúbica del peso (kg).",
+    "tramos": [
+      { "hwrDesde": 40.75, "factor": 0.732, "resta": 28.58 },
+      { "hwrDesde": 38.25, "factor": 0.463, "resta": 17.63 }
+    ],
+    "minimo": 0.1,
+    "niveles": [
+      { "hasta": 2.75, "nombre": "Baja" },
+      { "hasta": 5.25, "nombre": "Moderada" },
+      { "hasta": 7.25, "nombre": "Alta" },
+      { "hasta": 99, "nombre": "Muy alta" }
+    ],
+    "nivelesFuente": "Carter y Heath 1990: de 0,5 a 2,5 bajo, de 3 a 5 moderado, de 5,5 a 7 alto, 7,5 o más muy alto (los cortes intermedios son el punto medio)."
+  },
+  "contextura": {
+    "fuente": "MedlinePlus (Biblioteca Nacional de Medicina de EE. UU.), Calculating body frame size. Valores pasados de pulgadas a cm.",
+    "enlace": "https://medlineplus.gov/ency/imagepages/17182.htm",
+    "nota": "Para hombres MedlinePlus solo da la tabla de más de 165 cm; se usa para todas las alturas.",
+    "h": [{ "alturaHasta": 999, "chicaHasta": 16.5, "medianaHasta": 19.1 }],
+    "m": [
+      { "alturaHasta": 157.5, "chicaHasta": 14.0, "medianaHasta": 14.6 },
+      { "alturaHasta": 165.1, "chicaHasta": 15.2, "medianaHasta": 15.9 },
+      { "alturaHasta": 999, "chicaHasta": 15.9, "medianaHasta": 16.5 }
+    ]
+  }
+}

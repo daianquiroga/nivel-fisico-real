@@ -4,13 +4,14 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Entrega actual
 
-**Entrega 1 — Base**, terminada (versión 0.4.0). Solo quedan datos de tablas por completar. Próxima: **Entrega 2 — Ejercicios** (fichas, progresiones, registro de pesos).
+**Entrega 1 — Base**, terminada (versión 0.5.0). Solo quedan datos de tablas por completar. Próxima: **Entrega 2 — Ejercicios** (fichas, progresiones, registro de pesos).
 
 ## Hecho
 
 - Parte 1 de la entrega 1: base técnica, tema, navegación, respaldo, publicación.
 - Parte 2 de la entrega 1 (versión 0.2.0): primer inicio en 5 pasos (datos, objetivos, lugares y equipo, semana, salud), tablas de referencia en `src/content/normas/` y todos los cálculos de la evaluación en `src/lib/calc/` con 30 pruebas automáticas que reproducen los casos de `EVALUACION.md`. Hoy muestra días sin fumar, plata ahorrada, avisos de salud y limitaciones; Perfil muestra el resumen y permite editar.
 - Parte 3 de la entrega 1 (versión 0.4.0): evaluación guiada en `/evaluacion` (modo completo de 9 pruebas y rápido de 6), con cuenta regresiva, cronómetro, pitidos, vibración y pantalla siempre encendida. Se guarda a medias y se puede seguir después. Resultados en `/resultado/:id` (condición física, edad física, VO2máx estimado, composición, nivel 1 a 5 por área). Progreso muestra la última evaluación, un gráfico de la evolución y el historial. Hoy invita a evaluarse o muestra el nivel y los días hasta la próxima evaluación. Lógica en `src/lib/evaluacion.ts` con tests (37 en total).
+- Versión 0.5.0: dibujos de cómo hacer cada prueba (`src/content/ilustraciones.tsx`, figuras SVG propias) y tipo de cuerpo opcional en la evaluación (peso y muñeca): linealidad de Heath-Carter, contextura ósea por muñeca y una tendencia (lineal, intermedia, robusta, redondeada) con su explicación. Cálculo en `src/lib/calc/tipoCuerpo.ts`, tabla en `src/content/normas/tipo-cuerpo.json`, 43 tests.
 - Especificación, diseño y método de evaluación escritos (`ESPECIFICACION.md`, `DISENO.md`, `EVALUACION.md`).
 
 ## Entrega 1: lista
@@ -46,6 +47,7 @@ Claude Code actualiza este archivo al final de cada sesión.
 - Evaluación: equilibrio y plancha empiezan con cuenta de 3; equilibrio corta solo a los 45 s y guarda el mejor de los intentos.
 - Habilidad de movimiento se muestra solo si se hizo la prueba de calidad de movimiento.
 - Se repite la evaluación cada 28 días (decisión de diseño: antes los cambios no se notan en las pruebas); se puede hacer antes igual.
+- Tipo de cuerpo: en casa solo se puede calcular bien la linealidad (Heath-Carter); grasa y músculo del somatotipo necesitan calibres. La tendencia combina linealidad y grasa RFM con cortes propios (lineal ≥ 4, robusta < 1,5), avisando que es una estimación. Contextura de hombres: se usa la tabla de MedlinePlus de más de 165 cm para todas las alturas.
 - GitHub Pages activado con origen "GitHub Actions" (lo activa el dueño de la cuenta en Configuración → Páginas).
 
 ## Cómo probar

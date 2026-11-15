@@ -106,6 +106,20 @@ Error típico de la estimación: unos 5 a 6 ml/kg/min. Mostrarlo.
 
 Umbral de obesidad por grasa: 22,8% hombres, 33,9% mujeres. Mostrar como estimación para seguir la propia evolución.
 
+### Tipo de cuerpo (opcional: peso y muñeca)
+
+El método de referencia es el **somatotipo de Heath-Carter**: tres números (endomorfia = grasa relativa, mesomorfia = desarrollo músculo-esquelético, ectomorfia = linealidad). Endomorfia y mesomorfia necesitan pliegues cutáneos y diámetros óseos con calibre, así que en casa solo se calcula la linealidad:
+
+- `HWR = altura (cm) / raíz cúbica del peso (kg)`
+- HWR ≥ 40,75: `ectomorfia = 0,732 × HWR − 28,58`
+- 38,25 < HWR < 40,75: `ectomorfia = 0,463 × HWR − 17,63`
+- HWR ≤ 38,25: `ectomorfia = 0,1`
+- Niveles (Carter y Heath 1990): 0,5–2,5 baja, 3–5 moderada, 5,5–7 alta, 7,5 o más muy alta.
+
+**Contextura ósea** por circunferencia de muñeca (justo arriba del huesito) y altura, tabla de MedlinePlus pasada a cm. Hombres (tabla de más de 165 cm, usada para todos): chica < 16,5; mediana 16,5–19,1; grande > 19,1. Mujeres: < 157,5 cm: chica < 14,0, mediana 14,0–14,6; 157,5–165 cm: chica < 15,2, mediana 15,2–15,9; > 165 cm: chica < 15,9, mediana 15,9–16,5; por encima, grande.
+
+**Tendencia (decisión de diseño de la app, no es un estándar):** linealidad ≥ 4 → lineal; grasa RFM por encima del umbral de obesidad → redondeada; linealidad < 1,5 → robusta; el resto → intermedia. Se muestra como estimación y se aclara que no es el somatotipo completo. Caso calculado a mano: 178 cm y 69,2 kg → HWR 43,36 → linealidad 3,16 (moderada).
+
 ## 4. Fuerza y resistencia
 
 ### Sentarse y pararse en 1 minuto (Strassmann 2013, 6.926 adultos)
@@ -276,3 +290,5 @@ Percentil 0–20 = 1 Inicial · 20–40 = 2 Base · 40–60 = 3 En marcha · 60�
 - Woolcott y Bergman 2018, RFM: https://wiki.oroboros.at/index.php/Woolcott_2018_Sci_Rep
 - Cedars-Sinai, cómo medir la cintura para RFM: https://www.cedars-sinai.org/content/cedars-sinai/blog/relative-fat-mass.html
 - Ashwell, cintura/altura y guía NICE: https://ashwell.uk.com/documents/2025%20Nutrition%20Today.pdf
+- Carter 2002, manual del somatotipo Heath-Carter (ecuaciones y niveles): https://ebooks.inflibnet.ac.in/antp06/chapter/heath-carter-methods-of-somatotyping/
+- MedlinePlus, contextura por muñeca: https://medlineplus.gov/ency/imagepages/17182.htm

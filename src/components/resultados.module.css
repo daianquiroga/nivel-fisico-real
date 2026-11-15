@@ -141,3 +141,20 @@
   color: var(--muted);
   font-size: 12.5px;
 }
+
+.explicacion summary {
+  cursor: pointer;
+  color: var(--accent-soft);
+  font-weight: 600;
+  font-size: 14px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+}
+
+.explicacion p {
+  color: var(--text-2);
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 8px 0 0;
+}

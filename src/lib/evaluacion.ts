@@ -10,6 +10,7 @@ import {
   percentilSentarse,
   type ResultadoPercentil,
 } from './calc/pruebas'
+import { contextura, linealidad, nivelLinealidad, tendencia, type Contextura, type Tendencia } from './calc/tipoCuerpo'
 import { calidadMovimiento, condicionFisica, habilidadMovimiento, type Area } from './calc/puntajes'
 
 export type VarianteFlexion = 'completa' | 'rodillas' | 'punos'
@@ -18,6 +19,9 @@ export interface DatosEvaluacion {
   pulsos?: number[]
   alturaCm?: number
   cinturaCm?: number
+  /** Opcionales, para el tipo de cuerpo. */
+  pesoKg?: number
+  munecaCm?: number
   actividad?: { frecuencia: number; intensidad: number; duracion: number }
   rodilla?: { izq: number; der: number }
   equilibrio?: { ojos: 'abiertos' | 'cerrados'; segundos: number }
@@ -44,6 +48,7 @@ export interface Resultados {
   calidad?: number
   habilidad?: number
   diferenciaRodillas?: number
+  tipoCuerpo?: { linealidad?: number; nivelLinealidad?: string; contextura?: Contextura; tendencia?: Tendencia; grasaAlta?: boolean }
 }
 
 const promedio = (xs: number[]) => xs.reduce((a, b) => a + b, 0) / xs.length
@@ -71,6 +76,17 @@ export function calcularResultados(sexo: Sexo, edad: number, d: DatosEvaluacion)
     const puntaje = puntajeComposicion(sexo, relacion, grasa)
     r.composicion = { relacion, zona: zonaCinturaAltura(relacion), grasa, obesidad: superaUmbralObesidad(sexo, grasa), puntaje }
     sumar('composicion', puntaje)
+  }
+
+  if (d.alturaCm && (d.pesoKg || d.munecaCm)) {
+    const t: NonNullable<Resultados['tipoCuerpo']> = { grasaAlta: r.composicion?.obesidad }
+    if (d.pesoKg) {
+      t.linealidad = linealidad(d.alturaCm, d.pesoKg)
+      t.nivelLinealidad = nivelLinealidad(t.linealidad)
+      t.tendencia = tendencia(t.linealidad, Boolean(r.composicion?.obesidad))
+    }
+    if (d.munecaCm) t.contextura = contextura(sexo, d.alturaCm, d.munecaCm)
+    r.tipoCuerpo = t
   }
 
   if (d.sentarse !== undefined) {

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MOVIMIENTOS, PASOS, type IdPaso } from '../../content/evaluacion-pasos'
+import { ILUSTRACIONES } from '../../content/ilustraciones'
 import normasVo2 from '../../content/normas/vo2max-hunt.json'
 import { Stepper } from '../../components/controles'
 import { Cronometro, CuentaRegresiva } from '../../components/tiempo'
@@ -64,6 +65,7 @@ export function Evaluacion() {
   const [borrador, setBorrador] = useState<Borrador | null>(null)
   const [aviso, setAviso] = useState<string | null>(null)
   const [contarToques, setContarToques] = useState(false)
+  const [conTipo, setConTipo] = useState(false)
   const [intentos, setIntentos] = useState<number[]>([])
   const [respActividad, setRespActividad] = useState<{ frecuencia?: number; intensidad?: number; duracion?: number }>({})
   usarPantallaEncendida(modo !== null)
@@ -90,6 +92,7 @@ export function Evaluacion() {
     setIndice(desde?.indice ?? 0)
     setDatos(desde?.datos ?? { alturaCm: perfil?.alturaCm })
     setIntentos([])
+    setConTipo(Boolean(desde?.datos.pesoKg || desde?.datos.munecaCm))
     window.scrollTo(0, 0)
   }
 
@@ -224,6 +227,7 @@ export function Evaluacion() {
   }
 
   const texto = PASOS[id]
+  const Dibujo = ILUSTRACIONES[id]
   const ojos = datos.equilibrio?.ojos ?? ojosParaEquilibrio(edad)
   const pulsos = datos.pulsos ?? []
   const act = { ...datos.actividad, ...respActividad }
@@ -256,6 +260,11 @@ export function Evaluacion() {
       </header>
 
       <Tarjeta>
+        {Dibujo && (
+          <div className={s.dibujo}>
+            <Dibujo />
+          </div>
+        )}
         <ol className={s.pasos}>
           {texto.como.map((c) => (
             <li key={c}>{c}</li>
@@ -315,6 +324,26 @@ export function Evaluacion() {
         <Tarjeta>
           <Stepper etiqueta="Altura" valor={datos.alturaCm ?? 170} min={120} max={220} paso={0.5} unidad="cm" onCambio={(v) => cambiar({ alturaCm: v })} />
           <Stepper etiqueta="Cintura" valor={datos.cinturaCm ?? 85} min={50} max={180} paso={0.5} unidad="cm" onCambio={(v) => cambiar({ cinturaCm: v })} />
+          <label className={estilos.chico} style={{ display: 'flex', gap: 10, alignItems: 'center', minHeight: 44 }}>
+            <input
+              type="checkbox"
+              checked={conTipo}
+              onChange={(e) => {
+                setConTipo(e.target.checked)
+                if (e.target.checked) cambiar({ pesoKg: datos.pesoKg ?? perfil?.pesoKg ?? 75, munecaCm: datos.munecaCm ?? (sexo === 'h' ? 17.5 : 15.5) })
+                else cambiar({ pesoKg: undefined, munecaCm: undefined })
+              }}
+              style={{ width: 22, height: 22, accentColor: 'var(--accent)' }}
+            />
+            Sumar peso y muñeca para saber tu tipo de cuerpo (opcional)
+          </label>
+          {conTipo && (
+            <>
+              <Stepper etiqueta="Peso" valor={datos.pesoKg ?? 75} min={35} max={200} paso={0.5} unidad="kg" onCambio={(v) => cambiar({ pesoKg: v })} />
+              <Stepper etiqueta="Muñeca" valor={datos.munecaCm ?? 17} min={11} max={25} paso={0.5} unidad="cm" onCambio={(v) => cambiar({ munecaCm: v })} />
+              <p className={estilos.chico}>Peso: en balanza, a la mañana, sin ropa o con ropa liviana. Muñeca: con la cinta justo arriba del huesito, sin apretar.</p>
+            </>
+          )}
           {datos.cinturaCm && datos.alturaCm && (
             <p className={estilos.chico}>
               Cintura / altura: {String((datos.cinturaCm / datos.alturaCm).toFixed(2)).replace('.', ',')}. Por debajo de 0,50 está en la zona saludable.

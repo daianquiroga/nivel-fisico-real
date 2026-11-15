@@ -38,6 +38,7 @@ export const PASOS: Record<IdPaso, TextoPaso> = {
       'Altura: descalzo contra la pared, apoyá un libro en la cabeza, marcá y medí hasta el piso.',
       'Cintura: de pie, al final de una exhalación normal, sin meter panza. Cinta horizontal a la altura del borde de arriba del hueso de la cadera.',
       'Medí dos veces y cargá el promedio. Mejor a la mañana, antes de comer.',
+      'Opcional, para tu tipo de cuerpo: tu peso y la vuelta de tu muñeca, justo arriba del huesito.',
       'Sin cinta: un hilo del largo de tu altura, doblado a la mitad. Si da la vuelta a tu cintura, estás por debajo del límite de riesgo. Después medí el hilo con una regla.',
     ],
     errores: ['Medir en el ombligo o en la parte más angosta en vez del borde de la cadera.', 'Meter panza o apretar la cinta.'],
