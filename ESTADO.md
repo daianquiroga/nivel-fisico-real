@@ -31,6 +31,7 @@ Claude Code actualiza este archivo al final de cada sesión.
 - Fuentes cargadas solo con caracteres latinos para que la app pese menos.
 - El respaldo en texto es el JSON en Base64 con el prefijo `NFR1:` (sin compresión por ahora).
 - Las pantallas Plan, Progreso, Aprender y parte de Perfil muestran qué llega y en qué entrega.
+- GitHub Pages activado con origen "GitHub Actions" (lo activa el dueño de la cuenta en Configuración → Páginas).
 
 ## Cómo probar
 
