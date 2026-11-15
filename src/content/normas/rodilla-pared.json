@@ -1,0 +1,10 @@
+{
+  "fuente": "McBride y colegas 2026 (resumen de percentiles)",
+  "enlace": "https://fitnessnorms.pages.dev/flexibility/ankle-dorsiflexion/",
+  "unidad": "cm del dedo gordo a la pared",
+  "provisional": true,
+  "nota": "Tabla completa pendiente. Se usa la referencia de menores de 50 años para todas las edades.",
+  "p25": 8,
+  "p50": 11,
+  "p75": 14
+}

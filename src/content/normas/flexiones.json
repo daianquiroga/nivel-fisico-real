@@ -1,0 +1,70 @@
+{
+  "fuente": "Normas canadienses (Payne 2000), reproducidas por ACSM",
+  "enlace": "https://getfitcraft.com/blog/how-many-push-ups-should-i-be-able-to-do",
+  "nota": "Hombres: flexión completa. Mujeres: rodillas apoyadas. Cortes = mínimo de Regular, Bien, Muy bien y Excelente.",
+  "h": [
+    {
+      "desde": 20,
+      "hasta": 29,
+      "cortes": [
+        17,
+        22,
+        29,
+        36
+      ]
+    },
+    {
+      "desde": 30,
+      "hasta": 39,
+      "cortes": [
+        12,
+        17,
+        22,
+        30
+      ]
+    },
+    {
+      "desde": 40,
+      "hasta": 49,
+      "cortes": [
+        10,
+        13,
+        17,
+        25
+      ]
+    },
+    {
+      "desde": 50,
+      "hasta": 59,
+      "cortes": [
+        7,
+        10,
+        13,
+        21
+      ]
+    },
+    {
+      "desde": 60,
+      "hasta": 69,
+      "cortes": [
+        5,
+        8,
+        11,
+        18
+      ]
+    }
+  ],
+  "m": [
+    {
+      "desde": 20,
+      "hasta": 29,
+      "cortes": [
+        10,
+        15,
+        21,
+        30
+      ]
+    }
+  ],
+  "pendiente": "Cargar las demás edades de mujeres desde la fuente original."
+}

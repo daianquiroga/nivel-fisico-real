@@ -1,0 +1,79 @@
+{
+  "fuente": "Springer y colegas 2007, 549 adultos (mejor de 3 intentos, máximo 45 s)",
+  "enlace": "https://geriatrictoolkit.missouri.edu/balance/Normative_Values_for_the_Unipedal_Stance_Test_Springer-JGPT.pdf",
+  "maximo": 45,
+  "grupos": [
+    {
+      "desde": 18,
+      "hasta": 39,
+      "abiertos": [
+        44.7,
+        3.1
+      ],
+      "cerrados": [
+        15.2,
+        13.3
+      ]
+    },
+    {
+      "desde": 40,
+      "hasta": 49,
+      "abiertos": [
+        41.9,
+        9.9
+      ],
+      "cerrados": [
+        12.7,
+        12.9
+      ]
+    },
+    {
+      "desde": 50,
+      "hasta": 59,
+      "abiertos": [
+        41.2,
+        10.2
+      ],
+      "cerrados": [
+        8.3,
+        8.4
+      ]
+    },
+    {
+      "desde": 60,
+      "hasta": 69,
+      "abiertos": [
+        32.1,
+        16.2
+      ],
+      "cerrados": [
+        4.4,
+        5.1
+      ]
+    },
+    {
+      "desde": 70,
+      "hasta": 79,
+      "abiertos": [
+        21.5,
+        17.3
+      ],
+      "cerrados": [
+        3.1,
+        4.5
+      ]
+    },
+    {
+      "desde": 80,
+      "hasta": 120,
+      "abiertos": [
+        9.4,
+        12.8
+      ],
+      "cerrados": [
+        1.9,
+        1.0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "fuente": "Chase y colegas 2014 (adultos de 18 a 25 años)",
+  "enlace": "https://digitalcommons.wku.edu/ijesab/vol8/iss2/14",
+  "unidad": "segundos",
+  "edadMin": 18,
+  "edadMax": 25,
+  "h": {
+    "p25": 84,
+    "p50": 110,
+    "p75": 135
+  },
+  "m": {
+    "p25": 63,
+    "p50": 90,
+    "p75": 121
+  }
+}

@@ -2,6 +2,7 @@ import { HashRouter, NavLink, Navigate, Outlet, Route, Routes } from 'react-rout
 import { Icono } from '../components/Icono'
 import { Aprender } from '../screens/Aprender'
 import { Hoy } from '../screens/Hoy'
+import { Inicio } from '../screens/Inicio'
 import { Perfil } from '../screens/Perfil'
 import { Plan } from '../screens/Plan'
 import { Progreso } from '../screens/Progreso'
@@ -49,6 +50,7 @@ export default function App() {
           <Route path="/aprender" element={<Aprender />} />
           <Route path="/perfil" element={<Perfil />} />
         </Route>
+        <Route path="/inicio" element={<Inicio />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </HashRouter>

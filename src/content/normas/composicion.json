@@ -1,0 +1,41 @@
+{
+  "cinturaAltura": {
+    "fuente": "Guía NICE, Ashwell 2025",
+    "enlace": "https://ashwell.uk.com/documents/2025%20Nutrition%20Today.pdf",
+    "zonas": [
+      {
+        "desde": 0,
+        "hasta": 0.4,
+        "nombre": "Muy baja"
+      },
+      {
+        "desde": 0.4,
+        "hasta": 0.5,
+        "nombre": "Saludable"
+      },
+      {
+        "desde": 0.5,
+        "hasta": 0.6,
+        "nombre": "Aumentada"
+      },
+      {
+        "desde": 0.6,
+        "hasta": 9,
+        "nombre": "Alta"
+      }
+    ]
+  },
+  "rfm": {
+    "fuente": "Woolcott y Bergman 2018",
+    "enlace": "https://wiki.oroboros.at/index.php/Woolcott_2018_Sci_Rep",
+    "constante": {
+      "h": 64,
+      "m": 76
+    },
+    "factor": 20,
+    "umbralObesidad": {
+      "h": 22.8,
+      "m": 33.9
+    }
+  }
+}

@@ -14,7 +14,10 @@ export interface Perfil {
   objetivos?: { estetica: number; condicion: number; combate: number }
   zonas?: string[]
   limitaciones?: string[]
-  fumar?: { activo: boolean; fechaDejo?: string; precioAtado?: number }
+  fumar?: { activo: boolean; fechaDejo?: string; precioAtado?: number; atadosPorDia?: number }
+  /** Respuestas del cuestionario de salud (true = sí). apto = todas en no. */
+  salud?: { respuestas: boolean[]; apto: boolean; fecha: string }
+  inicioCompleto?: boolean
   creado: string
   actualizado: string
 }
@@ -23,6 +26,8 @@ export interface Lugar {
   id?: number
   nombre: string
   equipo: string[]
+  /** Peso total de mancuernas y discos, si tiene. */
+  pesoTotalKg?: number
   espacio: '1x1' | '2x2' | 'amplio'
 }
 
