@@ -65,7 +65,7 @@ describe('tipo de cuerpo en la evaluación', () => {
     const r = calcularResultados('h', 30, { alturaCm: 178, cinturaCm: 80, pesoKg: 69.2, munecaCm: 17.5 })
     expect(r.tipoCuerpo?.linealidad).toBeCloseTo(3.16, 1)
     expect(r.tipoCuerpo?.contextura).toBe('mediana')
-    expect(r.tipoCuerpo?.tendencia).toBe('intermedia')
+    expect(r.tipoCuerpo?.tendencia).toBe('mixto')
   })
   it('sin peso ni muñeca no hay tipo de cuerpo', () => {
     expect(calcularResultados('h', 30, { alturaCm: 178, cinturaCm: 80 }).tipoCuerpo).toBeUndefined()

@@ -29,6 +29,7 @@ La especificación completa está en `ESPECIFICACION.md`. El sistema visual y la
 5. **Seguridad primero.** Cuestionario de salud antes de pruebas de esfuerzo; avisos de "consultá a un profesional" ante dolor; nunca diagnosticar. Modo limitación (muñeca, rodilla, hombro, espalda) que filtra ejercicios.
 6. **Sin datos personales en el repositorio.** El repo es público. Nada de nombres, horarios, salud ni fotos del usuario en código, ejemplos o tests: la app pide esos datos al usarla.
 7. **Fácil antes que completo.** Una acción principal por pantalla, botones grandes (mínimo 48 px), usable con una mano y transpirado, escribir lo menos posible (botones +/−, valores anteriores precargados).
+8. **Siempre con ejemplo gráfico.** Toda prueba, ejercicio, técnica o medición que se explique en la app lleva un dibujo propio (SVG simple, con las piezas de `src/components/Figura.tsx`) que muestre cómo se hace. Sin dibujo no está terminado.
 
 ## Stack técnico (no cambiarlo sin preguntar)
 

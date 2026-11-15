@@ -2,7 +2,9 @@ import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { EJERCICIOS, NOMBRES_EQUIPO, PATRONES, avisosLimitacion, equipoDisponible, sePuedeHacer } from '../../lib/ejercicios'
 import { LIMITACIONES } from '../../lib/perfil'
+import tiposCuerpo from '../../content/tipos-cuerpo.json'
 import { usarInicio } from '../../lib/usarInicio'
+import { usarTipoCuerpo } from '../../lib/usarTipoCuerpo'
 import s from './ejercicios.module.css'
 
 const sinTildes = (t: string) => t.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
@@ -16,6 +18,8 @@ export function Biblioteca() {
   const equipo = useMemo(() => equipoDisponible(lugares), [lugares])
   const limitaciones = perfil?.limitaciones ?? []
   const conLugares = lugares.length > 0
+  const { estado } = usarTipoCuerpo()
+  const base = new Set<string>(estado?.tipo ? (tiposCuerpo.tipos as Record<string, { ejercicios: string[] }>)[estado.tipo].ejercicios : [])
 
   const lista = EJERCICIOS.filter((e) => {
     if (patron && !PATRONES.find((p) => p.valor === patron)?.incluye.includes(e.patron)) return false
@@ -72,8 +76,9 @@ export function Biblioteca() {
               <span className={s.itemDetalle}>
                 {e.principal.join(', ')} · {e.equipo.length ? e.equipo.map((x) => NOMBRES_EQUIPO[x] ?? x).join(' + ') : 'sin equipo'}
               </span>
-              {(evitar.length > 0 || adaptar.length > 0 || (conLugares && falta.length > 0)) && (
+              {(base.has(e.id) || evitar.length > 0 || adaptar.length > 0 || (conLugares && falta.length > 0)) && (
                 <span className={s.etiquetas}>
+                  {base.has(e.id) && <span className={`${s.tag} ${s.tagBase}`}>Base para tu tipo</span>}
                   {evitar.map((a) => (
                     <span key={a.limitacion} className={`${s.tag} ${s.tagEvitar}`}>
                       Evitar por {nombreLimitacion(a.limitacion)}

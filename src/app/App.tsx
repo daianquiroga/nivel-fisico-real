@@ -9,6 +9,7 @@ import { Perfil } from '../screens/Perfil'
 import { Plan } from '../screens/Plan'
 import { Progreso } from '../screens/Progreso'
 import { Resultado } from '../screens/Resultado'
+import { TipoCuerpo } from '../screens/TipoCuerpo'
 import s from './layout.module.css'
 
 const PESTANAS = [
@@ -57,6 +58,7 @@ export default function App() {
         <Route path="/evaluacion" element={<Evaluacion />} />
         <Route path="/resultado/:id" element={<Resultado />} />
         <Route path="/ejercicio/:id" element={<Ficha />} />
+        <Route path="/tipo-cuerpo" element={<TipoCuerpo />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </HashRouter>

@@ -1,0 +1,93 @@
+{
+  "fuente": "Carter JEL, The Heath-Carter Anthropometric Somatotype: Instruction Manual (2002); Carter y Heath 1990. Proteína: ISSN Position Stand (Jäger 2017). Actividad: OMS, Directrices sobre actividad física 2020.",
+  "enlaces": [
+    "https://ebooks.inflibnet.ac.in/antp06/chapter/heath-carter-methods-of-somatotyping/",
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5477153/",
+    "https://www.who.int/publications/i/item/9789240015128"
+  ],
+  "intro": "Todo cuerpo tiene un poco de los tres componentes: grasa (endomorfia), músculo y hueso (mesomorfia) y linealidad (ectomorfia). Tu tipo es el que más pesa en esa mezcla. Por ejemplo, 3-5-2 es alguien sobre todo mesomorfo, con algo de grasa y poco lineal.",
+  "ciencia": "No hay estudios sólidos que muestren que cada tipo de cuerpo necesite un entrenamiento distinto, ni que el tipo fije tu metabolismo o tu personalidad (esa idea vieja de Sheldon quedó descartada). Lo que sí cambia es tu punto de partida: cuánta grasa y músculo tenés, cuánto pesás para tu altura y el largo de tus brazos y piernas. Eso cambia las prioridades, y es lo que usa la app. Además, el tipo cambia: la grasa y el músculo se mueven con lo que hacés.",
+  "tipos": {
+    "ectomorfo": {
+      "nombre": "Ectomorfo",
+      "corto": "Lineal",
+      "descripcion": "Cuerpo largo y liviano para su altura: huesos finos, poca grasa y poco músculo de base.",
+      "reconocer": [
+        "Hombros y caderas angostos.",
+        "Brazos y piernas largos y finos; muñecas finas.",
+        "Se te marcan las costillas o las clavículas sin estar a dieta."
+      ],
+      "enfoque": [
+        "Prioridad: fuerza con carga que sube de a poco, 3 días por semana, con ejercicios grandes.",
+        "Para ganar músculo hace falta comer un poco más de lo que gastás y llegar a 1,4 a 2,0 g de proteína por kilo por día (ISSN).",
+        "Cardio: el de la salud (150 a 300 minutos por semana de actividad moderada, OMS), sin sumar de más si tu objetivo es ganar masa.",
+        "Con brazos y piernas largos, la sentadilla goblet y la búlgara suelen ser más cómodas que la sentadilla con barra."
+      ],
+      "ejercicios": ["sentadilla-goblet", "peso-muerto-rumano-mancuernas", "press-piso-mancuernas", "remo-mancuerna", "press-hombros-mancuernas", "dominada-negativa", "hip-thrust"]
+    },
+    "mesomorfo": {
+      "nombre": "Mesomorfo",
+      "corto": "Robusto",
+      "descripcion": "Mucho músculo y hueso para su altura: hombros anchos, cintura más angosta, poca grasa.",
+      "reconocer": [
+        "Hombros más anchos que la cadera, forma de V o de rectángulo.",
+        "Huesos y articulaciones gruesos (muñecas y rodillas anchas).",
+        "Pesás bastante para tu altura sin tener mucha panza."
+      ],
+      "enfoque": [
+        "Balance: fuerza 2 a 4 días y cardio 2 a 3 días por semana.",
+        "Técnica primero: subir carga rápido sin buena técnica es la forma más común de lastimarse.",
+        "Sumá movilidad y equilibrio: suelen quedar atrás cuando la fuerza viene fácil.",
+        "Proteína de 1,4 a 2,0 g por kilo por día (ISSN) para sostener el músculo."
+      ],
+      "ejercicios": ["sentadilla", "zancada-atras", "flexion", "dominada-asistida-banda", "peso-muerto-una-pierna", "plancha-lateral", "caminata-granjero"]
+    },
+    "endomorfo": {
+      "nombre": "Endomorfo",
+      "corto": "Redondeado",
+      "descripcion": "Más grasa relativa: cintura y cadera más anchas, contornos redondeados. Suele tener buena base de fuerza.",
+      "reconocer": [
+        "La cintura es igual o más ancha que el pecho o la cadera.",
+        "La grasa se junta fácil en la panza, la cadera o los muslos.",
+        "Tu cintura supera la mitad de tu altura (lo mide la evaluación)."
+      ],
+      "enfoque": [
+        "Fuerza 2 a 3 días con ejercicios grandes: cuidan y suman músculo mientras baja la grasa.",
+        "Moverte todos los días: más pasos y cardio de bajo impacto (caminar, bici, nadar) para cuidar rodillas y tobillos.",
+        "La grasa baja sobre todo con la alimentación sostenida en el tiempo; el ejercicio ayuda pero solo no alcanza.",
+        "No se baja grasa de una zona haciendo ejercicios de esa zona: baja de todo el cuerpo."
+      ],
+      "ejercicios": ["sentadilla-silla", "sentadilla", "puente-gluteo", "flexion-inclinada-alta", "remo-banda", "peso-muerto-rumano-mancuernas", "subida-banco", "caminata-granjero"]
+    },
+    "mixto": {
+      "nombre": "Mixto (central)",
+      "corto": "Mixto",
+      "descripcion": "Ningún componente domina con claridad. Es de los más comunes.",
+      "reconocer": ["No encajás claramente en ninguno de los otros tres.", "Medidas y forma intermedias."],
+      "enfoque": [
+        "Entrená según tus objetivos: la app reparte fuerza, cardio y movilidad según tus puntos.",
+        "Proteína de 1,4 a 2,0 g por kilo por día (ISSN) si querés ganar o mantener músculo.",
+        "Volvé a medirte en 4 semanas: con entrenamiento, el tipo se va definiendo."
+      ],
+      "ejercicios": ["sentadilla", "flexion", "remo-mancuerna", "puente-gluteo", "plancha"]
+    }
+  },
+  "medicion": {
+    "materiales": "Plicómetro (pinza para medir pliegues de piel; hay de plástico y son baratos), cinta métrica y, para los huesos, un calibre o una regla con dos libros apoyados a los costados.",
+    "consejos": [
+      "Medí el lado derecho, de pie y relajado. Mejor si te ayuda otra persona.",
+      "Cada medida, dos veces; si difieren mucho, una tercera. Cargá el promedio.",
+      "Pliegues: tomá la piel y la grasa con el pulgar y el índice, despegala del músculo, poné el plicómetro 1 cm al lado de los dedos y leé a los 2 segundos."
+    ],
+    "puntos": [
+      { "id": "triceps", "nombre": "Pliegue del tríceps", "como": "Atrás del brazo, en la mitad entre la punta del hombro y el codo. Pliegue vertical." },
+      { "id": "subescapular", "nombre": "Pliegue subescapular", "como": "Justo debajo de la punta de abajo del omóplato. Pliegue en diagonal hacia abajo y afuera." },
+      { "id": "supraespinal", "nombre": "Pliegue supraespinal", "como": "Unos 5 a 7 cm por encima del huesito de adelante de la cadera, en la línea hacia la axila. Pliegue en diagonal hacia adentro y abajo." },
+      { "id": "pantorrillaP", "nombre": "Pliegue de la pantorrilla", "como": "Del lado de adentro de la pantorrilla, en la parte más gruesa, con el pie apoyado en un escalón y la rodilla a 90°. Pliegue vertical." },
+      { "id": "brazo", "nombre": "Perímetro del brazo contraído", "como": "Brazo doblado a 90° y apretado al máximo: la vuelta en la parte más gruesa del bíceps." },
+      { "id": "pantorrilla", "nombre": "Perímetro de la pantorrilla", "como": "De pie, la vuelta en la parte más gruesa." },
+      { "id": "humero", "nombre": "Ancho del codo (húmero)", "como": "Brazo adelante y codo doblado a 90°: distancia entre los dos huesitos de los costados del codo, apretando un poco." },
+      { "id": "femur", "nombre": "Ancho de la rodilla (fémur)", "como": "Sentado con la rodilla a 90°: distancia entre los dos huesitos de los costados de la rodilla, apretando un poco." }
+    ]
+  }
+}

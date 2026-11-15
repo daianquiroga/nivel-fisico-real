@@ -120,6 +120,16 @@ El método de referencia es el **somatotipo de Heath-Carter**: tres números (en
 
 **Tendencia (decisión de diseño de la app, no es un estándar):** linealidad ≥ 4 → lineal; grasa RFM por encima del umbral de obesidad → redondeada; linealidad < 1,5 → robusta; el resto → intermedia. Se muestra como estimación y se aclara que no es el somatotipo completo. Caso calculado a mano: 178 cm y 69,2 kg → HWR 43,36 → linealidad 3,16 (moderada).
 
+**Somatotipo completo (opcional, pantalla Tipo de cuerpo):** con plicómetro, cinta y calibre (o regla y dos libros).
+
+- `Endomorfia = −0,7182 + 0,1451·X − 0,00068·X² + 0,0000014·X³`, con X = (pliegues tríceps + subescapular + supraespinal, en mm) × 170,18 / altura.
+- `Mesomorfia = 0,858·húmero + 0,601·fémur + 0,188·brazo corregido + 0,161·pantorrilla corregida − 0,131·altura + 4,5`; corregido = perímetro − pliegue (mm) / 10.
+- Ectomorfia: la de arriba.
+- Categoría (Carter 2002): central si ningún componente se aparta más de 1 de los otros; dos componentes se toman iguales si difieren 0,5 o menos (por ejemplo "mesomorfo-endomorfo"); si los dos menores son iguales, "balanceado"; si no, "mesomorfo endomórfico" y similares.
+- Casos a mano: X = 30 → endomorfia 3,06. Húmero 7,20, fémur 9,95, brazo corregido 33,3, pantorrilla corregida 37,1, altura 178 → mesomorfia 5,57.
+- Nombres de la estimación casera: ectomorfo (linealidad ≥ 4), endomorfo (grasa RFM sobre el umbral), mesomorfo (linealidad < 1,5 sin grasa alta), mixto (el resto). Decisión de diseño.
+- Cómo se adapta el entrenamiento a cada tipo: `src/content/tipos-cuerpo.json`. Aclaración honesta en la app: no hay estudios sólidos de que cada tipo necesite un entrenamiento distinto; cambia el punto de partida (grasa, peso para la altura, palancas) y por eso las prioridades.
+
 ## 4. Fuerza y resistencia
 
 ### Sentarse y pararse en 1 minuto (Strassmann 2013, 6.926 adultos)

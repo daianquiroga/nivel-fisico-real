@@ -1,6 +1,7 @@
 /* Dibujos de cómo hacer cada prueba de la evaluación. Figuras simples, propias. */
 import type { ReactNode } from 'react'
 import { Figura, Flecha, Lienzo, Pared, Piso, Silla, Texto, type Pose } from '../components/Figura'
+import type { Tendencia } from '../lib/calc/tipoCuerpo'
 import type { IdPaso } from './evaluacion-pasos'
 
 const acento = 'var(--accent)'
@@ -337,21 +338,44 @@ function Silueta({ x, hombros, cintura, cadera, alto, activa }: { x: number; hom
   )
 }
 
-export function TiposDeCuerpo({ activa }: { activa?: 'lineal' | 'intermedia' | 'robusta' | 'redondeada' }) {
+export function TiposDeCuerpo({ activa }: { activa?: Tendencia }) {
+  const color = (t: Tendencia) => (activa === t ? 'var(--accent)' : undefined)
   return (
-    <Lienzo etiqueta="Tres tendencias de cuerpo: lineal, robusta y redondeada" alto={196}>
-      <Silueta x={55} hombros={20} cintura={13} cadera={15} alto={150} activa={activa === 'lineal'} />
-      <Silueta x={160} hombros={31} cintura={18} cadera={20} alto={146} activa={activa === 'robusta' || activa === 'intermedia'} />
-      <Silueta x={265} hombros={26} cintura={30} cadera={30} alto={140} activa={activa === 'redondeada'} />
-      <Texto x={55} y={188} color={activa === 'lineal' ? 'var(--accent)' : undefined}>
-        Lineal
-      </Texto>
-      <Texto x={160} y={188} color={activa === 'robusta' || activa === 'intermedia' ? 'var(--accent)' : undefined}>
-        {activa === 'intermedia' ? 'Intermedia' : 'Robusta'}
-      </Texto>
-      <Texto x={265} y={188} color={activa === 'redondeada' ? 'var(--accent)' : undefined}>
-        Redondeada
-      </Texto>
+    <Lienzo etiqueta="Los tres tipos de cuerpo: ectomorfo, mesomorfo y endomorfo" alto={196}>
+      <Silueta x={55} hombros={20} cintura={13} cadera={15} alto={150} activa={activa === 'ectomorfo'} />
+      <Silueta x={160} hombros={31} cintura={18} cadera={20} alto={146} activa={activa === 'mesomorfo'} />
+      <Silueta x={265} hombros={26} cintura={30} cadera={30} alto={140} activa={activa === 'endomorfo'} />
+      <Texto x={55} y={188} color={color('ectomorfo')}>Ectomorfo</Texto>
+      <Texto x={160} y={188} color={color('mesomorfo')}>Mesomorfo</Texto>
+      <Texto x={265} y={188} color={color('endomorfo')}>Endomorfo</Texto>
+    </Lienzo>
+  )
+}
+
+/** Dónde se toman las medidas del somatotipo completo: de frente y de espalda, con números. */
+export function PuntosSomatotipo() {
+  const punto = (x: number, y: number, n: number, color = 'var(--accent)') => (
+    <g key={n}>
+      <circle cx={x} cy={y} r={8} fill={color} />
+      <text x={x} y={y + 4} textAnchor="middle" fontSize={10} fontWeight={700} fill="#fff" fontFamily="var(--font-body)">
+        {n}
+      </text>
+    </g>
+  )
+  return (
+    <Lienzo etiqueta="Puntos de medición: pliegues, perímetros y anchos de hueso" alto={200}>
+      <Silueta x={85} hombros={28} cintura={18} cadera={21} alto={160} activa={false} />
+      <Silueta x={235} hombros={28} cintura={18} cadera={21} alto={160} activa={false} />
+      <Texto x={85} y={196}>de frente</Texto>
+      <Texto x={235} y={196}>de espalda</Texto>
+      {punto(97, 111, 3)}
+      {punto(54, 90, 5, 'var(--done)')}
+      {punto(50, 113, 7, 'var(--soft)')}
+      {punto(96, 152, 8, 'var(--soft)')}
+      {punto(78, 176, 4)}
+      {punto(98, 176, 6, 'var(--done)')}
+      {punto(203, 86, 1)}
+      {punto(246, 82, 2)}
     </Lienzo>
   )
 }
