@@ -4,7 +4,7 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Entrega actual
 
-**Entrega 7 — Android nativo**, hecha (versión 0.26.0): falta que el dueño cargue los dos secretos de la firma en GitHub, instale el APK y confirme que los pasos aparecen solos en Hoy. Entregas 1 a 7 hechas.
+**Las 7 entregas de la especificación están terminadas** (versión 0.26.0). El dueño cargó los secretos de la firma, instaló el APK y confirmó que funciona. Pendientes chicos: ver "Ideas y pendientes" más abajo.
 
 ## Hecho
 
@@ -49,6 +49,14 @@ Claude Code actualiza este archivo al final de cada sesión.
 - [x] Resultados, niveles por área e historial con gráficos.
 - [x] Pantalla Hoy en versión inicial (sin plan todavía: invita a hacer la evaluación y muestra resultados).
 - [ ] Datos pendientes de completar desde las fuentes: puntos de frecuencia del índice HUNT, flexiones de mujeres por edad, tabla completa de rodilla a la pared.
+
+## Ideas y pendientes
+
+- Completar datos de normas: índice HUNT (puntos de frecuencia), flexiones de mujeres por edad, tabla completa de rodilla a la pared.
+- Checklist de técnica de los 6 ejercicios básicos (requisito de etapa que falta).
+- Que el plan sume solo rounds de sombra y pies (entrada en calor o días de cardio) si "Saber defenderme" pesa.
+- Que pasar de etapa ajuste el plan (más volumen o escalones).
+- Avisos extra en Android: recordatorio del control diario y de la evaluación cada 4 semanas.
 
 ## Decisiones tomadas
 
