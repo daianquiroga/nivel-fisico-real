@@ -12,6 +12,8 @@ import { avisosLimitacion, ejercicio } from '../../lib/ejercicios'
 import { LIMITACIONES, diaDeHoy } from '../../lib/perfil'
 import { alternativas, type SesionPlan } from '../../lib/plan/generador'
 import { NOMBRES_VERSION, aplicarVersion, armarCola, fechaLocal, type Version } from '../../lib/plan/sesion'
+import { pausaActiva, usarCiclo } from '../../lib/plan/ciclo'
+import { aplicarDescarga } from '../../lib/plan/periodizacion'
 import { usarPlan } from '../../lib/plan/usarPlan'
 import { guardarSesion, usarSesiones } from '../../lib/registroEjercicios'
 import { callar, hablar, hayVoz, setVozActiva, vozActiva } from '../../lib/voz'
@@ -91,7 +93,8 @@ function Descanso({ segundos, siguiente, onListo }: { segundos: number; siguient
 
 export function Entrenar() {
   const { dia: diaTxt = '0', idx: idxTxt = '0' } = useParams()
-  const dia = Number(diaTxt)
+  const micro = diaTxt === 'micro'
+  const dia = micro ? -1 : Number(diaTxt)
   const idx = Number(idxTxt)
   const navegar = useNavigate()
   const { plan, entrada } = usarPlan()
@@ -108,8 +111,11 @@ export function Entrenar() {
   const [diario, setDiario] = useState({ bien: '', mejorar: '', sentir: '' })
   usarPantallaEncendida(run !== null && run.fase !== 'fin')
 
-  const clave = `${fechaLocal()}-${dia}-${idx}`
-  const original = plan?.dias[dia]?.sesiones[idx]
+  const clave = `${fechaLocal()}-${diaTxt}-${idx}`
+  const { estado: ciclo } = usarCiclo(entrada?.nivelFuerza ?? 2)
+  const pausa = useMemo(() => pausaActiva(), [])
+  const original = micro ? pausa : plan?.dias[dia]?.sesiones[idx]
+  const descarga = !micro && ciclo?.fase === 'descarga'
   const esHoy = dia === diaDeHoy()
   const zona = esHoy && control?.hoy && control.hoy.dolor !== 'ninguno' ? control.hoy.zona : undefined
   const versionInicial: Version = (esHoy && control?.hoy?.version) || 'completa'
@@ -130,8 +136,9 @@ export function Entrenar() {
   const sesion = useMemo(() => {
     if (run) return run.sesion
     if (!original) return null
-    return aplicarVersion(original, version ?? versionInicial, entrada, zona)
-  }, [run, original, version, versionInicial, entrada, zona])
+    const v = aplicarVersion(original, version ?? versionInicial, entrada, zona)
+    return descarga && original.tipo === 'fuerza' ? aplicarDescarga(v) : v
+  }, [run, original, version, versionInicial, entrada, zona, descarga])
 
   const cola = useMemo(() => (sesion ? armarCola(sesion) : []), [sesion])
   const paso = run ? cola[run.pos] : undefined
@@ -331,12 +338,15 @@ export function Entrenar() {
             {[sesion.lugar, `unos ${sesion.minutos} minutos`, `${cola.length} ${cola.length === 1 ? 'paso' : 'pasos'}`].filter(Boolean).join(' · ')}
           </p>
         </header>
-        <Segmentado<Version>
-          etiqueta="Versión"
-          opciones={(['completa', 'reducida', 'minima'] as Version[]).map((v) => ({ valor: v, texto: NOMBRES_VERSION[v] }))}
-          valor={version ?? versionInicial}
-          onCambio={setVersion}
-        />
+        {!micro && (
+          <Segmentado<Version>
+            etiqueta="Versión"
+            opciones={(['completa', 'reducida', 'minima'] as Version[]).map((v) => ({ valor: v, texto: NOMBRES_VERSION[v] }))}
+            valor={version ?? versionInicial}
+            onCambio={setVersion}
+          />
+        )}
+        {descarga && sesion.tipo === 'fuerza' && <Aviso tipo="ok">Semana de descarga: la mitad de las series y un 10 % menos de peso.</Aviso>}
         {zona && <Aviso tipo="error">Marcaste molestia o dolor en {nombreLim(zona)}: ya cambiamos los ejercicios que la cargan.</Aviso>}
         <Tarjeta>
           {sesion.ejercicios.map((y, i) => (
@@ -344,7 +354,11 @@ export function Entrenar() {
               <span className={p.letra}>{y.grupo ? (y.grupo === 'C' ? '↻' : y.grupo) : i + 1}</span>
               <span className={p.info}>
                 <b>{ejercicio(y.id)?.nombre}</b>
-                <span>{ejercicio(y.id)?.tipo === 'minutos' ? `${y.rango[0]} min` : `${y.series} × ${y.rango[0]}–${y.rango[1]}`}</span>
+                <span>
+                  {ejercicio(y.id)?.tipo === 'minutos'
+                    ? `${y.rango[0]} min`
+                    : `${y.series > 1 ? `${y.series} × ` : ''}${y.rango[0] === y.rango[1] ? y.rango[0] : `${y.rango[0]}–${y.rango[1]}`}`}
+                </span>
               </span>
             </div>
           ))}
@@ -363,7 +377,9 @@ export function Entrenar() {
             Que me guíe con voz
           </label>
         )}
-        <p className={estilos.chico}>Antes de empezar: 5 minutos de entrada en calor (marcha en el lugar, círculos de brazos y cadera, unas sentadillas suaves).</p>
+        {sesion.tipo === 'fuerza' && (
+          <p className={estilos.chico}>Antes de empezar: 5 minutos de entrada en calor (marcha en el lugar, círculos de brazos y cadera, unas sentadillas suaves).</p>
+        )}
         <Boton variante="principal" ancho onClick={empezar}>
           Empezar
         </Boton>

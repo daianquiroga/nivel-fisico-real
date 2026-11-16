@@ -5,6 +5,7 @@ import type { Resultados } from '../evaluacion'
 import { cargarInicio } from '../perfil'
 import { todasLasSesiones } from '../registroEjercicios'
 import { leerTipoCuerpo } from '../usarTipoCuerpo'
+import { asegurarCiclo } from './ciclo'
 import { escalonesIniciales, generarPlan, type EntradaPlan, type PlanSemana } from './generador'
 
 const CLAVE = 'plan'
@@ -46,6 +47,7 @@ export function usarPlan() {
 
   const cargar = useCallback(async () => {
     const [p, e] = await Promise.all([leerPlan(), armarEntrada()])
+    if (p) await asegurarCiclo(p.creado)
     setEntrada(e)
     setPlan(p)
   }, [])
@@ -59,6 +61,7 @@ export function usarPlan() {
     if (!e) return
     const nuevo = generarPlan(e)
     await guardarPlan(nuevo)
+    await asegurarCiclo(nuevo.creado)
     setEntrada(e)
     setPlan(nuevo)
   }, [])
