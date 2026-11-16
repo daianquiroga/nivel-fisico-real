@@ -156,7 +156,7 @@ export function Aprender() {
               <Biblioteca />
             </>
           )}
-          {!categoria && <Proximamente entrega="entrega 6" items={['Entrenador por voz que canta combinaciones y entrenador de contragolpes.', 'Poder de pelea y simulador de peleas.']} />}
+          {!categoria && <Proximamente entrega="entrega 6" items={['Poder de pelea y simulador de peleas.']} />}
         </>
       )}
     </>

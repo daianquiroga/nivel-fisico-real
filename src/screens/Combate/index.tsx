@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Aviso, Tarjeta, estilos } from '../../components/ui'
-import { DibujoGuardia, DibujoPies } from '../../content/dibujos-combate'
-import { DISCIPLINAS, NIVELES_PIES, NIVELES_SOMBRA, disciplina, guardarAjustesCombate, mesesCon } from '../../lib/combate'
+import { DibujoGuardia, DibujoPies, DibujoTecnica } from '../../content/dibujos-combate'
+import { DISCIPLINAS, NIVELES_PIES, NIVELES_SOMBRA, disciplina, guardarAjustesCombate, mesesCon, nivelSombra as nivelDe } from '../../lib/combate'
 import e from '../Evaluacion/evaluacion.module.css'
 import s from '../Ejercicios/ejercicios.module.css'
 import h from '../Hoy/hoy.module.css'
@@ -10,13 +10,21 @@ import { Volver, usarCombate } from './comun'
 export function Combate() {
   const { estado, recargar, disciplina: disc, nivelSombra, nivelPies } = usarCombate()
   if (!estado) return null
+  const segunda = estado.ajustes?.segunda && estado.ajustes.segunda !== disc ? estado.ajustes.segunda : undefined
+  const d2 = segunda ? disciplina(segunda) : undefined
+  const nivel2 = segunda ? nivelDe(estado.sombra, segunda) : 0
   const d = disciplina(disc)!
   const sigSombra = NIVELES_SOMBRA[Math.min(nivelSombra, NIVELES_SOMBRA.length - 1)]
   const sigPies = NIVELES_PIES[Math.min(nivelPies, NIVELES_PIES.length - 1)]
   const meses = estado.ajustes ? mesesCon(estado.ajustes) : 0
 
   async function elegir(id: string) {
-    await guardarAjustesCombate({ disciplina: id, segunda: estado?.ajustes?.segunda, desde: estado?.ajustes?.disciplina === id ? estado.ajustes.desde : new Date().toISOString() })
+    await guardarAjustesCombate({ disciplina: id, segunda: estado?.ajustes?.segunda === id ? undefined : estado?.ajustes?.segunda, desde: estado?.ajustes?.disciplina === id ? estado.ajustes.desde : new Date().toISOString() })
+    await recargar()
+  }
+
+  async function elegirSegunda(id: string | undefined) {
+    await guardarAjustesCombate({ disciplina: disc, segunda: id, desde: estado?.ajustes?.desde ?? new Date().toISOString() })
     await recargar()
   }
 
@@ -63,6 +71,50 @@ export function Combate() {
           </Link>
         )}
       </Tarjeta>
+
+      <div className={s.lista}>
+        <Link to="/combate/voz" className={s.item}>
+          <span className={s.itemNombre}>Entrenador por voz</span>
+          <span className={s.itemDetalle}>Te canta combinaciones durante el round: elegís tempo, complejidad, orden y momento</span>
+        </Link>
+        <Link to="/combate/reaccion" className={s.item}>
+          <span className={s.itemNombre}>Contragolpes</span>
+          <span className={s.itemDetalle}>Aparece un ataque y respondés con defensa y contragolpe; mide tu reacción</span>
+        </Link>
+      </div>
+
+      <p className="etiqueta">Segunda disciplina (opcional)</p>
+      <div className={s.filtros} role="radiogroup" aria-label="Segunda disciplina">
+        <button type="button" role="radio" aria-checked={!segunda} className={`${s.filtro} ${!segunda ? s.filtroOn : ''}`} onClick={() => void elegirSegunda(undefined)}>
+          Ninguna
+        </button>
+        {DISCIPLINAS.filter((x) => x.id !== disc).map((x) => (
+          <button key={x.id} type="button" role="radio" aria-checked={x.id === segunda} className={`${s.filtro} ${x.id === segunda ? s.filtroOn : ''}`} onClick={() => void elegirSegunda(x.id)}>
+            {x.nombre}
+          </button>
+        ))}
+      </div>
+      {segunda && meses < 6 && <p className={estilos.chico}>Se puede, pero lo ideal es sumarla después de 6 a 12 meses con la base. Si la sumás ahora, que sea 1 o 2 rounds por sesión.</p>}
+      {d2 && (
+        <Tarjeta>
+          <p className="etiqueta">Sombra · {d2.nombre}</p>
+          <h2 className={h.tituloTarjeta}>{nivel2 === 0 ? 'Empezá por el nivel 1' : `Nivel ${nivel2} de 5`}</h2>
+          {segunda === 'lucha' && <DibujoTecnica id="escape-cadera" />}
+          <p className={estilos.texto2}>
+            {segunda === 'lucha'
+              ? 'Rounds de movimiento de suelo: camarón, puente, levantarte y sprawl. Necesitás unos 2 × 1 m o un colchón finito.'
+              : `Ahora: nivel ${Math.min(nivel2 + 1, 5)}. Hacé 1 o 2 rounds al final de tu sombra.`}
+          </p>
+          <Link to={`/combate/rondas/sombra?d=${segunda}`} className={estilos.boton}>
+            {segunda === 'lucha' ? 'Hacer rounds de suelo' : `Hacer rounds de ${d2.nombre.split(':')[0].toLowerCase()}`}
+          </Link>
+          {nivel2 < 5 && (
+            <Link to={`/combate/evaluar?d=${segunda}`} className={estilos.boton}>
+              Evaluar el nivel {nivel2 + 1}
+            </Link>
+          )}
+        </Tarjeta>
+      )}
 
       <Tarjeta>
         <p className="etiqueta">Juego de pies</p>

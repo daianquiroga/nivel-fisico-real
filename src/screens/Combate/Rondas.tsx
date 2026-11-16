@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { Aviso, Boton, Tarjeta, estilos } from '../../components/ui'
 import { DibujoGuardia, DibujoPies, DibujoTecnica } from '../../content/dibujos-combate'
 import { NIVELES_PIES, NIVELES_SOMBRA, disciplina, tecnica } from '../../lib/combate'
@@ -16,7 +16,7 @@ const metDe = (tipo: string, nivel: number) => (tipo === 'sombra' && nivel >= 4 
 
 export function RondasCombate() {
   const { tipo = 'sombra' } = useParams()
-  const { estado, recargar, disciplina: disc, nivelSombra, nivelPies } = usarCombate()
+  const { estado, recargar, disciplina: disc, nivelSombra, nivelPies } = usarCombate(useSearchParams()[0].get('d'))
   const [fin, setFin] = useState<number | null>(null)
   usarPantallaEncendida(true)
   if (!estado) return null
@@ -57,7 +57,7 @@ export function RondasCombate() {
         </h1>
         <p className={e.para}>{esPies ? (n as (typeof NIVELES_PIES)[number]).que : n.objetivo}</p>
       </header>
-      <Tarjeta>{esPies ? <DibujoPies nivel={n.nivel} /> : <DibujoGuardia />}</Tarjeta>
+      <Tarjeta>{esPies ? <DibujoPies nivel={n.nivel} /> : d.id === 'lucha' ? <DibujoTecnica id="escape-cadera" /> : <DibujoGuardia />}</Tarjeta>
       <ol className={s.seccion}>
         {n.pasos.map((p) => (
           <li key={p}>{p}</li>
@@ -106,7 +106,7 @@ export function RondasCombate() {
             </Tarjeta>
           )}
           {!esPies && actual < NIVELES_SOMBRA.length && (
-            <Link to="/combate/evaluar" className={estilos.boton}>
+            <Link to={`/combate/evaluar?d=${disc}`} className={estilos.boton}>
               Evaluar el nivel {n.nivel} con un video
             </Link>
           )}

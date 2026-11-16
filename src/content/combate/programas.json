@@ -167,9 +167,10 @@
       "basicas": [
         "caida",
         "escape-cadera",
+        "puente",
         "levantarse",
-        "derribo",
         "sprawl",
+        "derribo",
         "clinch"
       ],
       "criterios": [
@@ -177,7 +178,29 @@
         "Al caer, el mentón va al pecho y la cabeza no toca el piso.",
         "El escape de cadera sale del pie apoyado, no de las manos.",
         "Te levantás con una mano en el piso y la otra cubriendo."
-      ]
+      ],
+      "sombra": {
+        "1": [
+          "Movimiento de suelo: necesitás unos 2 × 1 m (o un colchón finito). Hacé 10 camarones por lado, 10 puentes por lado y 5 levantadas con guardia.",
+          "Practicá la caída hacia atrás desde agachado, con el mentón al pecho."
+        ],
+        "2": [
+          "Encadená: camarón, camarón y levantarte con guardia.",
+          "De pie: cambio de nivel y sprawl, volviendo a parado."
+        ],
+        "3": [
+          "Puente hacia un lado + camarón hacia el otro + levantarte.",
+          "Sprawl + volver a la guardia + paso en ángulo."
+        ],
+        "4": [
+          "20 segundos rápidos de camarones y puentes alternados, 40 de ritmo medio.",
+          "Siempre con control: rápido no es desprolijo."
+        ],
+        "5": [
+          "Imaginá que te empujan desde distintos lados y respondé con el escape que corresponde.",
+          "Pronto la app te va a cantar señales (sprawl, levantarte, camarón) por voz."
+        ]
+      }
     }
   ],
   "criteriosGenerales": [

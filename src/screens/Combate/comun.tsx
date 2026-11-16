@@ -24,7 +24,8 @@ export interface EstadoCombate {
 }
 
 /** Disciplina elegida y niveles aprobados, guardados en el celular. */
-export function usarCombate() {
+/** `otra`: id de una disciplina para ver su nivel (por ejemplo, la segunda); si no, la base. */
+export function usarCombate(otra?: string | null) {
   const [estado, setEstado] = useState<EstadoCombate | null>(null)
   const recargar = useCallback(async () => {
     const [ajustes, sombra, pies] = await Promise.all([leerAjustesCombate(), leerTipo<PruebaSombra>('sombra'), leerTipo<PruebaPies>('pies')])
@@ -33,7 +34,7 @@ export function usarCombate() {
   useEffect(() => {
     void recargar()
   }, [recargar])
-  const disc = estado?.ajustes?.disciplina ?? 'boxeo'
+  const disc = otra || (estado?.ajustes?.disciplina ?? 'boxeo')
   return {
     estado,
     recargar,

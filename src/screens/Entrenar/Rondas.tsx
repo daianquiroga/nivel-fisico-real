@@ -20,7 +20,7 @@ export function Rondas({
   /** Trabajo y descanso en segundos y cantidad de rondas, para empezar con otros valores. */
   inicial?: { trabajo: number; descanso: number; rondas: number }
   /** Se llama en cada cambio de fase (para cantar combinaciones, por ejemplo). */
-  onRonda?: (r: { ronda: number; fase: 'trabajo' | 'descanso' } | null) => void
+  onRonda?: (r: { ronda: number; fase: 'trabajo' | 'descanso'; segundos: number; rondas: number } | null) => void
 }) {
   const [trabajo, setTrabajo] = useState(inicial?.trabajo ?? (intervalos ? 30 : minutos * 60))
   const [descanso, setDescanso] = useState(inicial?.descanso ?? (intervalos ? 30 : 0))
@@ -33,7 +33,7 @@ export function Rondas({
   const avisarRonda = useRef(onRonda)
   avisarRonda.current = onRonda
   useEffect(() => {
-    avisarRonda.current?.(estado ? { ronda: estado.ronda, fase: estado.fase } : null)
+    avisarRonda.current?.(estado ? { ronda: estado.ronda, fase: estado.fase, segundos: estado.fase === 'trabajo' ? trabajo : descanso, rondas } : null)
   }, [estado?.ronda, estado?.fase]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {

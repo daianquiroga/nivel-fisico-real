@@ -10,7 +10,7 @@ describe('combate', () => {
   it('filtra técnicas por disciplina y distancia', () => {
     expect(tecnicasDe('boxeo', null).every((t) => t.disciplinas.includes('boxeo'))).toBe(true)
     expect(tecnicasDe('boxeo', null).some((t) => t.tipo === 'patada')).toBe(false)
-    expect(tecnicasDe(null, 'suelo').map((t) => t.id)).toEqual(['caida', 'escape-cadera', 'levantarse'])
+    expect(tecnicasDe(null, 'suelo').map((t) => t.id)).toEqual(['caida', 'puente', 'escape-cadera', 'levantarse'])
   })
 
   it('8 criterios y se aprueba solo con todos', () => {

@@ -178,6 +178,12 @@ const TECNICAS: Record<string, DefTecnica> = {
     flechas: recta([60, 136], [64, 158]),
     extra: <Texto x={90} y={112}>mentón al pecho</Texto>,
   },
+  puente: {
+    sinGuardia: true,
+    pose: { cabeza: [80, 152], cuello: [96, 152], cadera: [150, 116], rodD: [184, 124], pieD: [194, 166], rodI: [180, 128], pieI: [188, 166], codoD: [100, 162], manoD: [84, 167], codoI: [104, 164], manoI: [90, 168] },
+    flechas: recta([150, 156], [150, 100]),
+    extra: <Texto x={236} y={100}>cadera arriba, explosivo</Texto>,
+  },
   'escape-cadera': {
     sinGuardia: true,
     pose: { cabeza: [80, 148], cuello: [96, 152], cadera: [148, 156], rodD: [178, 128], pieD: [170, 166], rodI: [186, 146], pieI: [210, 160], codoD: [118, 134], manoD: [134, 118], codoI: [110, 140], manoI: [126, 124] },

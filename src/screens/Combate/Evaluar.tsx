@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Aviso, Boton, Tarjeta, estilos } from '../../components/ui'
 import { DibujoGuardia } from '../../content/dibujos-combate'
 import { CRITERIOS_GENERALES, NIVELES_SOMBRA, aprueba, criteriosDe, disciplina } from '../../lib/combate'
@@ -10,7 +10,7 @@ import s from '../Ejercicios/ejercicios.module.css'
 import { Volver, usarCombate } from './comun'
 
 export function EvaluarSombra() {
-  const { estado, recargar, disciplina: disc, nivelSombra } = usarCombate()
+  const { estado, recargar, disciplina: disc, nivelSombra } = usarCombate(useSearchParams()[0].get('d'))
   const [marcas, setMarcas] = useState<boolean[]>(Array(8).fill(false))
   const [resultado, setResultado] = useState<{ aprobado: boolean; faltan: string[]; nivel: number } | null>(null)
   if (!estado) return null

@@ -421,6 +421,27 @@
     ]
   },
   {
+    "id": "puente",
+    "nombre": "Puente (upa)",
+    "disciplinas": [
+      "lucha",
+      "mma"
+    ],
+    "distancia": "suelo",
+    "tipo": "suelo",
+    "lado": "ambos",
+    "peso": "atras",
+    "pasos": [
+      "Boca arriba, con los pies apoyados cerca de la cola y las rodillas dobladas.",
+      "Empujá con los pies y levantá la cadera bien alto, explosivo, mirando por encima de un hombro.",
+      "Bajá controlado y repetí hacia el otro lado."
+    ],
+    "errores": [
+      "Levantar la cadera despacio: en el suelo sirve si es explosivo.",
+      "Apoyar el peso en el cuello: el empuje sale de los pies y la cola."
+    ]
+  },
+  {
     "id": "escape-cadera",
     "nombre": "Escape de cadera (camarón)",
     "disciplinas": [
