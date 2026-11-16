@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Aviso, Tarjeta, estilos } from '../../components/ui'
 import { diasSinFumar, formatoPesos, plataAhorrada } from '../../lib/fumar'
@@ -14,6 +14,7 @@ import { TuDia } from './TuDia'
 import { Constancia } from './Constancia'
 import { Actividad, Agua } from './Actividad'
 import { usarInicio } from '../../lib/usarInicio'
+import { leerEstadoActualizacion, type EstadoActualizacion } from '../../lib/actualizarNativo'
 import s from './hoy.module.css'
 
 function fechaDeHoy(): string {
@@ -26,6 +27,10 @@ export function Hoy() {
   const evaluaciones = usarEvaluaciones()
   const { plan } = usarPlan()
   const coach = useRef<CoachRef>(null)
+  const [act, setAct] = useState<EstadoActualizacion>({})
+  useEffect(() => {
+    void leerEstadoActualizacion().then(setAct)
+  }, [])
   if (!cargado || evaluaciones === null) return null
   const ultima = evaluaciones[evaluaciones.length - 1]
   const res = ultima?.resultados as Resultados | undefined
@@ -132,6 +137,12 @@ export function Hoy() {
             Armar mi plan
           </Link>
         </Tarjeta>
+      )}
+
+      {act.apkNueva && (
+        <Aviso tipo="error">
+          Hay una versión nueva ({act.apkNueva}) que necesita instalar la app una vez más. {act.apkUrl && <a href={act.apkUrl}>Bajar la app</a>}
+        </Aviso>
       )}
 
       {listo && <ControlDiario semana={semana} onCambio={() => coach.current?.recargar()} />}

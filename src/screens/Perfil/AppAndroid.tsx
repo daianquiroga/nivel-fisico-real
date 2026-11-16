@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Boton, Tarjeta, estilos } from '../../components/ui'
 import { abrirAjustesHC, esAndroidWeb, esNativo, leerAvisos, leerEstadoHC, programarAvisos, urlApk, type EstadoHC, type PreferenciaAvisos } from '../../lib/nativo'
 import { leerPlan } from '../../lib/plan/usarPlan'
+import { leerEstadoActualizacion, type EstadoActualizacion } from '../../lib/actualizarNativo'
 import s from '../Ejercicios/ejercicios.module.css'
 
 /** En la app de Android: estado de Health Connect y avisos. En Chrome de Android: cómo instalar la app. */
@@ -10,8 +11,10 @@ export function AppAndroid() {
   const [hc, setHc] = useState<EstadoHC | null>(null)
   const [avisos, setAvisos] = useState<PreferenciaAvisos>({ sesiones: false, evaluacion: false })
   const [mensaje, setMensaje] = useState<string | null>(null)
+  const [act, setAct] = useState<EstadoActualizacion>({})
   useEffect(() => {
     if (!nativo) return
+    void leerEstadoActualizacion().then(setAct)
     void leerEstadoHC().then(setHc)
     void leerAvisos().then(setAvisos)
   }, [nativo])
@@ -54,6 +57,16 @@ export function AppAndroid() {
   return (
     <Tarjeta>
       <p className="etiqueta">App de Android</p>
+      <p className={estilos.texto2}>
+        Versión {__VERSION_APP__}. Se actualiza sola: al abrirla con internet baja lo nuevo y lo aplica la próxima vez que la abrís.
+        {act.pendiente ? ` Ya está bajada la ${act.pendiente}: cerrala y volvé a abrirla.` : ''}
+      </p>
+      {act.apkNueva && (
+        <p className={estilos.texto2}>
+          La versión {act.apkNueva} necesita instalar la app de nuevo una vez (cambió una parte del celular).{' '}
+          {act.apkUrl && <a href={act.apkUrl}>Bajarla</a>}
+        </p>
+      )}
       <p className={estilos.texto2}>Health Connect: {hc?.activo ? 'conectado, la app lee tus pasos y la distancia.' : 'sin conectar. Conectalo desde Hoy → Pasos de hoy.'}</p>
       {hc?.activo && <Boton onClick={() => void abrirAjustesHC()}>Ajustes de Health Connect</Boton>}
       <p className="etiqueta">Avisos</p>

@@ -12,6 +12,14 @@ const config: CapacitorConfig = {
     LocalNotifications: {
       iconColor: '#B8233F',
     },
+    // Actualizaciones de la parte web dentro de la app, bajadas de la página de GitHub del propio repositorio.
+    // Modo manual: el plugin no consulta a ningún servidor de terceros y no manda estadísticas (statsUrl vacío).
+    CapacitorUpdater: {
+      autoUpdate: false,
+      statsUrl: '',
+      updateUrl: '',
+      channelUrl: '',
+    },
   },
 }
 

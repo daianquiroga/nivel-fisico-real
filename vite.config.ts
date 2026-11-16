@@ -12,6 +12,8 @@ export default defineConfig(({ mode }) => ({
   base: mode === 'android' ? './' : '/nivel-fisico-real/',
   define: {
     __VERSION_APP__: JSON.stringify(pkg.version),
+    // Dónde busca actualizaciones la app de Android (lo pone GitHub Actions; vacío al probar en la compu).
+    __URL_ACTUALIZACION__: JSON.stringify(process.env.URL_ACTUALIZACION ?? ''),
   },
   plugins: [
     react(),

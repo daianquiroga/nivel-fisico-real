@@ -37,6 +37,8 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build:android
+        env:
+          URL_ACTUALIZACION: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/android/
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
