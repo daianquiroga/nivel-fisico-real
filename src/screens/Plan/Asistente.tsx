@@ -99,7 +99,7 @@ export function AsistenteRutina() {
   const puedeSeguir = nombre === 'Días' ? r.dias.length > 0 : nombre === 'Objetivo' ? r.prioridades.length > 0 : true
 
   async function guardar() {
-    if (!plan) return
+    if (!plan || !entrada) return
     const p = { ...sinVacias(plan), editado: true }
     await guardarPlan(p)
     await asegurarCiclo(p.creado)
