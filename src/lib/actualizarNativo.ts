@@ -42,6 +42,8 @@ export interface EstadoActualizacion {
   apkUrl?: string
   /** Última versión que se vio funcionando (para avisar "se actualizó"). */
   vista?: string
+  /** Versión anterior, si recién se actualizó (Hoy lo muestra una vez). */
+  actualizadaDesde?: string
 }
 
 export async function leerEstadoActualizacion(): Promise<EstadoActualizacion> {
@@ -60,9 +62,14 @@ export async function iniciarActualizaciones(): Promise<string | null> {
   await CapacitorUpdater.notifyAppReady()
   const estado = await leerEstadoActualizacion()
   const recien = estado.vista && compararVersiones(__VERSION_APP__, estado.vista) > 0 ? estado.vista : null
-  await guardar({ ...estado, vista: __VERSION_APP__, pendiente: estado.pendiente && compararVersiones(estado.pendiente, __VERSION_APP__) > 0 ? estado.pendiente : undefined })
+  await guardar({ ...estado, vista: __VERSION_APP__, actualizadaDesde: recien ?? estado.actualizadaDesde, pendiente: estado.pendiente && compararVersiones(estado.pendiente, __VERSION_APP__) > 0 ? estado.pendiente : undefined })
   void buscarActualizacion()
   return recien
+}
+
+/** Borra el aviso de "se actualizó" (después de mostrarlo). */
+export async function olvidarActualizada() {
+  await guardar({ ...(await leerEstadoActualizacion()), actualizadaDesde: undefined })
 }
 
 async function buscarActualizacion() {

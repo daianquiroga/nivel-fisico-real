@@ -14,7 +14,7 @@ import { TuDia } from './TuDia'
 import { Constancia } from './Constancia'
 import { Actividad, Agua } from './Actividad'
 import { usarInicio } from '../../lib/usarInicio'
-import { leerEstadoActualizacion, type EstadoActualizacion } from '../../lib/actualizarNativo'
+import { leerEstadoActualizacion, olvidarActualizada, type EstadoActualizacion } from '../../lib/actualizarNativo'
 import s from './hoy.module.css'
 
 function fechaDeHoy(): string {
@@ -29,7 +29,10 @@ export function Hoy() {
   const coach = useRef<CoachRef>(null)
   const [act, setAct] = useState<EstadoActualizacion>({})
   useEffect(() => {
-    void leerEstadoActualizacion().then(setAct)
+    void leerEstadoActualizacion().then((e) => {
+      setAct(e)
+      if (e.actualizadaDesde) void olvidarActualizada()
+    })
   }, [])
   if (!cargado || evaluaciones === null) return null
   const ultima = evaluaciones[evaluaciones.length - 1]
@@ -138,6 +141,8 @@ export function Hoy() {
           </Link>
         </Tarjeta>
       )}
+
+      {act.actualizadaDesde && <Aviso tipo="ok">¡La app se actualizó sola a la versión {__VERSION_APP__}! Tus datos siguen igual.</Aviso>}
 
       {act.apkNueva && (
         <Aviso tipo="error">
