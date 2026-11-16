@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { Aviso, Tarjeta, estilos } from '../../components/ui'
 import { diasSinFumar, formatoPesos, plataAhorrada } from '../../lib/fumar'
@@ -7,6 +8,7 @@ import type { Resultados } from '../../lib/evaluacion'
 import { diasParaProxima, usarEvaluaciones } from '../../lib/usarEvaluaciones'
 import { usarPlan } from '../../lib/plan/usarPlan'
 import { ControlDiario } from './ControlDiario'
+import { Coach, type CoachRef } from './Coach'
 import { Pasos } from './Pasos'
 import { TuDia } from './TuDia'
 import { Constancia } from './Constancia'
@@ -23,6 +25,7 @@ export function Hoy() {
   const { cargado, perfil, semana, lugares } = usarInicio()
   const evaluaciones = usarEvaluaciones()
   const { plan } = usarPlan()
+  const coach = useRef<CoachRef>(null)
   if (!cargado || evaluaciones === null) return null
   const ultima = evaluaciones[evaluaciones.length - 1]
   const res = ultima?.resultados as Resultados | undefined
@@ -131,7 +134,9 @@ export function Hoy() {
         </Tarjeta>
       )}
 
-      {listo && <ControlDiario semana={semana} />}
+      {listo && <ControlDiario semana={semana} onCambio={() => coach.current?.recargar()} />}
+
+      {listo && <Coach ref={coach} />}
 
 
       {listo && plan && (

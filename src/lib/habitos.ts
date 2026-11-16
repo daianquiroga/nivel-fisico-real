@@ -165,3 +165,21 @@ export function semanasSinDobleFalta(plan: PlanSemana | null, fechasHechas: stri
   desde.setHours(12, 0, 0, 0)
   return Math.floor(Math.round((hoyMedio.getTime() - desde.getTime()) / 86_400_000) / 7)
 }
+
+/** Sesiones planeadas seguidas que no se hicieron, de ayer hacia atrás (hasta 14 días y desde que existe el plan). */
+export function faltasSeguidas(plan: PlanSemana | null, fechasHechas: string[], hoy = new Date()): number {
+  if (!plan) return 0
+  const hechas = new Set(fechasHechas.map((f) => f.slice(0, 10)))
+  const dias = new Set(sesionesQueCuentan(plan).map((s) => s.dia))
+  const creado = fechaLocal(new Date(plan.creado))
+  let n = 0
+  for (let i = 1; i <= 14; i++) {
+    const d = new Date(hoy)
+    d.setDate(d.getDate() - i)
+    const f = fechaLocal(d)
+    if (f < creado) break
+    if (hechas.has(f)) break
+    if (dias.has((d.getDay() + 6) % 7)) n++
+  }
+  return n
+}

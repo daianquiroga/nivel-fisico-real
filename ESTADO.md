@@ -4,10 +4,11 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Entrega actual
 
-**Entrega 5 — Aprender y coach**, parte 1 de 3 hecha (versión 0.19.0: artículos, guías y buscador). Falta la parte 2 (motor de reglas del coach en `src/lib/coach/`, mostrado en Hoy) y la parte 3 (botón "Preguntarle a Claude" y tono por nivel). Después la 6 (combate) y la 7 (Android nativo con Health Connect). Entregas 1 a 4 terminadas.
+**Entrega 5 — Aprender y coach**, partes 1 y 2 de 3 hechas (0.19.0 artículos, guías y buscador; 0.20.0 coach y etapas). Falta la parte 3: botón "Preguntarle a Claude" (copia perfil, nivel, plan y registros sin fotos). Después la 6 (combate) y la 7 (Android nativo con Health Connect). Entregas 1 a 4 terminadas.
 
 ## Hecho
 
+- Versión 0.20.0 (entrega 5, parte 2): coach sin IA en `src/lib/coach/` (con tests). Reglas: molestia o dolor marcado hoy → activar el modo cuidado de esa zona con un botón; sueño menor a 6 h → versión reducida; 2 o más sesiones planeadas seguidas sin hacer → volver con la mínima; ejercicio estancado 3 sesiones → bajar 10 % o variante; tope del rango 2 sesiones seguidas → subir de escalón; cintura +2 cm en unas 4 semanas con objetivo de verse mejor → revisar comida; retest con +5 puntos de percentil → celebrar; etapa cumplida → pasar de etapa. Tono por nivel: principiante con pasos, intermedio simple, avanzado técnico. En Hoy, tarjeta "Tu coach" con hasta 3 consejos (se pueden cerrar por hoy). En Progreso, "Tu etapa": las 5 etapas con dibujo de escalera y los requisitos con su avance (`etapas.ts`).
 - Versión 0.19.0 (entrega 5, parte 1): base de conocimiento en Aprender. 14 artículos y guías en `src/content/aprender/articulos.json` con versión principiante, intermedio y avanzado y sus fuentes: caminar, correr desde cero (plan NHS de 9 semanas), soga, bici, respiración, pausas activas, cómo se recupera el cuerpo al dejar de fumar, dolor muscular o lesión, grasa por zonas, proteína y porciones con la mano, sueño, hábitos, progresión y glosario. Cada uno con dibujo (`src/content/dibujos-aprender.tsx` o el del ejercicio). Temas por categoría, nivel de lectura (★ = el de tu última evaluación, se puede cambiar) y buscador sin internet con sinónimos (panza = abdomen = barriga, agujetas = dolor muscular, pucho = cigarrillo…) que también encuentra ejercicios. Artículo en `/aprender/:id`. Lógica en `src/lib/aprender.ts` con tests (contenido completo, dibujo en todos, búsqueda).
 - Parte 1 de la entrega 1: base técnica, tema, navegación, respaldo, publicación.
 - Parte 2 de la entrega 1 (versión 0.2.0): primer inicio en 5 pasos (datos, objetivos, lugares y equipo, semana, salud), tablas de referencia en `src/content/normas/` y todos los cálculos de la evaluación en `src/lib/calc/` con 30 pruebas automáticas que reproducen los casos de `EVALUACION.md`. Hoy muestra días sin fumar, plata ahorrada, avisos de salud y limitaciones; Perfil muestra el resumen y permite editar.
@@ -84,6 +85,8 @@ Claude Code actualiza este archivo al final de cada sesión.
 - Calorías: no se estiman para movilidad (no hay un valor del Compendium verificado para estiramientos suaves). El trote usa 12020 (7,5 MET) y la carrera 12050 (9,3 MET).
 - Agua: la barra compara contra el agua total de referencia (que incluye la comida), por eso se aclara que la comida también suma.
 - Aprender: el nivel de lectura sugerido sale del promedio de los percentiles de fuerza y cardio de la última evaluación (1-2 principiante, 3 intermedio, 4-5 avanzado), es decisión de diseño. La búsqueda pide todas las palabras; si nada las tiene todas, muestra lo que tiene más.
+- Coach: "objetivo de bajar grasa" = Verme mejor con 40 puntos o más. Las faltas seguidas se cuentan hasta 14 días atrás y desde que existe el plan. Solo se miran ejercicios anotados en las últimas 3 semanas. Los consejos cerrados se olvidan al día siguiente.
+- Etapas: los requisitos del ejemplo de la etapa 1 (8 semanas, 80 % de sesiones, retest con mejora de cardio y fuerza) se usan para todas; el checklist de técnica todavía no existe y se suma más adelante. La etapa empieza a contar desde que se armó el primer plan. Pasar de etapa no cambia el plan por ahora: la progresión sigue con los registros.
 - Calendario: hora sin zona horaria ("flotante"), así el calendario usa la hora del celular.
 - Racha: la semana en curso suma si ya está cumplida y no corta la racha mientras no termine.
 - GitHub Pages activado con origen "GitHub Actions" (lo activa el dueño de la cuenta en Configuración → Páginas).
@@ -99,6 +102,7 @@ Dirección: https://daianquiroga.github.io/nivel-fisico-real/
 5. Progreso: aparece la última evaluación y el historial; tocar una fecha abre sus resultados.
 6. Aprender: buscar un ejercicio, filtrar por tipo, abrir la ficha y moverse por la escalera.
 7. Ficha de un ejercicio → Anotar series → Guardar; volver a anotar y ver la sugerencia, el historial y Progreso → Tus ejercicios.
+10. Hoy → completar el control diario con poco sueño o una molestia y ver la tarjeta "Tu coach". Progreso → "Tu etapa".
 9. Aprender → buscar "panza" o "agujetas"; tocar un tema; abrir "Correr desde cero" y cambiar entre Principiante, Intermedio y Avanzado.
 8. Plan → Armame el plan → tocar cada día; Cambiar un ejercicio; ver avisos y equilibrio. Hoy → "Hoy te toca".
 9. Hoy → control diario → Entrenar ahora; probar descanso, +15 s, Saltar, cambiar ejercicio, salir y volver; terminar con esfuerzo y diario; ver el historial del ejercicio.

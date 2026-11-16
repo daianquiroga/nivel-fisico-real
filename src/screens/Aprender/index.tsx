@@ -140,7 +140,7 @@ export function Aprender() {
           {!categoria && (
             <Proximamente
               entrega="entrega 5"
-              items={['Un coach que funciona sin internet, mira tus registros y te sugiere qué ajustar.', 'Técnica de combate, en la entrega 6.']}
+              items={['Botón para preguntarle a Claude con tus datos ya armados.', 'Técnica de combate, en la entrega 6.']}
             />
           )}
         </>
