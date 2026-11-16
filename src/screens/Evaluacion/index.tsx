@@ -148,6 +148,11 @@ export function Evaluacion() {
       resultados: resultados as unknown as Record<string, unknown>,
     })
     await db.ajustes.delete(CLAVE_BORRADOR)
+    // En la app de Android, el aviso de la próxima evaluación se corre a 4 semanas desde hoy.
+    void import('../../lib/nativo').then(async (n) => {
+      const pref = await n.leerAvisos()
+      if (n.esNativo() && pref.evaluacion) await n.programarAvisos(await (await import('../../lib/plan/usarPlan')).leerPlan(), pref)
+    })
     navegar(`/resultado/${nuevoId}`, { replace: true })
   }
 

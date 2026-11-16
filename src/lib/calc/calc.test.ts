@@ -89,15 +89,24 @@ describe('pruebas de fuerza, movilidad y equilibrio', () => {
     expect(percentilFlexiones('h', 25, 22)!.percentil).toBeCloseTo(40)
     expect(percentilFlexiones('h', 25, 36)!.percentil).toBeGreaterThanOrEqual(80)
   })
-  it('flexiones de mujer fuera de la tabla avisan', () => {
-    expect(percentilFlexiones('m', 40, 15)!.nota).toMatch(/falta la tabla/)
+  it('flexiones de mujer por edad (CSEP-PATH)', () => {
+    // Mujer de 40 a 49: "Muy bien" desde 15 → percentil 60, sin aviso.
+    const r = percentilFlexiones('m', 45, 15)!
+    expect(r.percentil).toBeCloseTo(60)
+    expect(r.nota).toBeUndefined()
+    // Fuera de la tabla (más de 69) avisa.
+    expect(percentilFlexiones('m', 72, 10)!.nota).toMatch(/falta la tabla/)
   })
   it('plancha solo puntúa de 18 a 25 años', () => {
     expect(percentilPlancha('h', 22, 110)!.percentil).toBeCloseTo(50)
     expect(percentilPlancha('h', 35, 110)).toBeNull()
   })
-  it('rodilla a la pared', () => {
-    expect(percentilRodillaPared(11).percentil).toBeCloseTo(50)
+  it('rodilla a la pared por edad y sexo (McBride 2026)', () => {
+    expect(percentilRodillaPared(11.2, 'h', 35).percentil).toBeCloseTo(50)
+    expect(percentilRodillaPared(8, 'm', 65).percentil).toBeCloseTo(50)
+    // Hombre de 35 con 10 cm: entre P25 (8,8) y P50 (11,2) → 25 + 25 × 1,2 / 2,4 = 37,5.
+    expect(percentilRodillaPared(10, 'h', 35).percentil).toBeCloseTo(37.5)
+    expect(percentilRodillaPared(6, 'm', 85).percentil).toBeGreaterThan(50)
   })
   it('equilibrio con ojos cerrados', () => {
     expect(ojosParaEquilibrio(35)).toBe('cerrados')

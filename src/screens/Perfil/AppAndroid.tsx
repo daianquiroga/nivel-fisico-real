@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Boton, Tarjeta, estilos } from '../../components/ui'
-import { abrirAjustesHC, esAndroidWeb, esNativo, leerAvisosActivos, leerEstadoHC, programarAvisos, urlApk, type EstadoHC } from '../../lib/nativo'
+import { abrirAjustesHC, esAndroidWeb, esNativo, leerAvisos, leerEstadoHC, programarAvisos, urlApk, type EstadoHC, type PreferenciaAvisos } from '../../lib/nativo'
 import { leerPlan } from '../../lib/plan/usarPlan'
 import s from '../Ejercicios/ejercicios.module.css'
 
@@ -8,12 +8,12 @@ import s from '../Ejercicios/ejercicios.module.css'
 export function AppAndroid() {
   const nativo = esNativo()
   const [hc, setHc] = useState<EstadoHC | null>(null)
-  const [avisos, setAvisos] = useState(false)
+  const [avisos, setAvisos] = useState<PreferenciaAvisos>({ sesiones: false, evaluacion: false })
   const [mensaje, setMensaje] = useState<string | null>(null)
   useEffect(() => {
     if (!nativo) return
     void leerEstadoHC().then(setHc)
-    void leerAvisosActivos().then(setAvisos)
+    void leerAvisos().then(setAvisos)
   }, [nativo])
 
   if (!nativo) {
@@ -39,14 +39,15 @@ export function AppAndroid() {
     )
   }
 
-  async function cambiarAvisos(activar: boolean) {
-    const r = await programarAvisos(await leerPlan(), activar)
+  async function cambiarAvisos(cambio: Partial<PreferenciaAvisos>) {
+    const nuevo = { ...avisos, ...cambio }
+    const r = await programarAvisos(await leerPlan(), nuevo)
     if (r === 'sin-permiso') {
-      setAvisos(false)
+      setAvisos({ sesiones: false, evaluacion: false })
       setMensaje('No diste permiso para los avisos. Podés darlo desde los ajustes de Android → Apps → Nivel Físico Real → Notificaciones.')
     } else {
-      setAvisos(activar)
-      setMensaje(activar ? (r === 0 ? 'Activados. Cuando tu plan tenga sesiones con horario, te van a llegar.' : `Listo: ${r} avisos por semana, 15 minutos antes de cada sesión.`) : 'Avisos apagados.')
+      setAvisos(nuevo)
+      setMensaje(r === 0 ? 'Avisos apagados.' : `Listo: ${r} ${r === 1 ? 'aviso programado' : 'avisos programados'}, sin internet.`)
     }
   }
 
@@ -55,9 +56,24 @@ export function AppAndroid() {
       <p className="etiqueta">App de Android</p>
       <p className={estilos.texto2}>Health Connect: {hc?.activo ? 'conectado, la app lee tus pasos y la distancia.' : 'sin conectar. Conectalo desde Hoy → Pasos de hoy.'}</p>
       {hc?.activo && <Boton onClick={() => void abrirAjustesHC()}>Ajustes de Health Connect</Boton>}
+      <p className="etiqueta">Avisos</p>
       <label className={s.interruptor}>
-        <input type="checkbox" checked={avisos} onChange={(ev) => void cambiarAvisos(ev.target.checked)} />
-        Avisarme 15 minutos antes de cada sesión
+        <input type="checkbox" checked={avisos.sesiones} onChange={(ev) => void cambiarAvisos({ sesiones: ev.target.checked })} />
+        15 minutos antes de cada sesión
+      </label>
+      <label className={s.interruptor}>
+        <input type="checkbox" checked={Boolean(avisos.control)} onChange={(ev) => void cambiarAvisos({ control: ev.target.checked ? avisos.control ?? '08:00' : undefined })} />
+        Recordarme el control diario
+      </label>
+      {avisos.control && (
+        <label style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <span className={estilos.chico}>Todos los días a las</span>
+          <input className={s.buscador} style={{ maxWidth: 140 }} type="time" value={avisos.control} onChange={(ev) => ev.target.value && void cambiarAvisos({ control: ev.target.value })} />
+        </label>
+      )}
+      <label className={s.interruptor}>
+        <input type="checkbox" checked={avisos.evaluacion} onChange={(ev) => void cambiarAvisos({ evaluacion: ev.target.checked })} />
+        Avisarme cuando toque la evaluación (cada 4 semanas)
       </label>
       {mensaje && <p className={estilos.chico}>{mensaje}</p>}
     </Tarjeta>

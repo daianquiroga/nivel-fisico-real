@@ -1,10 +1,142 @@
 {
-  "fuente": "McBride y colegas 2026 (resumen de percentiles)",
-  "enlace": "https://fitnessnorms.pages.dev/flexibility/ankle-dorsiflexion/",
+  "fuente": "McBride y otros 2026, International normative values for the weight-bearing lunge test across age and sex in 899 healthy adults. Musculoskelet Sci Pract 82:103525 (percentiles por edad y sexo, resumidos por FitnessNorms)",
+  "enlace": "https://pubmed.ncbi.nlm.nih.gov/41723909/",
+  "enlaceTabla": "https://fitnessnorms.com/flexibility/ankle-dorsiflexion/",
   "unidad": "cm del dedo gordo a la pared",
-  "provisional": true,
-  "nota": "Tabla completa pendiente. Se usa la referencia de menores de 50 años para todas las edades.",
-  "p25": 8,
-  "p50": 11,
-  "p75": 14
+  "nota": "El percentil 50 es una estimación desde las medias de cada grupo (el estudio no informó medianas exactas).",
+  "percentiles": [
+    5,
+    25,
+    50,
+    75,
+    95
+  ],
+  "grupos": [
+    {
+      "desde": 18,
+      "hasta": 29,
+      "h": [
+        4.7,
+        8.0,
+        11.0,
+        13.2,
+        22.1
+      ],
+      "m": [
+        4.7,
+        9.8,
+        11.3,
+        12.8,
+        17.9
+      ]
+    },
+    {
+      "desde": 30,
+      "hasta": 39,
+      "h": [
+        4.3,
+        8.8,
+        11.2,
+        14.0,
+        20.5
+      ],
+      "m": [
+        4.9,
+        9.8,
+        11.4,
+        13.8,
+        17.9
+      ]
+    },
+    {
+      "desde": 40,
+      "hasta": 49,
+      "h": [
+        6.1,
+        8.0,
+        11.0,
+        14.0,
+        18.0
+      ],
+      "m": [
+        4.6,
+        8.6,
+        10.4,
+        13.0,
+        14.5
+      ]
+    },
+    {
+      "desde": 50,
+      "hasta": 59,
+      "h": [
+        4.9,
+        7.5,
+        10.4,
+        13.8,
+        17.8
+      ],
+      "m": [
+        4.0,
+        7.5,
+        9.5,
+        11.5,
+        14.5
+      ]
+    },
+    {
+      "desde": 60,
+      "hasta": 69,
+      "h": [
+        4.2,
+        7.0,
+        9.5,
+        10.6,
+        17.2
+      ],
+      "m": [
+        2.2,
+        7.0,
+        8.0,
+        9.0,
+        13.8
+      ]
+    },
+    {
+      "desde": 70,
+      "hasta": 79,
+      "h": [
+        2.0,
+        5.8,
+        7.4,
+        9.9,
+        11.0
+      ],
+      "m": [
+        2.0,
+        5.0,
+        6.5,
+        8.0,
+        10.8
+      ]
+    },
+    {
+      "desde": 80,
+      "hasta": 120,
+      "h": [
+        3.2,
+        5.0,
+        6.6,
+        8.0,
+        11.8
+      ],
+      "m": [
+        0.3,
+        5.0,
+        5.7,
+        6.2,
+        10.8
+      ]
+    }
+  ]
 }

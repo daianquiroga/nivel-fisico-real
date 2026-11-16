@@ -119,7 +119,7 @@ export function calcularResultados(sexo: Sexo, edad: number, d: DatosEvaluacion)
 
   if (d.rodilla) {
     const prom = (d.rodilla.izq + d.rodilla.der) / 2
-    r.percentiles.rodilla = percentilRodillaPared(prom)
+    r.percentiles.rodilla = percentilRodillaPared(prom, sexo, edad)
     r.diferenciaRodillas = Math.abs(d.rodilla.izq - d.rodilla.der)
     sumar('movilidad', r.percentiles.rodilla.percentil)
   }

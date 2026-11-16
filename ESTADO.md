@@ -4,10 +4,11 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Entrega actual
 
-**Las 7 entregas de la especificación están terminadas.** Extras pedidos por el dueño, en 3 partes: partes 1 y 2 hechas (0.27.0 rutina propia y análisis; 0.28.0 combate en el plan, etapas que suben la exigencia y checklist de técnica); falta la parte 3 (avisos de control diario y evaluación, normas pendientes). El dueño cargó los secretos de la firma, instaló el APK y confirmó que funciona. Pendientes chicos: ver "Ideas y pendientes" más abajo.
+**Las 7 entregas de la especificación están terminadas.** Extras pedidos por el dueño, en 3 partes: las 3 partes hechas (0.27.0 rutina propia y análisis; 0.28.0 combate en el plan, etapas y técnica; 0.29.0 avisos y normas completas). El dueño cargó los secretos de la firma, instaló el APK y confirmó que funciona. Pendientes chicos: ver "Ideas y pendientes" más abajo.
 
 ## Hecho
 
+- Versión 0.29.0 (extras, parte 3): avisos en la app de Android (Perfil → App de Android): 15 minutos antes de cada sesión, recordatorio diario del control a la hora elegida y aviso el día que toca la evaluación (28 días después de la última, a las 10; se corre al hacer una evaluación nueva). Normas completas: flexiones de mujeres de 15 a 69 años (CSEP-PATH 2019), rodilla a la pared por edad y sexo con percentiles 5 a 95 (McBride y otros 2026) y puntos de frecuencia HUNT confirmados (Nauman y otros 2012).
 - Versión 0.28.0 (extras, parte 2): el generador suma combate si "Saber defenderme" pesa (`sumarCombate` en `generador.ts`, con tests): desde 20 puntos, 2 rounds de sombra como entrada en calor de la fuerza si entran en el horario; desde 30, los días de cardio pasan a "Cardio y combate" (mitad sombra, 6 minutos de pies, el resto del cardio; mismos minutos totales). Etapas que suben la exigencia: desde la 2, una serie más en los principales; desde la 3, también en los accesorios; al pasar de etapa el plan se vuelve a armar solo si no fue editado a mano. Checklist de técnica (`/tecnica`, `src/lib/tecnica.ts` con tests): un ejercicio por movimiento base (sentadilla, empuje, tracción, bisagra, zancada, tronco), el del plan o el primero posible con el equipo; los puntos salen de los errores comunes de cada ficha; se aprueba con todos y es el cuarto requisito de etapa.
 - Versión 0.27.0 (extras, parte 1): "Mi rutina" (`/plan/armar`): armarla tildando ejercicios día por día (hora, lugar, series o minutos con +/−, aviso si falta equipo o conviene evitarlo) o pegarla como texto (días, horas, "4x10", "3 x 8-12", "30 min", nombres de gimnasio con alias); lo que no reconoce se elige a mano. Análisis en vivo y en `/plan/analisis` para cualquier plan (`src/lib/plan/analisis.ts`, con tests): aporte físico, estético y marcial de 0 a 100 y ajuste a los objetivos, series por músculo con mapa del cuerpo dibujado (Schoenfeld y otros 2017: menos de 5, 5 a 9, 10 o más; `src/content/normas/volumen.json`), cómo trabaja (días, cardio equivalente OMS, técnica de combate, movilidad, descanso, cada sesión) y qué falta sumar con ejercicios sugeridos que se suman con un toque. 10 ejercicios nuevos con dibujo: sombra, juego de pies, clase de golpes, clase de agarre (MET 15457 y 15433), extensión de cuádriceps, curl femoral, fondos, remo con barra, press militar y crunch. Los de combate no los elige solo el generador.
 - Versión 0.26.0 (entrega 7): app de Android con Capacitor 8 (`capacitor.config.ts`, carpeta `android/`). GitHub Actions (`.github/workflows/android.yml`) arma el APK en cada cambio a `main` y lo publica en la página de versiones del repositorio (versión "android", archivo `nivel-fisico-real.apk`). Pasos y distancia desde Health Connect con `@capgo/capacitor-health` (gratis, código abierto): solo lectura de pasos y distancia (el resto de los permisos del plugin se sacan del manifiesto), últimos 14 días al abrir Hoy, por día queda el número más alto entre lo leído y lo cargado a mano. Avisos locales con `@capacitor/local-notifications`: uno por semana 15 minutos antes de cada sesión con horario, se reprograman al cambiar el plan (Perfil → App de Android). Política de privacidad para Health Connect en `public/privacypolicy.html`. Sin respaldo automático en la nube (`allowBackup=false` y reglas de extracción). En Chrome de Android, Perfil ofrece bajar la app con los pasos para pasar los datos con un respaldo. Lógica en `src/lib/nativo.ts` con tests.
@@ -50,12 +51,11 @@ Claude Code actualiza este archivo al final de cada sesión.
 - [x] Cálculos con tests (`EVALUACION.md`, sección 9).
 - [x] Resultados, niveles por área e historial con gráficos.
 - [x] Pantalla Hoy en versión inicial (sin plan todavía: invita a hacer la evaluación y muestra resultados).
-- [ ] Datos pendientes de completar desde las fuentes: puntos de frecuencia del índice HUNT, flexiones de mujeres por edad, tabla completa de rodilla a la pared.
+- [x] Datos de las fuentes completos: puntos de frecuencia HUNT, flexiones de mujeres por edad y rodilla a la pared por edad y sexo (versión 0.29.0).
 
 ## Ideas y pendientes
 
-- Completar datos de normas: índice HUNT (puntos de frecuencia), flexiones de mujeres por edad, tabla completa de rodilla a la pared.
-- Avisos extra en Android: recordatorio del control diario y de la evaluación cada 4 semanas.
+- Ideas para más adelante: más ejercicios de gimnasio en la biblioteca; que el análisis compare dos rutinas lado a lado.
 
 ## Decisiones tomadas
 

@@ -37,8 +37,8 @@ export async function armarEntrada(): Promise<EntradaPlan | null> {
 export async function guardarPlan(plan: PlanSemana) {
   await db.ajustes.put({ clave: CLAVE, valor: plan })
   // En la app de Android, si los avisos están prendidos, se reprograman con el plan nuevo.
-  const { esNativo, leerAvisosActivos, programarAvisos } = await import('../nativo')
-  if (esNativo() && (await leerAvisosActivos())) await programarAvisos(plan, true)
+  const { esNativo, leerAvisos, leerAvisosActivos, programarAvisos } = await import('../nativo')
+  if (esNativo() && (await leerAvisosActivos())) await programarAvisos(plan, await leerAvisos())
 }
 
 export async function leerPlan(): Promise<PlanSemana | null> {

@@ -61,7 +61,7 @@ Modo rápido: 1, 2, 5, 6 y 7.
 | | 30 a 60 min | 0,75 |
 | | Más de 60 min | 1 |
 
-Intensidad y duración: puntajes del cuestionario HUNT (Loe 2013). **Pendiente:** confirmar los puntos de frecuencia contra Nes 2011 / Kurtze 2008 antes de cerrar la entrega 1; dejarlos en el JSON con una nota.
+Intensidad y duración: puntajes del cuestionario HUNT (Loe 2013). Frecuencia confirmada con Nauman y otros 2012 (PLOS ONE, HUNT): nunca 0, menos de una vez por semana 0, una vez 1, 2 o 3 veces 2,5, casi todos los días 5.
 
 **Fórmulas de Nes 2011** (cintura en cm, pulso en latidos/min, PA = índice):
 
@@ -169,7 +169,7 @@ Hombres:
 | 50–59 | ≤6 | 7–9 | 10–12 | 13–20 | ≥21 |
 | 60–69 | ≤4 | 5–7 | 8–10 | 11–17 | ≥18 |
 
-Mujeres 20–29 (rodillas): ≤9, 10–14, 15–20, 21–29, ≥30. **Pendiente:** cargar el resto de las edades de mujeres desde la fuente original antes de cerrar la entrega 1.
+Mujeres (rodillas), mínimo de Regular, Bien, Muy bien y Excelente (CSEP-PATH 2019): 15–19: 12, 18, 25, 33; 20–29: 10, 15, 21, 30; 30–39: 8, 13, 20, 27; 40–49: 5, 11, 15, 24; 50–59: 2, 7, 11, 21; 60–69: 2, 5, 12, 17.
 
 Categoría → percentil: 10, 30, 50, 70, 90 (interpolar dentro de la categoría).
 
@@ -179,7 +179,7 @@ Antebrazos y puntas de pie, codos bajo los hombros, cuerpo recto; termina cuando
 
 ## 5. Movilidad: rodilla a la pared (McBride 2026)
 
-Descalzo, frente a la pared, un pie adelante; la rodilla toca la pared sin levantar el talón; alejar el pie de a 1 cm hasta la máxima distancia posible. Medir dedo gordo–pared, ambas piernas; usar el promedio y señalar diferencias de más de 1,5 cm.
+Percentiles 5, 25, 50, 75 y 95 por sexo y por década (18–29 a 80+), de McBride y otros 2026 (`src/content/normas/rodilla-pared.json`). Descalzo, frente a la pared, un pie adelante; la rodilla toca la pared sin levantar el talón; alejar el pie de a 1 cm hasta la máxima distancia posible. Medir dedo gordo–pared, ambas piernas; usar el promedio y señalar diferencias de más de 1,5 cm.
 
 Referencia: menores de 50, la mitad central entre ~8 y ~14 cm (valor típico ~11 cm); 70–79 años, valor central ~7,4 cm hombres y ~6,5 cm mujeres. **Pendiente:** cargar la tabla completa de percentiles por edad y sexo de McBride 2026.
 
@@ -282,7 +282,7 @@ Percentil 0–20 = 1 Inicial · 20–40 = 2 Base · 40–60 = 3 En marcha · 60�
 
 - El VO2max es estimado (error de ~5–6 ml/kg/min).
 - Las tablas son de Noruega, Suiza, Canadá y Estados Unidos; no hay equivalentes argentinas para estas pruebas.
-- Plancha: solo normas de adultos jóvenes. Flexiones de mujeres y rodilla a la pared: completar tablas desde la fuente.
+- Plancha: solo normas de adultos jóvenes.
 - Falta potencia (salto): se puede sumar más adelante.
 - Calidad de movimiento y estética se comparan contra uno mismo.
 

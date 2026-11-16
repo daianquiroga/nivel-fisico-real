@@ -147,34 +147,69 @@ export function avisosDelPlan(plan: PlanSemana | null, antes = 15): Aviso[] {
   return out
 }
 
-export async function leerAvisosActivos(): Promise<boolean> {
-  return Boolean((await db.ajustes.get('avisos'))?.valor)
+export interface PreferenciaAvisos {
+  /** 15 minutos antes de cada sesión con horario. */
+  sesiones: boolean
+  /** Hora del recordatorio diario del control (sueño, energía, molestias), o nada. */
+  control?: string
+  /** Aviso el día que toca la evaluación (4 semanas después de la última). */
+  evaluacion: boolean
 }
 
-/** Programa (o borra) los avisos semanales de las sesiones. Devuelve cuántos quedaron. */
-export async function programarAvisos(plan: PlanSemana | null, activar: boolean): Promise<number | 'sin-permiso' | 'web'> {
+export async function leerAvisos(): Promise<PreferenciaAvisos> {
+  const v = (await db.ajustes.get('avisos'))?.valor as PreferenciaAvisos | boolean | undefined
+  if (typeof v === 'boolean') return { sesiones: v, evaluacion: false }
+  return v ?? { sesiones: false, evaluacion: false }
+}
+
+export async function leerAvisosActivos(): Promise<boolean> {
+  const a = await leerAvisos()
+  return a.sesiones || Boolean(a.control) || a.evaluacion
+}
+
+/** Fecha y hora del aviso de evaluación: 28 días después de la última, a las 10. Si ya pasó, mañana a las 10. */
+export function fechaAvisoEvaluacion(ultima: string | undefined, hoy = new Date()): Date {
+  const d = ultima ? new Date(ultima) : new Date(hoy)
+  if (ultima) d.setDate(d.getDate() + 28)
+  d.setHours(10, 0, 0, 0)
+  if (d.getTime() <= hoy.getTime()) {
+    const m = new Date(hoy)
+    m.setDate(m.getDate() + 1)
+    m.setHours(10, 0, 0, 0)
+    return m
+  }
+  return d
+}
+
+/** Programa todos los avisos según las preferencias (borra los anteriores). Devuelve cuántos quedaron. */
+export async function programarAvisos(plan: PlanSemana | null, pref: boolean | PreferenciaAvisos): Promise<number | 'sin-permiso' | 'web'> {
   if (!esNativo()) return 'web'
+  const p: PreferenciaAvisos = typeof pref === 'boolean' ? { ...(await leerAvisos()), sesiones: pref } : pref
   const { LocalNotifications } = await import('@capacitor/local-notifications')
   const pendientes = await LocalNotifications.getPending()
   if (pendientes.notifications.length) await LocalNotifications.cancel({ notifications: pendientes.notifications.map((n) => ({ id: n.id })) })
-  await db.ajustes.put({ clave: 'avisos', valor: activar })
-  if (!activar) return 0
+  await db.ajustes.put({ clave: 'avisos', valor: p })
+  if (!p.sesiones && !p.control && !p.evaluacion) return 0
   const permiso = await LocalNotifications.requestPermissions()
   if (permiso.display !== 'granted') {
-    await db.ajustes.put({ clave: 'avisos', valor: false })
+    await db.ajustes.put({ clave: 'avisos', valor: { sesiones: false, evaluacion: false } })
     return 'sin-permiso'
   }
-  const avisos = avisosDelPlan(plan)
-  if (avisos.length)
-    await LocalNotifications.schedule({
-      notifications: avisos.map((a) => ({
-        id: a.id,
-        title: a.titulo,
-        body: a.texto,
-        schedule: { on: { weekday: a.weekday, hour: a.hour, minute: a.minute }, repeats: true, allowWhileIdle: true },
-      })),
-    })
-  return avisos.length
+  type Notif = Parameters<typeof LocalNotifications.schedule>[0]['notifications'][number]
+  const lista: Notif[] = []
+  if (p.sesiones)
+    for (const a of avisosDelPlan(plan))
+      lista.push({ id: a.id, title: a.titulo, body: a.texto, schedule: { on: { weekday: a.weekday, hour: a.hour, minute: a.minute }, repeats: true, allowWhileIdle: true } })
+  if (p.control) {
+    const [h, m] = p.control.split(':').map(Number)
+    lista.push({ id: 2000, title: '¿Cómo dormiste y cómo te sentís?', body: 'Completá el control diario en 10 segundos: la app ajusta la sesión de hoy.', schedule: { on: { hour: h, minute: m }, repeats: true, allowWhileIdle: true } })
+  }
+  if (p.evaluacion) {
+    const ultima = (await db.evaluaciones.orderBy('fecha').last())?.fecha
+    lista.push({ id: 3000, title: 'Te toca la evaluación', body: 'Pasaron 4 semanas: repetí las pruebas para ver cuánto mejoraste.', schedule: { at: fechaAvisoEvaluacion(ultima), allowWhileIdle: true } })
+  }
+  if (lista.length) await LocalNotifications.schedule({ notifications: lista })
+  return lista.length
 }
 
 /** Fecha de hoy para mostrar "actualizado hoy a las…". */

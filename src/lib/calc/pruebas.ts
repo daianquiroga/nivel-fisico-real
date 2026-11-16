@@ -54,15 +54,12 @@ export function percentilPlancha(sexo: Sexo, edad: number, segundos: number): Re
   }
 }
 
-/** Rodilla a la pared (promedio de las dos piernas). Referencia provisional. */
-export function percentilRodillaPared(cm: number): ResultadoPercentil {
+/** Rodilla a la pared (promedio de las dos piernas), por edad y sexo (McBride y otros 2026). */
+export function percentilRodillaPared(cm: number, sexo: Sexo = 'h', edad = 30): ResultadoPercentil {
+  const { grupo, fuera } = grupoPorEdad(rodilla.grupos, edad)
   return {
-    percentil: percentilDesdePuntos(cm, [
-      { p: 25, v: rodilla.p25 },
-      { p: 50, v: rodilla.p50 },
-      { p: 75, v: rodilla.p75 },
-    ]),
-    nota: rodilla.provisional ? 'Referencia provisional (adultos de menos de 50 años).' : undefined,
+    percentil: limitar(percentilDesdePuntos(cm, rodilla.percentiles.map((p, i) => ({ p, v: grupo[sexo][i] }))), 1, 99),
+    nota: fuera ? `Comparado con el grupo de ${grupo.desde} a ${grupo.hasta} años.` : undefined,
   }
 }
 

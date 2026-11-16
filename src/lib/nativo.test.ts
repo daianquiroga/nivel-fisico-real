@@ -62,3 +62,14 @@ describe('app de Android', () => {
     expect(new Set(a.map((x) => x.id)).size).toBe(3)
   })
 })
+
+describe('aviso de evaluación', () => {
+  it('28 días después de la última, a las 10; si ya pasó, mañana', async () => {
+    const { fechaAvisoEvaluacion } = await import('./nativo')
+    const hoy = new Date(2026, 10, 16, 12, 0)
+    const a = fechaAvisoEvaluacion(new Date(2026, 10, 1, 9, 0).toISOString(), hoy)
+    expect([a.getMonth(), a.getDate(), a.getHours()]).toEqual([10, 29, 10])
+    const b = fechaAvisoEvaluacion(new Date(2026, 9, 1).toISOString(), hoy)
+    expect([b.getMonth(), b.getDate(), b.getHours()]).toEqual([10, 17, 10])
+  })
+})
