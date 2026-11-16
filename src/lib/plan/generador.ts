@@ -43,6 +43,8 @@ export interface DiaPlan {
 
 export interface PlanSemana {
   creado: string
+  /** true si la persona lo cambió a mano. */
+  editado?: boolean
   dias: DiaPlan[]
 }
 
@@ -277,7 +279,7 @@ function armarFuerza(entrada: EntradaPlan, lugar: Lugar, foco: keyof typeof SLOT
 }
 
 /** Letras de grupo según el método. Con "que decida la app", los principales van en series clásicas. */
-function agrupar(ejercicios: EjercicioPlan[], metodo: Metodo, app: boolean) {
+export function agrupar(ejercicios: EjercicioPlan[], metodo: Metodo, app: boolean) {
   ejercicios.forEach((x) => (x.grupo = undefined))
   if (metodo === 'clasico') return
   if (metodo === 'circuito') {

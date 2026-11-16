@@ -5,7 +5,9 @@ import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
 import { ejercicio } from '../../lib/ejercicios'
 import { NOMBRES_DIAS, diaDeHoy } from '../../lib/perfil'
 import { alternativas, type EjercicioPlan, type PlanSemana, type SesionPlan } from '../../lib/plan/generador'
+import { agregarSesion } from '../../lib/plan/editar'
 import { usarPlan } from '../../lib/plan/usarPlan'
+import { EditorSesion } from './EditorSesion'
 import { equilibrio, validarPlan } from '../../lib/plan/validador'
 import { usarInicio } from '../../lib/usarInicio'
 import h from '../Hoy/hoy.module.css'
@@ -26,15 +28,20 @@ export function textoEjercicio(x: EjercicioPlan): string {
 function Sesion({
   sesion,
   onCambiar,
+  onEditar,
 }: {
   sesion: SesionPlan
   onCambiar: (i: number) => void
+  onEditar: () => void
 }) {
   const unico = sesion.tipo === 'cardio' ? sesion.ejercicios[0] : undefined
   return (
     <Tarjeta destacada={sesion.intensidad === 'fuerte'}>
       <div className={s.cabeza}>
         <h2>{sesion.titulo}</h2>
+        <button type="button" className={s.accion} onClick={onEditar}>
+          Editar
+        </button>
       </div>
       <p className={s.meta}>
         {[sesion.lugar, sesion.desde && sesion.hasta ? `${sesion.desde} a ${sesion.hasta}` : null, `unos ${sesion.minutos} min`].filter(Boolean).join(' · ')}
@@ -67,6 +74,7 @@ function Sesion({
           )
         })}
       </div>
+      {sesion.ejercicios.length === 0 && <p className={estilos.texto2}>Sin ejercicios todavía: tocá Editar y agregá los que quieras.</p>}
       {sesion.nota && <p className={estilos.chico}>{sesion.nota}</p>}
     </Tarjeta>
   )
@@ -78,6 +86,8 @@ export function Plan() {
   const { plan, entrada, generar, cambiar } = usarPlan()
   const [rearmar, setRearmar] = useState(false)
   const [cambiando, setCambiando] = useState<{ sesion: number; ej: number } | null>(null)
+  const [editando, setEditando] = useState<number | null>(null)
+  const [nueva, setNueva] = useState(false)
   const hoy = diaDeHoy()
   const dia = params.get('dia') !== null ? Number(params.get('dia')) : hoy
 
@@ -160,7 +170,10 @@ export function Plan() {
             aria-selected={i === dia}
             aria-label={NOMBRES_DIAS[i]}
             className={`${s.dia} ${i === dia ? s.diaOn : ''}`}
-            onClick={() => setParams({ dia: String(i) }, { replace: true })}
+            onClick={() => {
+              setEditando(null)
+              setParams({ dia: String(i) }, { replace: true })
+            }}
           >
             <span className={i === hoy ? s.hoy : undefined}>{LETRAS[i]}</span>
             <span className={s.puntos} aria-hidden="true">
@@ -183,9 +196,16 @@ export function Plan() {
         {dia === hoy ? ' · hoy' : ''}
         {!delDia.sesiones.some((x) => x.intensidad === 'fuerte') && !delDia.sesiones.some((x) => x.tipo === 'cardio') ? ' · descanso' : ''}
       </h2>
-      {delDia.sesiones.map((ses, i) => (
-        <Sesion key={ses.id} sesion={ses} onCambiar={(ej) => setCambiando({ sesion: i, ej })} />
-      ))}
+      {delDia.sesiones.map((ses, i) =>
+        editando === i ? (
+          <EditorSesion key={ses.id} plan={plan} dia={dia} idx={i} entrada={entrada} onCambio={(p) => void cambiar(p)} onListo={() => setEditando(null)} />
+        ) : (
+          <Sesion key={ses.id} sesion={ses} onCambiar={(ej) => setCambiando({ sesion: i, ej })} onEditar={() => setEditando(i)} />
+        ),
+      )}
+      <Boton ancho onClick={() => setNueva(true)}>
+        + Agregar una sesión el {NOMBRES_DIAS[dia].toLowerCase()}
+      </Boton>
 
       {avisos.length > 0 && (
         <Tarjeta>
@@ -226,7 +246,10 @@ export function Plan() {
 
       {rearmar && (
         <Dialogo titulo="¿Volver a armar el plan?" onCerrar={() => setRearmar(false)}>
-          <p className={estilos.texto2}>Se arma de nuevo con tus datos actuales y se pierden los ejercicios que cambiaste a mano.</p>
+          <p className={estilos.texto2}>
+            Se arma de nuevo con tus datos actuales.
+            {plan.editado ? ' Ojo: personalizaste el plan a mano y esos cambios se pierden.' : ''}
+          </p>
           <div className={estilos.fila}>
             <Boton onClick={() => setRearmar(false)}>Cancelar</Boton>
             <Boton
@@ -238,6 +261,34 @@ export function Plan() {
               Armar
             </Boton>
           </div>
+        </Dialogo>
+      )}
+
+      {nueva && (
+        <Dialogo titulo={`Nueva sesión el ${NOMBRES_DIAS[dia].toLowerCase()}`} onCerrar={() => setNueva(false)}>
+          <p className={estilos.texto2}>Elegí el tipo. Después le agregás los ejercicios que quieras.</p>
+          {(
+            [
+              ['fuerza', 'Fuerza', 'Tu propia rutina: vos elegís los ejercicios.'],
+              ['cardio', 'Cardio', 'Caminata, trote, soga o marcha. Elegís los minutos.'],
+              ['movilidad', 'Movilidad', '10 minutos para soltar el cuerpo.'],
+            ] as const
+          ).map(([tipo, nombre, texto]) => (
+            <button
+              key={tipo}
+              type="button"
+              className={s.alternativa}
+              onClick={() => {
+                const lugar = plan.dias[dia].sesiones[0]?.lugar ?? entrada.lugares[0]?.nombre
+                void cambiar(agregarSesion(plan, dia, tipo, lugar)).then(() => setEditando(plan.dias[dia].sesiones.length))
+                setNueva(false)
+              }}
+            >
+              <b>{nombre}</b>
+              <span>{texto}</span>
+            </button>
+          ))}
+          <Boton onClick={() => setNueva(false)}>Cancelar</Boton>
         </Dialogo>
       )}
 
