@@ -40,6 +40,7 @@ export function ArmarRutina() {
   const [elegidos, setElegidos] = useState<Record<number, string>>({})
   const [confirmar, setConfirmar] = useState(false)
   const [tenePlan, setTenePlan] = useState(false)
+  const [vaciar, setVaciar] = useState(false)
 
   useEffect(() => {
     void leerPlan().then((p) => {
@@ -127,6 +128,29 @@ export function ArmarRutina() {
         ]}
         onCambio={(v) => setModo(v as 'tildar' | 'texto')}
       />
+
+      {sel.some((d) => d.items.length > 0) && (
+        <Boton ancho onClick={() => setVaciar(true)}>
+          Empezar de cero
+        </Boton>
+      )}
+      {vaciar && (
+        <Dialogo titulo="¿Empezar de cero?" onCerrar={() => setVaciar(false)}>
+          <p className={estilos.texto2}>Se vacían todos los días de esta pantalla para que armes la rutina desde cero. Tu plan guardado no cambia hasta que toques "Guardar como mi plan".</p>
+          <Boton
+            variante="principal"
+            onClick={() => {
+              setSel([])
+              setDia(0)
+              setLectura(null)
+              setVaciar(false)
+            }}
+          >
+            Sí, vaciar
+          </Boton>
+          <Boton onClick={() => setVaciar(false)}>Cancelar</Boton>
+        </Dialogo>
+      )}
 
       {modo === 'texto' ? (
         <>

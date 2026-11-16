@@ -8,6 +8,7 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.30.2: botón "Empezar de cero" en Mi rutina (vacía la pantalla; el plan guardado no cambia hasta guardar).
 - Versión 0.30.1: primera actualización sola de prueba; Hoy muestra una vez "La app se actualizó sola a la versión…".
 - Versión 0.30.0: la app de Android se actualiza sola. Con `@capgo/capacitor-updater` en modo manual (sin servidores de terceros: `updateUrl`, `channelUrl` y `statsUrl` vacíos, así no manda estadísticas), al abrirse con internet lee `version.json` de la página de GitHub (`/android/version.json`), baja el zip con la parte web nueva y la aplica la próxima vez que se abre (`src/lib/actualizarNativo.ts`, con tests). Los datos no se tocan. El flujo "Publicar en GitHub Pages" arma el zip y `version.json`. Si una versión necesita cambios nativos, se sube `android/apk-minima.txt` y la app avisa en Hoy y en Perfil que hay que instalar el APK una vez.
 - Versión 0.29.0 (extras, parte 3): avisos en la app de Android (Perfil → App de Android): 15 minutos antes de cada sesión, recordatorio diario del control a la hora elegida y aviso el día que toca la evaluación (28 días después de la última, a las 10; se corre al hacer una evaluación nueva). Normas completas: flexiones de mujeres de 15 a 69 años (CSEP-PATH 2019), rodilla a la pared por edad y sexo con percentiles 5 a 95 (McBride y otros 2026) y puntos de frecuencia HUNT confirmados (Nauman y otros 2012).
