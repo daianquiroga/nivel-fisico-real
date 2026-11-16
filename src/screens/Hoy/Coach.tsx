@@ -18,7 +18,7 @@ export const Coach = forwardRef<CoachRef, { onCambioPerfil?: () => void }>(funct
   const { estado, recargar, ocultar } = usarCoach(nivel)
   const [hecho, setHecho] = useState<string | null>(null)
   useImperativeHandle(ref, () => ({ recargar: () => void recargar() }), [recargar])
-  if (!estado || (!estado.consejos.length && !hecho)) return null
+  if (!estado) return null
   const lista = estado.consejos.slice(0, 3)
 
   async function accionar(k: Consejo) {
@@ -39,6 +39,18 @@ export const Coach = forwardRef<CoachRef, { onCambioPerfil?: () => void }>(funct
     <Tarjeta>
       <p className="etiqueta">Tu coach</p>
       {hecho && <p className={c.hecho}>{hecho}</p>}
+      {lista.length === 0 && (
+        <>
+          <h3 className={c.titulo}>Hoy está todo en orden</h3>
+          <p className={estilos.texto2}>Seguí con tu plan. Miro tus registros todos los días y te aviso acá si:</p>
+          <ul className={c.pasos}>
+            <li>dormiste menos de 6 horas o marcaste una molestia en el control diario;</li>
+            <li>faltaste dos sesiones seguidas;</li>
+            <li>un ejercicio lleva 3 sesiones sin mejorar o ya podés subir de escalón;</li>
+            <li>tu cintura sube, mejorás en el retest o cumplís tu etapa.</li>
+          </ul>
+        </>
+      )}
       {lista.map((k) => (
         <section key={k.id} className={`${c.consejo} ${COLOR[k.clase]}`}>
           <div className={c.cabeza}>
