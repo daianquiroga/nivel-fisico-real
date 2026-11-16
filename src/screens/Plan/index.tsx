@@ -177,6 +177,9 @@ export function Plan() {
             Armame el plan
           </Boton>
         </Tarjeta>
+        <Link to="/plan/armar" className={estilos.boton}>
+          Prefiero cargar mi propia rutina
+        </Link>
       </>
     )
   }
@@ -352,6 +355,12 @@ export function Plan() {
             <p className={estilos.chico}>La rayita marca el mínimo recomendado. Fuerza y cardio: OMS 2020. Movilidad y recuperación: criterio de la app.</p>
           </Tarjeta>
 
+          <Link to="/plan/analisis" className={h.botonPrincipal}>
+            Analizar mi rutina
+          </Link>
+          <Link to="/plan/armar" className={estilos.boton}>
+            Armar o cargar mi propia rutina
+          </Link>
           <Boton ancho onClick={() => setCalendario(true)}>
             Agregar mis sesiones a Google Calendar
           </Boton>

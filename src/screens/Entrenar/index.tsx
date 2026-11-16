@@ -515,7 +515,16 @@ export function Entrenar() {
         <Rondas
           key={`${run.pos}-${ej.id}`}
           minutos={ejPlan.rango[0]}
-          intervalos={ej.id === 'soga'}
+          intervalos={ej.id === 'soga' || ej.id === 'sombra' || ej.id === 'juego-pies'}
+          inicial={
+            ej.id === 'sombra'
+              ? { trabajo: 120, descanso: 60, rondas: Math.max(1, Math.round(ejPlan.rango[0] / 3)) }
+              : ej.id === 'juego-pies'
+                ? { trabajo: 60, descanso: 30, rondas: Math.max(1, Math.round(ejPlan.rango[0] / 1.5)) }
+                : ej.combate
+                  ? { trabajo: ejPlan.rango[0] * 60, descanso: 0, rondas: 1 }
+                  : undefined
+          }
           onFin={(m) => serieHecha({ reps: m, rir: 2 })}
         />
       ) : (

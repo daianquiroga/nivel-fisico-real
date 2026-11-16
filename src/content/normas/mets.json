@@ -110,6 +110,16 @@
           "texto": "Ritmo moderado (kick, karate, judo…)",
           "met": 10.3,
           "codigo": "15430"
+        },
+        "clase-golpes": {
+          "texto": "Clase de kickboxing o muay thai",
+          "met": 7.3,
+          "codigo": "15457"
+        },
+        "clase-agarre": {
+          "texto": "Clase de judo, BJJ o lucha",
+          "met": 11.3,
+          "codigo": "15433"
         }
       }
     }
@@ -147,6 +157,22 @@
     "marcha-rodillas-altas": {
       "actividad": "calistenia",
       "variante": "moderada"
+    },
+    "sombra": {
+      "actividad": "combate",
+      "variante": "suave"
+    },
+    "juego-pies": {
+      "actividad": "combate",
+      "variante": "suave"
+    },
+    "clase-golpes": {
+      "actividad": "combate",
+      "variante": "clase-golpes"
+    },
+    "clase-agarre": {
+      "actividad": "combate",
+      "variante": "clase-agarre"
     }
   }
 }

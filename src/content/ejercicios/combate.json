@@ -1,0 +1,237 @@
+[
+  {
+    "secundarios": [
+      "hombros",
+      "abdomen",
+      "piernas"
+    ],
+    "equipo": [],
+    "espacio": "1x1",
+    "carga": "corporal",
+    "facil": "marcha-rodillas-altas",
+    "dificil": null,
+    "limitaciones": {
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Golpes suaves, sin estirar del todo el brazo."
+      },
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Sin peso en las manos; no hace falta vendar para la sombra."
+      }
+    },
+    "respiracion": "Exhalá corto en cada golpe; en la pausa, respirá lento por la nariz.",
+    "id": "sombra",
+    "nombre": "Sombra (boxeo o kick)",
+    "patron": "cardio",
+    "principal": [
+      "corazón y pulmones",
+      "coordinación"
+    ],
+    "tipo": "minutos",
+    "rango": [
+      6,
+      30
+    ],
+    "combate": true,
+    "inicial": "En guardia, con lugar para dar un paso. Rounds de 2 minutos y 1 de pausa.",
+    "pasos": [
+      "Golpes y técnicas al aire, como si hubiera un rival enfrente.",
+      "Después de cada técnica, la guardia vuelve a la cara.",
+      "Moverte entre técnica y técnica: nunca dos pasos sin hacer nada."
+    ],
+    "errores": [
+      {
+        "error": "Bajar las manos",
+        "detectar": "Grabate: las manos tienen que volver siempre a la cara."
+      },
+      {
+        "error": "Estirar el codo de golpe",
+        "detectar": "Si te duele el codo, no lo trabes al final del golpe."
+      },
+      {
+        "error": "Quedarte quieto",
+        "detectar": "Si pasan 3 técnicas sin moverte, sumá un paso."
+      }
+    ],
+    "subir": "Seguí los niveles de sombra en Combate.",
+    "video": "sombra boxeo principiantes"
+  },
+  {
+    "secundarios": [
+      "cuádriceps",
+      "equilibrio"
+    ],
+    "equipo": [],
+    "espacio": "1x1",
+    "carga": "corporal",
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "tobillo": {
+        "nivel": "adaptar",
+        "texto": "Sin rebote: pasos apoyando todo el pie."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Pasos más cortos y sin pivotes bruscos."
+      }
+    },
+    "respiracion": "Respirá con ritmo, sin aguantar el aire.",
+    "id": "juego-pies",
+    "nombre": "Juego de pies",
+    "patron": "cardio",
+    "principal": [
+      "pantorrillas",
+      "coordinación"
+    ],
+    "tipo": "minutos",
+    "rango": [
+      5,
+      20
+    ],
+    "combate": true,
+    "inicial": "En guardia, en 1 × 1 m o más. Rounds de 1 minuto y 30 segundos de pausa.",
+    "pasos": [
+      "Pasos cortos sobre las puntas, sin cruzar los pies.",
+      "Adelante, atrás, a los costados y pivotes, siempre con la guardia arriba.",
+      "Seguí el nivel de pies de Combate."
+    ],
+    "errores": [
+      {
+        "error": "Cruzar los pies",
+        "detectar": "Si en algún momento se juntan o se cruzan, frená y volvé a la base."
+      },
+      {
+        "error": "Saltar alto",
+        "detectar": "Rebote de 1 o 2 cm alcanza."
+      },
+      {
+        "error": "Mirar el piso",
+        "detectar": "La mirada va al frente."
+      }
+    ],
+    "subir": "Seguí los niveles de pies en Combate.",
+    "video": "juego de pies boxeo ejercicios"
+  },
+  {
+    "secundarios": [
+      "hombros",
+      "abdomen",
+      "piernas"
+    ],
+    "equipo": [],
+    "espacio": "amplio",
+    "carga": "corporal",
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Vendate bien y avisale al profesor."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Avisale al profesor y evitá golpes a full."
+      }
+    },
+    "respiracion": "Exhalá en cada golpe; usá las pausas para bajar el pulso.",
+    "id": "clase-golpes",
+    "nombre": "Clase de boxeo, kick o muay thai",
+    "patron": "cardio",
+    "principal": [
+      "corazón y pulmones",
+      "coordinación"
+    ],
+    "tipo": "minutos",
+    "rango": [
+      45,
+      90
+    ],
+    "combate": true,
+    "inicial": "En un club o gimnasio, con profesor. Llevá vendas, guantes y agua.",
+    "pasos": [
+      "Entrada en calor y técnica con el profesor.",
+      "Bolsa, manoplas o trabajo en parejas.",
+      "Sparring solo si el profesor lo indica."
+    ],
+    "errores": [
+      {
+        "error": "Ir al máximo todo el tiempo",
+        "detectar": "Si no podés terminar la clase, bajá la intensidad las primeras semanas."
+      },
+      {
+        "error": "No vendarte",
+        "detectar": "Si te duelen los nudillos o la muñeca, vendate (ver Aprender)."
+      },
+      {
+        "error": "Sparring duro sin experiencia",
+        "detectar": "Pedile al profesor sparring técnico, suave."
+      }
+    ],
+    "subir": "La progresión la marca el profesor; acá anotá cómo te sentiste.",
+    "video": "clase de muay thai principiantes"
+  },
+  {
+    "secundarios": [
+      "espalda alta",
+      "piernas",
+      "antebrazos"
+    ],
+    "equipo": [],
+    "espacio": "amplio",
+    "carga": "corporal",
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "cuello": {
+        "nivel": "adaptar",
+        "texto": "Avisale al profesor: evitá puentes sobre la cabeza."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Avisale al profesor y andá suave en los derribos."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Avisale al profesor; cuidado con los giros de rodilla."
+      }
+    },
+    "respiracion": "Respirá lento aun abajo: aguantar el aire te cansa enseguida.",
+    "id": "clase-agarre",
+    "nombre": "Clase de BJJ, judo o lucha",
+    "patron": "cardio",
+    "principal": [
+      "corazón y pulmones",
+      "abdomen"
+    ],
+    "tipo": "minutos",
+    "rango": [
+      45,
+      90
+    ],
+    "combate": true,
+    "inicial": "En un club o gimnasio, con profesor y tatami. Uñas cortas y ropa limpia.",
+    "pasos": [
+      "Entrada en calor con movimientos de suelo (camarón, puente, rolidos).",
+      "Técnica con el profesor y repetición en pareja.",
+      "Lucha controlada (randori o rolls) si el profesor lo indica."
+    ],
+    "errores": [
+      {
+        "error": "Usar solo fuerza",
+        "detectar": "Si a los 2 minutos estás agotado, buscá técnica y no empuje."
+      },
+      {
+        "error": "No golpear (tapar) a tiempo",
+        "detectar": "Ante una llave que duele, golpeá 2 veces al compañero o al piso."
+      },
+      {
+        "error": "Caer con las manos",
+        "detectar": "Practicá las caídas (ver Combate → técnicas)."
+      }
+    ],
+    "subir": "La progresión la marca el profesor (cinturones o niveles).",
+    "video": "clase de bjj principiantes"
+  }
+]

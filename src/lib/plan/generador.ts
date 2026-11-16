@@ -164,6 +164,7 @@ export function candidatos(patrones: Patron[], ctx: Contexto, usados: Set<string
   const lista = EJERCICIOS.filter((e) => {
     if (!patrones.includes(e.patron) || usados.has(e.id)) return false
     if (ids && ids.length && !ids.includes(e.id)) return false
+    if (e.combate && !ids?.includes(e.id)) return false
     if (!sePuedeHacer(e, equipo) || evitarPorLimitacion(e, entrada.limitaciones)) return false
     // "2 × 2" solo pide el largo del cuerpo en el piso (al lado de la cama alcanza); lo amplio necesita gimnasio o aire libre.
     if (e.patron !== 'cardio' && e.espacio === 'amplio' && espacio < 2) return false

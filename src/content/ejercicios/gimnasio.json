@@ -1,0 +1,329 @@
+[
+  {
+    "secundarios": [],
+    "equipo": [
+      "maquinas"
+    ],
+    "espacio": "1x1",
+    "carga": "externa",
+    "facil": "sentadilla-silla",
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Rango corto (de 90° a 45°) y peso liviano; si duele, cambiá por prensa."
+      }
+    },
+    "respiracion": "Soltá el aire al subir y tomalo al bajar.",
+    "id": "extension-cuadriceps",
+    "nombre": "Extensión de cuádriceps en máquina",
+    "patron": "accesorio",
+    "principal": [
+      "cuádriceps"
+    ],
+    "tipo": "reps",
+    "rango": [
+      10,
+      15
+    ],
+    "inicial": "Sentado en la máquina, el rodillo apoyado arriba del tobillo y la rodilla alineada con el eje.",
+    "pasos": [
+      "Estirá las rodillas hasta casi trabarlas, sin despegar la cola del asiento.",
+      "Apretá el muslo un segundo arriba.",
+      "Bajá despacio, en 2 o 3 segundos."
+    ],
+    "errores": [
+      {
+        "error": "Patear con impulso",
+        "detectar": "Si el peso rebota abajo, es demasiado: bajalo."
+      },
+      {
+        "error": "Levantar la cola",
+        "detectar": "Agarrate de las manijas y mantené la espalda apoyada."
+      },
+      {
+        "error": "Rodilla fuera del eje",
+        "detectar": "Ajustá el respaldo para que la rodilla quede frente al eje de la máquina."
+      }
+    ],
+    "pesoInicial": "Elegí un peso con el que hagas 15 limpias y te queden 2 o 3.",
+    "subir": "Doble progresión: llegá a 15 en todas las series y subí el peso.",
+    "video": "extension de cuadriceps maquina tecnica"
+  },
+  {
+    "secundarios": [
+      "pantorrillas"
+    ],
+    "equipo": [
+      "maquinas"
+    ],
+    "espacio": "1x1",
+    "carga": "externa",
+    "facil": "puente-gluteo",
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Peso liviano y movimiento lento."
+      }
+    },
+    "respiracion": "Soltá el aire al doblar y tomalo al volver.",
+    "id": "curl-femoral",
+    "nombre": "Curl femoral en máquina",
+    "patron": "accesorio",
+    "principal": [
+      "isquiotibiales"
+    ],
+    "tipo": "reps",
+    "rango": [
+      10,
+      15
+    ],
+    "inicial": "Acostado boca abajo o sentado, el rodillo apoyado arriba del talón.",
+    "pasos": [
+      "Doblá las rodillas llevando los talones hacia la cola.",
+      "Mantené la cadera pegada al banco.",
+      "Volvé despacio hasta casi estirar."
+    ],
+    "errores": [
+      {
+        "error": "Levantar la cadera",
+        "detectar": "Si la cola sube, bajá el peso."
+      },
+      {
+        "error": "Rebote abajo",
+        "detectar": "Pausá medio segundo con las piernas casi estiradas."
+      },
+      {
+        "error": "Rango corto",
+        "detectar": "Los talones tienen que acercarse bastante a la cola."
+      }
+    ],
+    "pesoInicial": "Empezá liviano: con 15 limpias y 2 o 3 en reserva.",
+    "subir": "Doble progresión: 15 en todas las series y subí el peso.",
+    "video": "curl femoral maquina tecnica"
+  },
+  {
+    "secundarios": [
+      "hombros"
+    ],
+    "equipo": [
+      "barras-plaza"
+    ],
+    "espacio": "2x2",
+    "carga": "corporal",
+    "facil": "flexion",
+    "dificil": null,
+    "limitaciones": {
+      "hombro": {
+        "nivel": "evitar",
+        "texto": "Carga mucho el frente del hombro: mejor flexiones."
+      },
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Muñecas rectas, sin doblar hacia atrás."
+      }
+    },
+    "respiracion": "Tomá aire al bajar y soltalo al subir.",
+    "id": "fondos",
+    "nombre": "Fondos en paralelas",
+    "patron": "empuje",
+    "principal": [
+      "tríceps",
+      "pecho"
+    ],
+    "tipo": "reps",
+    "rango": [
+      5,
+      12
+    ],
+    "inicial": "Brazos estirados sobre las paralelas, hombros abajo y lejos de las orejas.",
+    "pasos": [
+      "Bajá doblando los codos hasta que los hombros queden a la altura de los codos.",
+      "Inclinate un poco hacia adelante para sumar pecho.",
+      "Empujá hasta estirar los brazos."
+    ],
+    "errores": [
+      {
+        "error": "Bajar de más",
+        "detectar": "Si sentís tirón adelante del hombro, bajá menos."
+      },
+      {
+        "error": "Hombros a las orejas",
+        "detectar": "Empujá las paralelas hacia abajo todo el tiempo."
+      },
+      {
+        "error": "Balancear las piernas",
+        "detectar": "Piernas juntas y quietas."
+      }
+    ],
+    "subir": "Cuando hagas 12, sumá peso con una mochila.",
+    "video": "fondos en paralelas tecnica"
+  },
+  {
+    "secundarios": [
+      "bíceps",
+      "zona lumbar",
+      "hombros (parte de atrás)"
+    ],
+    "equipo": [
+      "barra"
+    ],
+    "espacio": "1x1",
+    "carga": "externa",
+    "facil": "remo-mancuerna",
+    "dificil": null,
+    "limitaciones": {
+      "espalda-baja": {
+        "nivel": "evitar",
+        "texto": "Inclinarse con peso carga la zona lumbar: mejor remo con mancuerna apoyado o en polea."
+      }
+    },
+    "respiracion": "Soltá el aire al tirar y tomalo al bajar; apretá el abdomen todo el tiempo.",
+    "id": "remo-barra",
+    "nombre": "Remo con barra",
+    "patron": "traccion",
+    "principal": [
+      "dorsales",
+      "espalda alta"
+    ],
+    "tipo": "reps",
+    "rango": [
+      6,
+      12
+    ],
+    "inicial": "De pie, cadera atrás y torso inclinado a unos 45°, espalda recta, barra colgando con los brazos estirados.",
+    "pasos": [
+      "Llevá la barra hacia la panza tirando con los codos hacia atrás.",
+      "Juntá los omóplatos arriba.",
+      "Bajá controlado sin cambiar la inclinación."
+    ],
+    "errores": [
+      {
+        "error": "Redondear la espalda",
+        "detectar": "Grabate de costado: la espalda tiene que verse recta."
+      },
+      {
+        "error": "Usar impulso con el cuerpo",
+        "detectar": "Si el torso sube en cada repetición, bajá el peso."
+      },
+      {
+        "error": "Tirar con los brazos",
+        "detectar": "Pensá en llevar los codos atrás, no la barra arriba."
+      }
+    ],
+    "pesoInicial": "Empezá con la barra sola o poco peso y 10 repeticiones limpias.",
+    "subir": "Doble progresión: 12 en todas las series y subí el peso.",
+    "video": "remo con barra tecnica"
+  },
+  {
+    "secundarios": [
+      "tríceps",
+      "abdomen"
+    ],
+    "equipo": [
+      "barra"
+    ],
+    "espacio": "2x2",
+    "carga": "externa",
+    "facil": "press-hombros-mancuernas",
+    "dificil": null,
+    "limitaciones": {
+      "hombro": {
+        "nivel": "evitar",
+        "texto": "Por encima de la cabeza con barra: mejor mancuernas con poco peso o empuje horizontal."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Hacelo sentado con respaldo o con mancuernas."
+      }
+    },
+    "respiracion": "Tomá aire y apretá el abdomen antes de empujar; soltalo al pasar la parte difícil.",
+    "id": "press-militar-barra",
+    "nombre": "Press militar con barra",
+    "patron": "empuje-vertical",
+    "principal": [
+      "hombros"
+    ],
+    "tipo": "reps",
+    "rango": [
+      5,
+      10
+    ],
+    "inicial": "De pie, barra apoyada arriba del pecho, manos un poco más abiertas que los hombros, glúteos y abdomen apretados.",
+    "pasos": [
+      "Empujá la barra hacia arriba pasando cerca de la cara.",
+      "Arriba, la barra queda sobre la cabeza con los brazos estirados.",
+      "Bajá controlado al pecho."
+    ],
+    "errores": [
+      {
+        "error": "Arquear la espalda",
+        "detectar": "Si la panza se va adelante, apretá glúteos y bajá el peso."
+      },
+      {
+        "error": "Barra lejos de la cara",
+        "detectar": "Tiene que subir en línea recta."
+      },
+      {
+        "error": "Codos abiertos de más",
+        "detectar": "Codos apenas adelante de la barra."
+      }
+    ],
+    "pesoInicial": "Empezá con la barra sola y 8 repeticiones limpias.",
+    "subir": "Doble progresión: 10 en todas las series y subí 1 kg.",
+    "video": "press militar con barra tecnica"
+  },
+  {
+    "secundarios": [],
+    "equipo": [],
+    "espacio": "1x1",
+    "carga": "corporal",
+    "facil": "dead-bug",
+    "dificil": "plancha",
+    "limitaciones": {
+      "cuello": {
+        "nivel": "adaptar",
+        "texto": "Manos detrás de la cabeza sin tirar, o cambiá por plancha."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Movimiento chico y lento."
+      }
+    },
+    "respiracion": "Soltá el aire al subir.",
+    "id": "crunch",
+    "nombre": "Abdominales crunch",
+    "patron": "core",
+    "principal": [
+      "abdomen"
+    ],
+    "tipo": "reps",
+    "rango": [
+      10,
+      20
+    ],
+    "inicial": "Boca arriba, rodillas dobladas, pies apoyados y manos al pecho o detrás de las orejas.",
+    "pasos": [
+      "Despegá los hombros del piso acercando las costillas a la cadera.",
+      "La zona lumbar queda apoyada.",
+      "Bajá despacio."
+    ],
+    "errores": [
+      {
+        "error": "Tirar del cuello",
+        "detectar": "Si las manos empujan la cabeza, cruzalas al pecho."
+      },
+      {
+        "error": "Subir hasta sentarte",
+        "detectar": "Alcanza con despegar los hombros."
+      },
+      {
+        "error": "Ir rápido",
+        "detectar": "Contá 1 segundo arriba y 2 al bajar."
+      }
+    ],
+    "subir": "Más repeticiones y después sostener 2 segundos arriba.",
+    "video": "crunch abdominal tecnica"
+  }
+]

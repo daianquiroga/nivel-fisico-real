@@ -1,0 +1,7 @@
+{
+  "fuente": "Schoenfeld BJ, Ogborn D, Krieger JW. Dose-response relationship between weekly resistance training volume and increases in muscle mass: a systematic review and meta-analysis. J Sports Sci 2017;35(11):1073-1082. Compararon menos de 5, de 5 a 9 y 10 o más series semanales por músculo: más series, más crecimiento, con datos suficientes hasta 10 o más.",
+  "enlace": "https://doi.org/10.1080/02640414.2016.1210197",
+  "bajo": 5,
+  "bueno": 10,
+  "nota": "Se cuentan las series de los ejercicios donde el músculo es principal como 1 y donde es secundario como 0,5 (decisión de diseño de la app, criterio común para contar volumen). Más de 20 series semanales no está estudiado lo suficiente: la app no lo pide."
+}

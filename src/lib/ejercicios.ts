@@ -5,6 +5,8 @@ import movilidadCardio from '../content/ejercicios/movilidad-cardio.json'
 import escalerasJson from '../content/ejercicios/escaleras.json'
 import piernas from '../content/ejercicios/piernas.json'
 import traccion from '../content/ejercicios/traccion.json'
+import combate from '../content/ejercicios/combate.json'
+import gimnasio from '../content/ejercicios/gimnasio.json'
 import type { Lugar } from './db/db'
 
 export type NivelLimitacion = 'adaptar' | 'evitar'
@@ -31,10 +33,12 @@ export interface Ejercicio {
   subir: string
   pesoInicial?: string
   video: string
+  /** Sombra, pies y clases: el generador no los elige solos como cardio (se suman a propósito). */
+  combate?: boolean
 }
 
 // El JSON no conserva los tipos exactos; revisarContenido() (con test) verifica los valores.
-export const EJERCICIOS = [...empuje, ...traccion, ...piernas, ...coreAccesorios, ...movilidadCardio] as unknown as Ejercicio[]
+export const EJERCICIOS = [...empuje, ...traccion, ...piernas, ...coreAccesorios, ...movilidadCardio, ...gimnasio, ...combate] as unknown as Ejercicio[]
 const POR_ID = new Map(EJERCICIOS.map((e) => [e.id, e]))
 
 export const ejercicio = (id: string): Ejercicio | undefined => POR_ID.get(id)

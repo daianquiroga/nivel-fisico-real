@@ -1,7 +1,7 @@
 /* Dibujos de cada ejercicio: posición de inicio y final, con figuras de palitos propias.
    Coordenadas de cada cuadro: 160 de ancho, piso en y = 168. Las figuras miran a la derecha. */
 import type { ReactNode } from 'react'
-import { Figura, Lienzo, Piso, Texto, type Pose } from '../components/Figura'
+import { Figura, Flecha, Lienzo, Piso, Texto, type Pose } from '../components/Figura'
 
 type P = [number, number]
 const sum = (a: P, b: P): P => [a[0] + b[0], a[1] + b[1]]
@@ -143,6 +143,10 @@ function Dos({ a, b, etiqueta, textos = ['Inicio', 'Final'] }: { a: Cuadro; b: C
 }
 
 /* ---------- Familias de posiciones ---------- */
+
+/** Guardia de combate para los dibujos de sombra y pies. */
+const GUARDIA_E: Base = { cabeza: [86, 32], cuello: [84, 48], cadera: [78, 98], rod: [96, 132], pie: [104, 165], punta: [116, 165], rodI: [64, 134], pieI: [56, 165], puntaI: [66, 165], codo: [98, 70], mano: [104, 50], codoI: [88, 74], manoI: [94, 52] }
+const correr = (b: Base, dx: number): Base => Object.fromEntries(Object.entries(b).map(([k, v]) => [k, [(v as P)[0] + dx, (v as P)[1]]])) as unknown as Base
 
 const DE_PIE: Base = { cabeza: [80, 30], cuello: [80, 44], cadera: [80, 98], rod: [80, 132], pie: [80, 165], punta: [94, 165], codo: [81, 72], mano: [82, 98] }
 
@@ -666,6 +670,109 @@ const DIBUJOS: Record<string, () => ReactNode> = {
       a={{ pose: pose({ ...DE_PIE, rod: [104, 98], pie: [104, 132], punta: [116, 134], codo: [70, 68], mano: [76, 88], codoI: [94, 68], manoI: [104, 58] }) }}
       b={{ pose: pose({ ...DE_PIE, rodI: [104, 98], pieI: [104, 132], puntaI: [116, 134], rod: [80, 132], pie: [80, 165], codo: [94, 68], mano: [104, 58], codoI: [70, 68], manoI: [76, 88] }) }}
       textos={['Una rodilla', 'La otra']}
+    />
+  ),
+  sombra: () => (
+    <Dos
+      etiqueta="Sombra: desde la guardia, el golpe sale y vuelve a la cara"
+      a={{ pose: pose({ ...GUARDIA_E }) }}
+      b={{ pose: pose({ ...GUARDIA_E, codo: [118, 52], mano: [142, 48] }) }}
+      textos={['Guardia', 'Golpe y vuelve']}
+    />
+  ),
+  'juego-pies': () => (
+    <Dos
+      etiqueta="Juego de pies: paso adelante sin cruzar los pies y con la guardia arriba"
+      a={{ pose: pose({ ...GUARDIA_E }) }}
+      b={{ pose: pose(correr(GUARDIA_E, 18)), adelante: <Flecha de={[64, 20]} a={[104, 20]} /> }}
+      textos={['Guardia', 'Paso corto']}
+    />
+  ),
+  'clase-golpes': () => {
+    const bolsa = (
+      <g>
+        <line x1={140} x2={140} y1={6} y2={28} stroke={metal} strokeWidth={2} />
+        <rect x={128} y={28} width={24} height={92} rx={9} fill="var(--surface-2)" stroke="var(--line)" />
+      </g>
+    )
+    return (
+      <Dos
+        etiqueta="Clase de golpes: técnica y bolsa con profesor"
+        a={{ atras: bolsa, pose: pose({ ...GUARDIA_E }) }}
+        b={{ atras: bolsa, pose: pose({ ...GUARDIA_E, codoI: [110, 54], manoI: [126, 52] }) }}
+        textos={['Guardia', 'Golpe a la bolsa']}
+      />
+    )
+  },
+  'clase-agarre': () => (
+    <Dos
+      etiqueta="Clase de agarre: postura baja de pie y movimientos en el suelo"
+      a={{ pose: pose({ cabeza: [104, 64], cuello: [94, 74], cadera: [66, 104], rod: [90, 132], pie: [98, 165], punta: [110, 165], rodI: [52, 136], pieI: [40, 165], codo: [104, 96], mano: [118, 108] }) }}
+      b={{ pose: pose({ cabeza: [20, 150], cuello: [34, 154], cadera: [80, 158], rod: [104, 132], pie: [100, 166], rodI: [110, 150], pieI: [134, 162], codo: [52, 138], mano: [64, 124] }) }}
+      textos={['De pie', 'En el suelo']}
+    />
+  ),
+  'extension-cuadriceps': () => {
+    const rodillo = (en: P) => <circle cx={en[0]} cy={en[1]} r={7} fill={metal} />
+    return (
+      <Dos
+        etiqueta="Extensión de cuádriceps: sentado, de rodillas dobladas a piernas estiradas"
+        a={{ atras: <SillaL x={40} asiento={118} />, pose: pose({ cabeza: [58, 48], cuello: [56, 64], cadera: [60, 114], rod: [98, 116], pie: [100, 158], codo: [62, 92], mano: [76, 114] }), adelante: rodillo([104, 154]) }}
+        b={{ atras: <SillaL x={40} asiento={118} />, pose: pose({ cabeza: [58, 48], cuello: [56, 64], cadera: [60, 114], rod: [98, 116], pie: [138, 110], codo: [62, 92], mano: [76, 114] }), adelante: rodillo([140, 116]) }}
+        textos={['Abajo', 'Piernas estiradas']}
+      />
+    )
+  },
+  'curl-femoral': () => {
+    const rodillo = (en: P) => <circle cx={en[0]} cy={en[1]} r={7} fill={metal} />
+    return (
+      <Dos
+        etiqueta="Curl femoral: boca abajo, los talones van hacia la cola"
+        a={{ atras: <Banco x={10} ancho={124} alto={52} />, pose: pose({ cabeza: [22, 104], cuello: [36, 110], cadera: [88, 112], rod: [122, 112], pie: [150, 110], codo: [30, 124], mano: [18, 116] }), adelante: rodillo([150, 102]) }}
+        b={{ atras: <Banco x={10} ancho={124} alto={52} />, pose: pose({ cabeza: [22, 104], cuello: [36, 110], cadera: [88, 112], rod: [122, 112], pie: [112, 74], codo: [30, 124], mano: [18, 116] }), adelante: rodillo([118, 70]) }}
+        textos={['Piernas estiradas', 'Talones arriba']}
+      />
+    )
+  },
+  fondos: () => {
+    const paralelas = (
+      <g stroke={metal} strokeWidth={4} strokeLinecap="round">
+        <line x1={50} x2={130} y1={96} y2={96} />
+        <line x1={58} x2={58} y1={96} y2={168} />
+        <line x1={122} x2={122} y1={96} y2={168} />
+      </g>
+    )
+    return (
+      <Dos
+        etiqueta="Fondos en paralelas: de brazos estirados a codos doblados"
+        a={{ atras: paralelas, pose: pose({ cabeza: [88, 40], cuello: [86, 56], cadera: [80, 108], rod: [78, 138], pie: [66, 150], codo: [88, 78], mano: [88, 96] }) }}
+        b={{ atras: paralelas, pose: pose({ cabeza: [94, 62], cuello: [90, 78], cadera: [80, 126], rod: [72, 152], pie: [58, 160], codo: [70, 80], mano: [88, 96] }) }}
+        textos={['Arriba', 'Abajo']}
+      />
+    )
+  },
+  'remo-barra': () => (
+    <Dos
+      etiqueta="Remo con barra: inclinado con la espalda recta, la barra va a la panza"
+      a={{ pose: pose({ cabeza: [124, 62], cuello: [110, 70], cadera: [62, 92], rod: [74, 130], pie: [66, 165], punta: [80, 165], codo: [104, 104], mano: [104, 132] }), adelante: <Disco en={[104, 134]} r={16} /> }}
+      b={{ pose: pose({ cabeza: [124, 62], cuello: [110, 70], cadera: [62, 92], rod: [74, 130], pie: [66, 165], punta: [80, 165], codo: [82, 80], mano: [92, 106] }), adelante: <Disco en={[92, 108]} r={16} /> }}
+      textos={['Brazos estirados', 'Barra a la panza']}
+    />
+  ),
+  'press-militar-barra': () => (
+    <Dos
+      etiqueta="Press militar con barra: de arriba del pecho a brazos estirados sobre la cabeza"
+      a={{ pose: pose({ ...DE_PIE, codo: [96, 66], mano: [94, 48] }), adelante: <Disco en={[94, 46]} r={16} /> }}
+      b={{ pose: pose({ ...DE_PIE, codo: [86, 26], mano: [84, 10] }), adelante: <Disco en={[84, 10]} r={16} /> }}
+      textos={['Barra en el pecho', 'Arriba']}
+    />
+  ),
+  crunch: () => (
+    <Dos
+      etiqueta="Crunch: boca arriba, despegar los hombros del piso"
+      a={{ pose: pose({ cabeza: [24, 154], cuello: [38, 158], cadera: [86, 160], rod: [106, 128], pie: [124, 165], codo: [44, 146], mano: [32, 144] }) }}
+      b={{ pose: pose({ cabeza: [38, 130], cuello: [48, 142], cadera: [86, 160], rod: [106, 128], pie: [124, 165], codo: [58, 132], mano: [46, 128] }) }}
+      textos={['Apoyado', 'Hombros arriba']}
     />
   ),
 }
