@@ -1,0 +1,158 @@
+{
+  "fuente": "Programa de la app (ESPECIFICACION.md, sección 14): forma → con desplazamiento → en combinación → a velocidad → reacción. Los criterios son decisión de diseño de la app sobre fundamentos comunes de cada disciplina; no reemplazan a un profesor.",
+  "disciplinas": [
+    {
+      "id": "boxeo",
+      "nombre": "Boxeo",
+      "detalle": "Solo puños, mucho trabajo de pies y defensa con la cabeza.",
+      "basicas": ["jab", "directo", "gancho", "uppercut", "esquive", "rolido", "bloqueo"],
+      "criterios": [
+        "El puño gira al final y vuelve por el mismo camino.",
+        "En los rectos, el hombro sube y tapa el mentón.",
+        "En los golpes de atrás, gira la cadera y pivota el pie de atrás.",
+        "El codo no se abre antes del golpe (no avisás)."
+      ]
+    },
+    {
+      "id": "kick",
+      "nombre": "Kickboxing y muay thai",
+      "detalle": "Puños, patadas y, en muay thai, rodillas, codos y clinch.",
+      "basicas": ["jab", "directo", "gancho", "patada-baja", "patada-media", "teep", "rodilla", "codo", "clinch", "bloqueo"],
+      "criterios": [
+        "Las patadas pegan con la canilla y el pie de apoyo gira.",
+        "Después de patear volvés a la guardia, sin caer hacia adelante.",
+        "La mano que no trabaja cubre la cara en patadas y rodillas.",
+        "En rodillas y codos la cadera va hacia adelante."
+      ]
+    },
+    {
+      "id": "mma",
+      "nombre": "MMA (artes marciales mixtas)",
+      "detalle": "Golpes, derribos y suelo: lo que más importa son las transiciones.",
+      "basicas": ["jab", "directo", "gancho", "patada-baja", "derribo", "sprawl", "clinch", "escape-cadera", "levantarse"],
+      "criterios": [
+        "Para el derribo bajás el nivel con las piernas y la espalda recta.",
+        "El sprawl es inmediato y la cadera llega al piso.",
+        "Pasás de golpes a derribo sin pausa ni aviso.",
+        "Después de cada intercambio volvés a una guardia que defiende golpes y derribos."
+      ]
+    },
+    {
+      "id": "karate",
+      "nombre": "Karate y taekwondo",
+      "detalle": "Distancia larga, patadas y golpes con foco.",
+      "basicas": ["jab", "gyaku-zuki", "teep", "patada-media", "patada-lateral", "bloqueo"],
+      "criterios": [
+        "Postura estable: no perdés la base al golpear.",
+        "Las patadas tienen recámara antes y después.",
+        "Exhalás y frenás firme al final de cada técnica (foco).",
+        "Entrás y salís de la distancia larga sin quedarte en el medio."
+      ]
+    },
+    {
+      "id": "lucha",
+      "nombre": "Lucha, judo y BJJ",
+      "detalle": "Agarres, derribos, caídas y suelo.",
+      "basicas": ["caida", "escape-cadera", "levantarse", "derribo", "sprawl", "clinch"],
+      "criterios": [
+        "Postura con la cadera baja y las manos al frente.",
+        "Al caer, el mentón va al pecho y la cabeza no toca el piso.",
+        "El escape de cadera sale del pie apoyado, no de las manos.",
+        "Te levantás con una mano en el piso y la otra cubriendo."
+      ]
+    }
+  ],
+  "criteriosGenerales": [
+    "La guardia vuelve a la cara después de cada técnica.",
+    "Mentón bajo y mirada al frente, nunca al piso.",
+    "Los pies no se cruzan y la base queda del ancho de los hombros.",
+    "Exhalás corto en cada técnica y no aguantás el aire."
+  ],
+  "nivelesSombra": [
+    {
+      "nivel": 1,
+      "nombre": "Forma",
+      "objetivo": "Cada técnica básica, lenta y perfecta, en el lugar.",
+      "rounds": { "rondas": 3, "trabajo": 120, "descanso": 60 },
+      "pasos": ["Ponete frente a un espejo o una ventana.", "Hacé cada técnica básica 10 veces, despacio, revisando la forma.", "Entre técnica y técnica, volvé a la guardia y respirá."]
+    },
+    {
+      "nivel": 2,
+      "nombre": "Con desplazamiento",
+      "objetivo": "Las mismas técnicas moviéndote: adelante, atrás y a los costados.",
+      "rounds": { "rondas": 3, "trabajo": 120, "descanso": 60 },
+      "pasos": ["Técnica → paso → técnica: nunca dos pasos sin hacer nada.", "Usá los desplazamientos de tu nivel de pies.", "En 1 × 1 m: un paso y volvés."]
+    },
+    {
+      "nivel": 3,
+      "nombre": "En combinación",
+      "objetivo": "Encadenar 2 a 4 técnicas sin perder la forma.",
+      "rounds": { "rondas": 4, "trabajo": 120, "descanso": 60 },
+      "pasos": ["Elegí 3 combinaciones cortas (por ejemplo, jab + directo; jab + directo + gancho).", "Cada combinación termina con una defensa o una salida.", "Repetí cada una 10 veces antes de pasar a la siguiente."]
+    },
+    {
+      "nivel": 4,
+      "nombre": "A velocidad",
+      "objetivo": "Combinaciones rápidas manteniendo la forma y la guardia.",
+      "rounds": { "rondas": 5, "trabajo": 180, "descanso": 60 },
+      "pasos": ["Rounds de 3 minutos: 20 segundos a toda velocidad y 40 a ritmo medio.", "La velocidad no vale si se pierde la forma.", "Relajá los hombros: más suelto es más rápido."]
+    },
+    {
+      "nivel": 5,
+      "nombre": "Reacción",
+      "objetivo": "Responder a señales: defender y contestar sin pensar.",
+      "rounds": { "rondas": 5, "trabajo": 180, "descanso": 60 },
+      "pasos": ["Imaginá un rival que ataca: defendé y contestá.", "Cambiá de ritmo y de dirección sin aviso.", "Pronto la app te va a cantar señales por voz (siguiente parte de esta etapa)."]
+    }
+  ],
+  "nivelesPies": [
+    {
+      "nivel": 1,
+      "nombre": "Paso adelante y atrás",
+      "que": "Moverte sin cruzar los pies ni perder la base.",
+      "pasos": ["Para ir adelante, primero mové el pie de adelante y después el de atrás, la misma distancia.", "Para ir atrás, al revés: primero el de atrás.", "Pasos cortos, sobre las puntas, con la guardia arriba."],
+      "rounds": { "rondas": 3, "trabajo": 60, "descanso": 30 },
+      "pasar": "3 rounds sin cruzar los pies ni juntarlos."
+    },
+    {
+      "nivel": 2,
+      "nombre": "Pasos laterales",
+      "que": "Ir a los costados manteniendo la guardia.",
+      "pasos": ["Hacia la izquierda, primero el pie izquierdo; hacia la derecha, primero el derecho.", "Los pies nunca se cruzan ni se tocan.", "Alterná: 2 pasos a un lado, 2 al otro."],
+      "rounds": { "rondas": 3, "trabajo": 60, "descanso": 30 },
+      "pasar": "3 rounds en todas las direcciones sin cruzar los pies."
+    },
+    {
+      "nivel": 3,
+      "nombre": "Pivote",
+      "que": "Girar sobre el pie de adelante para cambiar el ángulo.",
+      "pasos": ["Apoyado en la punta del pie de adelante, girá llevando el pie de atrás en un cuarto de círculo.", "El cuerpo y la guardia giran juntos.", "Probá giros de 45 y de 90 grados hacia los dos lados."],
+      "rounds": { "rondas": 3, "trabajo": 60, "descanso": 30 },
+      "pasar": "10 pivotes por lado quedando en buena guardia."
+    },
+    {
+      "nivel": 4,
+      "nombre": "Salir en ángulo",
+      "que": "Paso más pivote para salir de la línea del rival.",
+      "pasos": ["Paso lateral corto y pivote: quedás de costado al rival imaginario.", "Probá la salida en V: paso atrás en diagonal y pivote.", "Siempre terminá mirando al frente con la guardia arriba."],
+      "rounds": { "rondas": 3, "trabajo": 90, "descanso": 30 },
+      "pasar": "3 rounds alternando salidas a los dos lados sin perder la base."
+    },
+    {
+      "nivel": 5,
+      "nombre": "Rebote y cambio de ritmo",
+      "que": "Moverte liviano y cambiar de velocidad.",
+      "pasos": ["Rebotá apenas sobre las puntas, sin saltar alto.", "Cada tanto, explotá con un paso rápido y volvé al ritmo suave.", "Si practicás MMA o kick, sumá cambios de guardia (el pie de adelante pasa atrás)."],
+      "rounds": { "rondas": 4, "trabajo": 90, "descanso": 30 },
+      "pasar": "4 rounds con cambios de ritmo sin cruzar los pies ni bajar la guardia."
+    },
+    {
+      "nivel": 6,
+      "nombre": "Pies con técnicas",
+      "que": "Entrar con técnica y salir con desplazamiento.",
+      "pasos": ["Entrá con un paso y un jab; salí con paso atrás o en ángulo.", "Encadená: entrada, combinación corta, salida en ángulo.", "Nunca te quedes quieto frente al rival imaginario."],
+      "rounds": { "rondas": 5, "trabajo": 120, "descanso": 45 },
+      "pasar": "5 rounds entrando y saliendo con buena base y guardia."
+    }
+  ]
+}

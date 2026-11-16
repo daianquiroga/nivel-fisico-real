@@ -138,6 +138,12 @@ export function Hoy() {
 
       {listo && <Coach ref={coach} />}
 
+      {listo && (perfil?.objetivos?.combate ?? 0) >= 10 && (
+        <Link to="/combate" className={estilos.boton}>
+          Combate: sombra, juego de pies y técnicas
+        </Link>
+      )}
+
 
       {listo && plan && (
         <Tarjeta destacada={plan.dias[diaDeHoy()].sesiones.some((x) => x.ejercicios.length > 0 && !x.titulo.includes('opcional'))}>

@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { Figura, Flecha, Lienzo, Piso, Texto } from '../components/Figura'
 import { DibujoEjercicio, tieneDibujo } from './dibujos-ejercicios'
 import { EnReserva } from './ilustraciones'
+import { DibujoDistancias, DibujoGuardia, DibujoSparring, DibujoTecnica, DibujoVendaje, tieneDibujoTecnica } from './dibujos-combate'
 
 const acento = 'var(--accent)'
 const hecho = 'var(--done)'
@@ -305,12 +306,18 @@ const DIBUJOS: Record<string, () => ReactNode> = {
   sueno: Sueno,
   habitos: Habitos,
   reserva: () => <EnReserva />,
+  guardia: DibujoGuardia,
+  vendaje: DibujoVendaje,
+  sparring: DibujoSparring,
+  distancias: DibujoDistancias,
 }
 
-export const existeDibujo = (clave: string) => (clave.startsWith('ej:') ? tieneDibujo(clave.slice(3)) : clave in DIBUJOS)
+export const existeDibujo = (clave: string) =>
+  clave.startsWith('ej:') ? tieneDibujo(clave.slice(3)) : clave.startsWith('tec:') ? tieneDibujoTecnica(clave.slice(4)) : clave in DIBUJOS
 
 export function DibujoArticulo({ clave }: { clave: string }) {
   if (clave.startsWith('ej:')) return <DibujoEjercicio id={clave.slice(3)} />
+  if (clave.startsWith('tec:')) return <DibujoTecnica id={clave.slice(4)} />
   const D = DIBUJOS[clave]
   return D ? <D /> : null
 }

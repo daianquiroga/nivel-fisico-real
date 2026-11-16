@@ -1,0 +1,222 @@
+[
+  {
+    "id": "jab",
+    "nombre": "Jab (recto de adelante)",
+    "disciplinas": ["boxeo", "kick", "mma", "karate"],
+    "distancia": "larga",
+    "tipo": "golpe",
+    "lado": "adelante",
+    "peso": "centro",
+    "pasos": ["Desde la guardia, estirá el brazo de adelante en línea recta hacia la cara.", "Girá el puño al final (palma hacia abajo) y subí el hombro para tapar el mentón.", "Volvé por el mismo camino, rápido, a la guardia."],
+    "errores": ["Bajar la otra mano: la de atrás se queda pegada a la cara.", "Tirarlo empujando con el cuerpo: el peso queda en el centro, no se va adelante."]
+  },
+  {
+    "id": "directo",
+    "nombre": "Directo (recto de atrás)",
+    "disciplinas": ["boxeo", "kick", "mma"],
+    "distancia": "larga",
+    "tipo": "golpe",
+    "lado": "atras",
+    "peso": "adelante",
+    "pasos": ["Empujá con el pie de atrás y girá la punta hacia adentro (como apagando un pucho).", "La cadera y el hombro giran juntos y el brazo de atrás sale recto.", "Volvé a la guardia; la mano de adelante cuida la cara todo el tiempo."],
+    "errores": ["Abrir el codo antes de pegar: avisa el golpe.", "Inclinarte de más hacia adelante: perdés el equilibrio si fallás."]
+  },
+  {
+    "id": "gancho",
+    "nombre": "Gancho de adelante",
+    "disciplinas": ["boxeo", "kick", "mma"],
+    "distancia": "media",
+    "tipo": "golpe",
+    "lado": "adelante",
+    "peso": "atras",
+    "pasos": ["El codo sube a la altura del puño, con el brazo doblado en 90 grados.", "Girá la cadera y el pie de adelante (el talón hacia afuera): el brazo sigue al cuerpo.", "Frená en el centro y volvé a la guardia."],
+    "errores": ["Abrir el brazo como un abrazo: el golpe llega tarde y largo.", "Pegar solo con el brazo, sin girar la cadera."]
+  },
+  {
+    "id": "uppercut",
+    "nombre": "Uppercut (gancho hacia arriba)",
+    "disciplinas": ["boxeo", "kick", "mma"],
+    "distancia": "corta",
+    "tipo": "golpe",
+    "lado": "atras",
+    "peso": "adelante",
+    "pasos": ["Bajá un poco las rodillas, sin bajar la mano.", "Subí con las piernas y la cadera; el puño sale hacia arriba con la palma hacia vos.", "Cortalo a la altura del mentón y volvé a la guardia."],
+    "errores": ["Bajar la mano antes de tirar: deja la cara descubierta.", "Tirarlo de lejos: es un golpe de distancia corta."]
+  },
+  {
+    "id": "esquive",
+    "nombre": "Esquive lateral (slip)",
+    "disciplinas": ["boxeo", "kick", "mma"],
+    "distancia": "larga",
+    "tipo": "defensa",
+    "lado": "ambos",
+    "peso": "centro",
+    "pasos": ["Doblá apenas las rodillas y mové la cabeza unos centímetros hacia un costado, por fuera del golpe.", "El movimiento sale de la cintura y las piernas, no solo del cuello.", "Volvé al centro listo para contestar."],
+    "errores": ["Exagerar: con 5 a 10 cm alcanza.", "Cerrar los ojos o mirar el piso."]
+  },
+  {
+    "id": "rolido",
+    "nombre": "Pendular (agacharse en U)",
+    "disciplinas": ["boxeo", "mma"],
+    "distancia": "media",
+    "tipo": "defensa",
+    "lado": "ambos",
+    "peso": "centro",
+    "pasos": ["Doblá las rodillas y bajá la cabeza dibujando una U por debajo del golpe que viene de costado.", "Las manos quedan arriba, pegadas a la cara.", "Salí del otro lado, en posición de pegar."],
+    "errores": ["Agacharte doblando la espalda en vez de las piernas.", "Mirar al piso: la mirada sigue al rival."]
+  },
+  {
+    "id": "bloqueo",
+    "nombre": "Bloqueo y desvío",
+    "disciplinas": ["boxeo", "kick", "mma", "karate"],
+    "distancia": "media",
+    "tipo": "defensa",
+    "lado": "ambos",
+    "peso": "centro",
+    "pasos": ["Recto: la mano de atrás da un golpecito al puño que viene y lo desvía (desvío).", "Gancho: subí el antebrazo pegado a la cabeza, con el codo cerrado (bloqueo).", "Contestá enseguida con la mano que quedó libre."],
+    "errores": ["Ir a buscar el golpe con la mano lejos de la cara.", "Quedarte quieto después de bloquear."]
+  },
+  {
+    "id": "patada-baja",
+    "nombre": "Patada circular baja",
+    "disciplinas": ["kick", "mma"],
+    "distancia": "larga",
+    "tipo": "patada",
+    "lado": "atras",
+    "peso": "centro",
+    "pasos": ["Sacá el pie de adelante un poco hacia afuera para abrir la cadera.", "Girá sobre la punta del pie de apoyo y pegá con la canilla al muslo, de arriba hacia abajo.", "Volvé la pierna por el mismo camino a la guardia."],
+    "errores": ["Pegar con el pie: duele y lastima; se pega con la canilla.", "Quedarte de espaldas al terminar."]
+  },
+  {
+    "id": "patada-media",
+    "nombre": "Patada circular media",
+    "disciplinas": ["kick", "mma", "karate"],
+    "distancia": "larga",
+    "tipo": "patada",
+    "lado": "atras",
+    "peso": "centro",
+    "pasos": ["Igual que la baja, pero la cadera gira más y la canilla llega a las costillas.", "El brazo del lado que patea puede bajar hacia atrás para equilibrar; el otro cubre la cara.", "Bajá la pierna a la guardia, no hacia adelante."],
+    "errores": ["No girar el pie de apoyo: la rodilla sufre.", "Patear más alto de lo que da tu movilidad: primero baja, después media."]
+  },
+  {
+    "id": "teep",
+    "nombre": "Patada frontal de empuje (teep)",
+    "disciplinas": ["kick", "mma", "karate"],
+    "distancia": "larga",
+    "tipo": "patada",
+    "lado": "adelante",
+    "peso": "atras",
+    "pasos": ["Subí la rodilla de adelante hacia el pecho.", "Empujá con la planta del pie hacia la panza del rival, estirando la cadera.", "Recogé la pierna y apoyala adelante en guardia."],
+    "errores": ["Patear hacia arriba en vez de empujar hacia adelante.", "Tirar el cuerpo muy hacia atrás y perder el equilibrio."]
+  },
+  {
+    "id": "rodilla",
+    "nombre": "Rodillazo",
+    "disciplinas": ["kick", "mma"],
+    "distancia": "clinch",
+    "tipo": "rodilla",
+    "lado": "atras",
+    "peso": "adelante",
+    "pasos": ["Desde cerca, tomá con las manos la nuca o los hombros del rival (o imaginalo).", "Llevá la cadera hacia adelante y subí la rodilla de atrás con la punta del pie estirada.", "Bajá la pierna atrás, a la guardia."],
+    "errores": ["Subir la rodilla sin adelantar la cadera: no tiene fuerza.", "Inclinarte hacia atrás."]
+  },
+  {
+    "id": "codo",
+    "nombre": "Codazo horizontal",
+    "disciplinas": ["kick", "mma"],
+    "distancia": "corta",
+    "tipo": "codo",
+    "lado": "adelante",
+    "peso": "centro",
+    "pasos": ["Desde muy cerca, subí el codo a la altura del hombro con la mano abierta junto a la cara.", "Girá la cadera y pasá el codo cortando en horizontal.", "La otra mano cubre la cara todo el tiempo."],
+    "errores": ["Usarlo de lejos: solo llega a distancia corta.", "Bajar la mano que cubre."]
+  },
+  {
+    "id": "gyaku-zuki",
+    "nombre": "Golpe invertido (gyaku-zuki)",
+    "disciplinas": ["karate"],
+    "distancia": "larga",
+    "tipo": "golpe",
+    "lado": "atras",
+    "peso": "adelante",
+    "pasos": ["En postura larga y baja, con el pie de atrás firme.", "La cadera gira primero y el puño de atrás sale recto desde la cintura; la otra mano vuelve a la cintura.", "Exhalá fuerte al final (foco) y volvé."],
+    "errores": ["Levantar el talón de atrás y perder la base.", "Girar los hombros sin girar la cadera."]
+  },
+  {
+    "id": "patada-lateral",
+    "nombre": "Patada lateral",
+    "disciplinas": ["karate"],
+    "distancia": "larga",
+    "tipo": "patada",
+    "lado": "adelante",
+    "peso": "atras",
+    "pasos": ["Subí la rodilla de adelante bien doblada (recámara) y girá el pie de apoyo.", "Estirá la pierna de costado y pegá con el talón, con el cuerpo de perfil.", "Volvé a la recámara y apoyá en guardia."],
+    "errores": ["Pegar con la punta del pie en vez del talón.", "Saltear la recámara: la patada pierde fuerza y control."]
+  },
+  {
+    "id": "derribo",
+    "nombre": "Derribo a dos piernas",
+    "disciplinas": ["mma", "lucha"],
+    "distancia": "corta",
+    "tipo": "derribo",
+    "lado": "ambos",
+    "peso": "adelante",
+    "pasos": ["Bajá el nivel doblando las rodillas, con la espalda recta y la mirada al frente.", "Paso profundo hacia adelante apoyando la rodilla de adelante en el piso; la cabeza va al costado del cuerpo del rival.", "Rodeá las piernas con los brazos, juntá las manos y empujá en diagonal."],
+    "errores": ["Agacharte doblando la espalda: quedás expuesto a que te frenen.", "Meter la cabeza en el centro del pecho del rival."]
+  },
+  {
+    "id": "sprawl",
+    "nombre": "Sprawl (defensa del derribo)",
+    "disciplinas": ["mma", "lucha"],
+    "distancia": "corta",
+    "tipo": "defensa",
+    "lado": "ambos",
+    "peso": "adelante",
+    "pasos": ["Cuando el rival baja a tus piernas, tirá las dos piernas hacia atrás.", "La cadera cae al piso y pesa sobre la espalda del rival; las manos lo frenan en los hombros.", "Volvé a parado en guardia."],
+    "errores": ["Quedar con la cadera alta: el rival sigue entrando.", "Tirar las piernas tarde."]
+  },
+  {
+    "id": "clinch",
+    "nombre": "Agarre de nuca (clinch)",
+    "disciplinas": ["kick", "mma", "lucha"],
+    "distancia": "clinch",
+    "tipo": "agarre",
+    "lado": "ambos",
+    "peso": "centro",
+    "pasos": ["Desde corta distancia, pasá las dos manos por detrás de la nuca, una sobre la otra (no entrelazadas).", "Los antebrazos aprietan contra el cuello y los codos se cierran adelante.", "Llevá la cabeza del rival hacia abajo y mantené la cadera cerca."],
+    "errores": ["Entrelazar los dedos: se lastiman.", "Dejar los codos abiertos."]
+  },
+  {
+    "id": "caida",
+    "nombre": "Caída hacia atrás segura",
+    "disciplinas": ["lucha", "mma"],
+    "distancia": "suelo",
+    "tipo": "caida",
+    "lado": "ambos",
+    "peso": "atras",
+    "pasos": ["Agachate, llevá el mentón al pecho y rodá hacia atrás sobre la espalda redonda.", "Al tocar el piso, golpeá con los dos brazos estirados (a 45 grados) para repartir el golpe.", "La cabeza nunca toca el piso."],
+    "errores": ["Poner las manos atrás para frenar: se lastiman las muñecas.", "Dejar la cabeza suelta."]
+  },
+  {
+    "id": "escape-cadera",
+    "nombre": "Escape de cadera (camarón)",
+    "disciplinas": ["lucha", "mma"],
+    "distancia": "suelo",
+    "tipo": "suelo",
+    "lado": "ambos",
+    "peso": "atras",
+    "pasos": ["Boca arriba, apoyá un pie en el piso cerca de la cola.", "Empujá con ese pie y girá de costado llevando la cadera hacia atrás.", "Las manos empujan como si apartaras algo; repetí hacia el otro lado."],
+    "errores": ["Empujar con las manos en el piso en vez de con el pie.", "Quedarte boca arriba sin girar."]
+  },
+  {
+    "id": "levantarse",
+    "nombre": "Levantarse con guardia",
+    "disciplinas": ["lucha", "mma"],
+    "distancia": "suelo",
+    "tipo": "suelo",
+    "lado": "ambos",
+    "peso": "atras",
+    "pasos": ["Sentado, apoyá una mano atrás y el pie del otro lado firme en el piso; la otra mano cubre la cara.", "Levantá la cadera y pasá la pierna libre por debajo, hacia atrás.", "Quedás parado en guardia y lejos del rival."],
+    "errores": ["Levantarte de frente, hacia el rival.", "Bajar la mano que cubre."]
+  }
+]

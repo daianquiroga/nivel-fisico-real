@@ -4,10 +4,11 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Entrega actual
 
-**Entrega 5 — Aprender y coach**, terminada (versión 0.21.0). Próxima: **Entrega 6 — Combate** (sombra, juego de pies, combinaciones y simulador). Después la 7 (Android nativo con Health Connect). Entregas 1 a 5 terminadas.
+**Entrega 6 — Combate**, parte 1 de 3 hecha (versión 0.22.0: técnicas, sombra, juego de pies y artículos). Falta la parte 2 (entrenador por voz que canta combinaciones con reglas de peso, y entrenador de contragolpes) y la parte 3 (poder de pelea y simulador). Después la 7 (Android nativo con Health Connect). Entregas 1 a 5 terminadas.
 
 ## Hecho
 
+- Versión 0.22.0 (entrega 6, parte 1): pantalla Combate (`/combate`, desde Hoy si "Saber defenderme" tiene 10 puntos o más, y desde Aprender → Técnica de combate). Disciplina base (boxeo, kick y muay thai, MMA, karate y taekwondo, lucha, judo y BJJ) con la recomendación de sumar otra a los 6 a 12 meses. 20 técnicas (`src/content/combate/tecnicas.json`) con disciplina, distancia, tipo, lado y dónde queda el peso, pasos, errores y dibujo propio (`src/content/dibujos-combate.tsx`). Sombra en 5 niveles (forma, con desplazamiento, en combinación, a velocidad, reacción) con rounds guiados y evaluación con video propio: checklist de 4 criterios generales y 4 de la disciplina. Juego de pies en 6 niveles con huellas dibujadas desde arriba. Los rounds se anotan en la actividad del día (MET del Compendium 2024: 15425 y 15430). Artículos: guardia, vendaje, sparring con seguridad y disciplinas y distancias. Lógica en `src/lib/combate.ts` con tests.
 - Versión 0.21.0 (entrega 5, parte 3): "Preguntarle a Claude" (`/preguntar`, desde la tarjeta del coach en Hoy y desde Aprender). Arma un texto con perfil, objetivos, nivel, última evaluación, etapa, plan de la semana, sesiones de las últimas 2 semanas, última vez de cada ejercicio, control diario de 7 días, pasos, cintura y los consejos del coach; con el tono según el nivel y el pedido de no diagnosticar. Casillas para sacar horarios y lugares, salud y notas del diario (esta, apagada por defecto). Nunca lleva fotos. Se ve antes de copiar, se copia al portapapeles (o se muestra para copiar a mano) y hay un botón para abrir Claude. La app no se conecta a ningún servidor. Lógica en `src/lib/coach/preguntar.ts` con tests.
 - Versión 0.20.1: la tarjeta "Tu coach" se ve siempre en Hoy (con el inicio completo); si no hay consejos, dice que está todo en orden y qué mira.
 - Versión 0.20.0 (entrega 5, parte 2): coach sin IA en `src/lib/coach/` (con tests). Reglas: molestia o dolor marcado hoy → activar el modo cuidado de esa zona con un botón; sueño menor a 6 h → versión reducida; 2 o más sesiones planeadas seguidas sin hacer → volver con la mínima; ejercicio estancado 3 sesiones → bajar 10 % o variante; tope del rango 2 sesiones seguidas → subir de escalón; cintura +2 cm en unas 4 semanas con objetivo de verse mejor → revisar comida; retest con +5 puntos de percentil → celebrar; etapa cumplida → pasar de etapa. Tono por nivel: principiante con pasos, intermedio simple, avanzado técnico. En Hoy, tarjeta "Tu coach" con hasta 3 consejos (se pueden cerrar por hoy). En Progreso, "Tu etapa": las 5 etapas con dibujo de escalera y los requisitos con su avance (`etapas.ts`).
@@ -90,6 +91,7 @@ Claude Code actualiza este archivo al final de cada sesión.
 - Coach: "objetivo de bajar grasa" = Verme mejor con 40 puntos o más. Las faltas seguidas se cuentan hasta 14 días atrás y desde que existe el plan. Solo se miran ejercicios anotados en las últimas 3 semanas. Los consejos cerrados se olvidan al día siguiente.
 - Etapas: los requisitos del ejemplo de la etapa 1 (8 semanas, 80 % de sesiones, retest con mejora de cardio y fuerza) se usan para todas; el checklist de técnica todavía no existe y se suma más adelante. La etapa empieza a contar desde que se armó el primer plan. Pasar de etapa no cambia el plan por ahora: la progresión sigue con los registros.
 - Preguntarle a Claude: no se usa ninguna API; el texto lo pega la persona. "Abrir Claude" abre claude.ai/new sin pasar datos en el enlace.
+- Combate: un nivel de sombra se aprueba con los 8 criterios y se sube de a uno; el video lo graba la persona con la cámara y no se guarda en la app. El nivel de pies se aprueba con un "lo logré" después de los rounds. Sin disciplina elegida se muestra boxeo. Sombra hasta el nivel 3 y pies usan 5,3 MET (práctica lenta, 15425); sombra 4 y 5, 10,3 MET (ritmo moderado, 15430).
 - Calendario: hora sin zona horaria ("flotante"), así el calendario usa la hora del celular.
 - Racha: la semana en curso suma si ya está cumplida y no corta la racha mientras no termine.
 - GitHub Pages activado con origen "GitHub Actions" (lo activa el dueño de la cuenta en Configuración → Páginas).
@@ -105,6 +107,7 @@ Dirección: https://daianquiroga.github.io/nivel-fisico-real/
 5. Progreso: aparece la última evaluación y el historial; tocar una fecha abre sus resultados.
 6. Aprender: buscar un ejercicio, filtrar por tipo, abrir la ficha y moverse por la escalera.
 7. Ficha de un ejercicio → Anotar series → Guardar; volver a anotar y ver la sugerencia, el historial y Progreso → Tus ejercicios.
+12. Hoy → Combate: elegir disciplina, hacer rounds de sombra y de pies, evaluar un nivel marcando los 8 criterios; Técnicas → filtrar por disciplina y distancia y abrir una.
 11. Hoy → Tu coach → "Preguntarle a Claude con mis datos" → elegir una pregunta → Copiar texto → Abrir Claude y pegar.
 10. Hoy → completar el control diario con poco sueño o una molestia y ver la tarjeta "Tu coach". Progreso → "Tu etapa".
 9. Aprender → buscar "panza" o "agujetas"; tocar un tema; abrir "Correr desde cero" y cambiar entre Principiante, Intermedio y Avanzado.

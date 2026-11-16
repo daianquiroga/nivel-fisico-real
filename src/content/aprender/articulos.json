@@ -538,5 +538,169 @@
         "enlace": ""
       }
     ]
+  },
+  {
+    "id": "combate-guardia",
+    "categoria": "combate",
+    "titulo": "La guardia: tu posición base",
+    "resumen": "Cómo pararte para pelear, defenderte y moverte.",
+    "etiquetas": [
+      "guardia",
+      "boxeo",
+      "pelea",
+      "defensa",
+      "postura",
+      "combate",
+      "defenderme"
+    ],
+    "dibujo": "guardia",
+    "niveles": {
+      "principiante": [
+        "Pies al ancho de los hombros, uno adelante y otro atrás. Si sos diestro, el izquierdo va adelante (guardia ortodoxa); si sos zurdo, al revés.",
+        "Rodillas sueltas, peso repartido entre los dos pies y apenas sobre las puntas.",
+        "Manos a la altura de la cara, codos cerrados cubriendo las costillas y el mentón bajo.",
+        "Mirá al pecho del rival: ves venir manos y piernas a la vez."
+      ],
+      "intermedio": [
+        "La guardia cambia según la disciplina: en muay thai es más alta y de frente para defender patadas; en MMA, más baja para defender derribos.",
+        "Después de cada técnica, la guardia vuelve: es el criterio más importante del checklist de sombra."
+      ],
+      "avanzado": [
+        "La distancia entre los pies define qué tan rápido entrás y salís: más larga es más estable, más corta es más móvil. Probá las dos en sombra."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Programa de combate de la app (ESPECIFICACION.md, sección 14); fundamentos comunes de enseñanza de boxeo",
+        "enlace": "https://www.englandboxing.org/wp-content/uploads/2021/07/Sparring-Resource-Final.pdf"
+      }
+    ]
+  },
+  {
+    "id": "combate-vendaje",
+    "categoria": "combate",
+    "titulo": "Cómo vendarte las manos",
+    "resumen": "Para qué sirve la venda y cómo ponerla en 4 pasos.",
+    "etiquetas": [
+      "vendaje",
+      "venda",
+      "vendas",
+      "manos",
+      "guantes",
+      "boxeo",
+      "muñeca",
+      "nudillos"
+    ],
+    "dibujo": "vendaje",
+    "niveles": {
+      "principiante": [
+        "La venda sostiene la muñeca y mantiene juntos los huesos de la mano para que no se muevan al pegar. Se usa siempre que pegues a una bolsa o a manoplas.",
+        "1. Poné el lazo en el pulgar y da 3 vueltas a la muñeca.",
+        "2. Pasá a los nudillos y da 3 o 4 vueltas, bien planas, sin arrugas.",
+        "3. Hacé cruces entre los dedos y una vuelta al pulgar.",
+        "4. Terminá con las vueltas que sobren en la muñeca y pegá el abrojo."
+      ],
+      "intermedio": [
+        "Probalo: cerrá el puño fuerte. Tiene que sentirse firme en los nudillos y la muñeca, sin dolor ni dedos fríos. Si te late la mano, aflojá.",
+        "Lavá y secá las vendas después de usarlas: húmedas dentro del bolso juntan bacterias."
+      ],
+      "avanzado": [
+        "Si tu muñeca es débil, sumá una o dos vueltas más a la muñeca. Las vendas de unos 4,5 m (180 pulgadas) cubren bien muñeca y nudillos."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Everlast, How to Wrap Your Hands for Boxing",
+        "enlace": "https://www.everlast.com/blogs/how-to-guides/how-to-wrap-your-hands-for-boxing-step-by-step-guide"
+      },
+      {
+        "texto": "Fairtex, How to Wrap Hands for Boxing",
+        "enlace": "https://www.fairtex.com/blogs/news/how-to-wrap-hands-for-boxing"
+      }
+    ]
+  },
+  {
+    "id": "combate-sparring",
+    "categoria": "combate",
+    "titulo": "Sparring: cuándo y cómo, con seguridad",
+    "resumen": "Por qué no conviene hacerlo solo y qué equipo hace falta.",
+    "etiquetas": [
+      "sparring",
+      "pelear",
+      "guantes",
+      "casco",
+      "protector",
+      "seguridad",
+      "golpes",
+      "cabeza"
+    ],
+    "dibujo": "sparring",
+    "niveles": {
+      "principiante": [
+        "El sparring es practicar contra otra persona. No lo hagas solo con amigos: aprendé con un profesor en un club o gimnasio.",
+        "En el boxeo amateur inglés, por ejemplo, es obligatorio que un entrenador habilitado supervise cada sparring.",
+        "Equipo mínimo: protector bucal, casco y guantes de sparring (de 14 a 16 onzas), además de vendas.",
+        "Antes del sparring, la base: guardia, técnicas y defensa bien aprendidas en sombra y con manoplas."
+      ],
+      "intermedio": [
+        "Hay sparring técnico (suave, para practicar una cosa) y sparring más duro: el profesor elige cuál y con quién, según peso y experiencia.",
+        "Si te golpean la cabeza y te duele, te mareás o ves raro, pará y consultá a un médico antes de volver."
+      ],
+      "avanzado": [
+        "Más sparring duro no es mejor: la mayoría de la práctica debería ser técnica, con contacto controlado."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "England Boxing, Sparring Resource (seguridad y supervisión)",
+        "enlace": "https://www.englandboxing.org/wp-content/uploads/2021/07/Sparring-Resource-Final.pdf"
+      },
+      {
+        "texto": "England Boxing, recordatorio de supervisión obligatoria",
+        "enlace": "https://www.englandboxing.org/news_articles/sparring-document-to-help-coaches-after-end-of-covid-19-restrictions/"
+      }
+    ]
+  },
+  {
+    "id": "combate-disciplinas",
+    "categoria": "combate",
+    "titulo": "Disciplinas y distancias: por dónde empezar",
+    "resumen": "Elegí una disciplina base y sumá otra después.",
+    "etiquetas": [
+      "disciplina",
+      "boxeo",
+      "kickboxing",
+      "muay thai",
+      "mma",
+      "karate",
+      "taekwondo",
+      "judo",
+      "bjj",
+      "lucha",
+      "distancia",
+      "transiciones",
+      "defensa personal"
+    ],
+    "dibujo": "distancias",
+    "niveles": {
+      "principiante": [
+        "Cada disciplina trabaja distancias distintas: larga (patadas y rectos), media (ganchos), corta (uppercuts y codos), clinch (agarrados de pie) y suelo.",
+        "Recomendación de la app: elegí una disciplina base y practicala de 6 a 12 meses antes de sumar otra. Así la técnica se asienta.",
+        "Para defensa personal, combinar golpes (boxeo o kick) con algo de suelo (lucha, judo o BJJ) cubre más situaciones."
+      ],
+      "intermedio": [
+        "Lo más difícil al combinar son las transiciones: pasar de golpear a agarrar, o de estar abajo a levantarte. Practicalas a propósito.",
+        "La app arma combinaciones fijándose dónde queda tu peso al terminar cada técnica, para que la siguiente salga natural."
+      ],
+      "avanzado": [
+        "Una disciplina de golpes y una de agarre se complementan; dos de golpes parecidas (por ejemplo, boxeo y kick) se mezclan más rápido pero cubren menos distancias."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Programa de combate de la app (ESPECIFICACION.md, sección 14): recomendación de una disciplina base y otra a los 6 a 12 meses, decisión de diseño",
+        "enlace": ""
+      }
+    ]
   }
 ]

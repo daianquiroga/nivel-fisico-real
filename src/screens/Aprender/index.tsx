@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Proximamente } from '../../components/Proximamente'
 import { DibujoArticulo } from '../../content/dibujos-aprender'
 import { TiposDeCuerpo } from '../../content/ilustraciones'
+import { DibujoGuardia } from '../../content/dibujos-combate'
 import { ARTICULOS, CATEGORIAS, buscarArticulos, buscarEn } from '../../lib/aprender'
 import { EJERCICIOS } from '../../lib/ejercicios'
 import { usarNivelLectura } from '../../lib/usarNivelLectura'
@@ -28,6 +29,16 @@ function TarjetaTipoCuerpo() {
       <TiposDeCuerpo />
       <span className={s.itemNombre}>{TIPO_CUERPO.titulo}</span>
       <span className={s.itemDetalle}>{TIPO_CUERPO.cuerpo}</span>
+    </Link>
+  )
+}
+
+function TarjetaCombate() {
+  return (
+    <Link to="/combate" className={s.item}>
+      <DibujoGuardia />
+      <span className={s.itemNombre}>Entrenar combate</span>
+      <span className={s.itemDetalle}>Sombra por niveles, juego de pies y técnicas por disciplina</span>
     </Link>
   )
 }
@@ -126,6 +137,7 @@ export function Aprender() {
           </div>
 
           {(!categoria || categoria === 'cuerpo') && <TarjetaTipoCuerpo />}
+          {categoria === 'combate' && <TarjetaCombate />}
           {categoria !== 'ejercicios' &&
             (categoria ? (
               <div className={s.lista}>{lista.map(fila)}</div>
@@ -144,7 +156,7 @@ export function Aprender() {
               <Biblioteca />
             </>
           )}
-          {!categoria && <Proximamente entrega="entrega 6" items={['Técnica de combate: sombra, juego de pies, combinaciones y simulador.']} />}
+          {!categoria && <Proximamente entrega="entrega 6" items={['Entrenador por voz que canta combinaciones y entrenador de contragolpes.', 'Poder de pelea y simulador de peleas.']} />}
         </>
       )}
     </>

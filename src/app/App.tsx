@@ -3,6 +3,10 @@ import { Icono } from '../components/Icono'
 import { Aprender } from '../screens/Aprender'
 import { Articulo } from '../screens/Aprender/Articulo'
 import { Preguntar } from '../screens/Preguntar'
+import { Combate } from '../screens/Combate'
+import { FichaTecnica, Tecnicas } from '../screens/Combate/Tecnicas'
+import { RondasCombate } from '../screens/Combate/Rondas'
+import { EvaluarSombra } from '../screens/Combate/Evaluar'
 import { Entrenar } from '../screens/Entrenar'
 import { Estetica } from '../screens/Estetica'
 import { Evaluacion } from '../screens/Evaluacion'
@@ -71,6 +75,11 @@ export default function App() {
         <Route path="/ganas" element={<Ganas />} />
         <Route path="/aprender/:id" element={<Articulo />} />
         <Route path="/preguntar" element={<Preguntar />} />
+        <Route path="/combate" element={<Combate />} />
+        <Route path="/combate/tecnicas" element={<Tecnicas />} />
+        <Route path="/combate/tecnica/:id" element={<FichaTecnica />} />
+        <Route path="/combate/rondas/:tipo" element={<RondasCombate />} />
+        <Route path="/combate/evaluar" element={<EvaluarSombra />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </HashRouter>

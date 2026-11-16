@@ -7,15 +7,34 @@ import t from '../../components/tiempo.module.css'
 const formato = (seg: number) => `${Math.floor(seg / 60)}:${String(Math.max(0, seg) % 60).padStart(2, '0')}`
 
 /** Temporizador de rondas: trabajo y descanso configurables. Para cardio continuo, 1 ronda sin descanso. */
-export function Rondas({ minutos, intervalos, onFin }: { minutos: number; intervalos: boolean; onFin: (minutosHechos: number) => void }) {
-  const [trabajo, setTrabajo] = useState(intervalos ? 30 : minutos * 60)
-  const [descanso, setDescanso] = useState(intervalos ? 30 : 0)
-  const [rondas, setRondas] = useState(intervalos ? Math.max(1, Math.round((minutos * 60) / 60)) : 1)
+export function Rondas({
+  minutos,
+  intervalos,
+  onFin,
+  inicial,
+  onRonda,
+}: {
+  minutos: number
+  intervalos: boolean
+  onFin: (minutosHechos: number) => void
+  /** Trabajo y descanso en segundos y cantidad de rondas, para empezar con otros valores. */
+  inicial?: { trabajo: number; descanso: number; rondas: number }
+  /** Se llama en cada cambio de fase (para cantar combinaciones, por ejemplo). */
+  onRonda?: (r: { ronda: number; fase: 'trabajo' | 'descanso' } | null) => void
+}) {
+  const [trabajo, setTrabajo] = useState(inicial?.trabajo ?? (intervalos ? 30 : minutos * 60))
+  const [descanso, setDescanso] = useState(inicial?.descanso ?? (intervalos ? 30 : 0))
+  const [rondas, setRondas] = useState(inicial?.rondas ?? (intervalos ? Math.max(1, Math.round((minutos * 60) / 60)) : 1))
   const [estado, setEstado] = useState<{ ronda: number; fase: 'trabajo' | 'descanso'; fin: number } | null>(null)
   const [resta, setResta] = useState(trabajo)
   const [pausa, setPausa] = useState<number | null>(null)
   const inicio = useRef(0)
   const avisado = useRef(new Set<string>())
+  const avisarRonda = useRef(onRonda)
+  avisarRonda.current = onRonda
+  useEffect(() => {
+    avisarRonda.current?.(estado ? { ronda: estado.ronda, fase: estado.fase } : null)
+  }, [estado?.ronda, estado?.fase]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (!estado || pausa !== null) return
