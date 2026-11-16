@@ -25,7 +25,7 @@ export function RondasCombate() {
   const actual = esPies ? nivelPies : nivelSombra
   const n = niveles[Math.min(actual, niveles.length - 1)]
   const d = disciplina(disc)!
-  const tecnicas = esPies ? [] : d.basicas.slice(0, n.nivel <= 2 ? 4 : d.basicas.length)
+  const tecnicas = esPies ? [] : d.basicas.slice(0, n.nivel <= 2 ? (d.id === 'hibrido' ? 6 : 4) : d.basicas.length)
 
   async function terminar(minutos: number) {
     const hoy = fechaLocal()
@@ -63,6 +63,17 @@ export function RondasCombate() {
           <li key={p}>{p}</li>
         ))}
       </ol>
+
+      {(esPies ? d.pies : d.sombra)?.[String(n.nivel)] && (
+        <>
+          <p className="etiqueta">En {d.nombre.split(':')[0].toLowerCase()}</p>
+          <ul className={s.seccion}>
+            {(esPies ? d.pies : d.sombra)![String(n.nivel)].map((p) => (
+              <li key={p}>{p}</li>
+            ))}
+          </ul>
+        </>
+      )}
 
       {tecnicas.length > 0 && (
         <>

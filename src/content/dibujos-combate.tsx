@@ -78,6 +78,11 @@ const TECNICAS: Record<string, DefTecnica> = {
     flechas: recta([234, 34], [170, 34]),
     extra: <Texto x={250} y={60}>golpe que viene</Texto>,
   },
+  chequeo: {
+    pose: g({ rodD: [160, 102], pieD: [156, 138], puntaD: [168, 140], pieI: [104, 166], rodI: [112, 134], cadera: [126, 98], cuello: [132, 50], cabeza: [135, 34], manoD: [154, 34], codoD: [154, 66], manoI: [144, 36], codoI: [140, 68] }),
+    flechas: recta([240, 126], [176, 122]),
+    extra: <Texto x={252} y={150}>patada que viene</Texto>,
+  },
   'patada-baja': {
     pose: resaltar(g({ rodD: [154, 132], cadera: [130, 98], cuello: [124, 50], cabeza: [121, 34], codoD: [134, 70], manoD: [140, 48], codoI: [112, 82], manoI: [98, 98], rodI: [174, 116], pieI: [206, 132], puntaI: [214, 130] }), 'piernas'),
     flechas: curva([108, 150], [160, 174], [212, 140]),

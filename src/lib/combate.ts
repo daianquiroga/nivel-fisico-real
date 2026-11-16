@@ -26,6 +26,9 @@ export interface Disciplina {
   detalle: string
   basicas: string[]
   criterios: string[]
+  /** Consejos propios de la disciplina para cada nivel de sombra y de pies (clave = nivel). */
+  sombra?: Record<string, string[]>
+  pies?: Record<string, string[]>
 }
 
 export interface Rounds {
@@ -153,6 +156,10 @@ export function revisarCombate(existeDibujo: (id: string) => boolean, existePie:
   for (const d of DISCIPLINAS) {
     if (d.criterios.length !== 4) e.push(`${d.id}: 4 criterios`)
     for (const b of d.basicas) if (!POR_ID.get(b)?.disciplinas.includes(d.id)) e.push(`${d.id}: básica ${b}`)
+  }
+  for (const d of DISCIPLINAS) {
+    for (const k of Object.keys(d.sombra ?? {})) if (!NIVELES_SOMBRA.some((n) => String(n.nivel) === k)) e.push(`${d.id}: sombra ${k}`)
+    for (const k of Object.keys(d.pies ?? {})) if (!NIVELES_PIES.some((n) => String(n.nivel) === k)) e.push(`${d.id}: pies ${k}`)
   }
   if (CRITERIOS_GENERALES.length !== 4) e.push('criterios generales')
   NIVELES_SOMBRA.forEach((n, i) => n.nivel !== i + 1 && e.push(`sombra ${n.nivel}`))

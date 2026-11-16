@@ -32,3 +32,12 @@ describe('combate', () => {
     expect(mesesCon({ disciplina: 'boxeo', desde: '2026-01-01T00:00:00' }, new Date('2026-07-15T00:00:00'))).toBe(6)
   })
 })
+
+describe('híbrido boxeo + kick + muay thai', () => {
+  it('tiene sus 8 criterios, sus técnicas y consejos por nivel', () => {
+    expect(criteriosDe('hibrido')).toHaveLength(8)
+    const ids = tecnicasDe('hibrido', null).map((t) => t.id)
+    expect(ids).toEqual(expect.arrayContaining(['jab', 'gancho', 'teep', 'patada-baja', 'chequeo', 'rodilla', 'clinch']))
+    expect(ids).not.toContain('derribo')
+  })
+})

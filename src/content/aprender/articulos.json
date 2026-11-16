@@ -679,7 +679,8 @@
       "lucha",
       "distancia",
       "transiciones",
-      "defensa personal"
+      "defensa personal",
+      "hibrido"
     ],
     "dibujo": "distancias",
     "niveles": {
@@ -690,7 +691,8 @@
       ],
       "intermedio": [
         "Lo más difícil al combinar son las transiciones: pasar de golpear a agarrar, o de estar abajo a levantarte. Practicalas a propósito.",
-        "La app arma combinaciones fijándose dónde queda tu peso al terminar cada técnica, para que la siguiente salga natural."
+        "La app arma combinaciones fijándose dónde queda tu peso al terminar cada técnica, para que la siguiente salga natural.",
+        "En Combate está la disciplina \"Híbrido: boxeo + kick + muay thai\": manos y movimiento de cabeza del boxeo, combinaciones que terminan en patada del kick, y patadas con canilla, teep, rodillas, codos, clinch y chequeo del muay thai."
       ],
       "avanzado": [
         "Una disciplina de golpes y una de agarre se complementan; dos de golpes parecidas (por ejemplo, boxeo y kick) se mezclan más rápido pero cubren menos distancias."
