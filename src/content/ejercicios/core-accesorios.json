@@ -192,6 +192,7 @@
   },
   {
     "id": "curl-biceps",
+    "familia": "curl-biceps",
     "nombre": "Curl de bíceps con mancuernas",
     "patron": "accesorio",
     "principal": ["bíceps"],
@@ -224,6 +225,7 @@
   },
   {
     "id": "extension-triceps",
+    "familia": "extension-triceps",
     "nombre": "Extensión de tríceps sobre la cabeza",
     "patron": "accesorio",
     "principal": ["tríceps"],
@@ -257,6 +259,7 @@
   },
   {
     "id": "elevaciones-laterales",
+    "familia": "elevaciones-laterales",
     "nombre": "Elevaciones laterales",
     "patron": "accesorio",
     "principal": ["hombros (parte del costado)"],

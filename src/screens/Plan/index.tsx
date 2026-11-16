@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Aviso, Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
 import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
-import { ejercicio } from '../../lib/ejercicios'
+import { ejercicio, variantesDe } from '../../lib/ejercicios'
 import { NOMBRES_DIAS, diaDeHoy } from '../../lib/perfil'
 import { alternativas, type EjercicioPlan, type PlanSemana, type SesionPlan } from '../../lib/plan/generador'
 import { agregarSesion, cambiarDatosSesion } from '../../lib/plan/editar'
+import { Implementos } from '../../components/Implementos'
 import { intencionPorDefecto } from '../../lib/habitos'
 import { generarIcs } from '../../lib/ics'
 import { usarPlan } from '../../lib/plan/usarPlan'
@@ -482,6 +483,13 @@ export function Plan() {
 
       {cambiando && ejCambio && (
         <Dialogo titulo={`Cambiar ${ejercicio(ejCambio.id)?.nombre.toLowerCase() ?? ''}`} onCerrar={() => setCambiando(null)}>
+          {variantesDe(ejCambio.id).length > 1 && (
+            <>
+              <p className="etiqueta">Mismo ejercicio, con otra cosa</p>
+              <Implementos id={ejCambio.id} onElegir={(id) => void reemplazar(id)} />
+              <p className="etiqueta">O cambialo por otro</p>
+            </>
+          )}
           {opciones.length === 0 && <p className={estilos.texto2}>No hay otro ejercicio equivalente con el equipo de ese lugar.</p>}
           <div
             style={{

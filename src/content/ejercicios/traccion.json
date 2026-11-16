@@ -1,6 +1,7 @@
 [
   {
     "id": "remo-banda",
+    "familia": "remo-sentado",
     "nombre": "Remo con banda",
     "patron": "traccion",
     "principal": ["espalda alta", "dorsales"],
@@ -99,6 +100,7 @@
   },
   {
     "id": "remo-polea",
+    "familia": "remo-sentado",
     "nombre": "Remo sentado en polea",
     "patron": "traccion",
     "principal": ["espalda alta", "dorsales"],

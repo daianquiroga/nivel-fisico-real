@@ -775,6 +775,107 @@ const DIBUJOS: Record<string, () => ReactNode> = {
       textos={['Apoyado', 'Hombros arriba']}
     />
   ),
+  /* Variantes por implemento (barra, mancuernas, banda) */
+  'press-militar-banda': () => (
+    <Dos
+      etiqueta="Press militar con banda: parado sobre la banda, de los hombros hasta arriba"
+      a={{ pose: pose({ ...DE_PIE, codo: [98, 62], mano: [98, 42] }), adelante: <Banda de={[98, 42]} a={[84, 165]} /> }}
+      b={{ pose: pose({ ...DE_PIE, codo: [86, 26], mano: [86, 10] }), adelante: <Banda de={[86, 10]} a={[84, 165]} /> }}
+    />
+  ),
+  'remo-inclinado-mancuernas': () => (
+    <Dos
+      etiqueta="Remo inclinado con mancuernas: inclinado con la espalda recta, las mancuernas van a la panza"
+      a={{ pose: pose({ cabeza: [124, 62], cuello: [110, 70], cadera: [62, 92], rod: [74, 130], pie: [66, 165], punta: [80, 165], codo: [104, 104], mano: [104, 132] }), adelante: <Mancuerna en={[104, 134]} /> }}
+      b={{ pose: pose({ cabeza: [124, 62], cuello: [110, 70], cadera: [62, 92], rod: [74, 130], pie: [66, 165], punta: [80, 165], codo: [82, 80], mano: [92, 106] }), adelante: <Mancuerna en={[92, 108]} /> }}
+      textos={['Brazos estirados', 'Codos atrás']}
+    />
+  ),
+  'remo-inclinado-banda': () => (
+    <Dos
+      etiqueta="Remo inclinado con banda: parado sobre la banda, inclinado, tirás hacia la panza"
+      a={{ pose: pose({ cabeza: [124, 62], cuello: [110, 70], cadera: [62, 92], rod: [74, 130], pie: [66, 165], punta: [80, 165], codo: [104, 104], mano: [104, 132] }), adelante: <Banda de={[104, 132]} a={[72, 165]} /> }}
+      b={{ pose: pose({ cabeza: [124, 62], cuello: [110, 70], cadera: [62, 92], rod: [74, 130], pie: [66, 165], punta: [80, 165], codo: [82, 80], mano: [92, 106] }), adelante: <Banda de={[92, 106]} a={[72, 165]} /> }}
+      textos={['Brazos estirados', 'Codos atrás']}
+    />
+  ),
+  'curl-barra': () => (
+    <Dos
+      etiqueta="Curl de bíceps con barra: codos quietos al costado, la barra sube al pecho"
+      a={{ pose: pose({ ...DE_PIE, mano: [82, 102] }), adelante: <Disco en={[82, 104]} r={13} /> }}
+      b={{ pose: pose({ ...DE_PIE, codo: [80, 72], mano: [96, 50] }), adelante: <Disco en={[98, 50]} r={13} /> }}
+    />
+  ),
+  'curl-banda': () => (
+    <Dos
+      etiqueta="Curl de bíceps con banda: parado sobre la banda, codos quietos"
+      a={{ pose: pose({ ...DE_PIE, mano: [82, 102] }), adelante: <Banda de={[82, 102]} a={[84, 165]} /> }}
+      b={{ pose: pose({ ...DE_PIE, codo: [80, 72], mano: [96, 50] }), adelante: <Banda de={[96, 50]} a={[84, 165]} /> }}
+    />
+  ),
+  'curl-martillo': () => (
+    <Dos
+      etiqueta="Curl martillo: palmas enfrentadas, la mancuerna parada sube hasta el hombro"
+      a={{ pose: pose({ ...DE_PIE, mano: [82, 102] }), adelante: <Mancuerna en={[82, 104]} vertical /> }}
+      b={{ pose: pose({ ...DE_PIE, codo: [80, 72], mano: [96, 50] }), adelante: <Mancuerna en={[97, 50]} vertical /> }}
+      textos={['Palmas enfrentadas', 'Arriba']}
+    />
+  ),
+  'curl-martillo-banda': () => (
+    <Dos
+      etiqueta="Curl martillo con banda: palmas enfrentadas, parado sobre la banda"
+      a={{ pose: pose({ ...DE_PIE, mano: [82, 102] }), adelante: <Banda de={[82, 102]} a={[84, 165]} /> }}
+      b={{ pose: pose({ ...DE_PIE, codo: [80, 72], mano: [96, 50] }), adelante: <Banda de={[96, 50]} a={[84, 165]} /> }}
+      textos={['Palmas enfrentadas', 'Arriba']}
+    />
+  ),
+  'elevaciones-laterales-banda': () => (
+    <Dos
+      etiqueta="Elevaciones laterales con banda vistas de frente: los brazos suben hasta la altura de los hombros"
+      a={{ pose: pose({ cabeza: [80, 30], cuello: [80, 44], cadera: [80, 98], rod: [72, 132], pie: [70, 165], rodI: [88, 132], pieI: [90, 165], codo: [62, 72], mano: [58, 98], codoI: [98, 72], manoI: [102, 98] }), adelante: <><Banda de={[58, 98]} a={[76, 165]} /><Banda de={[102, 98]} a={[84, 165]} /></> }}
+      b={{ pose: pose({ cabeza: [80, 30], cuello: [80, 44], cadera: [80, 98], rod: [72, 132], pie: [70, 165], rodI: [88, 132], pieI: [90, 165], codo: [52, 48], mano: [26, 50], codoI: [108, 48], manoI: [134, 50] }), adelante: <><Banda de={[26, 50]} a={[76, 165]} /><Banda de={[134, 50]} a={[84, 165]} /></> }}
+      textos={['Inicio (de frente)', 'Final']}
+    />
+  ),
+  'extension-triceps-banda': () => (
+    <Dos
+      etiqueta="Extensión de tríceps con banda: la banda pisada atrás, las manos van de detrás de la cabeza hasta arriba"
+      a={{ pose: pose({ ...DE_PIE, rodI: [70, 134], pieI: [58, 165], codo: [84, 12], mano: [66, 30] }), adelante: <Banda de={[66, 30]} a={[58, 165]} /> }}
+      b={{ pose: pose({ ...DE_PIE, rodI: [70, 134], pieI: [58, 165], codo: [84, 26], mano: [84, 8] }), adelante: <Banda de={[84, 8]} a={[58, 165]} /> }}
+    />
+  ),
+  'pajaro-mancuernas': () => (
+    <Dos
+      etiqueta="Pájaro con mancuernas: inclinado, los brazos se abren hasta la altura de la espalda"
+      a={{ pose: pose({ cabeza: [124, 62], cuello: [110, 70], cadera: [62, 92], rod: [74, 130], pie: [66, 165], punta: [80, 165], codo: [108, 100], mano: [110, 128] }), adelante: <Mancuerna en={[110, 130]} vertical /> }}
+      b={{ pose: pose({ cabeza: [124, 62], cuello: [110, 70], cadera: [62, 92], rod: [74, 130], pie: [66, 165], punta: [80, 165], codo: [104, 58], mano: [100, 40], codoI: [104, 58], manoI: [100, 40] }), adelante: <><Mancuerna en={[100, 38]} vertical /><Flecha de={[124, 120]} a={[118, 56]} /></> }}
+      textos={['Brazos colgando', 'Abiertos']}
+    />
+  ),
+  'pajaro-banda': () => (
+    <Dos
+      etiqueta="Pájaro con banda visto de frente: la banda adelante del pecho se estira abriendo los brazos"
+      a={{ pose: pose({ cabeza: [80, 30], cuello: [80, 44], cadera: [80, 98], rod: [72, 132], pie: [70, 165], rodI: [88, 132], pieI: [90, 165], codo: [70, 58], mano: [66, 62], codoI: [90, 58], manoI: [94, 62] }), adelante: <line x1={66} x2={94} y1={62} y2={62} stroke={acento} strokeWidth={3} /> }}
+      b={{ pose: pose({ cabeza: [80, 30], cuello: [80, 44], cadera: [80, 98], rod: [72, 132], pie: [70, 165], rodI: [88, 132], pieI: [90, 165], codo: [52, 52], mano: [26, 54], codoI: [108, 52], manoI: [134, 54] }), adelante: <path d="M26,54 Q80,62 134,54" fill="none" stroke={acento} strokeWidth={3} /> }}
+      textos={['Inicio (de frente)', 'Abierta']}
+    />
+  ),
+  'encogimientos-mancuernas': () => (
+    <Dos
+      etiqueta="Encogimientos con mancuernas: los hombros suben derecho hacia las orejas"
+      a={{ pose: pose({ ...DE_PIE, mano: [82, 102] }), adelante: <Mancuerna en={[82, 106]} /> }}
+      b={{ pose: pose({ ...DE_PIE, cuello: [80, 38], codo: [81, 66], mano: [82, 94] }), adelante: <><Mancuerna en={[82, 98]} /><Flecha de={[104, 60]} a={[104, 40]} /></> }}
+      textos={['Hombros abajo', 'Hombros arriba']}
+    />
+  ),
+  'encogimientos-barra': () => (
+    <Dos
+      etiqueta="Encogimientos con barra: los hombros suben derecho hacia las orejas"
+      a={{ pose: pose({ ...DE_PIE, mano: [86, 102] }), adelante: <Disco en={[88, 104]} r={13} /> }}
+      b={{ pose: pose({ ...DE_PIE, cuello: [80, 38], codo: [83, 66], mano: [86, 94] }), adelante: <><Disco en={[88, 96]} r={13} /><Flecha de={[110, 60]} a={[110, 40]} /></> }}
+      textos={['Hombros abajo', 'Hombros arriba']}
+    />
+  ),
 }
 
 export function DibujoEjercicio({ id }: { id: string }) {

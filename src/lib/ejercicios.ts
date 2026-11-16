@@ -7,6 +7,7 @@ import piernas from '../content/ejercicios/piernas.json'
 import traccion from '../content/ejercicios/traccion.json'
 import combate from '../content/ejercicios/combate.json'
 import gimnasio from '../content/ejercicios/gimnasio.json'
+import variantes from '../content/ejercicios/variantes.json'
 import type { Lugar } from './db/db'
 
 export type NivelLimitacion = 'adaptar' | 'evitar'
@@ -35,13 +36,40 @@ export interface Ejercicio {
   video: string
   /** Sombra, pies y clases: el generador no los elige solos como cardio (se suman a propósito). */
   combate?: boolean
+  /** Mismo ejercicio con otro implemento (barra, mancuernas, banda…): comparten familia. */
+  familia?: string
 }
 
 // El JSON no conserva los tipos exactos; revisarContenido() (con test) verifica los valores.
-export const EJERCICIOS = [...empuje, ...traccion, ...piernas, ...coreAccesorios, ...movilidadCardio, ...gimnasio, ...combate] as unknown as Ejercicio[]
+export const EJERCICIOS = [...empuje, ...traccion, ...piernas, ...coreAccesorios, ...movilidadCardio, ...gimnasio, ...variantes, ...combate] as unknown as Ejercicio[]
 const POR_ID = new Map(EJERCICIOS.map((e) => [e.id, e]))
 
 export const ejercicio = (id: string): Ejercicio | undefined => POR_ID.get(id)
+
+const IMPLEMENTOS: [string, string][] = [
+  ['barra', 'Barra'],
+  ['mancuernas', 'Mancuernas'],
+  ['kettlebell', 'Kettlebell'],
+  ['bandas', 'Banda'],
+  ['maquinas', 'Máquina'],
+  ['poleas', 'Polea'],
+]
+
+/** Con qué se hace: barra, mancuernas, banda, máquina, polea o sin equipo. */
+export function implemento(e: Ejercicio): string {
+  return IMPLEMENTOS.find(([q]) => e.equipo.includes(q))?.[1] ?? 'Sin equipo'
+}
+
+/** El mismo ejercicio con otros implementos (incluye el propio), en orden barra, mancuernas, banda, máquina, polea. */
+export function variantesDe(id: string): Ejercicio[] {
+  const e = POR_ID.get(id)
+  if (!e?.familia) return e ? [e] : []
+  const orden = (x: Ejercicio) => {
+    const i = IMPLEMENTOS.findIndex(([q]) => x.equipo.includes(q))
+    return i < 0 ? 99 : i
+  }
+  return EJERCICIOS.filter((x) => x.familia === e.familia).sort((a, b) => orden(a) - orden(b))
+}
 
 export const ESCALERAS = escalerasJson.escaleras
 export const CRITERIO_ESCALERA = escalerasJson.criterio
@@ -135,6 +163,11 @@ export function revisarContenido(): string[] {
     if (!['corporal', 'externa', 'banda'].includes(e.carga)) errores.push(`${e.id}: carga desconocida`)
     if (!['1x1', '2x2', 'amplio'].includes(e.espacio)) errores.push(`${e.id}: espacio desconocido`)
     for (const x of e.equipo) if (!NOMBRES_EQUIPO[x]) errores.push(`${e.id}: equipo desconocido ${x}`)
+    if (e.familia) {
+      const otros = EJERCICIOS.filter((x) => x.familia === e.familia && x.id !== e.id)
+      if (!otros.length) errores.push(`${e.id}: familia ${e.familia} sin otras variantes`)
+      if (otros.some((x) => implemento(x) === implemento(e))) errores.push(`${e.id}: dos variantes con el mismo implemento`)
+    }
     for (const [l, a] of Object.entries(e.limitaciones)) if (!['muneca', 'rodilla', 'hombro', 'espalda-baja', 'cuello', 'tobillo'].includes(l) || !a || !['adaptar', 'evitar'].includes(a.nivel)) errores.push(`${e.id}: limitación mal (${l})`)
     if (e.pasos.length < 3) errores.push(`${e.id}: menos de 3 pasos`)
     if (e.errores.length < 3) errores.push(`${e.id}: menos de 3 errores`)

@@ -19,12 +19,55 @@
         "En los rectos, el hombro sube y tapa el mentón.",
         "En los golpes de atrás, gira la cadera y pivota el pie de atrás.",
         "El codo no se abre antes del golpe (no avisás)."
-      ]
+      ],
+      "sombra": {
+        "1": [
+          "Jab, directo, gancho y uppercut, lentos: el puño gira al final y vuelve a cubrir la cara.",
+          "Esquive y rolido en el lugar, con las piernas, no doblando la cintura."
+        ],
+        "2": [
+          "Jab mientras das el paso adelante; directo mientras te vas en ángulo.",
+          "Nunca golpees con los pies cruzados."
+        ],
+        "3": [
+          "Jab + directo + gancho.",
+          "Jab + jab + directo.",
+          "Directo + gancho + directo y salida con rolido."
+        ],
+        "4": [
+          "Rounds de 20 segundos a toda velocidad y 40 de ritmo medio, solo manos.",
+          "Mové la cabeza después de cada combinación: nunca te quedes quieto en la línea."
+        ],
+        "5": [
+          "Imaginá un jab: esquive y directo.",
+          "Imaginá un gancho: rolido y directo."
+        ]
+      },
+      "pies": {
+        "1": [
+          "Base de boxeo: pies al ancho de los hombros, más de perfil, talón de atrás levantado."
+        ],
+        "2": [
+          "Lateral con pasos cortos, primero se mueve el pie del lado al que vas."
+        ],
+        "3": [
+          "Pivote sobre el pie de adelante: es la salida clásica del boxeo."
+        ],
+        "4": [
+          "Golpe y salida en ángulo para quedar al costado del rival."
+        ],
+        "5": [
+          "Rebote suave y cambios de ritmo: lento, lento, rápido."
+        ],
+        "6": [
+          "Entrá con jab y salí con paso atrás o ángulo."
+        ]
+      }
     },
     {
       "id": "kick",
-      "nombre": "Kickboxing y muay thai",
-      "detalle": "Puños, patadas y, en muay thai, rodillas, codos y clinch.",
+      "nombre": "Kickboxing",
+      "detalle": "Puños y patadas a distancia media y larga, con combinaciones que mezclan manos y piernas.",
       "basicas": [
         "jab",
         "directo",
@@ -32,22 +75,132 @@
         "patada-baja",
         "patada-media",
         "teep",
-        "rodilla",
-        "codo",
-        "clinch",
+        "uppercut",
         "bloqueo",
-        "chequeo"
+        "chequeo",
+        "rodilla"
       ],
       "criterios": [
         "Las patadas pegan con la canilla y el pie de apoyo gira.",
         "Después de patear volvés a la guardia, sin caer hacia adelante.",
-        "La mano que no trabaja cubre la cara en patadas y rodillas.",
-        "En rodillas y codos la cadera va hacia adelante."
-      ]
+        "Las combinaciones de puños terminan en patada (y al revés) sin pausa.",
+        "La mano que no trabaja cubre la cara en cada patada."
+      ],
+      "sombra": {
+        "1": [
+          "Jab, directo y gancho como en boxeo.",
+          "Patada baja, media y teep, lentas: girá el pie de apoyo y volvé a la guardia."
+        ],
+        "2": [
+          "Paso adelante con jab; paso atrás y patada baja cuando el rival imaginario avanza.",
+          "Después de cada patada, un paso en ángulo."
+        ],
+        "3": [
+          "Jab + directo + patada baja de atrás.",
+          "Jab + directo + gancho + patada media de atrás.",
+          "Teep + jab + directo."
+        ],
+        "4": [
+          "En los 20 segundos rápidos, combinaciones de 3 que terminan en patada.",
+          "Volvé a la guardia después de cada patada, aunque estés cansado."
+        ],
+        "5": [
+          "Imaginá una patada baja: chequeo y directo.",
+          "Imaginá un jab: bloqueo y patada baja."
+        ]
+      },
+      "pies": {
+        "1": [
+          "Base un poco más larga que en boxeo, para poder patear sin cambiar de pie."
+        ],
+        "2": [
+          "Lateral sin cruzar nunca: con los pies cruzados te agarra una patada baja."
+        ],
+        "3": [
+          "Pivote para salir de la línea de las patadas."
+        ],
+        "4": [
+          "Salida en ángulo y patada al lado abierto del rival imaginario."
+        ],
+        "5": [
+          "Rebote suave a distancia de puños; a distancia de patada, pasos medidos."
+        ],
+        "6": [
+          "Entrá con combinación de puños y salí con patada y ángulo."
+        ]
+      }
+    },
+    {
+      "id": "muaythai",
+      "nombre": "Muay thai",
+      "detalle": "El arte de las 8 armas: puños, patadas con canilla, rodillas, codos y clinch, con guardia más alta y de frente.",
+      "basicas": [
+        "jab",
+        "directo",
+        "teep",
+        "patada-baja",
+        "patada-media",
+        "chequeo",
+        "rodilla",
+        "codo",
+        "clinch",
+        "bloqueo",
+        "gancho"
+      ],
+      "criterios": [
+        "Guardia alta y más de frente, con el peso un poco atrás para poder chequear.",
+        "Las patadas pegan con la canilla y la cadera gira por completo.",
+        "En rodillas y codos la cadera va hacia adelante.",
+        "Después de cada técnica volvés a la guardia sin perder la postura."
+      ],
+      "sombra": {
+        "1": [
+          "Teep, patada baja y media con canilla, lentas, girando toda la cadera.",
+          "Rodilla y codo con la cadera adelante; chequeo levantando la rodilla hacia el codo."
+        ],
+        "2": [
+          "Avance con teep para medir la distancia; marcha en el lugar con pasos cortos y peso atrás.",
+          "Rodilla al entrar al clinch imaginario y salida con paso atrás."
+        ],
+        "3": [
+          "Jab + directo + patada baja.",
+          "Teep + patada media.",
+          "Jab + directo + rodilla (agarrando la nuca imaginaria).",
+          "Codo + codo y salida con teep."
+        ],
+        "4": [
+          "En los 20 segundos rápidos, rodillas seguidas en clinch imaginario; en los 40, patadas medias con buena forma.",
+          "Mantené la guardia alta y los hombros sueltos."
+        ],
+        "5": [
+          "Imaginá una patada baja: chequeo y patada del mismo lado.",
+          "Imaginá que te agarran del cuello: postura alta y rodilla."
+        ]
+      },
+      "pies": {
+        "1": [
+          "Base más de frente, con el peso un poco atrás y la pierna de adelante liviana para chequear."
+        ],
+        "2": [
+          "Pasos cortos y medidos, sin rebote: la pierna de adelante siempre lista para el teep o el chequeo."
+        ],
+        "3": [
+          "Pivote corto para acomodar la cadera antes de la patada."
+        ],
+        "4": [
+          "Paso en ángulo y patada media del lado de atrás."
+        ],
+        "5": [
+          "Marcha con ritmo (pisar suave con cada pie) y explosión de golpe a patada."
+        ],
+        "6": [
+          "Teep para frenar y salir; entrá con jab y terminá en rodilla."
+        ]
+      }
     },
     {
       "id": "hibrido",
-      "nombre": "Híbrido: boxeo + kick + muay thai",
+      "nombre": "Híbrido: boxeo + kickboxing + muay thai",
       "detalle": "Lo mejor de cada una: manos y cabeza del boxeo, combinaciones puño-patada del kick, y patadas con canilla, teep, rodillas, codos, clinch y chequeo del muay thai.",
       "basicas": [
         "jab",
@@ -139,7 +292,50 @@
         "El sprawl es inmediato y la cadera llega al piso.",
         "Pasás de golpes a derribo sin pausa ni aviso.",
         "Después de cada intercambio volvés a una guardia que defiende golpes y derribos."
-      ]
+      ],
+      "sombra": {
+        "1": [
+          "Jab, directo y patada baja con guardia más abierta y la cadera lista para defender derribos.",
+          "Sprawl lento: las piernas atrás y la cadera al piso."
+        ],
+        "2": [
+          "Golpeá y cambiá de nivel (bajá con las piernas) como para un derribo.",
+          "Después de cada cambio de nivel, volvé a la guardia de pie."
+        ],
+        "3": [
+          "Jab + directo + derribo.",
+          "Jab + directo + sprawl + levantarte.",
+          "Patada baja + directo + gancho."
+        ],
+        "4": [
+          "20 segundos de golpes rápidos y 40 de sprawls y levantadas.",
+          "No te quedes en el piso: levantate siempre con una mano cubriendo."
+        ],
+        "5": [
+          "Imaginá un derribo: sprawl y golpe.",
+          "Imaginá un jab: esquive y derribo."
+        ]
+      },
+      "pies": {
+        "1": [
+          "Base un poco más ancha y baja que en boxeo, para defender derribos."
+        ],
+        "2": [
+          "Movimiento circular por el borde: no te dejes acorralar contra una pared imaginaria."
+        ],
+        "3": [
+          "Pivote y cambio de nivel en el mismo movimiento."
+        ],
+        "4": [
+          "Salida en ángulo cuando el rival imaginario entra a derribar."
+        ],
+        "5": [
+          "Cambios de ritmo con fintas de derribo."
+        ],
+        "6": [
+          "Golpe, cambio de nivel y salida; o sprawl y vuelta a la guardia."
+        ]
+      }
     },
     {
       "id": "karate",
@@ -158,7 +354,50 @@
         "Las patadas tienen recámara antes y después.",
         "Exhalás y frenás firme al final de cada técnica (foco).",
         "Entrás y salís de la distancia larga sin quedarte en el medio."
-      ]
+      ],
+      "sombra": {
+        "1": [
+          "Gyaku-zuki y jab desde la postura, con foco: exhalá y frená firme al final.",
+          "Patada media y lateral con recámara antes y después."
+        ],
+        "2": [
+          "Entrá a la distancia con un paso largo y golpe; salí enseguida.",
+          "Movimiento lateral sin perder la postura."
+        ],
+        "3": [
+          "Jab + gyaku-zuki.",
+          "Patada media + gyaku-zuki.",
+          "Patada lateral + salida."
+        ],
+        "4": [
+          "Entradas explosivas de 20 segundos y 40 de postura y distancia.",
+          "Cada técnica vuelve a la postura antes de la siguiente."
+        ],
+        "5": [
+          "Imaginá un ataque: bloqueo y gyaku-zuki.",
+          "Imaginá que el rival avanza: patada lateral para frenarlo."
+        ]
+      },
+      "pies": {
+        "1": [
+          "Postura de perfil, con más distancia entre los pies que en boxeo."
+        ],
+        "2": [
+          "Desplazamiento lateral sin perder la postura ni subir la cadera."
+        ],
+        "3": [
+          "Pivote sobre la punta del pie de adelante."
+        ],
+        "4": [
+          "Entrada y salida en línea, después en diagonal."
+        ],
+        "5": [
+          "Rebote liviano típico del kumite, listo para entrar de golpe."
+        ],
+        "6": [
+          "Entrada larga con golpe y salida inmediata."
+        ]
+      }
     },
     {
       "id": "lucha",
@@ -199,6 +438,26 @@
         "5": [
           "Imaginá que te empujan desde distintos lados y respondé con el escape que corresponde.",
           "Pronto la app te va a cantar señales (sprawl, levantarte, camarón) por voz."
+        ]
+      },
+      "pies": {
+        "1": [
+          "Postura baja: rodillas dobladas, cadera atrás y manos al frente."
+        ],
+        "2": [
+          "Pasos laterales cortos sin juntar los pies."
+        ],
+        "3": [
+          "Pivote para girar alrededor del rival imaginario y buscar el costado."
+        ],
+        "4": [
+          "Cambio de nivel y paso de penetración (rodilla cerca del piso) para el derribo."
+        ],
+        "5": [
+          "Fintas arriba para entrar abajo."
+        ],
+        "6": [
+          "Sprawl y vuelta a la postura; derribo y levantarte."
         ]
       }
     }

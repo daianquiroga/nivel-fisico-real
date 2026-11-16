@@ -259,6 +259,7 @@
   },
   {
     "id": "press-banca-mancuernas",
+    "familia": "press-pecho",
     "nombre": "Press de banco con mancuernas",
     "patron": "empuje",
     "principal": ["pecho"],
@@ -292,6 +293,7 @@
   },
   {
     "id": "press-banca-barra",
+    "familia": "press-pecho",
     "nombre": "Press de banco con barra",
     "patron": "empuje",
     "principal": ["pecho"],
@@ -325,6 +327,7 @@
   },
   {
     "id": "press-pecho-maquina",
+    "familia": "press-pecho",
     "nombre": "Press de pecho en máquina",
     "patron": "empuje",
     "principal": ["pecho"],
@@ -358,6 +361,7 @@
   },
   {
     "id": "press-banda",
+    "familia": "press-pecho",
     "nombre": "Press de pecho con banda",
     "patron": "empuje",
     "principal": ["pecho"],
@@ -391,7 +395,8 @@
   },
   {
     "id": "press-hombros-mancuernas",
-    "nombre": "Press de hombros con mancuernas",
+    "familia": "press-hombros",
+    "nombre": "Press militar con mancuernas",
     "patron": "empuje-vertical",
     "principal": ["hombros"],
     "secundarios": ["tríceps", "abdomen"],

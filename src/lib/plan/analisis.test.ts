@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { ejercicio } from '../ejercicios'
 import { nuevoEjercicioPlan } from './editar'
-import { analizarRutina, type ContextoAnalisis } from './analisis'
+import { analizarRutina, calificar, veredicto, type ContextoAnalisis } from './analisis'
 import type { PlanSemana, SesionPlan } from './generador'
 
 const ep = (id: string, series?: number, minutos?: number) => {
@@ -70,5 +70,21 @@ describe('análisis de la rutina', () => {
     const p = plan([[ses([ep('curl-biceps', 3)])], [], [ses([ep('curl-biceps', 3)])]]) // bíceps: 6 series
     expect(analizarRutina(p, ctx).faltas.some((f) => f.texto.startsWith('Bíceps'))).toBe(false) // 6 ≥ 5
     expect(analizarRutina(p, { ...ctx, zonas: ['brazos'] }).faltas.some((f) => f.texto.startsWith('Bíceps'))).toBe(true) // zona: pide 10
+  })
+})
+
+describe('cómo leer los puntajes', () => {
+  it('califica por cortes', () => {
+    expect(calificar(39).nivel).toBe('falta')
+    expect(calificar(40).nivel).toBe('base')
+    expect(calificar(65).nivel).toBe('buena')
+    expect(calificar(90).nivel).toBe('completa')
+  })
+  it('una área que importa debajo de 40 hace que no sea buena; las que no elegiste no cuentan', () => {
+    const obj = { estetica: 50, condicion: 40, combate: 10 }
+    expect(veredicto({ fisico: 70, estetico: 80, marcial: 10, objetivos: 73 }, obj).buena).toBe(true)
+    const mal = veredicto({ fisico: 30, estetico: 95, marcial: 10, objetivos: 66 }, obj)
+    expect(mal.buena).toBe(false)
+    expect(mal.texto).toContain('físico')
   })
 })

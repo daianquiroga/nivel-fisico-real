@@ -97,6 +97,10 @@ export function BarrasAporte({ fisico, estetico, marcial }: { fisico: number; es
           </Texto>
           <rect x={78} y={12 + i * 32} width={200} height={16} rx={8} fill="var(--surface-2)" />
           <rect x={78} y={12 + i * 32} width={Math.max(4, (v / 100) * 200)} height={16} rx={8} fill={c} />
+          {/* Marcas de 40 (base) y 65 (buena): ver CORTES en lib/plan/analisis.ts */}
+          {[40, 65].map((m) => (
+            <line key={m} x1={78 + m * 2} x2={78 + m * 2} y1={9 + i * 32} y2={31 + i * 32} stroke="var(--text)" strokeWidth={1.5} strokeDasharray="2 2" opacity={0.6} />
+          ))}
           <Texto x={312} y={25 + i * 32} ancla="end" color="var(--text)">
             {String(v)}
           </Texto>

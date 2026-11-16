@@ -5,6 +5,7 @@
     "disciplinas": [
       "boxeo",
       "kick",
+      "muaythai",
       "mma",
       "karate",
       "hibrido"
@@ -29,6 +30,7 @@
     "disciplinas": [
       "boxeo",
       "kick",
+      "muaythai",
       "mma",
       "hibrido"
     ],
@@ -52,6 +54,7 @@
     "disciplinas": [
       "boxeo",
       "kick",
+      "muaythai",
       "mma",
       "hibrido"
     ],
@@ -143,6 +146,7 @@
     "disciplinas": [
       "boxeo",
       "kick",
+      "muaythai",
       "mma",
       "karate",
       "hibrido"
@@ -166,6 +170,7 @@
     "nombre": "Patada circular baja",
     "disciplinas": [
       "kick",
+      "muaythai",
       "mma",
       "hibrido"
     ],
@@ -188,6 +193,7 @@
     "nombre": "Patada circular media",
     "disciplinas": [
       "kick",
+      "muaythai",
       "mma",
       "karate",
       "hibrido"
@@ -211,6 +217,7 @@
     "nombre": "Patada frontal de empuje (teep)",
     "disciplinas": [
       "kick",
+      "muaythai",
       "mma",
       "karate",
       "hibrido"
@@ -234,6 +241,7 @@
     "nombre": "Chequeo (frenar la patada baja)",
     "disciplinas": [
       "kick",
+      "muaythai",
       "hibrido"
     ],
     "distancia": "larga",
@@ -255,6 +263,7 @@
     "nombre": "Rodillazo",
     "disciplinas": [
       "kick",
+      "muaythai",
       "mma",
       "hibrido"
     ],
@@ -276,7 +285,7 @@
     "id": "codo",
     "nombre": "Codazo horizontal",
     "disciplinas": [
-      "kick",
+      "muaythai",
       "mma",
       "hibrido"
     ],
@@ -380,7 +389,7 @@
     "id": "clinch",
     "nombre": "Agarre de nuca (clinch)",
     "disciplinas": [
-      "kick",
+      "muaythai",
       "mma",
       "lucha",
       "hibrido"

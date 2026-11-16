@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom'
 import { Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
 import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
 import { BarrasAporte } from '../../content/dibujos-rutina'
-import { ejercicio, equipoDisponible } from '../../lib/ejercicios'
+import { Implementos } from '../../components/Implementos'
+import { EJERCICIOS, PATRONES, ejercicio, equipoDisponible, implemento, sePuedeHacer, variantesDe } from '../../lib/ejercicios'
+import { normalizar } from '../../lib/aprender'
+import { db } from '../../lib/db/db'
 import { NOMBRES_DIAS, ZONAS } from '../../lib/perfil'
 import { analizarRutina } from '../../lib/plan/analisis'
 import { DURACIONES, EXTRAS, PRIORIDADES, entradaDesdeRespuestas, sinOpcionales, sinVacias, sumarEntrenamiento, respuestasIniciales, type Prioridad, type Respuestas } from '../../lib/plan/asistente'
@@ -51,6 +54,9 @@ export function AsistenteRutina() {
   const [paso, setPaso] = useState(0)
   const [plan, setPlan] = useState<PlanSemana | null>(null)
   const [extra, setExtra] = useState<{ dia: number; hora: string } | null>(null)
+  const [sumar, setSumar] = useState<{ dia: number; idx: number } | null>(null)
+  const [busqueda, setBusqueda] = useState('')
+  const [filtro, setFiltro] = useState<string | null>(null)
 
   useEffect(() => {
     void armarEntrada().then((b) => {
@@ -97,6 +103,8 @@ export function AsistenteRutina() {
     const p = { ...sinVacias(plan), editado: true }
     await guardarPlan(p)
     await asegurarCiclo(p.creado)
+    // Lo que elegiste en "¿Qué querés lograr?" pasa a ser tu objetivo, así el análisis y el coach miden lo mismo.
+    await db.perfil.update('yo', { objetivos: entrada.objetivos, zonas: entrada.zonas, actualizado: new Date().toISOString() })
     navegar('/plan')
   }
 
@@ -193,8 +201,13 @@ export function AsistenteRutina() {
           <h1 className={e.titulo}>Tu rutina</h1>
           <p className={e.para}>Así queda tu semana. Podés cambiar o sacar ejercicios, y sumar más de un entrenamiento por día, antes de guardar.</p>
           <Tarjeta destacada>
-            <p className="etiqueta">Qué aporta</p>
+            <p className="etiqueta">Qué aporta · {analisis.puntajes.objetivos} de 100 para tus objetivos</p>
             <BarrasAporte fisico={analisis.puntajes.fisico} estetico={analisis.puntajes.estetico} marcial={analisis.puntajes.marcial} />
+            <p className={estilos.texto2} style={{ fontWeight: 600, color: analisis.veredicto.buena ? 'var(--done)' : 'var(--text)' }}>
+              {analisis.veredicto.buena ? '✓ ' : ''}
+              {analisis.veredicto.texto}
+            </p>
+            <p className={estilos.chico}>Con 65 o más es buena para vos. Las rayitas marcan 40 (base) y 65 (buena). Las áreas que no elegiste pueden dar bajo.</p>
           </Tarjeta>
           {plan.dias.map((d, dia) => (
             <section key={dia} style={{ display: 'flex', flexDirection: 'column', gap: 8 }} aria-label={NOMBRES_DIAS[dia]}>
@@ -224,6 +237,18 @@ export function AsistenteRutina() {
                           <span className={x.itemDetalle}>
                             {ej.tipo === 'minutos' ? `${ep.rango[0]} min` : `${ep.series} ${ep.series === 1 ? 'serie' : 'series'} de ${ep.rango[0]} a ${ep.rango[1]}`}
                           </span>
+                          <span style={{ display: 'block', marginTop: 6 }}>
+                            <Implementos
+                              id={ep.id}
+                              equipo={ctx.equipo}
+                              onElegir={(id) => {
+                                const p = structuredClone(plan)
+                                const n = ejercicio(id)
+                                if (n) p.dias[dia].sesiones[idx].ejercicios[i] = { ...ep, id, rango: n.rango }
+                                setPlan(p)
+                              }}
+                            />
+                          </span>
                           <span style={{ display: 'flex', gap: 6, marginTop: 6 }}>
                             {alt.length > 0 && (
                               <button
@@ -247,9 +272,14 @@ export function AsistenteRutina() {
                       </div>
                     )
                   })}
-                  <button type="button" className={x.filtro} style={{ alignSelf: 'flex-start' }} onClick={() => setPlan(borrarSesion(plan, dia, idx))}>
-                    Sacar este entrenamiento
-                  </button>
+                  <span style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                    <button type="button" className={x.filtro} style={{ borderColor: 'var(--accent)' }} onClick={() => setSumar({ dia, idx })}>
+                      + Sumar ejercicio
+                    </button>
+                    <button type="button" className={x.filtro} onClick={() => setPlan(borrarSesion(plan, dia, idx))}>
+                      Sacar este entrenamiento
+                    </button>
+                  </span>
                 </Tarjeta>
               ))}
               <button
@@ -264,6 +294,54 @@ export function AsistenteRutina() {
               </button>
             </section>
           ))}
+          {sumar && (
+            <Dialogo titulo={`Sumar al ${NOMBRES_DIAS[sumar.dia].toLowerCase()}`} onCerrar={() => setSumar(null)}>
+              <input className={x.buscador} type="search" placeholder="Buscar: militar, martillo, remo…" aria-label="Buscar ejercicio" value={busqueda} onChange={(ev) => setBusqueda(ev.target.value)} />
+              <div className={x.filtros} role="group" aria-label="Filtrar por tipo">
+                {PATRONES.map((f) => (
+                  <button key={f.valor} type="button" aria-pressed={filtro === f.valor} className={`${x.filtro} ${filtro === f.valor ? x.filtroOn : ''}`} onClick={() => setFiltro(filtro === f.valor ? null : f.valor)}>
+                    {f.texto}
+                  </button>
+                ))}
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 6, maxHeight: '45vh', overflowY: 'auto' }}>
+                {EJERCICIOS.filter((ej) => {
+                  const vs = variantesDe(ej.id)
+                  const rep = vs.find((v) => sePuedeHacer(v, ctx.equipo)) ?? vs[0]
+                  if (rep.id !== ej.id) return false
+                  if (filtro && !PATRONES.find((f) => f.valor === filtro)?.incluye.includes(ej.patron)) return false
+                  const q = normalizar(busqueda)
+                  return !q || normalizar([ej.nombre, ...ej.principal, ...vs.map((v) => v.nombre)].join(' ')).includes(q)
+                }).map((ej) => {
+                  const ya = plan.dias[sumar.dia].sesiones[sumar.idx]?.ejercicios.some((y) => variantesDe(ej.id).some((v) => v.id === y.id))
+                  return (
+                    <button
+                      key={ej.id}
+                      type="button"
+                      className={x.item}
+                      style={{ textAlign: 'left', cursor: 'pointer', opacity: ya ? 0.5 : 1 }}
+                      disabled={ya}
+                      onClick={() => {
+                        setPlan(agregarEjercicio(plan, sumar.dia, sumar.idx, ej.id))
+                        setSumar(null)
+                        setBusqueda('')
+                      }}
+                    >
+                      <span className={x.itemNombre}>
+                        {ya ? '✓ ' : '+ '}
+                        {ej.nombre}
+                      </span>
+                      <span className={x.itemDetalle}>
+                        {ej.principal.join(', ')}
+                        {variantesDe(ej.id).length > 1 ? ` · después elegís con ${variantesDe(ej.id).map((v) => implemento(v).toLowerCase()).join(', ')}` : ''}
+                      </span>
+                    </button>
+                  )
+                })}
+              </div>
+              <Boton onClick={() => setSumar(null)}>Listo</Boton>
+            </Dialogo>
+          )}
           {extra && (
             <Dialogo titulo={`Otro entrenamiento el ${NOMBRES_DIAS[extra.dia].toLowerCase()}`} onCerrar={() => setExtra(null)}>
               <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
@@ -319,7 +397,7 @@ export function AsistenteRutina() {
           <button type="button" className={h.botonPrincipal} disabled={!plan.dias.some((d) => d.sesiones.length)} onClick={() => void guardar()}>
             Guardar mi rutina
           </button>
-          <p className={estilos.chico}>Se guarda como tu plan de la semana. Después la podés seguir cambiando desde Plan.</p>
+          <p className={estilos.chico}>Se guarda como tu plan de la semana y lo que elegiste en "¿Qué querés lograr?" queda como tu objetivo. Después lo podés cambiar desde Plan o Perfil.</p>
         </>
       )}
 

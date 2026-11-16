@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { GraficoLinea } from '../../components/GraficoLinea'
 import { Aviso, Tarjeta, estilos } from '../../components/ui'
 import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
+import { Implementos } from '../../components/Implementos'
 import {
   CRITERIO_ESCALERA,
   NOMBRES_EQUIPO,
@@ -12,6 +13,7 @@ import {
   escaleraDe,
   textoRango,
   urlVideo,
+  variantesDe,
 } from '../../lib/ejercicios'
 import { ESPACIOS, LIMITACIONES } from '../../lib/perfil'
 import { records, rendimiento } from '../../lib/calc/progresion'
@@ -75,6 +77,12 @@ export function Ficha() {
         <span className={s.tag}>Espacio: {ESPACIOS.find((x) => x.valor === ej.espacio)?.texto ?? ej.espacio}</span>
         <span className={s.tag}>{textoRango(ej)}</span>
       </div>
+      {variantesDe(ej.id).length > 1 && (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <span className="etiqueta">Hacelo con</span>
+          <Implementos id={ej.id} onElegir={(id) => navegar(`/ejercicio/${id}`, { replace: true })} />
+        </div>
+      )}
 
       {avisos.map((a) =>
         a.nivel === 'evitar' ? (

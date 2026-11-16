@@ -2,7 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Segmentado } from '../../components/controles'
 import { Aviso, Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
-import { EJERCICIOS, NOMBRES_EQUIPO, PATRONES, ejercicio, equipoDeLugar, evitarPorLimitacion, sePuedeHacer } from '../../lib/ejercicios'
+import { EJERCICIOS, NOMBRES_EQUIPO, PATRONES, ejercicio, equipoDeLugar, evitarPorLimitacion, implemento, sePuedeHacer, variantesDe } from '../../lib/ejercicios'
+import { Implementos } from '../../components/Implementos'
 import { NOMBRES_DIAS } from '../../lib/perfil'
 import { analizarRutina } from '../../lib/plan/analisis'
 import { asegurarCiclo } from '../../lib/plan/ciclo'
@@ -66,8 +67,11 @@ export function ArmarRutina() {
       const lista = (s ?? []).filter((d) => !mismo(d))
       return [...lista, { ...delDia, ...c }].sort((a, b) => a.dia - b.dia || (a.turno ?? 0) - (b.turno ?? 0))
     })
-  const tiene = (id: string) => delDia.items.some((i) => i.id === id)
-  const alternar = (id: string) => cambiarDia({ items: tiene(id) ? delDia.items.filter((i) => i.id !== id) : [...delDia.items, { id }] })
+  // Las variantes de un mismo ejercicio (barra, mancuernas, banda) cuentan como uno: se elige con qué abajo.
+  const familia = (id: string) => new Set(variantesDe(id).map((v) => v.id))
+  const tiene = (id: string) => delDia.items.some((i) => familia(id).has(i.id))
+  const alternar = (id: string) => cambiarDia({ items: tiene(id) ? delDia.items.filter((i) => !familia(id).has(i.id)) : [...delDia.items, { id }] })
+  const cambiarImplemento = (viejo: string, nuevo: string) => cambiarDia({ items: delDia.items.map((i) => (i.id === viejo ? { ...i, id: nuevo, rango: undefined } : i)) })
   const series = (id: string, delta: number) =>
     cambiarDia({
       items: delDia.items.map((i) => {
@@ -81,7 +85,12 @@ export function ArmarRutina() {
       }),
     })
 
+  const representante = (ej: (typeof EJERCICIOS)[number]) => {
+    const vs = variantesDe(ej.id)
+    return (equipo ? vs.find((v) => sePuedeHacer(v, equipo)) : undefined) ?? vs[0]
+  }
   const lista = EJERCICIOS.filter((ej) => {
+    if (ej.familia && representante(ej).id !== ej.id) return false
     if (filtro === 'combate') {
       if (!ej.combate) return false
     } else if (filtro && !FILTROS.find((f) => f.valor === filtro)?.incluye.includes(ej.patron)) return false
@@ -283,8 +292,8 @@ export function ArmarRutina() {
                 const ej = ejercicio(i.id)!
                 const minutos = ej.tipo === 'minutos'
                 return (
-                  <div key={i.id} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span className={estilos.texto2} style={{ flex: 1 }}>
+                  <div key={i.id} style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                    <span className={estilos.texto2} style={{ flex: 1, minWidth: 140 }}>
                       {ej.nombre}
                     </span>
                     <button type="button" className={x.filtro} aria-label={`Menos ${minutos ? 'minutos' : 'series'} de ${ej.nombre}`} onClick={() => series(i.id, -1)}>
@@ -296,6 +305,11 @@ export function ArmarRutina() {
                     <button type="button" className={x.filtro} aria-label={`Más ${minutos ? 'minutos' : 'series'} de ${ej.nombre}`} onClick={() => series(i.id, 1)}>
                       +
                     </button>
+                    {variantesDe(i.id).length > 1 && (
+                      <span style={{ flexBasis: '100%' }}>
+                        <Implementos id={i.id} equipo={equipo} onElegir={(nuevo) => cambiarImplemento(i.id, nuevo)} />
+                      </span>
+                    )}
                   </div>
                 )
               })
@@ -344,6 +358,12 @@ export function ArmarRutina() {
                   <input type="checkbox" checked={tiene(ej.id)} onChange={() => alternar(ej.id)} />
                   <span>
                     {ej.nombre}
+                    {variantesDe(ej.id).length > 1 && (
+                      <span className={estilos.chico}>
+                        {' '}
+                        · también con {variantesDe(ej.id).filter((v) => v.id !== ej.id).map((v) => implemento(v).toLowerCase()).join(' o ')}
+                      </span>
+                    )}
                     <span className={estilos.chico}>
                       {' '}
                       · {ej.principal.join(', ')}

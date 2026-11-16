@@ -64,6 +64,7 @@
   },
   {
     "id": "sentadilla-goblet",
+    "familia": "sentadilla-carga",
     "nombre": "Sentadilla goblet con mancuerna",
     "patron": "sentadilla",
     "principal": ["cuádriceps", "glúteos"],
@@ -97,6 +98,7 @@
   },
   {
     "id": "sentadilla-barra",
+    "familia": "sentadilla-carga",
     "nombre": "Sentadilla con barra",
     "patron": "sentadilla",
     "principal": ["cuádriceps", "glúteos"],

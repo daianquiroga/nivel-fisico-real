@@ -1,14 +1,32 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Aviso, Tarjeta, estilos } from '../../components/ui'
+import { Aviso, Boton, Tarjeta, estilos } from '../../components/ui'
 import { DibujoGuardia, DibujoPies, DibujoTecnica } from '../../content/dibujos-combate'
-import { DISCIPLINAS, NIVELES_PIES, NIVELES_SOMBRA, disciplina, guardarAjustesCombate, mesesCon, nivelSombra as nivelDe } from '../../lib/combate'
+import { DISCIPLINAS, DISTANCIAS, FUENTE_COMPATIBILIDAD, NIVELES_PIES, compatibilidad, distanciasNuevas, NIVELES_SOMBRA, disciplina, guardarAjustesCombate, mesesCon, nivelSombra as nivelDe } from '../../lib/combate'
 import e from '../Evaluacion/evaluacion.module.css'
 import s from '../Ejercicios/ejercicios.module.css'
 import h from '../Hoy/hoy.module.css'
 import { Volver, usarCombate } from './comun'
 
+/** Barra de compatibilidad entre dos disciplinas (0 a 100). */
+function BarraCompat({ porcentaje }: { porcentaje: number }) {
+  return (
+    <svg viewBox="0 0 320 40" width="100%" role="img" aria-label={`${porcentaje} % de compatibilidad`}>
+      <rect x={0} y={8} width={240} height={16} rx={8} fill="var(--surface-2)" />
+      <rect x={0} y={8} width={Math.max(6, (porcentaje / 100) * 240)} height={16} rx={8} fill={porcentaje >= 75 ? 'var(--done)' : porcentaje >= 55 ? 'var(--accent)' : 'var(--muted)'} />
+      <text x={316} y={22} textAnchor="end" fill="var(--text)" fontSize={18} fontWeight={700} fontFamily="var(--font-title)">
+        {porcentaje} %
+      </text>
+      <text x={0} y={38} fill="var(--muted)" fontSize={10} fontFamily="var(--font-body)">
+        compatibles
+      </text>
+    </svg>
+  )
+}
+
 export function Combate() {
   const { estado, recargar, disciplina: disc, nivelSombra, nivelPies } = usarCombate()
+  const [sumando, setSumando] = useState(false)
   if (!estado) return null
   const segunda = estado.ajustes?.segunda && estado.ajustes.segunda !== disc ? estado.ajustes.segunda : undefined
   const d2 = segunda ? disciplina(segunda) : undefined
@@ -17,6 +35,8 @@ export function Combate() {
   const sigSombra = NIVELES_SOMBRA[Math.min(nivelSombra, NIVELES_SOMBRA.length - 1)]
   const sigPies = NIVELES_PIES[Math.min(nivelPies, NIVELES_PIES.length - 1)]
   const meses = estado.ajustes ? mesesCon(estado.ajustes) : 0
+  const compat = segunda ? compatibilidad(disc, segunda) : null
+  const nuevas = segunda ? distanciasNuevas(disc, segunda) : []
 
   async function elegir(id: string) {
     await guardarAjustesCombate({ disciplina: id, segunda: estado?.ajustes?.segunda === id ? undefined : estado?.ajustes?.segunda, desde: estado?.ajustes?.disciplina === id ? estado.ajustes.desde : new Date().toISOString() })
@@ -42,7 +62,7 @@ export function Combate() {
       <div className={s.filtros} role="radiogroup" aria-label="Disciplina base">
         {DISCIPLINAS.map((x) => (
           <button key={x.id} type="button" role="radio" aria-checked={x.id === disc} className={`${s.filtro} ${x.id === disc ? s.filtroOn : ''}`} onClick={() => void elegir(x.id)}>
-            {x.nombre}
+            {x.id === 'hibrido' ? 'Híbrido (boxeo + kick + muay thai)' : x.nombre}
           </button>
         ))}
       </div>
@@ -54,6 +74,66 @@ export function Combate() {
             : 'Recomendación: quedate con una base de 6 a 12 meses antes de sumar otra.'
           : 'Elegí una para empezar (podés cambiarla cuando quieras).'}
       </p>
+
+      {!segunda && !sumando && (
+        <Boton ancho onClick={() => setSumando(true)}>
+          + Combinar con otra disciplina
+        </Boton>
+      )}
+      {!segunda && sumando && (
+        <Tarjeta>
+          <p className="etiqueta">Combinar {d.nombre.split(':')[0]} con…</p>
+          <p className={estilos.chico}>El porcentaje dice qué tan bien se combinan con tu base.</p>
+          {DISCIPLINAS.filter((x) => x.id !== disc)
+            .map((x) => ({ x, c: compatibilidad(disc, x.id) }))
+            .sort((a, b) => (b.c?.porcentaje ?? 0) - (a.c?.porcentaje ?? 0))
+            .map(({ x, c }) => (
+              <button
+                key={x.id}
+                type="button"
+                className={s.item}
+                style={{ textAlign: 'left', cursor: 'pointer' }}
+                disabled={c?.porcentaje === 100}
+                onClick={() => {
+                  setSumando(false)
+                  void elegirSegunda(x.id)
+                }}
+              >
+                <span className={s.itemNombre} style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
+                  <span>+ {x.nombre}</span>
+                  <b style={{ color: (c?.porcentaje ?? 0) >= 75 ? 'var(--done)' : (c?.porcentaje ?? 0) >= 55 ? 'var(--text)' : 'var(--muted)' }}>{c ? `${c.porcentaje} %` : ''}</b>
+                </span>
+                <span className={s.itemDetalle}>{x.id === 'hibrido' && c?.porcentaje === 100 ? `Ya incluye ${d.nombre.toLowerCase()}: si querés las tres juntas, elegí el híbrido como base arriba.` : c?.porque}</span>
+              </button>
+            ))}
+          <Boton onClick={() => setSumando(false)}>Cancelar</Boton>
+        </Tarjeta>
+      )}
+      {segunda && d2 && (
+        <Tarjeta destacada>
+          <p className="etiqueta">Tu combinación</p>
+          <h2 className={h.tituloTarjeta}>
+            {d.nombre.split(':')[0]} + {d2.nombre.split(':')[0]}
+          </h2>
+          {compat && (
+            <>
+              <BarraCompat porcentaje={compat.porcentaje} />
+              <p className={estilos.texto2}>{compat.porque}</p>
+            </>
+          )}
+          {nuevas.length > 0 && (
+            <p className={estilos.chico}>
+              Te suma: {nuevas.map((n) => DISTANCIAS.find((x) => x.valor === n)?.texto.toLowerCase()).join(', ')}.
+            </p>
+          )}
+          {meses < 6 && <p className={estilos.chico}>Lo ideal es sumarla después de 6 a 12 meses con la base. Si la sumás ahora, que sea 1 o 2 rounds por sesión.</p>}
+          <Boton onClick={() => void elegirSegunda(undefined)}>Sacar {d2.nombre.split(':')[0].toLowerCase()}</Boton>
+          <details>
+            <summary className={estilos.chico}>¿De dónde sale el porcentaje?</summary>
+            <p className={estilos.chico}>{FUENTE_COMPATIBILIDAD}</p>
+          </details>
+        </Tarjeta>
+      )}
 
       <Tarjeta destacada>
         <p className="etiqueta">Sombra · {d.nombre}</p>
@@ -91,18 +171,6 @@ export function Combate() {
         </Link>
       </div>
 
-      <p className="etiqueta">Segunda disciplina (opcional)</p>
-      <div className={s.filtros} role="radiogroup" aria-label="Segunda disciplina">
-        <button type="button" role="radio" aria-checked={!segunda} className={`${s.filtro} ${!segunda ? s.filtroOn : ''}`} onClick={() => void elegirSegunda(undefined)}>
-          Ninguna
-        </button>
-        {DISCIPLINAS.filter((x) => x.id !== disc).map((x) => (
-          <button key={x.id} type="button" role="radio" aria-checked={x.id === segunda} className={`${s.filtro} ${x.id === segunda ? s.filtroOn : ''}`} onClick={() => void elegirSegunda(x.id)}>
-            {x.nombre}
-          </button>
-        ))}
-      </div>
-      {segunda && meses < 6 && <p className={estilos.chico}>Se puede, pero lo ideal es sumarla después de 6 a 12 meses con la base. Si la sumás ahora, que sea 1 o 2 rounds por sesión.</p>}
       {d2 && (
         <Tarjeta>
           <p className="etiqueta">Sombra · {d2.nombre}</p>

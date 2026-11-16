@@ -2,6 +2,7 @@
    y juego de pies (niveles 1 a 6). Todo el contenido está en src/content/combate/. */
 import tecnicasJson from '../content/combate/tecnicas.json'
 import programas from '../content/combate/programas.json'
+import compat from '../content/combate/compatibilidad.json'
 import { db } from './db/db'
 
 export type Distancia = 'larga' | 'media' | 'corta' | 'clinch' | 'suelo'
@@ -172,4 +173,20 @@ export function revisarCombate(existeDibujo: (id: string) => boolean, existePie:
     if (!existePie(n.nivel)) e.push(`pies ${n.nivel}: sin dibujo`)
   })
   return e
+}
+
+/* ---------- Combinar base y secundaria ---------- */
+
+export const FUENTE_COMPATIBILIDAD = compat.fuente
+
+/** Qué tan bien se combinan dos disciplinas (0 a 100) y por qué. Tabla en content/combate/compatibilidad.json. */
+export function compatibilidad(a: string, b: string): { porcentaje: number; porque: string } | null {
+  const p = compat.pares.find((x) => (x.a === a && x.b === b) || (x.a === b && x.b === a))
+  return p ? { porcentaje: p.porcentaje, porque: p.porque } : null
+}
+
+/** Distancias que la segunda disciplina suma y la base no tiene. */
+export function distanciasNuevas(base: string, segunda: string): Distancia[] {
+  const tiene = new Set(tecnicasDe(base, null).map((t) => t.distancia))
+  return DISTANCIAS.map((d) => d.valor).filter((d) => !tiene.has(d) && tecnicasDe(segunda, null).some((t) => t.distancia === d))
 }

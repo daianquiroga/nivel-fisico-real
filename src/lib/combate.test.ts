@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { tieneDibujoPies, tieneDibujoTecnica } from '../content/dibujos-combate'
-import { aprueba, criteriosDe, mesesCon, nivelPies, nivelSombra, revisarCombate, tecnicasDe } from './combate'
+import { DISCIPLINAS, aprueba, compatibilidad, criteriosDe, distanciasNuevas, mesesCon, nivelPies, nivelSombra, revisarCombate, tecnicasDe } from './combate'
 
 describe('combate', () => {
   it('el contenido está completo y todo tiene dibujo', () => {
@@ -39,5 +39,22 @@ describe('híbrido boxeo + kick + muay thai', () => {
     const ids = tecnicasDe('hibrido', null).map((t) => t.id)
     expect(ids).toEqual(expect.arrayContaining(['jab', 'gancho', 'teep', 'patada-baja', 'chequeo', 'rodilla', 'clinch']))
     expect(ids).not.toContain('derribo')
+  })
+})
+
+describe('combinar disciplinas', () => {
+  it('hay compatibilidad para cada par de disciplinas distintas', () => {
+    for (const a of DISCIPLINAS) for (const b of DISCIPLINAS) if (a.id !== b.id) expect(compatibilidad(a.id, b.id), `${a.id}+${b.id}`).not.toBeNull()
+  })
+  it('es simétrica y la lucha le suma suelo al boxeo', () => {
+    expect(compatibilidad('boxeo', 'kick')).toEqual(compatibilidad('kick', 'boxeo'))
+    expect(distanciasNuevas('boxeo', 'lucha')).toContain('suelo')
+    expect(distanciasNuevas('kick', 'muaythai')).toEqual([])
+  })
+  it('cada disciplina tiene sombra (5 niveles) y pies (6 niveles) propios', () => {
+    for (const d of DISCIPLINAS) {
+      expect(Object.keys(d.sombra ?? {}), d.id).toHaveLength(5)
+      expect(Object.keys(d.pies ?? {}), d.id).toHaveLength(6)
+    }
   })
 })

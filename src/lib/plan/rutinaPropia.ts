@@ -2,7 +2,7 @@
    El texto se lee línea por línea: días ("Lunes", "Día 2"), horarios ("19:30", "19h"), ejercicios con series
    ("Press banca 4x10", "Sentadilla 3 x 8-12") o minutos ("Caminata 30 min"). Lo que no se reconoce se muestra para elegirlo a mano. */
 import { normalizar } from '../aprender'
-import { EJERCICIOS, ejercicio, type Ejercicio } from '../ejercicios'
+import { EJERCICIOS, ejercicio, implemento, variantesDe, type Ejercicio } from '../ejercicios'
 import { nuevoEjercicioPlan } from './editar'
 import { agrupar, estimarMinutos, type EjercicioPlan, type PlanSemana, type SesionPlan } from './generador'
 
@@ -19,6 +19,15 @@ const ALIAS: [string, string][] = [
   ['press militar', 'press-militar-barra'],
   ['press de hombros', 'press-hombros-mancuernas'],
   ['press hombro', 'press-hombros-mancuernas'],
+  ['remo inclinado', 'remo-barra'],
+  ['remo con barra', 'remo-barra'],
+  ['curl martillo', 'curl-martillo'],
+  ['martillo', 'curl-martillo'],
+  ['encogimientos', 'encogimientos-mancuernas'],
+  ['shrugs', 'encogimientos-mancuernas'],
+  ['vuelos posteriores', 'pajaro-mancuernas'],
+  ['pajaro', 'pajaro-mancuernas'],
+  ['face pull', 'face-pull-banda'],
   ['vuelos laterales', 'elevaciones-laterales'],
   ['elevaciones laterales', 'elevaciones-laterales'],
   ['laterales', 'elevaciones-laterales'],
@@ -52,7 +61,6 @@ const ALIAS: [string, string][] = [
   ['jalon al pecho', 'jalon-polea'],
   ['jalon', 'jalon-polea'],
   ['polea al pecho', 'jalon-polea'],
-  ['remo con barra', 'remo-barra'],
   ['remo con mancuerna', 'remo-mancuerna'],
   ['serrucho', 'remo-mancuerna'],
   ['remo bajo', 'remo-polea'],
@@ -60,7 +68,6 @@ const ALIAS: [string, string][] = [
   ['remo sentado', 'remo-polea'],
   ['remo invertido', 'remo-invertido'],
   ['remo', 'remo-mancuerna'],
-  ['face pull', 'face-pull-banda'],
   ['curl de biceps', 'curl-biceps'],
   ['curl biceps', 'curl-biceps'],
   ['biceps', 'curl-biceps'],
@@ -107,12 +114,28 @@ const ALIAS: [string, string][] = [
 
 const DIAS = ['lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo']
 
+/** Si el texto nombra el implemento ("con barra", "con mancuernas", "con banda"…), elige esa variante. */
+function conImplemento(e: Ejercicio | undefined, t: string): Ejercicio | undefined {
+  if (!e?.familia) return e
+  const pide = [
+    ['barra', 'Barra'],
+    ['mancuerna', 'Mancuernas'],
+    ['mancuernas', 'Mancuernas'],
+    ['banda', 'Banda'],
+    ['elastico', 'Banda'],
+    ['liga', 'Banda'],
+    ['maquina', 'Máquina'],
+    ['polea', 'Polea'],
+  ].find(([w]) => t.includes(` ${w} `))?.[1]
+  return (pide && variantesDe(e.id).find((v) => implemento(v) === pide)) || e
+}
+
 /** Busca el ejercicio de la biblioteca que corresponde a un nombre escrito a mano. */
 export function reconocer(texto: string): Ejercicio | undefined {
   const t = ` ${normalizar(texto)} `
   let mejor: [string, string] | undefined
   for (const a of ALIAS) if (t.includes(` ${a[0]} `) && (!mejor || a[0].length > mejor[0].length)) mejor = a
-  if (mejor) return ejercicio(mejor[1])
+  if (mejor) return conImplemento(ejercicio(mejor[1]), t)
   // Si no hay alias, nombre de la biblioteca contenido en el texto (o al revés).
   const n = normalizar(texto)
   return EJERCICIOS.find((e) => {

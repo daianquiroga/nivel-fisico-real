@@ -50,3 +50,13 @@ Algo raro inventado 3x10`)
     expect(seleccionDesdePlan(p).map((d) => d.dia)).toEqual([0, 3])
   })
 })
+
+describe('variantes por implemento al leer texto', () => {
+  it('elige barra, mancuernas o banda según lo escrito', () => {
+    expect(reconocer('Press militar 4x8')?.id).toBe('press-militar-barra')
+    expect(reconocer('press militar con mancuernas')?.id).toBe('press-hombros-mancuernas')
+    expect(reconocer('Remo inclinado con banda')?.id).toBe('remo-inclinado-banda')
+    expect(reconocer('curl martillo')?.id).toBe('curl-martillo')
+    expect(reconocer('curl de biceps con barra')?.id).toBe('curl-barra')
+  })
+})

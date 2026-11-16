@@ -181,7 +181,8 @@
     },
     "respiracion": "Soltá el aire al tirar y tomalo al bajar; apretá el abdomen todo el tiempo.",
     "id": "remo-barra",
-    "nombre": "Remo con barra",
+    "familia": "remo-inclinado",
+    "nombre": "Remo inclinado con barra",
     "patron": "traccion",
     "principal": [
       "dorsales",
@@ -240,6 +241,7 @@
     },
     "respiracion": "Tomá aire y apretá el abdomen antes de empujar; soltalo al pasar la parte difícil.",
     "id": "press-militar-barra",
+    "familia": "press-hombros",
     "nombre": "Press militar con barra",
     "patron": "empuje-vertical",
     "principal": [

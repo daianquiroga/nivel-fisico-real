@@ -1,0 +1,695 @@
+[
+  {
+    "id": "press-militar-banda",
+    "familia": "press-hombros",
+    "nombre": "Press militar con banda",
+    "patron": "empuje-vertical",
+    "principal": [
+      "hombros"
+    ],
+    "secundarios": [
+      "tríceps",
+      "abdomen"
+    ],
+    "equipo": [
+      "bandas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "banda",
+    "rango": [
+      10,
+      15
+    ],
+    "inicial": "De pie sobre el medio de la banda, pies al ancho de la cadera. Agarrá las puntas a la altura de los hombros, palmas hacia adelante.",
+    "pasos": [
+      "Apretá la cola y la panza para no arquear la espalda.",
+      "Empujá las manos hacia arriba hasta estirar los brazos, sin trabar los codos.",
+      "Bajá despacio, en 2 segundos, hasta la altura de los hombros."
+    ],
+    "respiracion": "Soltá el aire al empujar y tomalo al bajar.",
+    "errores": [
+      {
+        "error": "Arquear la espalda",
+        "detectar": "La panza se va para adelante al empujar: apretá la cola."
+      },
+      {
+        "error": "Codos muy abiertos",
+        "detectar": "Los codos quedan en línea con los hombros: llevalos un poco adelante."
+      },
+      {
+        "error": "Soltar de golpe",
+        "detectar": "La banda te tira las manos para abajo: frená la bajada."
+      }
+    ],
+    "facil": "flexion-pica",
+    "dificil": null,
+    "limitaciones": {
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Subí solo hasta donde no moleste y con las palmas enfrentadas."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Hacelo sentado con la espalda apoyada."
+      }
+    },
+    "subir": "Cuando hagas 3 series de 15 limpias, pasá a una banda más dura o pisala más corta.",
+    "video": "press militar con banda elastica tecnica",
+    "pesoInicial": "Elegí la banda con la que hagas 15 limpias y te queden 3 o 4 más."
+  },
+  {
+    "id": "remo-inclinado-mancuernas",
+    "familia": "remo-inclinado",
+    "nombre": "Remo inclinado con mancuernas",
+    "patron": "traccion",
+    "principal": [
+      "dorsales",
+      "espalda alta"
+    ],
+    "secundarios": [
+      "bíceps",
+      "hombros (parte de atrás)"
+    ],
+    "equipo": [
+      "mancuernas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      8,
+      12
+    ],
+    "inicial": "De pie con una mancuerna en cada mano. Doblá apenas las rodillas e inclinate hacia adelante desde la cadera, espalda recta, hasta quedar casi a 45°.",
+    "pasos": [
+      "Con los brazos colgando, tirá las mancuernas hacia la panza llevando los codos atrás.",
+      "Apretá los omóplatos juntos 1 segundo arriba.",
+      "Bajá en 2 segundos hasta estirar los brazos, sin enderezarte."
+    ],
+    "respiracion": "Soltá el aire al subir las mancuernas.",
+    "errores": [
+      {
+        "error": "Espalda redonda",
+        "detectar": "Se te curva la parte de abajo: sacá la cola atrás y mirá al piso un poco adelante."
+      },
+      {
+        "error": "Enderezarse para subir",
+        "detectar": "El tronco sube y baja en cada repetición: usá menos peso."
+      },
+      {
+        "error": "Tirar con los brazos",
+        "detectar": "Los codos no pasan la espalda: pensá en llevar los codos al techo."
+      }
+    ],
+    "facil": "remo-mancuerna",
+    "dificil": "remo-barra",
+    "limitaciones": {
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Mejor el remo a una mano apoyado en un banco."
+      }
+    },
+    "subir": "3 series de 12 con 2 en reserva en dos sesiones: subí 1 o 2 kg por mano.",
+    "pesoInicial": "Probá con 4 a 8 kg por mano y fijate que la espalda no se curve.",
+    "video": "remo inclinado con mancuernas tecnica"
+  },
+  {
+    "id": "remo-inclinado-banda",
+    "familia": "remo-inclinado",
+    "nombre": "Remo inclinado con banda",
+    "patron": "traccion",
+    "principal": [
+      "dorsales",
+      "espalda alta"
+    ],
+    "secundarios": [
+      "bíceps"
+    ],
+    "equipo": [
+      "bandas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "banda",
+    "rango": [
+      12,
+      20
+    ],
+    "inicial": "Parado sobre el medio de la banda, pies al ancho de la cadera. Inclinate desde la cadera con la espalda recta y agarrá las puntas con los brazos estirados.",
+    "pasos": [
+      "Tirá las puntas hacia la panza llevando los codos atrás y cerca del cuerpo.",
+      "Apretá los omóplatos juntos 1 segundo.",
+      "Volvé despacio hasta estirar los brazos."
+    ],
+    "respiracion": "Soltá el aire al tirar.",
+    "errores": [
+      {
+        "error": "Espalda redonda",
+        "detectar": "Se te curva la parte de abajo: sacá la cola atrás."
+      },
+      {
+        "error": "Hombros a las orejas",
+        "detectar": "Los hombros suben al tirar: bajalos y llevalos atrás."
+      },
+      {
+        "error": "Volver de golpe",
+        "detectar": "La banda te tira los brazos: frená la vuelta."
+      }
+    ],
+    "facil": "remo-banda",
+    "dificil": "remo-inclinado-mancuernas",
+    "limitaciones": {
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Mejor el remo con banda sentado en el piso."
+      }
+    },
+    "subir": "Cuando hagas 3 series de 20, usá una banda más dura o agarrala más corta.",
+    "video": "remo inclinado con banda elastica",
+    "pesoInicial": "Elegí la banda con la que hagas 20 limpias y te queden 3 o 4 más."
+  },
+  {
+    "id": "curl-barra",
+    "familia": "curl-biceps",
+    "nombre": "Curl de bíceps con barra",
+    "patron": "accesorio",
+    "principal": [
+      "bíceps"
+    ],
+    "secundarios": [
+      "antebrazos"
+    ],
+    "equipo": [
+      "barra"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      8,
+      12
+    ],
+    "inicial": "De pie, la barra agarrada con las palmas hacia adelante al ancho de los hombros, brazos estirados y codos pegados al cuerpo.",
+    "pasos": [
+      "Subí la barra doblando los codos, sin moverlos de lugar.",
+      "Apretá arriba 1 segundo, con la barra a la altura del pecho.",
+      "Bajá en 2 segundos hasta estirar del todo."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      {
+        "error": "Balancearse",
+        "detectar": "La cadera empuja la barra: usá menos peso."
+      },
+      {
+        "error": "Codos hacia adelante",
+        "detectar": "Los codos se despegan del cuerpo al subir."
+      },
+      {
+        "error": "Muñecas dobladas",
+        "detectar": "Las manos se doblan para atrás: muñeca recta, en línea con el antebrazo."
+      }
+    ],
+    "facil": "curl-biceps",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "evitar",
+        "texto": "La barra recta fuerza la muñeca: hacé curl martillo con mancuernas."
+      }
+    },
+    "subir": "3 series de 12 con 2 en reserva en dos sesiones: subí 2,5 kg en total.",
+    "pesoInicial": "Empezá con la barra sola o con discos chicos (10 a 20 kg en total).",
+    "video": "curl de biceps con barra tecnica"
+  },
+  {
+    "id": "curl-banda",
+    "familia": "curl-biceps",
+    "nombre": "Curl de bíceps con banda",
+    "patron": "accesorio",
+    "principal": [
+      "bíceps"
+    ],
+    "secundarios": [
+      "antebrazos"
+    ],
+    "equipo": [
+      "bandas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "banda",
+    "rango": [
+      12,
+      20
+    ],
+    "inicial": "De pie sobre el medio de la banda. Agarrá las puntas con las palmas hacia adelante, brazos estirados y codos pegados al cuerpo.",
+    "pasos": [
+      "Subí las manos doblando los codos, sin moverlos de lugar.",
+      "Apretá arriba 1 segundo.",
+      "Bajá despacio hasta estirar del todo."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      {
+        "error": "Balancearse",
+        "detectar": "La espalda ayuda a subir."
+      },
+      {
+        "error": "Codos hacia adelante",
+        "detectar": "Los codos se despegan del cuerpo."
+      },
+      {
+        "error": "Soltar de golpe",
+        "detectar": "La banda te baja las manos: frená la bajada."
+      }
+    ],
+    "facil": null,
+    "dificil": "curl-biceps",
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Hacelo con las palmas enfrentadas (martillo) y la muñeca recta."
+      }
+    },
+    "subir": "Cuando hagas 3 series de 20, pasá a una banda más dura o pisala más corta.",
+    "video": "curl de biceps con banda elastica",
+    "pesoInicial": "Elegí la banda con la que hagas 20 limpias y te queden 3 o 4 más."
+  },
+  {
+    "id": "curl-martillo",
+    "familia": "curl-martillo",
+    "nombre": "Curl martillo con mancuernas",
+    "patron": "accesorio",
+    "principal": [
+      "bíceps",
+      "antebrazos"
+    ],
+    "secundarios": [],
+    "equipo": [
+      "mancuernas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      8,
+      15
+    ],
+    "inicial": "De pie, una mancuerna en cada mano con las palmas enfrentadas (como si sostuvieras un martillo), codos pegados al cuerpo.",
+    "pasos": [
+      "Subí las mancuernas doblando los codos, sin girar las manos.",
+      "Llegá hasta que la mancuerna quede cerca del hombro y apretá 1 segundo.",
+      "Bajá en 2 segundos hasta estirar del todo."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      {
+        "error": "Girar las manos",
+        "detectar": "Las palmas terminan mirando para arriba: mantenelas enfrentadas."
+      },
+      {
+        "error": "Balancearse",
+        "detectar": "La espalda ayuda a subir: usá menos peso."
+      },
+      {
+        "error": "Codos hacia adelante",
+        "detectar": "Los codos se despegan del cuerpo."
+      }
+    ],
+    "facil": "curl-martillo-banda",
+    "dificil": null,
+    "limitaciones": {},
+    "subir": "3 series de 15 con 2 en reserva en dos sesiones: subí 1 kg por mano.",
+    "pesoInicial": "Probá 4 a 8 kg por mano: suele aguantar un poco más que el curl común.",
+    "video": "curl martillo mancuernas tecnica"
+  },
+  {
+    "id": "curl-martillo-banda",
+    "familia": "curl-martillo",
+    "nombre": "Curl martillo con banda",
+    "patron": "accesorio",
+    "principal": [
+      "bíceps",
+      "antebrazos"
+    ],
+    "secundarios": [],
+    "equipo": [
+      "bandas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "banda",
+    "rango": [
+      12,
+      20
+    ],
+    "inicial": "De pie sobre el medio de la banda, las puntas en las manos con las palmas enfrentadas y los codos pegados al cuerpo.",
+    "pasos": [
+      "Subí las manos doblando los codos, con las palmas siempre enfrentadas.",
+      "Apretá arriba 1 segundo.",
+      "Bajá despacio hasta estirar del todo."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      {
+        "error": "Girar las manos",
+        "detectar": "Las palmas miran para arriba: mantenelas enfrentadas."
+      },
+      {
+        "error": "Codos hacia adelante",
+        "detectar": "Los codos se despegan del cuerpo."
+      },
+      {
+        "error": "Soltar de golpe",
+        "detectar": "La banda te baja las manos: frená la bajada."
+      }
+    ],
+    "facil": null,
+    "dificil": "curl-martillo",
+    "limitaciones": {},
+    "subir": "Cuando hagas 3 series de 20, pasá a una banda más dura.",
+    "video": "curl martillo con banda elastica",
+    "pesoInicial": "Elegí la banda con la que hagas 20 limpias y te queden 3 o 4 más."
+  },
+  {
+    "id": "elevaciones-laterales-banda",
+    "familia": "elevaciones-laterales",
+    "nombre": "Elevaciones laterales con banda",
+    "patron": "accesorio",
+    "principal": [
+      "hombros (parte del costado)"
+    ],
+    "secundarios": [
+      "trapecios"
+    ],
+    "equipo": [
+      "bandas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "banda",
+    "rango": [
+      12,
+      20
+    ],
+    "inicial": "De pie sobre el medio de la banda, una punta en cada mano al costado del cuerpo, codos apenas doblados.",
+    "pasos": [
+      "Subí los brazos hacia los costados hasta la altura de los hombros.",
+      "Pará 1 segundo arriba, con los meñiques apenas más altos que los pulgares.",
+      "Bajá despacio, en 2 segundos."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      {
+        "error": "Subir los hombros",
+        "detectar": "Los hombros se acercan a las orejas: bajalos."
+      },
+      {
+        "error": "Pasar la altura del hombro",
+        "detectar": "Las manos quedan más arriba de los hombros."
+      },
+      {
+        "error": "Balancearse",
+        "detectar": "El cuerpo ayuda a subir: banda más liviana."
+      }
+    ],
+    "facil": null,
+    "dificil": "elevaciones-laterales",
+    "limitaciones": {
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Subí solo hasta donde no moleste, con los brazos un poco adelante del cuerpo."
+      }
+    },
+    "subir": "Cuando hagas 3 series de 20, pasá a una banda más dura.",
+    "video": "elevaciones laterales con banda elastica",
+    "pesoInicial": "Elegí la banda con la que hagas 20 limpias y te queden 3 o 4 más."
+  },
+  {
+    "id": "extension-triceps-banda",
+    "familia": "extension-triceps",
+    "nombre": "Extensión de tríceps con banda",
+    "patron": "accesorio",
+    "principal": [
+      "tríceps"
+    ],
+    "secundarios": [],
+    "equipo": [
+      "bandas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "banda",
+    "rango": [
+      12,
+      20
+    ],
+    "inicial": "Pisá una punta de la banda con el pie de atrás. Agarrá la otra con las dos manos detrás de la cabeza, codos apuntando al techo.",
+    "pasos": [
+      "Estirá los brazos hacia arriba sin mover los codos de lugar.",
+      "Apretá arriba 1 segundo.",
+      "Volvé despacio hasta que las manos queden detrás de la cabeza."
+    ],
+    "respiracion": "Soltá el aire al estirar.",
+    "errores": [
+      {
+        "error": "Codos abiertos",
+        "detectar": "Los codos se van para los costados: mantenelos cerca de la cabeza."
+      },
+      {
+        "error": "Arquear la espalda",
+        "detectar": "La panza se va adelante: apretá la cola."
+      },
+      {
+        "error": "Volver de golpe",
+        "detectar": "La banda te tira las manos: frená."
+      }
+    ],
+    "facil": null,
+    "dificil": "extension-triceps",
+    "limitaciones": {
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Si molesta arriba, hacela con los codos al costado tirando de la banda hacia abajo desde una puerta."
+      }
+    },
+    "subir": "Cuando hagas 3 series de 20, pasá a una banda más dura.",
+    "video": "extension de triceps con banda elastica sobre la cabeza",
+    "pesoInicial": "Elegí la banda con la que hagas 20 limpias y te queden 3 o 4 más."
+  },
+  {
+    "id": "pajaro-mancuernas",
+    "familia": "pajaro",
+    "nombre": "Pájaro (vuelos posteriores) con mancuernas",
+    "patron": "accesorio",
+    "principal": [
+      "hombros (parte de atrás)",
+      "espalda alta"
+    ],
+    "secundarios": [
+      "trapecios"
+    ],
+    "equipo": [
+      "mancuernas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      12,
+      20
+    ],
+    "inicial": "De pie, inclinado hacia adelante desde la cadera con la espalda recta, una mancuerna liviana en cada mano colgando debajo del pecho.",
+    "pasos": [
+      "Abrí los brazos hacia los costados, con los codos apenas doblados.",
+      "Subí hasta que los brazos queden en línea con la espalda y apretá los omóplatos.",
+      "Bajá despacio, en 2 segundos."
+    ],
+    "respiracion": "Soltá el aire al abrir los brazos.",
+    "errores": [
+      {
+        "error": "Usar mucho peso",
+        "detectar": "Te balanceás para subir: es un músculo chico, alcanza con poco."
+      },
+      {
+        "error": "Espalda redonda",
+        "detectar": "Se te curva la parte de abajo: sacá la cola atrás."
+      },
+      {
+        "error": "Subir los hombros",
+        "detectar": "Los hombros van a las orejas: bajalos."
+      }
+    ],
+    "facil": "pajaro-banda",
+    "dificil": null,
+    "limitaciones": {
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Hacelo sentado al borde de una silla, inclinado sobre las rodillas."
+      }
+    },
+    "subir": "3 series de 20 limpias en dos sesiones: subí 1 kg por mano.",
+    "pesoInicial": "Empezá muy liviano: 1 a 3 kg por mano.",
+    "video": "pajaro vuelos posteriores mancuernas tecnica"
+  },
+  {
+    "id": "pajaro-banda",
+    "familia": "pajaro",
+    "nombre": "Pájaro (aperturas posteriores) con banda",
+    "patron": "accesorio",
+    "principal": [
+      "hombros (parte de atrás)",
+      "espalda alta"
+    ],
+    "secundarios": [
+      "trapecios"
+    ],
+    "equipo": [
+      "bandas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "banda",
+    "rango": [
+      12,
+      20
+    ],
+    "inicial": "De pie, la banda agarrada con las dos manos adelante del pecho, brazos estirados y al ancho de los hombros.",
+    "pasos": [
+      "Abrí los brazos hacia los costados estirando la banda hasta tocar el pecho.",
+      "Apretá los omóplatos juntos 1 segundo.",
+      "Volvé despacio adelante."
+    ],
+    "respiracion": "Soltá el aire al abrir.",
+    "errores": [
+      {
+        "error": "Doblar los codos",
+        "detectar": "Los brazos se doblan para abrir: banda más liviana."
+      },
+      {
+        "error": "Subir los hombros",
+        "detectar": "Los hombros van a las orejas."
+      },
+      {
+        "error": "Arquear la espalda",
+        "detectar": "El pecho se va para adelante al abrir."
+      }
+    ],
+    "facil": null,
+    "dificil": "pajaro-mancuernas",
+    "limitaciones": {},
+    "subir": "Cuando hagas 3 series de 20, agarrá la banda más corta o usá una más dura.",
+    "video": "band pull apart tecnica",
+    "pesoInicial": "Elegí la banda con la que hagas 20 limpias y te queden 3 o 4 más."
+  },
+  {
+    "id": "encogimientos-mancuernas",
+    "familia": "encogimientos",
+    "nombre": "Encogimientos de hombros con mancuernas",
+    "patron": "accesorio",
+    "principal": [
+      "trapecios"
+    ],
+    "secundarios": [
+      "antebrazos"
+    ],
+    "equipo": [
+      "mancuernas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      10,
+      15
+    ],
+    "inicial": "De pie, una mancuerna en cada mano a los costados, brazos estirados.",
+    "pasos": [
+      "Subí los hombros derecho hacia las orejas, sin doblar los codos.",
+      "Apretá arriba 1 segundo.",
+      "Bajá despacio hasta abajo del todo."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      {
+        "error": "Girar los hombros",
+        "detectar": "Hacés círculos: el movimiento es solo arriba y abajo."
+      },
+      {
+        "error": "Doblar los codos",
+        "detectar": "Los brazos ayudan a subir."
+      },
+      {
+        "error": "Cabeza adelante",
+        "detectar": "El mentón se va para adelante: mirá al frente."
+      }
+    ],
+    "facil": null,
+    "dificil": "encogimientos-barra",
+    "limitaciones": {
+      "cuello": {
+        "nivel": "adaptar",
+        "texto": "Poco peso y sin llegar al tope si molesta el cuello."
+      }
+    },
+    "subir": "3 series de 15 con 2 en reserva en dos sesiones: subí 2 kg por mano.",
+    "pesoInicial": "Probá con 6 a 12 kg por mano.",
+    "video": "encogimientos de hombros mancuernas"
+  },
+  {
+    "id": "encogimientos-barra",
+    "familia": "encogimientos",
+    "nombre": "Encogimientos de hombros con barra",
+    "patron": "accesorio",
+    "principal": [
+      "trapecios"
+    ],
+    "secundarios": [
+      "antebrazos"
+    ],
+    "equipo": [
+      "barra"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      10,
+      15
+    ],
+    "inicial": "De pie, la barra agarrada adelante de los muslos con las manos al ancho de los hombros, brazos estirados.",
+    "pasos": [
+      "Subí los hombros derecho hacia las orejas.",
+      "Apretá arriba 1 segundo.",
+      "Bajá despacio hasta abajo del todo."
+    ],
+    "respiracion": "Soltá el aire al subir.",
+    "errores": [
+      {
+        "error": "Girar los hombros",
+        "detectar": "Hacés círculos: solo arriba y abajo."
+      },
+      {
+        "error": "Doblar los codos",
+        "detectar": "Los brazos ayudan a subir."
+      },
+      {
+        "error": "Rebotar",
+        "detectar": "La barra rebota abajo: bajá el peso."
+      }
+    ],
+    "facil": "encogimientos-mancuernas",
+    "dificil": null,
+    "limitaciones": {
+      "cuello": {
+        "nivel": "adaptar",
+        "texto": "Poco peso y sin llegar al tope si molesta el cuello."
+      }
+    },
+    "subir": "3 series de 15 con 2 en reserva en dos sesiones: subí 5 kg en total.",
+    "pesoInicial": "Empezá con 20 a 40 kg en total.",
+    "video": "encogimientos de hombros con barra"
+  }
+]

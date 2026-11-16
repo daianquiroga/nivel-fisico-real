@@ -42,6 +42,25 @@ export function VistaAnalisis({ a, onAgregar, compacto }: { a: Analisis; onAgreg
           <span className={estilos.chico}>de 100 para tus objetivos</span>
         </div>
         <BarrasAporte fisico={p.fisico} estetico={p.estetico} marcial={p.marcial} />
+        <p className={estilos.texto2} style={{ fontWeight: 600, color: a.veredicto.buena ? 'var(--done)' : 'var(--text)' }}>
+          {a.veredicto.buena ? '✓ ' : ''}
+          {a.veredicto.texto}
+        </p>
+        <details className={x.detalle}>
+          <summary>¿Cuándo una rutina es buena?</summary>
+          <ul className={x.seccion}>
+            <li>
+              <b>El número grande</b> mezcla las tres áreas según tus objetivos. Con <b>65 o más</b> es una buena rutina para vos; con 85 o más, muy completa.
+            </li>
+            <li>
+              <b>Cada barra</b> va de 0 a 100. Las rayitas marcan 40 (base) y 65 (buena). Menos de 40: le falta bastante.
+            </li>
+            <li>
+              No hace falta tener 100 en todo. Las áreas que <b>no</b> elegiste como objetivo pueden dar bajo y está bien. Las que sí elegiste conviene que pasen la rayita de 40.
+            </li>
+          </ul>
+          <p className={estilos.chico}>Los cortes 40, 65 y 85 son una decisión de la app para orientarte, no un estándar publicado.</p>
+        </details>
         <details className={x.detalle}>
           <summary>¿Cómo se calcula?</summary>
           <ul className={x.seccion}>

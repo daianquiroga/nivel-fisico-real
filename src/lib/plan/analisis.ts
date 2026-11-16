@@ -88,6 +88,8 @@ export interface Analisis {
   minutosIntervalos: number
   combate: { golpes: boolean; agarre: boolean; pies: boolean }
   puntajes: { fisico: number; estetico: number; marcial: number; objetivos: number }
+  /** Si la rutina es buena para los objetivos de la persona, en una frase. */
+  veredicto: { buena: boolean; texto: string }
   sesiones: SesionAnalizada[]
   faltas: Falta[]
   fuerte: string[]
@@ -316,6 +318,7 @@ export function analizarRutina(plan: PlanSemana, ctx: ContextoAnalisis): Analisi
     minutosIntervalos,
     combate,
     puntajes: { fisico: Math.round(fisico), estetico: Math.round(estetico), marcial: Math.round(marcial), objetivos: Math.round(objetivos) },
+    veredicto: veredicto({ fisico: Math.round(fisico), estetico: Math.round(estetico), marcial: Math.round(marcial), objetivos: Math.round(objetivos) }, ctx.objetivos),
     sesiones,
     faltas: faltas.sort((a, b) => b.prioridad - a.prioridad),
     fuerte,
@@ -324,3 +327,35 @@ export function analizarRutina(plan: PlanSemana, ctx: ContextoAnalisis): Analisi
 
 /** Sesión de la que se habla en un texto para la persona (ej. "Lunes: Fuerza A"). */
 export const nombreSesion = (dia: number, s: SesionPlan) => `${NOMBRES_DIAS[dia]}: ${s.titulo}`
+
+/* ---------- Cómo leer los puntajes ----------
+   Cortes 40 / 65 / 85: decisión de diseño de la app (no son un estándar publicado). Con 65 una área ya cumple lo
+   básico de su meta (por ejemplo, cardio cerca de los 150 minutos y 2 días de fuerza completos para Físico). */
+export const CORTES = { base: 40, buena: 65, completa: 85 }
+
+export type Calificacion = 'falta' | 'base' | 'buena' | 'completa'
+
+export function calificar(n: number): { nivel: Calificacion; texto: string } {
+  if (n >= CORTES.completa) return { nivel: 'completa', texto: 'Muy completa' }
+  if (n >= CORTES.buena) return { nivel: 'buena', texto: 'Buena' }
+  if (n >= CORTES.base) return { nivel: 'base', texto: 'Base, se puede mejorar' }
+  return { nivel: 'falta', texto: 'Le falta bastante' }
+}
+
+const AREAS = [
+  { clave: 'fisico', objetivo: 'condicion', nombre: 'físico' },
+  { clave: 'estetico', objetivo: 'estetica', nombre: 'estético' },
+  { clave: 'marcial', objetivo: 'combate', nombre: 'marcial' },
+] as const
+
+/** Veredicto en una frase: la rutina es buena si el puntaje de tus objetivos llega a 65 y ninguna área que te importa
+    (20 % o más de tus objetivos) queda debajo de 40. Las áreas que no elegiste pueden dar bajo y está bien. */
+export function veredicto(p: Analisis['puntajes'], objetivos: ContextoAnalisis['objetivos']): { buena: boolean; texto: string } {
+  const total = Math.max(1, objetivos.estetica + objetivos.condicion + objetivos.combate)
+  const importan = AREAS.filter((a) => objetivos[a.objetivo] / total >= 0.2)
+  const flojas = importan.filter((a) => p[a.clave] < CORTES.base).map((a) => a.nombre)
+  if (p.objetivos >= CORTES.buena && flojas.length === 0)
+    return { buena: true, texto: p.objetivos >= CORTES.completa ? 'Rutina muy completa para lo que buscás.' : 'Buena rutina para lo que buscás. Ahora lo que suma es la constancia.' }
+  if (flojas.length) return { buena: false, texto: `Todavía le falta en lo ${flojas.join(' y lo ')}, que es parte de lo que buscás. Mirá abajo qué sumar.` }
+  return { buena: false, texto: `Va bien, pero para ser buena tiene que llegar a ${CORTES.buena}. Mirá abajo qué sumar.` }
+}
