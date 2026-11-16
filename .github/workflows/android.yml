@@ -24,43 +24,38 @@ jobs:
           FIRMA: ${{ secrets.ANDROID_FIRMA }}
         run: |
           if [ -z "$FIRMA" ]; then
-            echo "::notice::Falta el secreto ANDROID_FIRMA: no se arma el APK (así nunca cambia la firma). Ver ESTADO.md."
+            echo "::notice::Falta el secreto ANDROID_FIRMA: se arma de prueba, sin firmar y sin publicar (así nunca sale un APK con otra firma). Ver ESTADO.md."
             echo "hay=no" >> "$GITHUB_OUTPUT"
           else
             echo "hay=si" >> "$GITHUB_OUTPUT"
           fi
       - uses: actions/checkout@v4
-        if: steps.firma.outputs.hay == 'si'
       - uses: actions/setup-node@v4
-        if: steps.firma.outputs.hay == 'si'
         with:
           node-version: 22
           cache: npm
       - run: npm ci
-        if: steps.firma.outputs.hay == 'si'
       - run: npm test
-        if: steps.firma.outputs.hay == 'si'
       - run: npm run build:android
-        if: steps.firma.outputs.hay == 'si'
       - uses: actions/setup-java@v4
-        if: steps.firma.outputs.hay == 'si'
         with:
           distribution: temurin
           java-version: 21
       - uses: gradle/actions/setup-gradle@v4
-        if: steps.firma.outputs.hay == 'si'
       - name: Armar el APK
-        if: steps.firma.outputs.hay == 'si'
         working-directory: android
         env:
           FIRMA: ${{ secrets.ANDROID_FIRMA }}
           NFR_FIRMA_CLAVE: ${{ secrets.ANDROID_FIRMA_CLAVE }}
         run: |
-          echo "$FIRMA" | base64 -d > "$RUNNER_TEMP/firma.jks"
-          export NFR_FIRMA_ARCHIVO="$RUNNER_TEMP/firma.jks"
+          if [ -n "$FIRMA" ]; then
+            echo "$FIRMA" | base64 -d > "$RUNNER_TEMP/firma.jks"
+            export NFR_FIRMA_ARCHIVO="$RUNNER_TEMP/firma.jks"
+          fi
           VERSION=$(node -p "require('../package.json').version")
           ./gradlew assembleRelease -PversionCode=${{ github.run_number }} -PversionName="$VERSION"
-          cp app/build/outputs/apk/release/app-release.apk ../nivel-fisico-real.apk
+          ls app/build/outputs/apk/release/
+          if [ -n "$FIRMA" ]; then cp app/build/outputs/apk/release/app-release.apk ../nivel-fisico-real.apk; fi
       - name: Publicar en la página de versiones
         if: steps.firma.outputs.hay == 'si'
         env:
