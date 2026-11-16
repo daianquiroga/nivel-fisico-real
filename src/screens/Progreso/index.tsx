@@ -11,6 +11,7 @@ import { BarrasPasos } from '../Hoy/Pasos'
 import { Proyeccion } from './Proyeccion'
 import { ConstanciaProgreso } from './Constancia'
 import { Etapa } from './Etapa'
+import { Carga } from './Carga'
 import { diasParaProxima, usarEvaluaciones } from '../../lib/usarEvaluaciones'
 import { usarInicio } from '../../lib/usarInicio'
 import h from '../Hoy/hoy.module.css'
@@ -98,6 +99,7 @@ export function Progreso() {
         <TuCuerpoLink />
         <Etapa />
         <ConstanciaProgreso edad={perfil?.edad ?? 30} />
+        <Carga />
         <TusEjercicios />
         <TusPasos edad={perfil?.edad ?? 30} />
       </>
@@ -133,6 +135,7 @@ export function Progreso() {
       <TuCuerpoLink />
       <Etapa />
       <ConstanciaProgreso edad={perfil?.edad ?? 30} />
+      <Carga />
       <TusEjercicios />
       <TusPasos edad={perfil?.edad ?? 30} />
 

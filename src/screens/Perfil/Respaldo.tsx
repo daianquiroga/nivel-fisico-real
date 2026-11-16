@@ -1,13 +1,14 @@
 import { useEffect, useState, type ChangeEvent } from 'react'
 import { Icono } from '../../components/Icono'
 import { Aviso, Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
+import { Capacitor } from '@capacitor/core'
 import { db } from '../../lib/db/db'
+import { guardarEnCelular, mandarAfuera, ultimaCopiaAuto } from '../../lib/respaldoNativo'
 import {
   ErrorRespaldo,
   exportarDatos,
   importarDatos,
   leerRespaldo,
-  respaldoAJson,
   respaldoATexto,
   resumirRespaldo,
   type Respaldo as TipoRespaldo,
@@ -42,28 +43,27 @@ export function Respaldo() {
   const [aImportar, setAImportar] = useState<TipoRespaldo | null>(null)
   const [conFotos, setConFotos] = useState(false)
 
+  const nativo = Capacitor.isNativePlatform()
+  const [copiaAuto, setCopiaAuto] = useState<string | null>(null)
   const leerUltimo = async () => {
     const a = await db.ajustes.get('ultimoRespaldo')
     setUltimo(typeof a?.valor === 'string' ? a.valor : null)
   }
   useEffect(() => {
     void leerUltimo()
+    void ultimaCopiaAuto().then((x) => setCopiaAuto(x ?? null))
   }, [])
 
-  async function descargarArchivo() {
-    const r = await exportarDatos(db, { conFotos })
-    const blob = new Blob([respaldoAJson(r)], { type: 'application/json' })
-    const url = URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = `nivel-fisico-real-respaldo-${r.exportado.slice(0, 10)}.json`
-    document.body.appendChild(a)
-    a.click()
-    a.remove()
-    setTimeout(() => URL.revokeObjectURL(url), 2000)
-    await marcarRespaldo()
+  async function afuera() {
+    const ok = await mandarAfuera(conFotos)
     await leerUltimo()
-    setMensaje({ tipo: 'ok', texto: 'Listo: el archivo quedó en la carpeta Descargas de tu celular.' })
+    if (ok) setMensaje({ tipo: 'ok', texto: nativo ? 'Listo: el respaldo quedó donde lo mandaste.' : 'Listo: el archivo quedó en la carpeta Descargas o donde lo compartiste.' })
+  }
+
+  async function enCelular() {
+    const ok = await guardarEnCelular(conFotos)
+    setCopiaAuto((await ultimaCopiaAuto()) ?? null)
+    setMensaje(ok ? { tipo: 'ok', texto: 'Listo: copia guardada en Documentos/NivelFisicoReal.' } : { tipo: 'error', texto: 'No se pudo guardar en el celular. Probá "Guardar en Drive, mail o WhatsApp".' })
   }
 
   async function copiarTexto() {
@@ -114,20 +114,29 @@ export function Respaldo() {
         Todo se guarda solo en este celular. Si borrás los datos del navegador o cambiás de teléfono, lo recuperás con un
         respaldo.
       </p>
-      <p className={estilos.chico}>{ultimo ? `Último respaldo: ${formatoFecha(ultimo)}` : 'Todavía no hiciste ningún respaldo.'}</p>
+      <p className={estilos.chico}>{ultimo ? `Última copia guardada afuera de la app: ${formatoFecha(ultimo)}` : 'Todavía no guardaste ninguna copia afuera de la app.'}</p>
 
       <label style={{ display: 'flex', gap: 10, alignItems: 'center', minHeight: 44 }} className={estilos.chico}>
         <input type="checkbox" checked={conFotos} onChange={(e) => setConFotos(e.target.checked)} style={{ width: 22, height: 22, accentColor: 'var(--accent)' }} />
         Incluir las fotos de progreso en el archivo (queda más pesado). El texto para copiar nunca lleva fotos.
       </label>
-      <div className={estilos.fila}>
-        <Boton onClick={descargarArchivo}>
-          <Icono nombre="descargar" tam={20} /> Guardar archivo
-        </Boton>
-        <Boton onClick={copiarTexto}>
-          <Icono nombre="copiar" tam={20} /> Copiar como texto
-        </Boton>
-      </div>
+      <Boton variante="principal" ancho onClick={() => void afuera()}>
+        <Icono nombre="descargar" tam={20} /> {nativo ? 'Guardar en Drive, mail o WhatsApp' : 'Guardar archivo'}
+      </Boton>
+      {nativo && (
+        <>
+          <Boton ancho onClick={() => void enCelular()}>
+            Guardar una copia en el celular
+          </Boton>
+          <p className={estilos.chico}>
+            Copia automática cada semana en Documentos/NivelFisicoReal (quedan las últimas 4, aunque borres la app):{' '}
+            {copiaAuto ? `la última fue el ${formatoFecha(copiaAuto)}.` : 'todavía no se hizo ninguna.'} Para no perder nada si se pierde el celular, mandá una copia afuera cada tanto.
+          </p>
+        </>
+      )}
+      <Boton onClick={copiarTexto}>
+        <Icono nombre="copiar" tam={20} /> Copiar como texto
+      </Boton>
 
       <div className={estilos.fila}>
         <label className={estilos.boton}>

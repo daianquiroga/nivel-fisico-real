@@ -11,6 +11,7 @@ import { AsistenteRutina } from '../screens/Plan/Asistente'
 import { Tecnica } from '../screens/Tecnica'
 import { FichaArte, ListaArtes } from '../screens/Combate/Artes'
 import { SesionCompleta, Sistema } from '../screens/Combate/Sistema'
+import { PruebasCombate } from '../screens/Combate/Pruebas'
 import { FichaTecnica, Tecnicas } from '../screens/Combate/Tecnicas'
 import { RondasCombate } from '../screens/Combate/Rondas'
 import { EvaluarSombra } from '../screens/Combate/Evaluar'
@@ -96,6 +97,7 @@ export default function App() {
         <Route path="/combate/arte/:id" element={<FichaArte />} />
         <Route path="/combate/sistema" element={<Sistema />} />
         <Route path="/combate/sesion" element={<SesionCompleta />} />
+        <Route path="/combate/pruebas" element={<PruebasCombate />} />
         <Route path="/combate/tecnica/:id" element={<FichaTecnica />} />
         <Route path="/combate/rondas/:tipo" element={<RondasCombate />} />
         <Route path="/combate/evaluar" element={<EvaluarSombra />} />

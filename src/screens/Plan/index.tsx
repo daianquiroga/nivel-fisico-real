@@ -365,6 +365,9 @@ export function Plan() {
           <Link to="/plan/asistente" className={estilos.boton}>
             Armar una rutina nueva paso a paso
           </Link>
+          <Link to="/combate/sistema?tema=sesion" className={estilos.boton}>
+            Semana de combate (sistema completo)
+          </Link>
           <Link to="/plan/armar" className={estilos.boton}>
             Cargar o editar mi rutina a mano
           </Link>

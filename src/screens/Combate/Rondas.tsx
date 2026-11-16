@@ -3,7 +3,8 @@ import { Link, useParams, useSearchParams } from 'react-router-dom'
 import { Aviso, Boton, Tarjeta, estilos } from '../../components/ui'
 import { DibujoGuardia, DibujoPies, DibujoTecnica } from '../../content/dibujos-combate'
 import { NIVELES_PIES, NIVELES_SOMBRA, disciplina, tecnica } from '../../lib/combate'
-import { guardarActividad, guardarTipo } from '../../lib/diario'
+import { guardarActividad, guardarSesionHecha, guardarTipo } from '../../lib/diario'
+import { Esfuerzo } from '../../components/Esfuerzo'
 import { fechaLocal } from '../../lib/plan/sesion'
 import { usarPantallaEncendida } from '../../lib/dispositivo'
 import { Rondas as Temporizador } from '../Entrenar/Rondas'
@@ -18,6 +19,7 @@ export function RondasCombate() {
   const { tipo = 'sombra' } = useParams()
   const { estado, recargar, disciplina: disc, nivelSombra, nivelPies } = usarCombate(useSearchParams()[0].get('d'))
   const [fin, setFin] = useState<number | null>(null)
+  const [esfuerzoGuardado, setEsfuerzoGuardado] = useState(false)
   usarPantallaEncendida(true)
   if (!estado) return null
   const esPies = tipo === 'pies'
@@ -94,6 +96,17 @@ export function RondasCombate() {
       ) : (
         <>
           <Aviso tipo="ok">¡Bien! {fin} minutos anotados en tu actividad de hoy.</Aviso>
+          {!esfuerzoGuardado && (
+            <Tarjeta>
+              <Esfuerzo
+                valor={null}
+                onCambio={async (n) => {
+                  await guardarSesionHecha({ sesionId: `combate-${tipo}`, titulo: esPies ? 'Juego de pies' : `Sombra de ${d.nombre.toLowerCase()}`, version: 'completa', minutos: fin, esfuerzo: n, ejercicios: [] })
+                  setEsfuerzoGuardado(true)
+                }}
+              />
+            </Tarjeta>
+          )}
           {esPies && actual < NIVELES_PIES.length && (
             <Tarjeta>
               <p className={estilos.texto2}>

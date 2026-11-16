@@ -42,6 +42,9 @@
     <!-- Permissions -->
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Respaldo en Documentos: solo hace falta en Android 10 o anterior. -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="29" />
 
     <!-- Health Connect: la app solo LEE pasos y distancia. El resto de los permisos que trae el plugin se sacan. -->
     <uses-permission android:name="android.permission.health.READ_STEPS" />

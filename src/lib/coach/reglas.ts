@@ -1,6 +1,7 @@
 /* Coach sin IA: reglas "condición → mensaje + acción" evaluadas con los datos guardados en el celular
    (ESPECIFICACION.md, sección 13.3). Cada mensaje tiene una versión simple con pasos (principiante),
    una normal (intermedio) y una con más detalle técnico (avanzado). */
+import type { EstadoCarga } from '../calc/carga'
 import type { NivelLectura } from '../aprender'
 import { NOMBRES_AREA, type Area } from '../calc/puntajes'
 import { sugerir, type Contexto, type Sesion } from '../calc/progresion'
@@ -42,6 +43,8 @@ export interface DatosCoach {
   objetivoGrasa: boolean
   evaluaciones: EvaluacionAreas[]
   etapa?: EstadoEtapa
+  /** Carga de los últimos 7 días contra las 3 semanas anteriores (lib/calc/carga.ts). */
+  carga?: EstadoCarga
 }
 
 interface Mensaje {
@@ -119,6 +122,22 @@ export function consejos(d: DatosCoach, nivel: NivelLectura): Consejo[] {
         tecnico: 'Con menos de 6 h de sueño baja la capacidad de trabajo y sube el esfuerzo percibido: menos volumen (−1 serie por ejercicio) y RIR 3 o más. Una noche no cambia el progreso; varias seguidas sí.',
       }),
       accion: d.rutaHoy ? { tipo: 'ir', texto: 'Entrenar reducida', a: d.rutaHoy } : undefined,
+    })
+  }
+
+  // La carga subió de golpe (más de 1,5 veces el promedio) → bajar un poco la semana que viene.
+  if (d.carga === 'subida') {
+    out.push({
+      id: 'carga-subida',
+      clase: 'aviso',
+      prioridad: 70,
+      titulo: 'Subiste mucho la carga',
+      ...armar(nivel, {
+        simple: 'Esta semana entrenaste bastante más (esfuerzo × minutos) que las anteriores. Si estás cansado o con molestias, la próxima semana bajala un poco.',
+        pasos: ['Mirá tu carga en Progreso.', 'Si te sentís cansado, usá versiones reducidas unos días.', 'Subí de a poco: no más de la mitad de golpe.'],
+        tecnico: 'Carga de los últimos 7 días mayor a 1,5 veces el promedio de las 3 semanas anteriores (session-RPE, Foster 2001). Corte de diseño de la app; la relación aguda:crónica no predice lesiones (Impellizzeri 2020), solo marca un cambio brusco.',
+      }),
+      accion: { tipo: 'ir', texto: 'Ver mi carga', a: '/progreso' },
     })
   }
 

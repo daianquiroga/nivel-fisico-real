@@ -11,10 +11,13 @@ import App from './app/App'
 import { pedirAlmacenamientoPersistente } from './lib/db/db'
 import { registrarActualizaciones } from './lib/actualizar'
 import { iniciarActualizaciones } from './lib/actualizarNativo'
+import { copiaAutomatica } from './lib/respaldoNativo'
 
 void pedirAlmacenamientoPersistente()
 registrarActualizaciones()
 void iniciarActualizaciones()
+// La copia semanal se hace unos segundos después de abrir, para no demorar el arranque.
+setTimeout(() => void copiaAutomatica(), 4000)
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

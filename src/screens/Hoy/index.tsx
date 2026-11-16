@@ -15,6 +15,7 @@ import { Constancia } from './Constancia'
 import { Actividad, Agua } from './Actividad'
 import { usarInicio } from '../../lib/usarInicio'
 import { leerEstadoActualizacion, olvidarActualizada, type EstadoActualizacion } from '../../lib/actualizarNativo'
+import { DIAS_AVISO, diasDesde, mandarAfuera, ultimoRespaldoAfuera } from '../../lib/respaldoNativo'
 import s from './hoy.module.css'
 
 function fechaDeHoy(): string {
@@ -28,6 +29,7 @@ export function Hoy() {
   const { plan } = usarPlan()
   const coach = useRef<CoachRef>(null)
   const [act, setAct] = useState<EstadoActualizacion>({})
+  const [sinRespaldo, setSinRespaldo] = useState<number | null>(null)
   const [mas, setMas] = useState(() => {
     try {
       return localStorage.getItem('hoy-ver-mas') === '1'
@@ -43,6 +45,9 @@ export function Hoy() {
       /* sin almacenamiento: no pasa nada */
     }
   }
+  useEffect(() => {
+    void ultimoRespaldoAfuera().then((u) => setSinRespaldo(diasDesde(u)))
+  }, [])
   useEffect(() => {
     void leerEstadoActualizacion().then((e) => {
       setAct(e)
@@ -80,6 +85,26 @@ export function Hoy() {
         <Aviso tipo="error">
           Hay una versión nueva ({act.apkNueva}) que necesita instalar la app una vez más. {act.apkUrl && <a href={act.apkUrl}>Bajar la app</a>}
         </Aviso>
+      )}
+
+      {listo && (plan || ultima) && sinRespaldo !== null && sinRespaldo >= DIAS_AVISO && (
+        <Tarjeta>
+          <p className="etiqueta" style={{ color: 'var(--accent)' }}>
+            Tus datos
+          </p>
+          <p className={estilos.texto2}>
+            {sinRespaldo === Infinity ? 'Todavía no guardaste una copia de tus datos afuera del celular.' : `Hace ${sinRespaldo} días que no guardás una copia afuera del celular.`} Si se pierde o se rompe, se pierde todo.
+          </p>
+          <button
+            type="button"
+            className={estilos.boton}
+            onClick={async () => {
+              if (await mandarAfuera()) setSinRespaldo(0)
+            }}
+          >
+            Guardar copia (Drive, mail o WhatsApp)
+          </button>
+        </Tarjeta>
       )}
 
       {!listo && (

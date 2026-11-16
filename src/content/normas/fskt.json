@@ -1,0 +1,11 @@
+{
+  "fuente": "Frequency Speed of Kick Test (FSKT): da Silva Santos y otros 2015; confiabilidad y validez: Santos y otros 2020 (Ido Movement for Culture 20(3)); sensible al entrenamiento: Sport Sciences for Health 2016. Clasificación del FSKT10s usada en el ensayo NCT07194512 (clinicaltrials.gov).",
+  "enlace": "https://clinicaltrials.gov/study/NCT07194512",
+  "nota": "Las normas son de atletas de taekwondo pateando a un blanco (bolsa o muñeco). Si pateás al aire o sos principiante, usá el número para compararte con vos mismo, no con la tabla.",
+  "fskt10": {
+    "cortes": [17, 18, 22, 24],
+    "nombres": ["Muy bajo", "Bajo", "Promedio", "Bueno", "Excelente"]
+  },
+  "mult": { "series": 5, "trabajo": 10, "descanso": 10 },
+  "kdi": "Índice de caída de patadas (KDI) = (1 − suma de las 5 series ÷ (mejor serie × 5)) × 100. Más bajo = aguantás mejor el ritmo."
+}

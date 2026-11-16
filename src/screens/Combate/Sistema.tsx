@@ -1,10 +1,16 @@
-import { useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
-import { Aviso, Boton, Tarjeta, estilos } from '../../components/ui'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
+import { Aviso, Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
+import { NOMBRES_DIAS } from '../../lib/perfil'
+import { asegurarCiclo } from '../../lib/plan/ciclo'
+import type { EntradaPlan, PlanSemana } from '../../lib/plan/generador'
+import { semanaSistema, sumarAlPlan } from '../../lib/plan/sistemaSemana'
+import { armarEntrada, guardarPlan, leerPlan } from '../../lib/plan/usarPlan'
 import { CuentaRegresiva } from '../../components/tiempo'
 import { DibujoGuardia, DibujoPies, DibujoReparto, DibujoTecnica } from '../../content/dibujos-combate'
 import { SISTEMA, tecnica } from '../../lib/combate'
-import { guardarActividad } from '../../lib/diario'
+import { guardarActividad, guardarSesionHecha } from '../../lib/diario'
+import { Esfuerzo } from '../../components/Esfuerzo'
 import { fechaLocal } from '../../lib/plan/sesion'
 import { usarPantallaEncendida } from '../../lib/dispositivo'
 import e from '../Evaluacion/evaluacion.module.css'
@@ -305,6 +311,7 @@ export function Sistema() {
             </Link>
           </Tarjeta>
           <p className={estilos.chico}>{S.sesionNota}</p>
+          <UsarSemana />
           <Tarjeta>
             <p className="etiqueta">Plan semanal (5 días)</p>
             {S.semana.map((d) => (
@@ -361,6 +368,65 @@ export function Sistema() {
   )
 }
 
+/** Lleva el plan de 5 días a los días y horarios de la persona: reemplaza su plan o se suma. */
+function UsarSemana() {
+  const navegar = useNavigate()
+  const [entrada, setEntrada] = useState<EntradaPlan | null | undefined>(undefined)
+  const [actual, setActual] = useState<PlanSemana | null>(null)
+  const [preguntar, setPreguntar] = useState(false)
+  useEffect(() => {
+    void Promise.all([armarEntrada(), leerPlan()]).then(([e, p]) => {
+      setEntrada(e)
+      setActual(p ?? null)
+    })
+  }, [])
+  if (entrada === undefined) return null
+  if (!entrada) return <p className={estilos.chico}>Para llevarlo a tu semana, primero cargá tus días y horarios en Perfil.</p>
+  const nuevo = semanaSistema(entrada)
+  const dias = nuevo.dias.map((d, i) => ({ i, s: d.sesiones[0] })).filter((x) => x.s)
+
+  async function guardar(como: 'reemplazar' | 'sumar') {
+    const p = como === 'sumar' && actual ? sumarAlPlan(actual, nuevo) : nuevo
+    await guardarPlan(p)
+    await asegurarCiclo(p.creado)
+    navegar('/plan')
+  }
+
+  return (
+    <Tarjeta destacada>
+      <p className="etiqueta">Llevarlo a tu semana</p>
+      {dias.length === 0 ? (
+        <p className={estilos.texto2}>No tenés días de entrenamiento cargados. Elegilos en Perfil → Horarios o en Plan → Armar paso a paso.</p>
+      ) : (
+        <>
+          <p className={estilos.chico}>Con tus días y horarios queda así (60 % combate y el resto el complemento):</p>
+          {dias.map(({ i, s }) => (
+            <p key={i} className={estilos.texto2}>
+              <b>{NOMBRES_DIAS[i]}</b> {s!.desde ? `· ${s!.desde}` : ''} · {s!.minutos} min
+              <br />
+              <span className={estilos.chico}>{s!.titulo.replace('Combate: ', '')}</span>
+            </p>
+          ))}
+          {dias.length < 5 && <p className={estilos.chico}>Con menos de 5 días se priorizan integración, boxeo y muay thai/kick; después suelo y krav magá.</p>}
+          <Boton variante="principal" ancho onClick={() => (actual ? setPreguntar(true) : void guardar('reemplazar'))}>
+            Usar esta semana en mi plan
+          </Boton>
+        </>
+      )}
+      {preguntar && (
+        <Dialogo titulo="¿Cómo lo sumo?" onCerrar={() => setPreguntar(false)}>
+          <p className={estilos.texto2}>Ya tenés un plan. Podés reemplazarlo por esta semana o sumarla después de lo que ya tenés cada día.</p>
+          <Boton variante="principal" onClick={() => void guardar('reemplazar')}>
+            Reemplazar mi plan
+          </Boton>
+          <Boton onClick={() => void guardar('sumar')}>Sumarla a mi plan</Boton>
+          <Boton onClick={() => setPreguntar(false)}>Cancelar</Boton>
+        </Dialogo>
+      )}
+    </Tarjeta>
+  )
+}
+
 /** Sesión guiada bloque por bloque, con cuenta regresiva. Al final la anota como actividad. */
 export function SesionCompleta() {
   usarPantallaEncendida(true)
@@ -369,6 +435,7 @@ export function SesionCompleta() {
   const bloques = corta ? SISTEMA.sesion.filter((b) => ['Calentamiento', 'Juego de pies', 'Sombra técnica', 'Suelo solo', 'Vuelta a la calma'].includes(b.bloque)) : SISTEMA.sesion
   const [i, setI] = useState(-1)
   const [fin, setFin] = useState(false)
+  const [esfuerzoGuardado, setEsfuerzoGuardado] = useState(false)
   const total = bloques.reduce((a, b) => a + b.minutos, 0)
   const b = bloques[i]
 
@@ -431,6 +498,17 @@ export function SesionCompleta() {
       {fin && (
         <>
           <Aviso tipo="ok">¡Bien! {total} minutos anotados en tu actividad de hoy.</Aviso>
+          {!esfuerzoGuardado && (
+            <Tarjeta>
+              <Esfuerzo
+                valor={null}
+                onCambio={async (n) => {
+                  await guardarSesionHecha({ sesionId: 'combate-sistema', titulo: 'Sesión del sistema completo', version: corta ? 'reducida' : 'completa', minutos: total, esfuerzo: n, ejercicios: [] })
+                  setEsfuerzoGuardado(true)
+                }}
+              />
+            </Tarjeta>
+          )}
           <Tarjeta>
             <p className="etiqueta">Antes de irte</p>
             <p className={estilos.texto2}>Anotá lo que falló y, si grabaste un round, miralo con el checklist.</p>

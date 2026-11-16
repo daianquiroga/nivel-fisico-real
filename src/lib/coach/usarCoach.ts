@@ -1,3 +1,4 @@
+import { cargasSemanales, estadoCarga } from '../calc/carga'
 import { useCallback, useEffect, useState } from 'react'
 import { db } from '../db/db'
 import { leerControles, leerTipo, sesionesHechas, type Medidas } from '../diario'
@@ -106,6 +107,7 @@ export async function calcularCoach(nivel: NivelLectura): Promise<{ consejos: Co
       objetivoGrasa: (perfil.objetivos?.estetica ?? 0) >= UMBRAL_GRASA,
       evaluaciones,
       etapa: etapa ?? undefined,
+      carga: estadoCarga(cargasSemanales(await sesionesHechas())).estado,
     },
     nivel,
   )

@@ -162,6 +162,10 @@ export function Combate() {
           <span className={s.itemNombre}>Las 10 artes: cómo se mueve cada una</span>
           <span className={s.itemDetalle}>Reparto de peso con dibujo, sombra, pies, encadenamientos y con qué combinarla</span>
         </Link>
+        <Link to="/combate/pruebas" className={s.item}>
+          <span className={s.itemNombre}>Pruebas de combate</span>
+          <span className={s.itemDetalle}>Velocidad y aguante de patada (pruebas publicadas) y el test de judo, con tu evolución</span>
+        </Link>
         <Link to="/combate/voz" className={s.item}>
           <span className={s.itemNombre}>Entrenador por voz</span>
           <span className={s.itemDetalle}>Te canta combinaciones durante el round: elegís tempo, complejidad, orden y momento</span>
