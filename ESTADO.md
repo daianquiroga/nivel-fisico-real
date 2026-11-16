@@ -8,6 +8,7 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.33.0: arreglo de la actualización sola en Android. Antes la versión bajada quedaba "para la próxima" y el plugin, en modo manual, no siempre la aplicaba. Ahora: (1) al abrir la app, si hay una versión nueva ya bajada (y que no falló), se aplica en el momento con `set`; (2) al salir de la app se llama `reload` para aplicarla; (3) en Perfil → App de Android hay un botón "Buscar actualización ahora", que baja y aplica al instante, y se muestra la última revisión con su resultado o error. Las versiones 0.30.x a 0.32.0 en el celular pueden no aplicarse solas: hay que instalar el APK una vez más (encima, sin desinstalar: los datos quedan).
 - Versión 0.32.0 (más fácil de usar, parte 2):
   - Hoy simplificado: arriba solo lo de hoy con un botón grande "Entrenar" (o "Armar mi rutina" si no hay plan), el control diario y el coach. Nivel, racha, pasos, actividad, agua y tu día quedan en "Ver más" (se recuerda si lo dejaste abierto).
   - Ayuda: botón "?" arriba a la derecha en las 5 pestañas, con qué es la pantalla, 3 o 4 pasos y un dibujo del celular marcando la pestaña. Textos en `src/content/ayuda.json`.

@@ -44,6 +44,10 @@ export interface EstadoActualizacion {
   vista?: string
   /** Versión anterior, si recién se actualizó (Hoy lo muestra una vez). */
   actualizadaDesde?: string
+  /** Última vez que se buscó una versión nueva y qué pasó (para la pantalla de la app). */
+  revisado?: string
+  resultado?: string
+  detalle?: string
 }
 
 export async function leerEstadoActualizacion(): Promise<EstadoActualizacion> {
@@ -54,12 +58,29 @@ async function guardar(e: EstadoActualizacion) {
   await db.ajustes.put({ clave: 'actualizacion', valor: e })
 }
 
+/** Bundle bajado que conviene aplicar: el de versión más alta, mayor que la que corre y que no falló antes. */
+export function elegirBundle(bundles: { id: string; version: string; status: string }[], actual: string) {
+  return bundles
+    .filter((b) => (b.status === 'pending' || b.status === 'success') && compararVersiones(b.version, actual) > 0)
+    .sort((a, b) => compararVersiones(b.version, a.version))[0]
+}
+
 /** Se llama al abrir la app. Devuelve la versión anterior si recién se actualizó (para mostrar un aviso). */
 export async function iniciarActualizaciones(): Promise<string | null> {
   if (!Capacitor.isNativePlatform()) return null
   const { CapacitorUpdater } = await import('@capgo/capacitor-updater')
   // Avisa que esta versión abrió bien (si no, el plugin vuelve sola a la anterior).
   await CapacitorUpdater.notifyAppReady()
+  // Si ya hay una versión nueva bajada, se aplica ahora (recarga la pantalla una vez, en el arranque).
+  try {
+    const listo = elegirBundle((await CapacitorUpdater.list()).bundles, __VERSION_APP__)
+    if (listo) {
+      await CapacitorUpdater.set({ id: listo.id })
+      return null
+    }
+  } catch {
+    /* si falla, sigue con la versión actual */
+  }
   const estado = await leerEstadoActualizacion()
   const recien = estado.vista && compararVersiones(__VERSION_APP__, estado.vista) > 0 ? estado.vista : null
   await guardar({ ...estado, vista: __VERSION_APP__, actualizadaDesde: recien ?? estado.actualizadaDesde, pendiente: estado.pendiente && compararVersiones(estado.pendiente, __VERSION_APP__) > 0 ? estado.pendiente : undefined })
@@ -72,28 +93,51 @@ export async function olvidarActualizada() {
   await guardar({ ...(await leerEstadoActualizacion()), actualizadaDesde: undefined })
 }
 
-async function buscarActualizacion() {
-  if (!__URL_ACTUALIZACION__ || !navigator.onLine) return
+export type ResultadoBusqueda = 'al-dia' | 'aplicando' | 'apk-nueva' | 'sin-internet' | 'error'
+
+/** Busca una versión nueva. Con aplicarYa, la instala en el momento (recarga la pantalla). */
+export async function buscarActualizacion(aplicarYa = false): Promise<ResultadoBusqueda> {
+  if (!__URL_ACTUALIZACION__) return 'error'
+  if (!navigator.onLine) return 'sin-internet'
+  const anotar = async (r: ResultadoBusqueda, detalle?: string) => {
+    await guardar({ ...(await leerEstadoActualizacion()), revisado: new Date().toISOString(), resultado: r, detalle })
+    return r
+  }
   try {
     const { CapacitorUpdater } = await import('@capgo/capacitor-updater')
     const r = await fetch(`${__URL_ACTUALIZACION__}version.json?t=${Date.now()}`, { cache: 'no-store' })
-    if (!r.ok) return
+    if (!r.ok) return anotar('error', `version.json respondió ${r.status}`)
     const info = (await r.json()) as InfoVersion
     const apk = (await CapacitorUpdater.getBuiltinVersion()).version
     const d = decidir(info, __VERSION_APP__, apk)
     const estado = await leerEstadoActualizacion()
     if (d === 'apk-nueva') {
       await guardar({ ...estado, apkNueva: info.version, apkUrl: info.apk })
-      return
+      return anotar('apk-nueva')
     }
-    if (d === 'nada' || estado.pendiente === info.version) {
+    if (d === 'nada') {
       if (estado.apkNueva) await guardar({ ...estado, apkNueva: undefined })
-      return
+      return anotar('al-dia')
     }
-    const bajada = await CapacitorUpdater.download({ url: info.url, version: info.version })
-    await CapacitorUpdater.next({ id: bajada.id })
+    const ya = (await CapacitorUpdater.list()).bundles.find((b) => b.version === info.version && b.status !== 'error' && b.status !== 'deleted')
+    const bajada = ya ?? (await CapacitorUpdater.download({ url: info.url, version: info.version }))
     await guardar({ ...estado, pendiente: info.version, apkNueva: undefined })
-  } catch {
-    /* sin internet o falló la descarga: se intenta la próxima vez */
+    await anotar('aplicando')
+    if (aplicarYa) {
+      await CapacitorUpdater.set({ id: bajada.id })
+    } else {
+      await CapacitorUpdater.next({ id: bajada.id })
+      // Se aplica al salir de la app (o la próxima vez que se abre, ver iniciarActualizaciones).
+      const alSalir = () => {
+        if (document.visibilityState === 'hidden') {
+          document.removeEventListener('visibilitychange', alSalir)
+          void CapacitorUpdater.reload()
+        }
+      }
+      document.addEventListener('visibilitychange', alSalir)
+    }
+    return 'aplicando'
+  } catch (e) {
+    return anotar('error', e instanceof Error ? e.message : String(e))
   }
 }

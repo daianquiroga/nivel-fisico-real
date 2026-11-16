@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Boton, Tarjeta, estilos } from '../../components/ui'
 import { abrirAjustesHC, esAndroidWeb, esNativo, leerAvisos, leerEstadoHC, programarAvisos, urlApk, type EstadoHC, type PreferenciaAvisos } from '../../lib/nativo'
 import { leerPlan } from '../../lib/plan/usarPlan'
-import { leerEstadoActualizacion, type EstadoActualizacion } from '../../lib/actualizarNativo'
+import { buscarActualizacion, leerEstadoActualizacion, type EstadoActualizacion } from '../../lib/actualizarNativo'
 import s from '../Ejercicios/ejercicios.module.css'
 
 /** En la app de Android: estado de Health Connect y avisos. En Chrome de Android: cómo instalar la app. */
@@ -12,6 +12,7 @@ export function AppAndroid() {
   const [avisos, setAvisos] = useState<PreferenciaAvisos>({ sesiones: false, evaluacion: false })
   const [mensaje, setMensaje] = useState<string | null>(null)
   const [act, setAct] = useState<EstadoActualizacion>({})
+  const [buscando, setBuscando] = useState(false)
   useEffect(() => {
     if (!nativo) return
     void leerEstadoActualizacion().then(setAct)
@@ -61,6 +62,34 @@ export function AppAndroid() {
         Versión {__VERSION_APP__}. Se actualiza sola: al abrirla con internet baja lo nuevo y lo aplica la próxima vez que la abrís.
         {act.pendiente ? ` Ya está bajada la ${act.pendiente}: cerrala y volvé a abrirla.` : ''}
       </p>
+      <Boton
+        disabled={buscando}
+        onClick={async () => {
+          setBuscando(true)
+          const r = await buscarActualizacion(true)
+          setAct(await leerEstadoActualizacion())
+          setBuscando(false)
+          setMensaje(
+            r === 'al-dia'
+              ? 'Ya tenés la última versión.'
+              : r === 'sin-internet'
+                ? 'No hay internet. Probá de nuevo con wifi o datos.'
+                : r === 'apk-nueva'
+                  ? 'Hay una versión que necesita instalar la app de nuevo (abajo está el enlace).'
+                  : r === 'aplicando'
+                    ? 'Instalando la versión nueva…'
+                    : 'No se pudo actualizar. Sacá una captura de esta pantalla para revisarlo.',
+          )
+        }}
+      >
+        {buscando ? 'Buscando…' : 'Buscar actualización ahora'}
+      </Boton>
+      {act.revisado && (
+        <p className={estilos.chico}>
+          Última revisión: {new Date(act.revisado).toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' })} · {act.resultado}
+          {act.detalle ? ` (${act.detalle})` : ''}
+        </p>
+      )}
       {act.apkNueva && (
         <p className={estilos.texto2}>
           La versión {act.apkNueva} necesita instalar la app de nuevo una vez (cambió una parte del celular).{' '}
