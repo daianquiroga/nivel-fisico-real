@@ -82,6 +82,9 @@ export const Coach = forwardRef<CoachRef, { onCambioPerfil?: () => void }>(funct
           )}
         </section>
       ))}
+      <Link to="/preguntar" className={estilos.boton}>
+        Preguntarle a Claude con mis datos
+      </Link>
       {estado.consejos.length > 3 && <p className={estilos.chico}>Hay {estado.consejos.length - 3} consejo más: cerrá uno para verlo.</p>}
     </Tarjeta>
   )

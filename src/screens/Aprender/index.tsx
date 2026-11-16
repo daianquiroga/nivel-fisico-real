@@ -74,6 +74,13 @@ export function Aprender() {
         onChange={(e) => setBusqueda(e.target.value)}
       />
 
+      {!buscando && (
+        <Link to="/preguntar" className={s.item}>
+          <span className={s.itemNombre}>¿Tenés una duda? Preguntale a Claude</span>
+          <span className={s.itemDetalle}>Armamos un texto con tus datos (sin fotos) para pegar en la app de Claude</span>
+        </Link>
+      )}
+
       {resultados ? (
         <>
           <p className="etiqueta">
@@ -137,12 +144,7 @@ export function Aprender() {
               <Biblioteca />
             </>
           )}
-          {!categoria && (
-            <Proximamente
-              entrega="entrega 5"
-              items={['Botón para preguntarle a Claude con tus datos ya armados.', 'Técnica de combate, en la entrega 6.']}
-            />
-          )}
+          {!categoria && <Proximamente entrega="entrega 6" items={['Técnica de combate: sombra, juego de pies, combinaciones y simulador.']} />}
         </>
       )}
     </>
