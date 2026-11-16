@@ -1,0 +1,542 @@
+[
+  {
+    "id": "guia-caminar",
+    "categoria": "guias",
+    "titulo": "Caminar mejor",
+    "resumen": "Postura, ritmo y cómo convertir la caminata en entrenamiento.",
+    "etiquetas": [
+      "caminar",
+      "caminata",
+      "pasos",
+      "cardio",
+      "postura"
+    ],
+    "dibujo": "ej:caminata-rapida",
+    "niveles": {
+      "principiante": [
+        "Cabeza alta, mirada al frente, hombros sueltos. Brazos doblados que acompañan el paso. Pasos cortos y rápidos, no largos.",
+        "Ritmo: para que cuente como cardio moderado, que puedas hablar pero no cantar. Otra forma: unos 100 pasos por minuto (contá 15 segundos y multiplicá por 4).",
+        "Empezá con 10 a 15 minutos y sumá 5 minutos por semana hasta llegar a 30 a 45."
+      ],
+      "intermedio": [
+        "Caminata con tramos rápidos: 3 minutos a ritmo normal y 1 minuto lo más rápido que puedas sin trotar. Repetí 5 a 8 veces.",
+        "Subidas: en una cuesta o escaleras el esfuerzo sube mucho sin impacto. Inclinate apenas desde los tobillos, no desde la cintura.",
+        "Usá el viaje diario: bajate una parada antes o caminá a hacer mandados a paso rápido. Suma a tus minutos de la semana."
+      ],
+      "avanzado": [
+        "La cadencia es un buen indicador de intensidad: 100 pasos por minuto ronda la intensidad moderada y 130 la vigorosa en adultos (estudio CADENCE-Adults).",
+        "Caminata con peso (mochila de 5 a 10 kg) sube mucho el gasto: empezá liviano y con buena postura, sin inclinarte hacia adelante.",
+        "Si caminás más de 60 minutos, alterná días intensos y suaves como en cualquier entrenamiento."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Tudor-Locke y otros, CADENCE-Adults (cadencia e intensidad)",
+        "enlace": "https://ijbnpa.biomedcentral.com/track/pdf/10.1186/s12966-020-01045-z"
+      },
+      {
+        "texto": "OMS, Directrices sobre actividad física 2020",
+        "enlace": "https://www.who.int/publications/i/item/9789240015128"
+      }
+    ]
+  },
+  {
+    "id": "guia-correr",
+    "categoria": "guias",
+    "titulo": "Correr desde cero",
+    "resumen": "De 1 minuto de trote a 30 minutos seguidos en 9 semanas, sin lesionarte.",
+    "etiquetas": [
+      "correr",
+      "trote",
+      "running",
+      "carrera",
+      "intervalos",
+      "5k"
+    ],
+    "dibujo": "intervalos-correr",
+    "niveles": {
+      "principiante": [
+        "El método más conocido para empezar es el plan del NHS (salud pública del Reino Unido): 9 semanas, 3 salidas por semana con un día de descanso entre medio.",
+        "Semana 1: 5 minutos de caminata rápida para entrar en calor y después alternar 60 segundos de trote con 90 segundos de caminata hasta completar 20 minutos.",
+        "Semana 2: 90 segundos de trote y 2 minutos de caminata. Cada semana el trote se alarga un poco, hasta llegar a 30 minutos seguidos en la semana 9.",
+        "El ritmo tiene que ser de conversación: si no podés decir una frase entera, estás yendo muy rápido."
+      ],
+      "intermedio": [
+        "Pisada: el pie cae debajo del cuerpo, no adelante. Pasos cortos y rápidos frenan menos y cargan menos las rodillas.",
+        "Para no lesionarte, subí el volumen de a poco (una regla práctica común es no más de un 10 % por semana), alterná días y dormí bien.",
+        "Si una semana te costó mucho, repetila: no hay apuro."
+      ],
+      "avanzado": [
+        "Cuando ya corrés 30 minutos, mantené la mayoría de las salidas suaves y agregá una por semana con cambios de ritmo (por ejemplo, 6 × 1 minuto rápido con 2 minutos suaves).",
+        "Subir la cadencia un 5 a 10 % (más pasos por minuto al mismo ritmo) suele reducir el impacto de cada paso.",
+        "Combiná con fuerza de piernas y cadera 2 veces por semana: protege rodillas y tobillos."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "NHS, Couch to 5K (plan de 9 semanas)",
+        "enlace": "https://www.nhs.uk/better-health/get-active/get-running-with-couch-to-5k/"
+      },
+      {
+        "texto": "Descripción del plan semana a semana",
+        "enlace": "https://c25k.com/c25k_plan/"
+      }
+    ]
+  },
+  {
+    "id": "guia-soga",
+    "categoria": "guias",
+    "titulo": "Saltar la soga",
+    "resumen": "Cómo elegir el largo, los saltos por nivel y cómo progresar.",
+    "etiquetas": [
+      "soga",
+      "saltar",
+      "comba",
+      "cardio",
+      "coordinacion",
+      "boxeo"
+    ],
+    "dibujo": "ej:soga",
+    "niveles": {
+      "principiante": [
+        "Largo: pisá la soga en el medio con los dos pies; las manijas tienen que llegar más o menos a las axilas.",
+        "Salto básico: los dos pies juntos, saltitos de 2 o 3 cm sobre las puntas. La soga la giran las muñecas, con los codos cerca del cuerpo.",
+        "Empezá con bloques de 30 segundos saltando y 30 descansando, 5 a 10 veces. Es muy intenso: saltar a ritmo moderado son unos 11,8 MET, más que trotar."
+      ],
+      "intermedio": [
+        "Alternado: un pie y el otro, como trotando en el lugar. Permite saltar más tiempo seguido.",
+        "Progresión por minutos: 1 minuto de soga y 30 segundos de pausa; cuando salgan 10 bloques limpios, pasá a 2 minutos.",
+        "Si tenés vecinos abajo o mucho impacto en las rodillas, usá una alfombra de goma o cambiá por marcha con rodillas altas."
+      ],
+      "avanzado": [
+        "Cruces: en el aire, cruzá los brazos por delante y volvé a abrir en el salto siguiente.",
+        "Doble salto (la soga pasa dos veces por salto): salto un poco más alto y giro de muñeca más rápido. Empezá con uno doble cada cuatro simples.",
+        "En boxeo se usan rounds de 3 minutos con 1 minuto de pausa: es una buena forma de entrenar el ritmo del combate."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Compendium of Physical Activities 2024: saltar la soga (15551, 11,8 MET)",
+        "enlace": "https://pacompendium.com/sports/"
+      }
+    ]
+  },
+  {
+    "id": "guia-bici",
+    "categoria": "guias",
+    "titulo": "Andar en bici",
+    "resumen": "Postura, ritmo y cómo usar el viaje diario como entrenamiento.",
+    "etiquetas": [
+      "bici",
+      "bicicleta",
+      "ciclismo",
+      "cardio",
+      "viaje"
+    ],
+    "dibujo": "bici",
+    "niveles": {
+      "principiante": [
+        "Altura del asiento: con el pedal abajo, la pierna queda casi estirada (rodilla apenas doblada). Muy bajo carga las rodillas; muy alto te hace balancear la cadera.",
+        "Espalda larga, brazos sin trabar, manos sueltas en el manubrio.",
+        "Para que sea cardio moderado, un ritmo en el que puedas hablar. Una bici moderada son unos 7 MET; tranquila, unos 4,3."
+      ],
+      "intermedio": [
+        "Pedaleá rápido con poca resistencia (cambios livianos) en vez de lento y duro: cuida las rodillas y cansa menos.",
+        "El viaje diario cuenta: 20 minutos de ida y 20 de vuelta, 3 veces por semana, son 120 minutos de cardio.",
+        "Casco siempre, y luces si oscurece."
+      ],
+      "avanzado": [
+        "Intervalos: 4 a 6 bloques de 3 minutos fuertes con 3 minutos suaves, una vez por semana.",
+        "En bici fija, controlá la intensidad por cómo respirás o por el pulso más que por los números de la máquina."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Compendium of Physical Activities 2024: bicicleta (01015, 01016)",
+        "enlace": "https://pacompendium.com/bicycling/"
+      }
+    ]
+  },
+  {
+    "id": "guia-respiracion",
+    "categoria": "guias",
+    "titulo": "Respirar mejor",
+    "resumen": "Respiración para bajar los nervios, para levantar peso y para los rounds.",
+    "etiquetas": [
+      "respiracion",
+      "respirar",
+      "nervios",
+      "ansiedad",
+      "estres",
+      "calma"
+    ],
+    "dibujo": "respiracion",
+    "niveles": {
+      "principiante": [
+        "En calma: por la nariz, lento, con la panza que se infla al inhalar y los hombros quietos.",
+        "Para bajar los nervios: inhalá 4 segundos y exhalá 6 segundos, durante 2 a 5 minutos. La exhalación más larga que la inhalación es lo que más tranquiliza.",
+        "Usala antes de dormir, antes de una situación difícil o cuando tenés ganas de fumar (en Hoy está el botón)."
+      ],
+      "intermedio": [
+        "Al levantar peso: tomá aire antes de bajar, apretá el abdomen como si fueras a recibir un golpe y soltá el aire al pasar la parte más difícil de la subida.",
+        "En ejercicios livianos (flexiones, sentadillas sin peso): soltá el aire al hacer fuerza y tomalo al volver.",
+        "En la plancha y otros ejercicios de tiempo: respiraciones cortas y tranquilas, sin aguantar el aire."
+      ],
+      "avanzado": [
+        "En rounds (soga, sombra, intervalos): exhalá corto en cada golpe o esfuerzo y usá el minuto de pausa para respirar lento por la nariz y bajar el pulso.",
+        "Si tenés presión alta o problemas del corazón, evitá aguantar el aire con fuerza al levantar peso pesado y consultá a tu médico."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Especificación de la app, sección 13.2 (guía práctica)",
+        "enlace": ""
+      }
+    ]
+  },
+  {
+    "id": "guia-pausas",
+    "categoria": "guias",
+    "titulo": "Pausas activas para el escritorio",
+    "resumen": "Qué hacer si pasás muchas horas sentado frente a la computadora.",
+    "etiquetas": [
+      "escritorio",
+      "oficina",
+      "sentado",
+      "computadora",
+      "pausa",
+      "sedentarismo",
+      "postura"
+    ],
+    "dibujo": "ej:estiramiento-flexor-cadera",
+    "niveles": {
+      "principiante": [
+        "La OMS recomienda cortar el tiempo sentado: cada 60 a 90 minutos, pará 3 a 5 minutos.",
+        "Una pausa simple: 2 minutos de marcha en el lugar, 10 sentadillas y movilidad de tobillo. En la agenda, si cargás tu trabajo, la app las agenda sola.",
+        "Pantalla a la altura de los ojos, pies apoyados y la espalda contra el respaldo."
+      ],
+      "intermedio": [
+        "Las horas sentado acortan el frente de la cadera: la estocada baja de 30 a 60 segundos por lado ayuda mucho.",
+        "Si te duele el cuello, alejá la pantalla y levantala; muchas veces el problema es que la cabeza se va hacia adelante.",
+        "Tomá agua: además de hidratarte, te obliga a levantarte."
+      ],
+      "avanzado": [
+        "Las pausas no reemplazan el entrenamiento, pero sumadas pueden ser 15 a 20 minutos de movimiento por día.",
+        "Si trabajás de pie un rato, alterná: estar parado muchas horas tampoco es bueno."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "OMS, Directrices sobre actividad física y comportamientos sedentarios 2020",
+        "enlace": "https://www.who.int/publications/i/item/9789240015128"
+      }
+    ]
+  },
+  {
+    "id": "fumar-recuperacion",
+    "categoria": "salud",
+    "titulo": "Cómo se recupera el cuerpo al dejar de fumar",
+    "resumen": "Qué cambia a los 20 minutos, a las semanas, al año y a los 10 años.",
+    "etiquetas": [
+      "fumar",
+      "cigarrillo",
+      "tabaco",
+      "dejar",
+      "pulmones",
+      "recuperacion",
+      "ganas"
+    ],
+    "dibujo": "fumar",
+    "niveles": {
+      "principiante": [
+        "A los 20 minutos baja el pulso. A las 12 horas, el monóxido de carbono de la sangre baja a casi normal.",
+        "Entre 2 semanas y 3 meses mejoran la circulación y los pulmones: entrenar se hace más fácil.",
+        "Entre 1 y 9 meses bajan la tos y la falta de aire. Al año, el riesgo extra de enfermedad del corazón es la mitad que el de un fumador.",
+        "Las ganas fuertes suelen durar unos minutos: si las dejás pasar, cada vez cuestan menos."
+      ],
+      "intermedio": [
+        "Entre 5 y 15 años después, el riesgo de ACV baja al de alguien que nunca fumó. A los 10 años, el riesgo de morir por cáncer de pulmón es más o menos la mitad que el de un fumador, y bajan también los de boca, garganta, esófago, vejiga, riñón y páncreas.",
+        "El entrenamiento ayuda: mejora el ánimo, baja la ansiedad y te da algo para hacer con las manos y la cabeza.",
+        "Es común subir algo de peso al dejar: no te asustes. El cuerpo se acomoda y el entrenamiento ayuda."
+      ],
+      "avanzado": [
+        "Si recaés, no se pierde todo: anotá qué la disparó (estrés, alcohol, después de comer) y armá un plan para ese momento.",
+        "Hablar con un médico o una línea de ayuda para dejar de fumar aumenta las chances de lograrlo."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Cronología basada en la Iniciativa Libre de Tabaco de la OMS",
+        "enlace": "https://www.nebraskamed.com/node/21231"
+      },
+      {
+        "texto": "Duración de las ganas (WebMD)",
+        "enlace": "https://www.webmd.com/smoking-cessation/what-happens-body-quit-smoking"
+      }
+    ]
+  },
+  {
+    "id": "dolor-muscular",
+    "categoria": "salud",
+    "titulo": "Dolor muscular o lesión: cómo distinguirlos",
+    "resumen": "Por qué duele dos días después y cuándo hay que parar.",
+    "etiquetas": [
+      "dolor",
+      "agujetas",
+      "muscular",
+      "lesion",
+      "doms",
+      "molestia"
+    ],
+    "dibujo": "dolor",
+    "niveles": {
+      "principiante": [
+        "El dolor muscular de después (en inglés, DOMS) aparece cuando hacés algo nuevo o más fuerte. Llega al máximo entre 1 y 3 días después y se va solo en menos de una semana.",
+        "Es un dolor difuso, en el músculo, que se siente al tocar o al moverte, y mejora al entrar en calor.",
+        "Una lesión suele ser punzante, en la articulación o en un punto, empeora al moverte o te cambia la forma de moverte. Ahí hay que parar y consultar."
+      ],
+      "intermedio": [
+        "El dolor muscular baja mucho cuando repetís el mismo ejercicio: por eso las primeras semanas conviene subir de a poco.",
+        "Estirar antes o después casi no cambia este dolor. Moverse suave, dormir bien y comer suficiente proteína ayudan más.",
+        "Podés entrenar con dolor muscular leve; si es fuerte, entrená otra zona o hacé movilidad."
+      ],
+      "avanzado": [
+        "Señal de alarma: dolor muscular muy fuerte y desproporcionado con orina oscura (color cola) después de entrenar. Es poco común pero necesita atención médica el mismo día.",
+        "Si un dolor dura más de una semana o vuelve siempre en el mismo ejercicio, cambiá de variante y consultá a un profesional."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Heiss y otros 2018, Advances in Delayed-Onset Muscle Soreness (revisión)",
+        "enlace": "https://pubmed.ncbi.nlm.nih.gov/30537791/"
+      },
+      {
+        "texto": "Cheung y otros 2003, Delayed onset muscle soreness: treatment strategies",
+        "enlace": "https://www.scribd.com/document/496777724/cheung2003"
+      }
+    ]
+  },
+  {
+    "id": "grasa-por-zonas",
+    "categoria": "estetica",
+    "titulo": "¿Se puede bajar la panza haciendo abdominales?",
+    "resumen": "Por qué no se baja grasa de una zona y qué sí funciona.",
+    "etiquetas": [
+      "panza",
+      "abdomen",
+      "barriga",
+      "grasa",
+      "abdominales",
+      "localizada",
+      "definicion"
+    ],
+    "dibujo": "grasa",
+    "niveles": {
+      "principiante": [
+        "No: la grasa no se quema justo encima del músculo que trabajás. El cuerpo la saca de todos lados, en el orden que le marca tu genética.",
+        "En un estudio, adultos hicieron 7 ejercicios de abdomen 5 veces por semana durante 6 semanas: mejoró la fuerza del abdomen, pero la grasa de la panza no bajó más que en el grupo que no los hizo.",
+        "Lo que sí funciona: comer un poco menos de lo que gastás, entrenar fuerza para no perder músculo, moverte todos los días y dormir bien."
+      ],
+      "intermedio": [
+        "Los abdominales sirven: fortalecen el tronco y, cuando baja la grasa, se ven. Pero no la bajan por sí solos.",
+        "Medí la cintura cada 2 a 4 semanas: es mejor indicador que el peso para la grasa de la panza."
+      ],
+      "avanzado": [
+        "Algunos estudios con entrenamiento de una sola pierna encontraron resultados mixtos: el efecto local, si existe, es mínimo comparado con el déficit de calorías."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Vispute y otros 2011, The effect of abdominal exercise on abdominal fat (J Strength Cond Res)",
+        "enlace": "https://en.wikipedia.org/wiki/Spot_reduction"
+      },
+      {
+        "texto": "Revisión con metaanálisis de entrenamiento de un solo miembro (Human Movement 2022)",
+        "enlace": "https://doi.org/10.5114/HM.2022.110373"
+      }
+    ]
+  },
+  {
+    "id": "proteina-porciones",
+    "categoria": "comida",
+    "titulo": "Proteína y porciones con la mano",
+    "resumen": "Cuánta proteína necesitás y cómo armar un plato sin pesar nada.",
+    "etiquetas": [
+      "proteina",
+      "comida",
+      "dieta",
+      "porciones",
+      "plato",
+      "nutricion",
+      "musculo"
+    ],
+    "dibujo": "mano",
+    "niveles": {
+      "principiante": [
+        "Si entrenás, la recomendación de la Sociedad Internacional de Nutrición Deportiva (ISSN) es de 1,4 a 2,0 g de proteína por kilo de peso por día. Para 75 kg, entre 105 y 150 g.",
+        "Una forma simple de llegar sin pesar: en cada comida, una palma de proteína (carne, pollo, pescado, huevos, legumbres), un puño de verduras, un puñado de hidratos (arroz, papa, pan) y un pulgar de grasas (aceite, palta, frutos secos).",
+        "Es una aproximación práctica: si querés bajar grasa, achicá un poco los hidratos; si querés ganar músculo, sumalos."
+      ],
+      "intermedio": [
+        "Repartí la proteína en 3 o 4 comidas en el día: ayuda más que comerla toda junta.",
+        "Antes de entrenar, una comida liviana 1 a 3 horas antes; después, una comida con proteína dentro de las horas siguientes. No hace falta correr a tomar un batido.",
+        "Las legumbres con cereales (arroz con lentejas, por ejemplo) son buena proteína y baratas."
+      ],
+      "avanzado": [
+        "Si estás en déficit de calorías para bajar grasa, apuntá a la parte alta del rango (cerca de 2 g por kilo): ayuda a no perder músculo.",
+        "Los suplementos de proteína son comida en polvo: sirven por comodidad, no son necesarios."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Jäger y otros 2017, ISSN Position Stand: protein and exercise",
+        "enlace": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5477153/"
+      }
+    ]
+  },
+  {
+    "id": "sueno",
+    "categoria": "salud",
+    "titulo": "Dormir es parte del entrenamiento",
+    "resumen": "Cuánto dormir y cómo dormir mejor.",
+    "etiquetas": [
+      "sueño",
+      "dormir",
+      "descanso",
+      "recuperacion",
+      "cansancio"
+    ],
+    "dibujo": "sueno",
+    "niveles": {
+      "principiante": [
+        "Los adultos necesitan 7 horas o más por noche según la Academia Americana de Medicina del Sueño. Con menos, rendís menos, te recuperás peor y tenés más hambre.",
+        "Si dormiste menos de 6 horas, la app te propone una sesión reducida: es mejor que forzar.",
+        "Horario parecido todos los días, pieza oscura y fresca, y la pantalla lejos la última media hora."
+      ],
+      "intermedio": [
+        "Evitá entrenar fuerte en las 2 horas antes de dormir: a muchos les cuesta conciliar el sueño.",
+        "El café y el mate tienen cafeína que dura horas: cortá después del mediodía si te cuesta dormir.",
+        "Una siesta corta (20 minutos) puede ayudar si dormiste poco."
+      ],
+      "avanzado": [
+        "Si roncás mucho, te despertás cansado aunque duermas bastante o te dormís de día, consultá a un médico: puede haber un trastorno del sueño."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Watson y otros 2015, Recommended amount of sleep for a healthy adult (AASM y SRS)",
+        "enlace": "https://jcsm.aasm.org/doi/10.5664/jcsm.4758"
+      }
+    ]
+  },
+  {
+    "id": "habitos",
+    "categoria": "mente",
+    "titulo": "Cómo se forma un hábito",
+    "resumen": "Por qué pensar en 3 meses y qué hacer los días sin ganas.",
+    "etiquetas": [
+      "habito",
+      "constancia",
+      "motivacion",
+      "ganas",
+      "disciplina",
+      "racha"
+    ],
+    "dibujo": "habitos",
+    "niveles": {
+      "principiante": [
+        "En un estudio, formar un hábito nuevo llevó una mediana de 66 días, con casos de 18 a 254. Pensá en 3 meses, no en 21 días.",
+        "Funciona mejor si lo atás a una señal: \"cuando llego a casa, me cambio y entreno\". Por eso cada sesión del plan tiene su frase \"cuando… entonces…\".",
+        "Los días sin ganas, hacé la versión mínima de 10 minutos. Lo importante es no cortar la cadena: nunca faltar dos veces seguidas."
+      ],
+      "intermedio": [
+        "Faltar un día no arruina el hábito: en el mismo estudio, saltear una vez no cambió el resultado. Lo que lo arruina es abandonar.",
+        "Hacelo fácil: ropa preparada la noche anterior, el equipo a la vista, el horario fijo.",
+        "La racha de la app cuenta semanas, no días, justamente para que descansar no se sienta como fallar."
+      ],
+      "avanzado": [
+        "La motivación sube y baja; el hábito es lo que queda cuando baja. Entrenar con alguien o anotar cada sesión ayuda a sostenerlo.",
+        "Disfrutar importa: si odiás un ejercicio, cambialo por otro equivalente."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Lally y otros 2010, How are habits formed (Eur J Soc Psychol)",
+        "enlace": "https://onlinelibrary.wiley.com/doi/10.1002/ejsp.674"
+      }
+    ]
+  },
+  {
+    "id": "sobrecarga",
+    "categoria": "entrenamiento",
+    "titulo": "Cómo se progresa: sobrecarga y repeticiones en reserva",
+    "resumen": "La regla que usa la app para decirte cuándo subir.",
+    "etiquetas": [
+      "progresion",
+      "sobrecarga",
+      "subir",
+      "peso",
+      "rir",
+      "reserva",
+      "repeticiones"
+    ],
+    "dibujo": "reserva",
+    "niveles": {
+      "principiante": [
+        "El cuerpo mejora cuando le pedís un poco más de lo que está acostumbrado, de a poco. Eso se llama sobrecarga progresiva.",
+        "La app usa la doble progresión: primero sumás repeticiones con el mismo peso; cuando llegás al tope del rango en todas las series con 2 de reserva, subís el peso y volvés al principio.",
+        "\"En reserva\" son las repeticiones que podrías haber hecho bien cuando cortaste. Dejar 2 es entrenar fuerte sin llegar al fallo."
+      ],
+      "intermedio": [
+        "Con peso corporal, en vez de subir el peso pasás al escalón siguiente de la escalera (de flexión con rodillas a flexión completa, por ejemplo).",
+        "Si 3 sesiones seguidas no mejorás, la app te propone bajar un 10 % y volver a subir, o cambiar de variante.",
+        "Cada tantas semanas viene una semana de descarga: la mitad de las series para recuperarte."
+      ],
+      "avanzado": [
+        "Con más experiencia, el progreso se hace más lento: al principio se gana fuerza casi cada semana; después, cada mes.",
+        "Ir al fallo de vez en cuando no está mal, pero hacerlo en todas las series suma cansancio sin mucho beneficio extra."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Especificación de la app, secciones 6.3 y 6.4",
+        "enlace": ""
+      }
+    ]
+  },
+  {
+    "id": "glosario",
+    "categoria": "app",
+    "titulo": "Glosario de la app",
+    "resumen": "Qué quiere decir cada palabra rara.",
+    "etiquetas": [
+      "glosario",
+      "rir",
+      "met",
+      "vo2max",
+      "percentil",
+      "descarga",
+      "superserie",
+      "circuito"
+    ],
+    "dibujo": "reserva",
+    "niveles": {
+      "principiante": [
+        "En reserva (RIR): repeticiones que te quedaban cuando cortaste.",
+        "VO2máx: cuánto oxígeno puede usar tu cuerpo al máximo; es la mejor medida de tu cardio.",
+        "Percentil: de cada 100 personas de tu edad y sexo, a cuántas superás. Percentil 60 = mejor que 60 de cada 100.",
+        "MET: cuántas veces más energía gasta una actividad que estar sentado quieto.",
+        "Descarga: semana liviana para recuperarte.",
+        "Superserie: dos ejercicios seguidos sin pausa entre ellos. Circuito: varios seguidos y después la pausa.",
+        "Escalón: cada paso de una escalera de progresión (por ejemplo, de la flexión en la pared a la flexión completa).",
+        "Edad física: la edad que tiene, en promedio, alguien con tu mismo cardio."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "EVALUACION.md y ESPECIFICACION.md de la app",
+        "enlace": ""
+      }
+    ]
+  }
+]

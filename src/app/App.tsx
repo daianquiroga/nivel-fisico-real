@@ -1,6 +1,7 @@
 import { HashRouter, NavLink, Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import { Icono } from '../components/Icono'
 import { Aprender } from '../screens/Aprender'
+import { Articulo } from '../screens/Aprender/Articulo'
 import { Entrenar } from '../screens/Entrenar'
 import { Estetica } from '../screens/Estetica'
 import { Evaluacion } from '../screens/Evaluacion'
@@ -67,6 +68,7 @@ export default function App() {
         <Route path="/entrenar/:dia/:idx" element={<Entrenar />} />
         <Route path="/tu-cuerpo" element={<Estetica />} />
         <Route path="/ganas" element={<Ganas />} />
+        <Route path="/aprender/:id" element={<Articulo />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </HashRouter>
