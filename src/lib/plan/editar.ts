@@ -87,8 +87,9 @@ export const cambiarMetodo = (plan: PlanSemana, dia: number, idx: number, metodo
           : 'Series clásicas: todas las series de un ejercicio, con su pausa, y después el siguiente.'
   })
 
-export const cambiarDatosSesion = (plan: PlanSemana, dia: number, idx: number, c: { titulo?: string; lugar?: string; desde?: string | null }) =>
+export const cambiarDatosSesion = (plan: PlanSemana, dia: number, idx: number, c: { titulo?: string; lugar?: string; desde?: string | null; intencion?: string }) =>
   conSesion(plan, dia, idx, (s) => {
+    if (c.intencion !== undefined) s.intencion = c.intencion || undefined
     if (c.titulo !== undefined) s.titulo = c.titulo
     if (c.lugar !== undefined) s.lugar = c.lugar
     if (c.desde === null) {

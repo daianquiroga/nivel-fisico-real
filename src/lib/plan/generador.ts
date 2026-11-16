@@ -35,6 +35,8 @@ export interface SesionPlan {
   metodo: Metodo
   ejercicios: EjercicioPlan[]
   nota?: string
+  /** Frase "cuando… entonces…" escrita por la persona (si no hay, se arma una por defecto). */
+  intencion?: string
 }
 
 export interface DiaPlan {

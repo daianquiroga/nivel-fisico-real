@@ -9,6 +9,7 @@ import { usarPlan } from '../../lib/plan/usarPlan'
 import { ControlDiario } from './ControlDiario'
 import { Pasos } from './Pasos'
 import { TuDia } from './TuDia'
+import { Constancia } from './Constancia'
 import { Actividad, Agua } from './Actividad'
 import { usarInicio } from '../../lib/usarInicio'
 import s from './hoy.module.css'
@@ -63,6 +64,9 @@ export function Hoy() {
             {dias} {dias === 1 ? 'día' : 'días'} sin fumar
           </span>
           {ahorro !== null && <span className={s.chip}>{formatoPesos(ahorro)} ahorrados</span>}
+          <Link to="/ganas" className={s.chip} style={{ borderColor: 'var(--accent)', color: 'var(--text)', textDecoration: 'none' }}>
+            Tengo ganas de fumar
+          </Link>
         </div>
       )}
 
@@ -153,6 +157,8 @@ export function Hoy() {
           </Link>
         </Tarjeta>
       )}
+
+      {listo && plan && <Constancia plan={plan} />}
 
       {listo && <Pasos edad={perfil?.edad ?? 30} />}
 

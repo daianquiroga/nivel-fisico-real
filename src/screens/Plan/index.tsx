@@ -5,7 +5,9 @@ import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
 import { ejercicio } from '../../lib/ejercicios'
 import { NOMBRES_DIAS, diaDeHoy } from '../../lib/perfil'
 import { alternativas, type EjercicioPlan, type PlanSemana, type SesionPlan } from '../../lib/plan/generador'
-import { agregarSesion } from '../../lib/plan/editar'
+import { agregarSesion, cambiarDatosSesion } from '../../lib/plan/editar'
+import { intencionPorDefecto } from '../../lib/habitos'
+import { generarIcs } from '../../lib/ics'
 import { usarPlan } from '../../lib/plan/usarPlan'
 import { Segmentado } from '../../components/controles'
 import { usarCiclo } from '../../lib/plan/ciclo'
@@ -31,7 +33,21 @@ export function textoEjercicio(x: EjercicioPlan): string {
   return x.series > 1 ? `${x.series} × ${rango} · pausa ${pausa}` : rango
 }
 
-function Sesion({ sesion, onCambiar, onEditar, entrenar }: { sesion: SesionPlan; onCambiar: (i: number) => void; onEditar: () => void; entrenar: string }) {
+function Sesion({
+  sesion,
+  onCambiar,
+  onEditar,
+  entrenar,
+  nombreDia,
+  onIntencion,
+}: {
+  sesion: SesionPlan
+  onCambiar: (i: number) => void
+  onEditar: () => void
+  entrenar: string
+  nombreDia: string
+  onIntencion: () => void
+}) {
   const unico = sesion.tipo === 'cardio' ? sesion.ejercicios[0] : undefined
   return (
     <Tarjeta destacada={sesion.intensidad === 'fuerte'}>
@@ -79,6 +95,18 @@ function Sesion({ sesion, onCambiar, onEditar, entrenar }: { sesion: SesionPlan;
         })}
       </div>
       {sesion.ejercicios.length === 0 && <p className={estilos.texto2}>Sin ejercicios todavía: tocá Editar y agregá los que quieras.</p>}
+      {sesion.tipo !== 'movilidad' && sesion.ejercicios.length > 0 && (
+        <button
+          type="button"
+          onClick={onIntencion}
+          style={{ textAlign: 'left', border: '1px dashed var(--line)', borderRadius: 12, background: 'none', color: 'var(--text-2)', padding: '10px 12px', fontSize: 14, cursor: 'pointer' }}
+        >
+          <span className="etiqueta" style={{ display: 'block', marginBottom: 4 }}>
+            Tu plan "cuando… entonces…" · tocá para cambiarlo
+          </span>
+          {sesion.intencion ?? intencionPorDefecto(nombreDia, sesion)}
+        </button>
+      )}
       {sesion.ejercicios.length > 0 && (
         <Link to={entrenar} className={`${estilos.boton} ${estilos.principal}`}>
           Entrenar ahora
@@ -100,6 +128,8 @@ export function Plan() {
   } | null>(null)
   const [editando, setEditando] = useState<number | null>(null)
   const [nueva, setNueva] = useState(false)
+  const [intencion, setIntencion] = useState<{ idx: number; texto: string } | null>(null)
+  const [calendario, setCalendario] = useState(false)
   const pasos = usarMetaPasos(perfil?.edad ?? 30)
   const vista = params.get('vista') === 'agenda' ? 'agenda' : 'entrenamiento'
   const { estado: ciclo, adelantarDescarga, recargar: recargarCiclo } = usarCiclo(entrada?.nivelFuerza ?? 2)
@@ -279,6 +309,10 @@ export function Plan() {
                 entrenar={`/entrenar/${dia}/${i}`}
                 onCambiar={(ej) => setCambiando({ sesion: i, ej })}
                 onEditar={() => setEditando(i)}
+                nombreDia={NOMBRES_DIAS[dia]}
+                onIntencion={() => {
+                  setIntencion({ idx: i, texto: ses.intencion ?? intencionPorDefecto(NOMBRES_DIAS[dia], ses) })
+                }}
               />
             ),
           )}
@@ -318,6 +352,9 @@ export function Plan() {
             <p className={estilos.chico}>La rayita marca el mínimo recomendado. Fuerza y cardio: OMS 2020. Movilidad y recuperación: criterio de la app.</p>
           </Tarjeta>
 
+          <Boton ancho onClick={() => setCalendario(true)}>
+            Agregar mis sesiones a Google Calendar
+          </Boton>
           <Boton ancho onClick={() => setRearmar(true)}>
             Volver a armar el plan
           </Boton>
@@ -370,6 +407,61 @@ export function Plan() {
             </button>
           ))}
           <Boton onClick={() => setNueva(false)}>Cancelar</Boton>
+        </Dialogo>
+      )}
+
+      {intencion && (
+        <Dialogo titulo="Cuando… entonces…" onCerrar={() => setIntencion(null)}>
+          <p className={estilos.texto2}>
+            Decidir de antemano cuándo, dónde y qué vas a hacer ayuda mucho a cumplir. Escribilo con tus palabras: un momento, un lugar y una acción concreta.
+          </p>
+          <textarea
+            className={s.alternativa}
+            style={{ minHeight: 110, font: 'inherit', fontSize: 15 }}
+            value={intencion.texto}
+            maxLength={200}
+            aria-label="Tu frase"
+            onChange={(ev) => setIntencion({ ...intencion, texto: ev.target.value })}
+          />
+          <div className={estilos.fila}>
+            <Boton onClick={() => setIntencion(null)}>Cancelar</Boton>
+            <Boton
+              variante="principal"
+              onClick={() => {
+                void cambiar(cambiarDatosSesion(plan, dia, intencion.idx, { intencion: intencion.texto.trim() })).then(() => setIntencion(null))
+              }}
+            >
+              Guardar
+            </Boton>
+          </div>
+        </Dialogo>
+      )}
+
+      {calendario && (
+        <Dialogo titulo="Agregar a Google Calendar" onCerrar={() => setCalendario(false)}>
+          <p className={estilos.texto2}>
+            Bajamos un archivo de calendario con tus sesiones de las próximas 8 semanas, con aviso 15 minutos antes y tu frase "cuando… entonces…". Abrilo desde la
+            notificación de descarga o desde la carpeta Descargas y elegí Google Calendar para importarlo.
+          </p>
+          <p className={estilos.chico}>Solo entran las sesiones con horario. Si cambiás el plan, volvé a bajarlo (y borrá los eventos viejos en el calendario).</p>
+          <Boton
+            variante="principal"
+            ancho
+            onClick={() => {
+              const blob = new Blob([generarIcs(plan, { semanas: 8 })], { type: 'text/calendar' })
+              const url = URL.createObjectURL(blob)
+              const a = document.createElement('a')
+              a.href = url
+              a.download = 'nivel-fisico-real-sesiones.ics'
+              document.body.appendChild(a)
+              a.click()
+              a.remove()
+              setTimeout(() => URL.revokeObjectURL(url), 2000)
+              setCalendario(false)
+            }}
+          >
+            Bajar el archivo
+          </Boton>
         </Dialogo>
       )}
 

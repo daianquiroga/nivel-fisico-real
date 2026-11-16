@@ -4,6 +4,7 @@ import { Aprender } from '../screens/Aprender'
 import { Entrenar } from '../screens/Entrenar'
 import { Estetica } from '../screens/Estetica'
 import { Evaluacion } from '../screens/Evaluacion'
+import { Ganas } from '../screens/Ganas'
 import { Ficha } from '../screens/Ejercicios/Ficha'
 import { Registrar } from '../screens/Ejercicios/Registrar'
 import { Hoy } from '../screens/Hoy'
@@ -65,6 +66,7 @@ export default function App() {
         <Route path="/tipo-cuerpo" element={<TipoCuerpo />} />
         <Route path="/entrenar/:dia/:idx" element={<Entrenar />} />
         <Route path="/tu-cuerpo" element={<Estetica />} />
+        <Route path="/ganas" element={<Ganas />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </HashRouter>
