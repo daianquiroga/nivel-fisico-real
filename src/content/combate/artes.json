@@ -1,0 +1,1037 @@
+{
+  "fuente": "Análisis biomecánico de 10 artes marciales (documento del usuario, 16/11/2026), revisado por la app y completado con estudios citados en cada arte. Los porcentajes de peso son referencias de entrenamiento, no valores medidos: en combate el peso se mueve todo el tiempo.",
+  "ejes": [
+    "Reparto de peso: posturas, delantera / trasera, centro de gravedad y cadena cinética.",
+    "Juego de sombras: cómo entrenar solo, qué imaginar y qué corregir.",
+    "Juego de pies: desplazamientos, pivotes y manejo de la distancia.",
+    "Encadenamiento: combinaciones tipo y por qué el peso deja listo el golpe siguiente.",
+    "Combinación con otro arte: qué complemento tapa sus puntos débiles."
+  ],
+  "regla": "El reparto de peso de la guardia predice la distancia preferida: peso atrás = patadas y distancia larga; peso al medio = manos y distancia media; peso bajo y ancho = agarre y suelo.",
+  "artes": [
+    {
+      "id": "karate",
+      "nombre": "Karate",
+      "idea": "Busca el kime: juntar toda la masa del cuerpo en el instante del impacto y frenar en seco. Alterna posturas muy plantadas con salidas explosivas en línea recta.",
+      "posturas": [
+        {
+          "nombre": "Zenkutsu dachi (adelantada)",
+          "del": 70,
+          "uso": "Gyaku zuki y oi zuki: empuje de frente máximo.",
+          "altura": "baja"
+        },
+        {
+          "nombre": "Kokutsu dachi (atrasada)",
+          "del": 30,
+          "uso": "Defensa y contraataque; la pierna de adelante queda libre para mae geri.",
+          "altura": "baja"
+        },
+        {
+          "nombre": "Kiba dachi (jinete)",
+          "del": 50,
+          "uso": "Base de costado, golpes de canto y codo.",
+          "altura": "muy baja"
+        },
+        {
+          "nombre": "Kumite (deportiva)",
+          "del": 45,
+          "uso": "Rebote liviano sobre la punta de los pies para entrar y salir.",
+          "altura": "media"
+        }
+      ],
+      "notas": [
+        {
+          "titulo": "Centro de gravedad",
+          "texto": "Bajo y fijo en las posturas de kata; más alto en kumite para ganar velocidad."
+        },
+        {
+          "titulo": "Cadena",
+          "texto": "El pie de atrás empuja el piso → la cadera gira (de perfil a de frente) → la mano que vuelve a la cadera (hikite) equilibra el giro → puño."
+        },
+        {
+          "titulo": "Error típico",
+          "texto": "Inclinar el tronco adelante en zenkutsu: el peso tiene que caer por la pierna, no por la cabeza."
+        }
+      ],
+      "sombra": [
+        "Usá el kata como sombra ordenada: cada movimiento contra un rival imaginario en una dirección concreta.",
+        "Rounds de 2 minutos de kumite libre: entrada, golpe y salida inmediata, como si te contraatacaran.",
+        "Control: al terminar cada golpe la postura queda firme, sin pasitos para acomodarte."
+      ],
+      "pies": [
+        "Ayumi ashi: paso natural, cambia la guardia.",
+        "Yori ashi / suri ashi: deslizar sin cambiar la guardia; cierra la distancia sin avisar.",
+        "Tsugi ashi: el pie de atrás se acerca al de adelante antes de atacar; engaña la distancia.",
+        "Tai sabaki: giro de cadera y pie para salir de la línea del ataque."
+      ],
+      "encadenamientos": [
+        {
+          "combo": "Kizami zuki (jab) → gyaku zuki (directo de atrás)",
+          "porque": "El jab deja el peso en 60/40 y el gyaku lo lleva a 70/30."
+        },
+        {
+          "combo": "Mae geri → gyaku zuki",
+          "porque": "La patada aterriza adelante y ese aterrizaje es el paso de entrada del puño."
+        },
+        {
+          "combo": "Mawashi geri alta → ura mawashi",
+          "porque": "El giro de la primera carga la segunda sin apoyar el pie."
+        },
+        {
+          "combo": "Barrido de defensa gedan barai → gyaku zuki",
+          "porque": "Defensa y ataque en el mismo giro de cadera."
+        }
+      ],
+      "combinacion": {
+        "con": [
+          "judo"
+        ],
+        "texto": "El karate manda en media distancia pero no tiene respuesta si te agarran. El judo suma agarre, proyecciones y la lectura del desequilibrio (kuzushi). Los dos usan la cadera como motor, así que se unen sin chocar: golpe para provocar la reacción y agarre cuando el rival retrocede el peso.",
+        "alternativa": "Karate + boxeo, para encadenar manos y mover la cabeza.",
+        "alt": [
+          "boxeo"
+        ]
+      },
+      "perfil": {
+        "del": 50,
+        "altura": 2,
+        "distancias": [
+          "larga",
+          "media"
+        ],
+        "debil": "Agarre y suelo"
+      }
+    },
+    {
+      "id": "taekwondo",
+      "nombre": "Taekwondo",
+      "idea": "Carga el peso atrás para que la pierna de adelante quede libre y patee sin avisar. Es el arte que más depende del pie de apoyo y del pivote.",
+      "posturas": [
+        {
+          "nombre": "Guardia de combate (kyorugi)",
+          "del": 35,
+          "uso": "Pierna de adelante lista para dollyo chagi o cut kick.",
+          "altura": "alta"
+        },
+        {
+          "nombre": "Ap kubi (larga adelantada)",
+          "del": 70,
+          "uso": "Formas (poomsae) y golpe de puño con empuje.",
+          "altura": "baja"
+        },
+        {
+          "nombre": "Dwit kubi (atrasada)",
+          "del": 30,
+          "uso": "Defensa y preparación de la patada de adelante.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Rebote (bounce)",
+          "del": 50,
+          "uso": "Mantener el ritmo para salir en cualquier momento.",
+          "altura": "alta"
+        }
+      ],
+      "notas": [
+        {
+          "titulo": "Centro de gravedad",
+          "texto": "Más alto que en karate; guardia de perfil para dar menos blanco y girar más fácil."
+        },
+        {
+          "titulo": "Pie de apoyo",
+          "texto": "En cada patada circular el pie de apoyo gira 90 a 180° sobre la punta. Sin ese giro la cadera no rota y sufre la rodilla."
+        },
+        {
+          "titulo": "Cadena",
+          "texto": "Giro del pie de apoyo → rotación de cadera → sube la rodilla → la pierna se estira como un látigo."
+        },
+        {
+          "titulo": "Error típico",
+          "texto": "Echar mucho el tronco atrás al patear alto: el contrapeso sale de los brazos, no de doblar la espalda."
+        }
+      ],
+      "sombra": [
+        "Rounds de patadas al aire con guardia alta: patada, recoger la rodilla y volver a la guardia antes de la siguiente.",
+        "Frente al espejo: la pierna vuelve por el mismo camino (recoger es defenderte).",
+        "Sombra de contraataque: imaginá que el rival entra y respondé con patada giratoria hacia atrás (dwi chagi)."
+      ],
+      "pies": [
+        "Rebote constante: saltitos para mantener el ritmo y esconder el momento del ataque.",
+        "Switch: cambio de guardia en el lugar para patear con la otra pierna sin cambiar la distancia.",
+        "Step-in: el pie de atrás se acerca para patear con el de adelante desde más lejos.",
+        "Paso atrás y lateral: salir de la línea y contraatacar con giratorias."
+      ],
+      "encadenamientos": [
+        {
+          "combo": "Cut kick (frenar con la planta) → dollyo chagi de atrás",
+          "porque": "La primera frena la entrada; la segunda puntúa."
+        },
+        {
+          "combo": "Dollyo chagi doble con la misma pierna",
+          "porque": "Exige todo el peso sobre el pie de apoyo, sin bajar la pierna."
+        },
+        {
+          "combo": "Dollyo chagi → patada giratoria (dwi huryeo chagi)",
+          "porque": "La rotación de la primera se aprovecha para completar el giro."
+        },
+        {
+          "combo": "Switch → patada de hacha (naeryeo chagi)",
+          "porque": "El cambio de guardia esconde la subida vertical."
+        }
+      ],
+      "combinacion": {
+        "con": [
+          "boxeo"
+        ],
+        "texto": "El taekwondo pierde fuerza cuerpo a cuerpo, justo donde manda el boxeo. El boxeo suma manos, cintura y quedarse en corta distancia; el taekwondo suma alcance y velocidad de pierna. El ajuste clave: bajar el peso a 50/50 y ponerte un poco más de frente para que lleguen las manos.",
+        "alternativa": "Taekwondo + muay thai, para patear más duro, aprender a recibir y sumar rodilla y clinch.",
+        "alt": [
+          "muaythai"
+        ]
+      },
+      "perfil": {
+        "del": 35,
+        "altura": 3,
+        "distancias": [
+          "larga"
+        ],
+        "debil": "Corta distancia"
+      },
+      "evidencia": "En la patada circular el pie de apoyo trabaja más cuanto más alto pateás; los isquiotibiales ayudan a estabilizarlo. Subí la altura de a poco y entrená isquios (JSSM 2021)."
+    },
+    {
+      "id": "judo",
+      "nombre": "Judo",
+      "idea": "Tan importante como tu reparto de peso es leer el del rival: todo se basa en romperle el equilibrio (kuzushi), colocarte (tsukuri) y ejecutar (kake). Gana quien mantiene el centro bajo y mueve el del otro.",
+      "posturas": [
+        {
+          "nombre": "Shizentai (natural)",
+          "del": 50,
+          "uso": "Postura base de agarre, máxima movilidad.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Migi / hidari shizentai",
+          "del": 55,
+          "uso": "Guardia diestra o zurda: adelante el pie del lado del agarre.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Jigotai (defensiva)",
+          "del": 50,
+          "uso": "Base ancha y baja para resistir proyecciones, rodillas muy dobladas.",
+          "altura": "muy baja"
+        },
+        {
+          "nombre": "Entrada de proyección",
+          "del": 0,
+          "uso": "En uchi mata o harai goshi, por un instante, todo el peso pasa a una pierna.",
+          "altura": "media"
+        }
+      ],
+      "notas": [
+        {
+          "titulo": "Centro de gravedad",
+          "texto": "Al entrar, tu cadera tiene que quedar debajo de la del rival. Si tu centro queda más alto, la proyección falla."
+        },
+        {
+          "titulo": "Kuzushi en 8 direcciones",
+          "texto": "El rival se rompe hacia donde tiene el peso cargado: si apoya en los talones, se lo lleva atrás (o soto gari)."
+        },
+        {
+          "titulo": "Cadena",
+          "texto": "Tirón de manos → giro de cadera → estirar las piernas para levantar."
+        },
+        {
+          "titulo": "Error típico",
+          "texto": "Agacharte doblando la espalda en jigotai: la protección sale de las rodillas, no de la cintura."
+        }
+      ],
+      "sombra": [
+        "Uchikomi al aire o con una banda elástica: repetí la entrada 10 a 30 veces por serie, sin compañero.",
+        "Sombra de agarre: imaginá la pelea por el agarre (kumikata), ganá la posición y entrá.",
+        "Caídas (ukemi) desde varias direcciones como parte de la sombra, siempre sobre algo blando."
+      ],
+      "pies": [
+        "Tsugi ashi: deslizar sin cruzar los pies; la base queda firme al empujar o tirar.",
+        "Ayumi ashi: paso normal para avanzar rápido.",
+        "Tai sabaki: giro de 90 a 180° para meter la cadera en seoi nage o harai goshi.",
+        "Momento del barrido: barré el pie del rival justo cuando lo va a apoyar y todavía no carga peso (de ashi barai)."
+      ],
+      "encadenamientos": [
+        {
+          "combo": "Ko uchi gari → seoi nage",
+          "porque": "El rival saca el pie atrás, su peso va adelante y queda expuesto a la entrada de frente."
+        },
+        {
+          "combo": "O uchi gari → uchi mata",
+          "porque": "Si abre las piernas para defender, se entra por dentro."
+        },
+        {
+          "combo": "De ashi barai → o soto gari",
+          "porque": "El barrido lo carga atrás y la siega de afuera lo termina."
+        },
+        {
+          "combo": "Proyección → inmovilización → palanca o estrangulación",
+          "porque": "De pie al suelo sin pausa."
+        }
+      ],
+      "combinacion": {
+        "con": [
+          "bjj"
+        ],
+        "texto": "El judo es excelente para derribar pero su reglamento da poco tiempo de suelo. El BJJ completa lo que pasa después de la proyección: guardia, pasajes y sumisiones. Tienen el mismo origen, así que el agarre y la idea de palanca son los mismos.",
+        "alternativa": "Judo + muay thai o boxeo, para cubrir la distancia de golpe y usar el golpe para provocar el desequilibrio.",
+        "alt": [
+          "muaythai",
+          "boxeo"
+        ]
+      },
+      "perfil": {
+        "del": 50,
+        "altura": 1,
+        "distancias": [
+          "clinch",
+          "suelo"
+        ],
+        "debil": "Golpe"
+      },
+      "evidencia": "Aprender bien las caídas al principio es clave para evitar golpes en la cabeza; con cansancio la técnica de caída empeora (revisión sistemática, IJERPH 2022). Practicalas descansado y sobre algo blando."
+    },
+    {
+      "id": "kungfu",
+      "nombre": "Kung fu (wushu)",
+      "idea": "No es un solo sistema: los estilos del norte (Shaolin, Changquan) usan posturas largas y bajas; los del sur (Wing Chun, Hung Gar), cortas y plantadas. Lo común es el dantian (abajo del ombligo) como centro y la idea de que la fuerza nace del piso.",
+      "posturas": [
+        {
+          "nombre": "Ma bu (caballo)",
+          "del": 50,
+          "uso": "Plantarse, fuerza de piernas, golpes al costado.",
+          "altura": "muy baja"
+        },
+        {
+          "nombre": "Gong bu (arco)",
+          "del": 70,
+          "uso": "Empuje de frente, golpe con todo el cuerpo.",
+          "altura": "baja"
+        },
+        {
+          "nombre": "Xu bu (vacía o del gato)",
+          "del": 10,
+          "uso": "Pierna de adelante casi sin peso, lista para patear o retirarla.",
+          "altura": "baja"
+        },
+        {
+          "nombre": "Pu bu (descendente)",
+          "del": 50,
+          "uso": "Esquivar abajo y barrer.",
+          "altura": "muy baja"
+        },
+        {
+          "nombre": "Yee jee kim yeung ma (Wing Chun)",
+          "del": 40,
+          "uso": "Rodillas hacia adentro, defensa de la línea del centro.",
+          "altura": "media"
+        }
+      ],
+      "notas": [
+        {
+          "titulo": "Centro de gravedad",
+          "texto": "Estar de pie inmóvil varios minutos (zhan zhuang) construye la base."
+        },
+        {
+          "titulo": "Cadena",
+          "texto": "Muy clara en los estilos internos (tai chi, xing yi): pie → pierna → cintura → espalda → brazo, como una onda."
+        },
+        {
+          "titulo": "Wing Chun",
+          "texto": "Prioriza la línea del centro y la estructura más que la potencia de cadera; el peso queda atrás para liberar la pierna de adelante."
+        },
+        {
+          "titulo": "Error típico",
+          "texto": "Posturas tan bajas en el combate que no te dejan moverte: las posturas de las formas son entrenamiento, no guardia de pelea."
+        }
+      ],
+      "sombra": [
+        "Las formas (taolu) como sombra: cada movimiento con una aplicación concreta en la cabeza (qué bloquea, a dónde pega).",
+        "Wing Chun: Siu Nim Tao lento para la estructura y después cadenas de golpes rápidos por la línea del centro.",
+        "Transiciones: pasar de arco a gato a caballo sin cambiar la altura de la cadera."
+      ],
+      "pies": [
+        "Pasos en arco y cruzados: entrar en diagonal para quedar al costado del rival.",
+        "Paso de gato: avanzar tanteando el piso con el pie de adelante antes de cargarle peso.",
+        "Wing Chun: desplazamientos cortos que mantienen el contacto y la línea del centro.",
+        "Giros y saltos (norte): pasar el peso a una pierna en un instante para las patadas giratorias."
+      ],
+      "encadenamientos": [
+        {
+          "combo": "Cadena de puños rectos (lin wan kuen)",
+          "porque": "Puños alternados muy rápidos por la línea del centro, con el peso quieto."
+        },
+        {
+          "combo": "Pak sao (palmada de desvío) + puño a la vez",
+          "porque": "Defensa y ataque en el mismo tiempo."
+        },
+        {
+          "combo": "Bloqueo alto → palma al tronco → barrido bajo",
+          "porque": "Ataca tres alturas seguidas."
+        },
+        {
+          "combo": "Patada baja al tobillo o la rodilla → entrada con codo o puño",
+          "porque": "La patada deja al rival clavado en el lugar."
+        }
+      ],
+      "combinacion": {
+        "con": [
+          "kick"
+        ],
+        "texto": "Los estilos tradicionales suelen entrenar poco contra resistencia real. El sanda (el kickboxing chino, con derribos) o el kickboxing suman sparring, ritmo y estado físico. El kung fu suma estructura, control del centro y trampas de mano en corta distancia.",
+        "alternativa": "Kung fu + judo, para darle aplicación real a los barridos y desequilibrios que ya tienen los estilos tradicionales.",
+        "alt": [
+          "judo"
+        ]
+      },
+      "perfil": {
+        "del": 40,
+        "altura": 1,
+        "distancias": [
+          "media",
+          "corta"
+        ],
+        "debil": "Sparring real"
+      }
+    },
+    {
+      "id": "bjj",
+      "nombre": "Jiu-jitsu brasileño (BJJ)",
+      "idea": "El peso no se reparte entre dos pies sino entre puntos de contacto: caderas, rodillas, hombros, cabeza y manos. La idea: poner tu peso donde el rival no lo puede mover y sacarlo de donde él lo puede usar.",
+      "posturas": [
+        {
+          "nombre": "De pie (combat base)",
+          "del": 50,
+          "uso": "Base ancha y baja para derribar o pasar la guardia.",
+          "altura": "baja"
+        },
+        {
+          "nombre": "Montada",
+          "uso": "Caderas pesadas sobre la panza del rival, rodillas abiertas: control y ataque al cuello o los brazos."
+        },
+        {
+          "nombre": "Cien kilos (side control)",
+          "uso": "Pecho sobre el pecho del rival y pies abiertos: inmovilizar con peso muerto."
+        },
+        {
+          "nombre": "Rodilla en la panza",
+          "uso": "70 a 80 % sobre la rodilla y el pie libre atrás: presión y movilidad para cambiar de posición."
+        },
+        {
+          "nombre": "Guardia (abajo)",
+          "uso": "Peso sobre los hombros y la espalda alta, caderas libres: usar las piernas para controlar y barrer."
+        },
+        {
+          "nombre": "Pasaje de guardia",
+          "uso": "Peso adelante sobre las piernas del rival: aplastar sus caderas y avanzar."
+        }
+      ],
+      "notas": [
+        {
+          "titulo": "Centro de gravedad",
+          "texto": "Arriba conviene tenerlo bajo y pegado; abajo, mantener las caderas móviles."
+        },
+        {
+          "titulo": "Peso vivo o muerto",
+          "texto": "Relajar el cuerpo sobre el rival pesa más que hacer fuerza."
+        },
+        {
+          "titulo": "Desequilibrio en el suelo",
+          "texto": "Un barrido funciona cuando el rival se apoya en algo que le podés sacar (un brazo, una pierna)."
+        },
+        {
+          "titulo": "Error típico",
+          "texto": "Estando arriba, apoyar las manos lejos del cuerpo: ese apoyo es el que el rival usa para barrerte."
+        }
+      ],
+      "sombra": [
+        "Camarón (escape de cadera): la base de toda defensa.",
+        "Puente: subir la cadera para escapar de la montada.",
+        "Levantada técnica: pararte sin perder la guardia.",
+        "Sit-out, rollo de hombros (granby) y sprawl: encadenalos como una sombra de suelo de 2 a 3 minutos."
+      ],
+      "pies": [
+        "De pie: pasos cortos, base baja, manos a la altura de la cadera para pelear el agarre o el derribo.",
+        "Pasando la guardia: caminar alrededor de las piernas (toreando) y cambiar de lado rápido.",
+        "En guardia: los pies trabajan como manos; empujan caderas, enganchan y controlan la distancia."
+      ],
+      "encadenamientos": [
+        {
+          "combo": "Kimura → guillotina → triángulo",
+          "porque": "Si defiende una, queda expuesta la siguiente."
+        },
+        {
+          "combo": "Triángulo → palanca de brazo → omoplata",
+          "porque": "Desde la guardia cerrada, el brazo del rival va cambiando de lugar."
+        },
+        {
+          "combo": "Barrido de tijera → montada → americana o estrangulación cruzada",
+          "porque": "Cada posición abre la siguiente."
+        },
+        {
+          "combo": "Pasaje toreando → rodilla en la panza → palanca de brazo o montada",
+          "porque": "La presión obliga a defender y libera un brazo."
+        }
+      ],
+      "combinacion": {
+        "con": [
+          "muaythai",
+          "boxeo"
+        ],
+        "texto": "El BJJ no tiene golpes, y en la calle o en MMA hace falta acercarte sin recibir. El muay thai suma golpe, clinch y rodillas; el boxeo, manos y cintura. Es la base de la MMA de hoy.",
+        "alternativa": "BJJ + judo o lucha, para mejorar derribos y control de pie, lo más flojo de mucha gente de BJJ.",
+        "alt": [
+          "judo",
+          "lucha"
+        ]
+      },
+      "perfil": {
+        "del": 50,
+        "altura": 0,
+        "distancias": [
+          "suelo",
+          "clinch"
+        ],
+        "debil": "Golpe y derribo"
+      }
+    },
+    {
+      "id": "muaythai",
+      "nombre": "Muay thai",
+      "idea": "Carga el peso atrás y mantiene una guardia de frente y erguida para chequear patadas, lanzar el teep y entrar al clinch. La potencia sale de girar toda la cadera, no de la velocidad.",
+      "posturas": [
+        {
+          "nombre": "Guardia tailandesa clásica",
+          "del": 30,
+          "uso": "Pierna de adelante liviana para chequear y lanzar el teep.",
+          "altura": "alta"
+        },
+        {
+          "nombre": "Guardia de presión",
+          "del": 50,
+          "uso": "Avanzar, cortar el ring y pegar con las manos.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Clinch (plum)",
+          "del": 50,
+          "uso": "Caderas pegadas: controlar la cabeza y lanzar rodillas.",
+          "altura": "alta"
+        },
+        {
+          "nombre": "Patada redonda (de atrás)",
+          "del": 100,
+          "uso": "Todo sobre el pie de apoyo: la cadera atraviesa el objetivo.",
+          "altura": "alta"
+        }
+      ],
+      "notas": [
+        {
+          "titulo": "Centro de gravedad",
+          "texto": "Más alto que en boxeo, con el tronco derecho, para levantar la pierna rápido."
+        },
+        {
+          "titulo": "Patada redonda",
+          "texto": "Pisá en diagonal hacia afuera con el pie de apoyo, girá sobre la punta y pegá con la canilla; el brazo del mismo lado baja como contrapeso."
+        },
+        {
+          "titulo": "Teep",
+          "texto": "Con el peso atrás, la pierna de adelante empuja como un jab y frena la entrada del rival."
+        },
+        {
+          "titulo": "Error típico",
+          "texto": "Patear con la cadera cerrada: la patada pierde fuerza y sufre la rodilla."
+        }
+      ],
+      "sombra": [
+        "Rounds de 3 minutos alternando manos, patadas, rodillas y codos, cada uno con su chequeo o defensa.",
+        "Sombra de clinch: imaginá el control de cuello y lanzá rodillas alternadas tirando de la cabeza.",
+        "Ritmo tailandés: rebote sobre el pie de atrás, nunca sobre los dos; marca el tiempo del teep y del chequeo."
+      ],
+      "pies": [
+        "Pasos cortos y medidos: el muay thai avanza con presión más que con velocidad.",
+        "Paso en diagonal antes de patear: abre el ángulo y suma giro.",
+        "Chequeo: levantar la rodilla de adelante hacia afuera; solo se puede si esa pierna tiene poco peso.",
+        "Retroceso con teep: salir de la distancia mientras pegás."
+      ],
+      "encadenamientos": [
+        {
+          "combo": "Jab → directo → patada redonda izquierda",
+          "porque": "El directo carga la pierna izquierda y la deja lista para girar."
+        },
+        {
+          "combo": "Teep → patada redonda de atrás",
+          "porque": "El teep mide la distancia y descoloca al rival."
+        },
+        {
+          "combo": "Jab → codo de atrás",
+          "porque": "La entrada del jab te deja en corta distancia."
+        },
+        {
+          "combo": "Clinch → rodilla → rodilla → barrido",
+          "porque": "La rodilla carga el peso del rival en una pierna, que después se barre."
+        },
+        {
+          "combo": "Patada baja → directo",
+          "porque": "La patada inclina al rival hacia su pierna golpeada."
+        }
+      ],
+      "combinacion": {
+        "con": [
+          "boxeo"
+        ],
+        "texto": "El boxeo afina las manos y la cintura, que el muay thai tradicional deja más rígidas. El ajuste: una guardia intermedia, 40/60, que te deje esquivar sin dejar de chequear.",
+        "alternativa": "Muay thai + BJJ, la base de la MMA.",
+        "alt": [
+          "bjj"
+        ]
+      },
+      "perfil": {
+        "del": 30,
+        "altura": 3,
+        "distancias": [
+          "larga",
+          "media",
+          "clinch"
+        ],
+        "debil": "Cintura y suelo"
+      }
+    },
+    {
+      "id": "boxeo",
+      "nombre": "Boxeo",
+      "idea": "Es el estudio más fino del paso del peso entre dos pies: cada golpe pasa el peso de un lado al otro y deja cargado el siguiente. Solo usa puños, por eso todo el cuerpo trabaja para ellos.",
+      "posturas": [
+        {
+          "nombre": "Guardia (diestra o zurda)",
+          "del": 50,
+          "uso": "Equilibrio para atacar o salir (de 50/50 a 45/55).",
+          "altura": "media"
+        },
+        {
+          "nombre": "Jab (al impactar)",
+          "del": 60,
+          "uso": "El peso pasa un poco adelante sin comprometerte.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Directo (al impactar)",
+          "del": 70,
+          "uso": "Gira la cadera y el pie de atrás.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Gancho de adelante (al impactar)",
+          "del": 40,
+          "uso": "El peso vuelve atrás, girando sobre el pie de adelante.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Uppercut de atrás",
+          "del": 40,
+          "uso": "El peso baja y sube sobre la pierna de atrás: fuerza vertical desde las piernas.",
+          "altura": "baja"
+        }
+      ],
+      "notas": [
+        {
+          "titulo": "Centro de gravedad",
+          "texto": "Rodillas siempre dobladas: las piernas son el resorte de cada golpe."
+        },
+        {
+          "titulo": "Talones",
+          "texto": "El de atrás levantado para girar en el directo; el de adelante casi plano."
+        },
+        {
+          "titulo": "Cadena",
+          "texto": "El pie de atrás gira como si apagaras un cigarrillo → cadera → hombro → puño, que gira al final."
+        },
+        {
+          "titulo": "Error típico",
+          "texto": "Inclinarte adelante en el directo: la cabeza sale de la base y queda expuesta al contragolpe."
+        }
+      ],
+      "sombra": [
+        "Calentamiento (1 round): jab y movimiento, ritmo suave.",
+        "Rounds técnicos (2 o 3): un tema por round: solo jab, solo combinaciones de 3, solo defensa y contra.",
+        "Imaginá un rival concreto (más alto, zurdo, que presiona) y adaptá la distancia.",
+        "Regla de oro: después de cada combinación, mové la cabeza o salí en ángulo. Nunca termines quieto en el centro."
+      ],
+      "pies": [
+        "Paso y arrastre: primero se mueve el pie del lado al que vas; los pies no se cruzan.",
+        "Pivote: girar sobre el pie de adelante para cambiar el ángulo después de pegar.",
+        "Cortar el ring: avanzar en diagonal para encerrar al rival, no seguirlo en círculo.",
+        "Rebote (estilo Ali): para el ritmo y para esconder la entrada.",
+        "Pull back y slip: llevar el peso a la pierna de atrás o a un costado para que el golpe pase."
+      ],
+      "encadenamientos": [
+        {
+          "combo": "1-2",
+          "porque": "El directo carga el peso adelante: lo natural después es el gancho (3)."
+        },
+        {
+          "combo": "1-2-3",
+          "porque": "El gancho devuelve el peso atrás y deja listo otro directo."
+        },
+        {
+          "combo": "1-2-3-2",
+          "porque": "Cadena circular: puede seguir mientras la base aguante."
+        },
+        {
+          "combo": "Slip → 3 → 2",
+          "porque": "La esquiva hacia la pierna de adelante carga el gancho, y después sale el directo."
+        },
+        {
+          "combo": "3 al cuerpo → 3 a la cabeza",
+          "porque": "Doble gancho: cambia de altura sin mover los pies."
+        }
+      ],
+      "combinacion": {
+        "con": [
+          "muaythai",
+          "kick"
+        ],
+        "texto": "El boxeo no defiende patadas bajas ni clinch. El muay thai suma piernas, rodillas y chequeo. El ajuste: subir un poco la cadera en la guardia y no cargar tanto la pierna de adelante.",
+        "alternativa": "Boxeo + judo o lucha, para mantenerte de pie en una pelea real.",
+        "alt": [
+          "judo",
+          "lucha"
+        ]
+      },
+      "perfil": {
+        "del": 50,
+        "altura": 2,
+        "distancias": [
+          "media",
+          "corta"
+        ],
+        "debil": "Piernas y agarre"
+      },
+      "evidencia": "La fuerza del golpe nace sobre todo de las piernas, en especial el empuje de la pierna de atrás, y el cansancio de piernas la baja (Lenetsky 2013; estudio de la University of the West of Scotland). Por eso el plan suma fuerza y resistencia de piernas."
+    },
+    {
+      "id": "aikido",
+      "nombre": "Aikido",
+      "idea": "Casi no ataca: reparte el peso para recibir la energía del rival, desviarla con giros y llevarlo al piso. El desequilibrio (kuzushi) y el giro del cuerpo (tai sabaki) son el centro de todo.",
+      "posturas": [
+        {
+          "nombre": "Hanmi (guardia triangular)",
+          "del": 55,
+          "uso": "Postura base, de perfil a 45°, caderas sueltas.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Irimi (entrada)",
+          "del": 70,
+          "uso": "Entrar hacia el costado del rival.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Tenkan (giro)",
+          "del": 70,
+          "uso": "El peso sobre la pierna del giro: girar 180° y quedar mirando hacia donde mira el rival.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Suwari waza (de rodillas)",
+          "uso": "Sobre las rodillas y los dedos de los pies: entrenar el centro sin depender de las piernas."
+        }
+      ],
+      "notas": [
+        {
+          "titulo": "Centro (hara)",
+          "texto": "El movimiento nace siempre del centro; las manos solo siguen esa dirección."
+        },
+        {
+          "titulo": "Unirse al rival (awase)",
+          "texto": "En vez de oponer peso, se acompaña el del rival y se lo estira hasta que pierde la base."
+        },
+        {
+          "titulo": "Error típico",
+          "texto": "Usar fuerza de brazos para proyectar: si el rival no está desequilibrado, la técnica no existe."
+        }
+      ],
+      "sombra": [
+        "Giros, entradas y pivotes solos (tai no henko, tai sabaki).",
+        "Cortes con espada o bastón de madera (suburi con bokken o jo): conectan cadera y brazos.",
+        "Caídas y rodadas (ukemi) sobre algo blando como parte del entrenamiento solo."
+      ],
+      "pies": [
+        "Irimi: entrar al punto ciego del rival.",
+        "Tenkan: pivotar sobre el pie de adelante para girar por detrás de su línea.",
+        "Irimi tenkan: entrada y giro juntos.",
+        "Tsugi ashi y ayumi ashi: deslizar sin levantar el pie del piso."
+      ],
+      "encadenamientos": [
+        {
+          "combo": "Tenkan → kote gaeshi (torsión de muñeca)",
+          "porque": "El giro lleva el peso del rival afuera de su base."
+        },
+        {
+          "combo": "Irimi → irimi nage",
+          "porque": "Entrar, controlar la cabeza y proyectar hacia atrás."
+        },
+        {
+          "combo": "Ikkyo → nikyo → sankyo",
+          "porque": "Si resiste un control de brazo, se pasa al siguiente."
+        },
+        {
+          "combo": "Golpe distractor (atemi) → shiho nage",
+          "porque": "El golpe hace reaccionar al rival y abre la proyección."
+        }
+      ],
+      "combinacion": {
+        "con": [
+          "judo"
+        ],
+        "texto": "Los dos usan el desequilibrio, pero el judo se practica contra resistencia total: eso le da al aikidoka la sensación del desequilibrio real. Las técnicas de muñeca del aikido, a su vez, suman control en el agarre.",
+        "alternativa": "Aikido + boxeo o kickboxing, para entender cómo llega un golpe real y entrenar entradas contra ataques rápidos.",
+        "alt": [
+          "boxeo",
+          "kick"
+        ]
+      },
+      "perfil": {
+        "del": 55,
+        "altura": 2,
+        "distancias": [
+          "clinch"
+        ],
+        "debil": "Resistencia real"
+      }
+    },
+    {
+      "id": "kick",
+      "nombre": "Kickboxing",
+      "idea": "Une el reparto de peso del boxeo con el de las patadas: guardia casi neutra, más móvil que el muay thai y con más combinaciones de mano y pierna.",
+      "posturas": [
+        {
+          "nombre": "Guardia estándar",
+          "del": 45,
+          "uso": "Equilibrio entre manos y patadas (de 50/50 a 40/60).",
+          "altura": "media"
+        },
+        {
+          "nombre": "Ataque de manos",
+          "del": 60,
+          "uso": "Combinaciones de boxeo.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Antes de patear con la de adelante",
+          "del": 30,
+          "uso": "Liberar la pierna sin cambiar la guardia.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Patada de atrás (al impactar)",
+          "del": 100,
+          "uso": "Giro completo, como en muay thai.",
+          "altura": "alta"
+        }
+      ],
+      "notas": [
+        {
+          "titulo": "Centro de gravedad",
+          "texto": "Entre el boxeo (bajo) y el muay thai (alto)."
+        },
+        {
+          "titulo": "Cadena",
+          "texto": "El mismo giro de cadera sirve para el directo y para la patada de atrás: por eso se encadenan tan bien."
+        },
+        {
+          "titulo": "Error típico",
+          "texto": "Quedarte con el peso adelante después de una combinación de manos, sin poder chequear la patada baja del rival."
+        }
+      ],
+      "sombra": [
+        "Rounds de 2 o 3 minutos donde toda combinación termina con patada (estilo holandés) o empieza con una.",
+        "La vuelta a la guardia después de cada patada: si la pierna cae adelante, cambia la guardia.",
+        "Sombra de defensa: chequeo, bloqueo de manos, slip y contra."
+      ],
+      "pies": [
+        "Paso y arrastre (del boxeo).",
+        "Switch: cambio de guardia rápido para patear con la izquierda desde atrás.",
+        "Paso lateral antes de patear: abre el ángulo.",
+        "Salida en diagonal: después de una combinación, nunca te quedes en línea."
+      ],
+      "encadenamientos": [
+        {
+          "combo": "1-2 → switch kick izquierda",
+          "porque": "El directo deja el peso adelante; un cambio de guardia corto libera la izquierda con la cadera ya cargada para patear al cuerpo."
+        },
+        {
+          "combo": "1-2-3 → patada baja derecha",
+          "porque": "El gancho devuelve el peso atrás y carga el giro de la patada derecha (combinación holandesa clásica)."
+        },
+        {
+          "combo": "Patada baja → directo",
+          "porque": "La patada vuelve a la guardia y lanza el directo con el mismo giro."
+        },
+        {
+          "combo": "Teep → jab → directo",
+          "porque": "El teep mide la distancia y las manos rematan."
+        }
+      ],
+      "combinacion": {
+        "con": [
+          "lucha",
+          "bjj"
+        ],
+        "texto": "El kickboxing ya junta dos sistemas de golpe; le falta agarre y suelo. La lucha o el BJJ suman defensa de derribo (sprawl) y terminar en el suelo. Es la receta típica de la MMA.",
+        "alternativa": "Kickboxing + karate, para sumar entradas largas, patadas de karate y cambios de ritmo difíciles de leer.",
+        "alt": [
+          "karate"
+        ]
+      },
+      "perfil": {
+        "del": 45,
+        "altura": 2,
+        "distancias": [
+          "larga",
+          "media"
+        ],
+        "debil": "Agarre y suelo"
+      }
+    },
+    {
+      "id": "kravmaga",
+      "nombre": "Krav magá",
+      "idea": "No busca una postura perfecta sino la reacción más rápida desde cualquier posición, incluso sorprendido. Prioriza avanzar sobre la amenaza y no perder el equilibrio bajo estrés.",
+      "posturas": [
+        {
+          "nombre": "Guardia pasiva (manos abiertas al pecho)",
+          "del": 50,
+          "uso": "Parece no amenazante, pero protege y te deja reaccionar.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Guardia de combate",
+          "del": 55,
+          "uso": "Un poco adelantada para avanzar sobre el agresor.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Estallido (burst)",
+          "del": 70,
+          "uso": "Defensa y contraataque al mismo tiempo, entrando.",
+          "altura": "media"
+        },
+        {
+          "nombre": "Respuesta desde el suelo",
+          "uso": "Peso en la cadera y un codo: patear y levantarte lo antes posible."
+        }
+      ],
+      "notas": [
+        {
+          "titulo": "Centro de gravedad",
+          "texto": "Medio, rodillas dobladas, listo para recibir un empujón."
+        },
+        {
+          "titulo": "Ataque y defensa a la vez",
+          "texto": "El peso va adelante mientras bloqueás; nunca retrocedés para después atacar."
+        },
+        {
+          "titulo": "Error típico",
+          "texto": "Quedarte con el peso atrás ante una agresión real: el agresor gana la iniciativa."
+        }
+      ],
+      "sombra": [
+        "Sombra con estímulo: una señal de audio indica un ataque (empujón, agarre) y respondés enseguida. La app lo hace en Contragolpes y Entrenador por voz.",
+        "Sombra con cansancio: burpees o piques y enseguida sombra, para simular el estrés.",
+        "Imaginá escenarios: ascensor, auto, escalera, varios agresores."
+      ],
+      "pies": [
+        "Estallido: un paso explosivo hacia el agresor junto con la defensa.",
+        "Salir en ángulo: sacar el cuerpo de la línea de un empujón.",
+        "Escapar: el objetivo final es crear distancia e irte a un lugar seguro.",
+        "Espacios chicos: pasos cortos, sin saltos, con apoyo seguro en cualquier piso."
+      ],
+      "encadenamientos": [
+        {
+          "combo": "Defensa 360° → golpe a la vez con la otra mano → rodilla → escape",
+          "porque": "Defender y pegar en el mismo tiempo y salir."
+        },
+        {
+          "combo": "Liberación de agarre → codo → patada de frente → escape",
+          "porque": "Liberarte, golpear para ganar espacio y alejarte."
+        },
+        {
+          "combo": "Desde el suelo: patada al agresor → levantada técnica → escape",
+          "porque": "No quedarte abajo."
+        }
+      ],
+      "combinacion": {
+        "con": [
+          "bjj"
+        ],
+        "texto": "El krav magá entrena poco el suelo prolongado, y muchas agresiones terminan ahí. El BJJ enseña a sobrevivir abajo, levantarte y controlar sin necesidad de pegar. Juntos cubren la reacción inicial y el suelo.",
+        "alternativa": "Krav magá + boxeo o muay thai, para pegar con sparring real y sumar estado físico, que muchas escuelas de krav magá no priorizan.",
+        "alt": [
+          "boxeo",
+          "muaythai"
+        ]
+      },
+      "perfil": {
+        "del": 55,
+        "altura": 2,
+        "distancias": [
+          "corta",
+          "clinch"
+        ],
+        "debil": "Suelo prolongado"
+      },
+      "evidencia": "En videos de agresiones con cuchillo, el ataque suele llegar sin aviso y con muchas puñaladas seguidas: la prioridad es la distancia y escapar. La defensa contra armas se entrena solo con instructor y material de práctica (análisis de casos filmados; estudio con policías, Policing 2021)."
+    }
+  ],
+  "perfiles": {
+    "hibrido": {
+      "del": 40,
+      "altura": 2,
+      "distancias": [
+        "larga",
+        "media",
+        "corta",
+        "clinch"
+      ]
+    },
+    "completo": {
+      "del": 45,
+      "altura": 2,
+      "distancias": [
+        "larga",
+        "media",
+        "corta",
+        "clinch",
+        "suelo"
+      ]
+    },
+    "mma": {
+      "del": 50,
+      "altura": 2,
+      "distancias": [
+        "larga",
+        "media",
+        "corta",
+        "clinch",
+        "suelo"
+      ]
+    },
+    "lucha": {
+      "del": 50,
+      "altura": 1,
+      "distancias": [
+        "clinch",
+        "suelo"
+      ]
+    }
+  },
+  "formula": "Compatibilidad (decisión de diseño de la app, basada en los principios del análisis): cuánto tapa la segunda las distancias que le faltan a tu base (50 %), si el análisis la recomienda como complemento (30 %; como alternativa, 15 %) y cuánto se parecen la guardia y la altura del centro (20 %). Se muestra en una escala de 20 a 100. Si la segunda ya está dentro de tu base (por ejemplo, boxeo dentro del híbrido), da 100."
+}

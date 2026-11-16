@@ -1,0 +1,182 @@
+{
+  "nombre": "Sistema completo: boxeo, kickboxing, muay thai, krav magá y BJJ",
+  "fuente": "Documento del usuario (16/11/2026), ordenado por la app. Los porcentajes de peso, los niveles y los tiempos son referencias de entrenamiento y decisiones de diseño, no valores medidos. Lo que tiene estudio está marcado en \"Lo que dice la evidencia\".",
+  "guardia": {
+    "idea": "Una sola guardia base, de la que salís hacia cada estilo y a la que siempre volvés. Reparte 45 % adelante y 55 % atrás: entre el boxeo (50/50) y el muay thai (30/70).",
+    "puntos": [
+      "Pies: al ancho de los hombros o un poco más; el de adelante apunta al rival, el de atrás a 45°, con el talón levantado unos centímetros.",
+      "Rodillas: dobladas y vivas, nunca trabadas.",
+      "Cadera: a 30 o 45° del rival. Más de perfil que en muay thai, más de frente que en boxeo.",
+      "Manos: la de adelante a la altura del pómulo y un poco adelante; la de atrás pegada a la mandíbula. Codos tapando las costillas.",
+      "Mentón abajo y la mirada sobre los guantes, hacia el pecho del rival imaginario (ves manos y pies a la vez)."
+    ]
+  },
+  "modos": [
+    { "nombre": "Base", "del": 45, "altura": "media", "para": "Leer, moverte, reaccionar.", "origen": "Híbrido" },
+    { "nombre": "Manos", "del": 55, "altura": "baja", "para": "Combinaciones y esquivas de cabeza.", "origen": "Boxeo" },
+    { "nombre": "Patada de adelante y chequeo", "del": 25, "altura": "alta", "para": "Teep, patada con la de adelante, chequear.", "origen": "Muay thai" },
+    { "nombre": "Clinch y entrada", "del": 50, "altura": "media", "para": "Rodillas, codos, entrada de derribo (caderas adelante).", "origen": "Muay thai, krav magá" },
+    { "nombre": "Defensa de derribo", "del": 50, "altura": "muy baja", "para": "Sprawl y base (caderas atrás y bajas).", "origen": "Lucha, BJJ" }
+  ],
+  "reglaDeOro": "Después de cada acción, volvé a la guardia base en menos de un segundo y sin pasitos para acomodarte. Si tenés que acomodar los pies, el peso estaba mal repartido durante el golpe.",
+  "niveles": [
+    { "nivel": 1, "nombre": "Base", "objetivo": "Postura y equilibrio", "que": "Guardia, paso y arrastre, jab, directo, teep, patada redonda lenta, sprawl, camarón.", "criterio": "Lanzás cada técnica y volvés a la guardia sin corregir los pies, frente al espejo." },
+    { "nivel": 2, "nombre": "Conexión", "objetivo": "Encadenar 2 o 3 acciones", "que": "Combinaciones de manos, mano y patada, esquiva + contra, pivotes, chequeo.", "criterio": "Rounds de 3 minutos sin perder la forma; el peso nunca queda colgado adelante." },
+    { "nivel": 3, "nombre": "Ritmo y ángulos", "objetivo": "Moverte mientras pegás", "que": "Cambios de ritmo, fintas, salidas en ángulo, clinch, codos y rodillas, entrada de derribo.", "criterio": "Combinaciones de 4 a 6 acciones con salida en ángulo; filmado, se ve fluido." },
+    { "nivel": 4, "nombre": "Integración", "objetivo": "Pasar de un estilo a otro", "que": "Golpe → clinch → derribo → suelo → levantarte; escenarios de krav magá.", "criterio": "5 rounds de 3 minutos mezclando todo, con la técnica intacta en el último." },
+    { "nivel": 5, "nombre": "Adaptación", "objetivo": "Pelear contra rivales imaginarios distintos", "que": "Sombra con rival concreto (alto, zurdo, que presiona, luchador), con cansancio y con señales al azar.", "criterio": "Respondés enseguida a señales al azar y tenés un plan claro contra cada tipo de rival." }
+  ],
+  "nivelesNota": "No se pasa de nivel por tiempo sino por criterios. Como referencia, cada nivel lleva de 3 a 6 meses entrenando 4 o 5 veces por semana. Entrenar solo tiene un límite: los niveles 4 y 5 se confirman de verdad con sparring.",
+  "pies": {
+    "basicos": [
+      { "nombre": "Paso y arrastre en 4 direcciones", "tiempo": "2 min", "como": "Adelante, atrás, izquierda y derecha. Primero se mueve el pie del lado al que vas. Los pies nunca se cruzan ni se juntan." },
+      { "nombre": "Caja de cinta", "tiempo": "2 min", "como": "Marcá un cuadrado de 1 m en el piso. Avanzá y retrocedé sin pisar la línea, manteniendo 45/55." },
+      { "nombre": "Pivote sobre el pie de adelante", "tiempo": "1 min por lado", "como": "Giros de 45° y 90°. El peso se carga en el pie de adelante solo durante el giro." },
+      { "nombre": "Cambio de modos de peso", "tiempo": "2 min", "como": "A la voz o con un timer: de base (45/55) a manos (55/45) a chequeo (25/75), sin mover los pies." },
+      { "nombre": "Soga", "tiempo": "3 a 5 min", "como": "Rebote en la punta de los pies, cambio de pie, doble salto. Da ritmo y elasticidad." }
+    ],
+    "avanzados": [
+      { "nombre": "Cortar el ring imaginario", "como": "Avanzá en diagonal, no en línea recta, como si encerraras al rival contra las cuerdas." },
+      { "nombre": "Entrar, pegar y salir en ángulo", "como": "Paso adelante + 1-2 + pivote o paso al costado. Nunca salgas en línea recta hacia atrás." },
+      { "nombre": "Switch", "como": "Cambio de guardia en el lugar (saltito corto) y patada con la pierna que quedó atrás." },
+      { "nombre": "Paso en diagonal antes de patear", "como": "El pie de apoyo sale 20 a 30 cm hacia afuera y abre la cadera." },
+      { "nombre": "Cambio de nivel", "como": "Bajá la cadera doblando las rodillas (no la cintura), como para un derribo, y volvé a la guardia." },
+      { "nombre": "Estallido", "como": "Desde quieto, un paso explosivo hacia adelante con las manos protegiendo, como si respondieras a un ataque." }
+    ],
+    "errores": [
+      "Cruzar o juntar los pies: perdés la base.",
+      "Quedarte con los talones apoyados: te hace lento.",
+      "Moverte saltando sin razón: el rebote es una herramienta, no una costumbre."
+    ]
+  },
+  "defensas": {
+    "idea": "Sin compañero, imaginá el golpe que llega y respondé siempre con un contraataque. Una defensa sin contra es solo la mitad del movimiento.",
+    "cabeza": [
+      { "defensa": "Slip afuera", "tecnica": "esquive", "contra": "Jab", "peso": "40/60, sobre la pierna de atrás", "respuesta": "Directo o gancho de atrás al cuerpo" },
+      { "defensa": "Slip adentro", "tecnica": "esquive", "contra": "Directo", "peso": "60/40, sobre la de adelante", "respuesta": "Gancho de adelante" },
+      { "defensa": "Rolido", "tecnica": "rolido", "contra": "Gancho", "peso": "Doblás las rodillas y el peso pasa de un pie al otro", "respuesta": "Gancho del lado contrario" },
+      { "defensa": "Pull back", "tecnica": "pull-back", "contra": "Jab o directo", "peso": "30/70, tronco atrás sin perder la vertical", "respuesta": "Directo enseguida al volver" },
+      { "defensa": "Bloqueo", "tecnica": "bloqueo", "contra": "Cualquiera", "peso": "No cambia: solo absorbés", "respuesta": "1-2 apenas termina el golpe del rival" }
+    ],
+    "piernas": [
+      { "defensa": "Chequeo", "tecnica": "chequeo", "texto": "Levantá la rodilla hacia afuera con todo el peso en la de atrás. Contra: directo, o patada con la pierna que chequeaste al apoyarla." },
+      { "defensa": "Retroceso con teep", "tecnica": "teep", "texto": "Ante la entrada del rival, teep a la panza." },
+      { "defensa": "Retirar la pierna", "tecnica": "teep", "texto": "Dejá que la patada pase y contraatacá con patada redonda." }
+    ],
+    "cuerpo": [
+      { "defensa": "Defensa 360°", "tecnica": "defensa-360", "texto": "El antebrazo sale a cortar golpes circulares en 7 posiciones (de arriba hacia abajo), con contraataque a la vez con la otra mano." },
+      { "defensa": "Frames", "tecnica": "clinch", "texto": "Antebrazo contra el cuello o el hombro del rival para que no te agarre." },
+      { "defensa": "Sprawl", "tecnica": "sprawl", "texto": "Caderas atrás y abajo, piernas atrás, pecho sobre la espalda del rival imaginario. Volvé a la guardia en menos de 2 segundos." }
+    ],
+    "reactivo": "Drill de 3 minutos: el Entrenador por voz o Contragolpes de la app te cantan ataques al azar. Ante cada uno, defendé y contraatacá. La meta es acortar el tiempo entre la señal y la respuesta."
+  },
+  "notacion": "1 jab · 2 directo · 3 gancho de adelante · 4 gancho de atrás · 5 uppercut de adelante · 6 uppercut de atrás · PB patada baja · PC patada al cuerpo · PA patada alta · R rodilla · C codo. Guardia diestra.",
+  "combinaciones": [
+    { "distancia": "larga", "nivel": 1, "combo": "Teep de adelante", "porque": "Mide la distancia con el peso atrás (25/75)." },
+    { "distancia": "larga", "nivel": 1, "combo": "PB derecha", "porque": "Giro completo, todo el peso en el pie izquierdo." },
+    { "distancia": "larga", "nivel": 2, "combo": "Teep → PC derecha", "porque": "El teep frena al rival y prepara el giro." },
+    { "distancia": "larga", "nivel": 3, "combo": "Switch → PC izquierda → 2", "porque": "El cambio de guardia esconde la patada; el directo sale al apoyar." },
+    { "distancia": "media", "nivel": 1, "combo": "1-2", "porque": "La base de todo: el peso pasa de 55/45 a 70/30." },
+    { "distancia": "media", "nivel": 2, "combo": "1-2-3", "porque": "El gancho devuelve el peso atrás." },
+    { "distancia": "media", "nivel": 2, "combo": "1-2 → PB izquierda", "porque": "El directo gira la cadera y carga el lado izquierdo, igual que para un gancho." },
+    { "distancia": "media", "nivel": 2, "combo": "1-2-3 → PB derecha", "porque": "Combinación holandesa clásica: el gancho carga el giro de la patada." },
+    { "distancia": "media", "nivel": 3, "combo": "1-1-2-3-2", "porque": "El doble jab cambia el ritmo." },
+    { "distancia": "media", "nivel": 3, "combo": "3 al cuerpo → 3 a la cabeza → 2", "porque": "Cambio de altura sin mover los pies." },
+    { "distancia": "media", "nivel": 3, "combo": "PB derecha → 2 → 3 → PC derecha", "porque": "Patada al entrar y al salir." },
+    { "distancia": "media", "nivel": 4, "combo": "Finta de 1 → PA derecha", "porque": "El rival sube la guardia del otro lado." },
+    { "distancia": "corta", "nivel": 2, "combo": "3-4 al cuerpo", "porque": "Peso bajo y centrado, giro corto." },
+    { "distancia": "corta", "nivel": 2, "combo": "1 → C de atrás", "porque": "El jab tapa la entrada al codo." },
+    { "distancia": "corta", "nivel": 3, "combo": "6-3-2", "porque": "El uppercut levanta la guardia; gancho y directo rematan." },
+    { "distancia": "corta", "nivel": 3, "combo": "Clinch → R → R", "porque": "Las manos bajan la cabeza mientras la cadera empuja adelante." },
+    { "distancia": "corta", "nivel": 4, "combo": "2 → C horizontal → R → empuje y PB", "porque": "Del directo al clinch y salida con patada." },
+    { "distancia": "defensa", "nivel": 2, "combo": "Slip afuera → 2 al cuerpo → 3 a la cabeza", "porque": "La esquiva ya cargó la pierna de atrás." },
+    { "distancia": "defensa", "nivel": 2, "combo": "Chequeo → 2", "porque": "Al apoyar la pierna, el peso cae adelante." },
+    { "distancia": "defensa", "nivel": 3, "combo": "Pull back → 2 → 3 → PB", "porque": "El rival quedó estirado." },
+    { "distancia": "defensa", "nivel": 3, "combo": "Rolido bajo un gancho → 3 → 2", "porque": "El rolido termina con el peso donde sale el gancho." },
+    { "distancia": "defensa", "nivel": 4, "combo": "Sprawl → levantarte → 1-2 → salida en ángulo", "porque": "Defensa de derribo y vuelta al golpe." }
+  ],
+  "comoCombos": "Cómo entrenarlas: 3 repeticiones lentas mirando el peso en el espejo → 5 a velocidad media → 5 a toda velocidad. Siempre con salida al final (esquiva, pivote o paso en ángulo). La lógica: cada golpe deja el peso en el lugar justo para el siguiente. Si un golpe te deja colgado, la combinación está mal armada.",
+  "transiciones": [
+    { "nombre": "Golpe → clinch", "tecnicas": ["directo", "clinch", "rodilla"], "pasos": ["1-2: el peso queda adelante; aprovechá ese impulso para avanzar y cerrar las manos en la nuca.", "Caderas pegadas al rival, peso 50/50 → rodilla derecha → rodilla izquierda.", "Salida: empujá con las manos + teep o PB."] },
+    { "nombre": "Golpe → derribo", "tecnicas": ["directo", "cambio-nivel", "derribo"], "pasos": ["1-2 a la cabeza: el rival sube la guardia.", "Cambio de nivel: doblá las rodillas, cadera baja, cabeza alta y espalda recta.", "Paso de penetración: la rodilla de adelante va al piso entre los pies del rival imaginario y avanza el pie de atrás.", "Agarrá las piernas, apoyá la cabeza al costado del tronco y girá para derribar."] },
+    { "nombre": "Defensa de derribo → golpe", "tecnicas": ["sprawl", "levantarse", "directo"], "pasos": ["Ante la entrada imaginaria: sprawl (caderas atrás y abajo).", "Presioná con el pecho sobre la espalda del rival.", "Levantate empujando su cabeza con las manos → volvé a la guardia → 1-2 o PB."] },
+    { "nombre": "Suelo solo (BJJ y krav magá)", "tecnicas": ["escape-cadera", "puente", "levantarse", "granby", "sit-out"], "pasos": ["Camarón → camarón → puente (escape de montada imaginaria).", "Levantada técnica: una mano atrás, la pierna contraria planta el pie, sube la cadera y la pierna libre pasa atrás a la guardia.", "Rollo de hombros (granby) para recuperar la guardia.", "Desde la espalda: patadas al aire hacia un agresor de pie → levantada técnica → guardia → escape.", "Sit-out y escape de cadera desde cuatro apoyos."] }
+  ],
+  "cadena": {
+    "texto": "PB derecha → 1-2 → clinch → rodilla → derribo → control imaginario → levantada técnica → guardia → salida en ángulo.",
+    "como": "Toca todos los modos de peso. Hacela 10 veces por lado al final de cada sesión del nivel 4: es la mejor sombra de integración."
+  },
+  "rivales": [
+    { "rival": "Más alto, de brazos largos", "problema": "No llego con las manos", "plan": "Cerrá con PB y entrá con 1-2-3 o clinch; nunca te quedes en su distancia.", "peso": "55/45 al entrar" },
+    { "rival": "Más bajo y que presiona", "problema": "Me encierra", "plan": "Jab y teep para frenarlo, pivotes y salidas en ángulo.", "peso": "40/60" },
+    { "rival": "Zurdo", "problema": "Pies enfrentados", "plan": "Pie de adelante por fuera del suyo, directo y PC derecha al hígado.", "peso": "45/55" },
+    { "rival": "Pateador", "problema": "Me castiga desde lejos", "plan": "Chequeo y contra; entrá después de su patada.", "peso": "25/75 al chequear" },
+    { "rival": "Luchador", "problema": "Busca derribarme", "plan": "Mantené la distancia, PB y uppercut ante el cambio de nivel, sprawl.", "peso": "45/55, caderas atrás" },
+    { "rival": "Grappler en el suelo", "problema": "Me lleva abajo", "plan": "Escapes y levantada técnica; no te quedes abajo.", "peso": "En hombros y cadera" }
+  ],
+  "calle": {
+    "idea": "En la calle la meta no es ganar sino neutralizar y escapar. Nada de patadas altas ni de ir al suelo por gusto.",
+    "escenarios": [
+      { "nombre": "Empujón en el pecho", "texto": "Absorbé con un paso atrás y guardia pasiva; si sigue, 2 + rodilla + escape." },
+      { "nombre": "Agarre de ropa o cuello de frente", "texto": "Golpe a la vez con la otra mano, liberación, codo y escape." },
+      { "nombre": "Golpe amplio (gancho de bar)", "texto": "Defensa 360° hacia adentro + golpe recto a la vez + clinch + rodillas." },
+      { "nombre": "Agarre por detrás", "texto": "Bajá el centro, codo hacia atrás, girá y salí." },
+      { "nombre": "Dos agresores", "texto": "Movete para que uno quede detrás del otro, pegale al más cercano y buscá la salida. Nunca vayas al suelo." },
+      { "nombre": "Cuchillo", "texto": "La primera opción es siempre crear distancia y escapar. Lo demás se aprende solo con instructor y cuchillos de práctica: no se entrena solo.", "aviso": true },
+      { "nombre": "Caída al suelo", "texto": "Pateá desde la espalda, levantada técnica y escape." }
+    ],
+    "espacios": "Hacé sombra en un pasillo o entre muebles: pasos cortos, sin patadas altas, más codos, rodillas y golpes cortos. Te obliga a controlar el peso sin lugar para corregir."
+  },
+  "sesion": [
+    { "bloque": "Calentamiento", "minutos": 8, "que": "Movilidad de cadera, hombros y tobillos; soga 3 minutos.", "foco": "Activar" },
+    { "bloque": "Juego de pies", "minutos": 6, "que": "2 rounds de drills de pies y cambio de modos de peso.", "foco": "Base" },
+    { "bloque": "Sombra técnica", "minutos": 12, "que": "3 rounds lentos, uno por distancia (larga, media, corta).", "foco": "Forma frente al espejo" },
+    { "bloque": "Sombra de defensa", "minutos": 8, "que": "2 rounds de defensa con señales al azar.", "foco": "Reacción" },
+    { "bloque": "Transiciones", "minutos": 8, "que": "2 rounds: golpe → clinch → derribo → sprawl → guardia.", "foco": "Integración" },
+    { "bloque": "Suelo solo", "minutos": 6, "que": "2 rounds de camarón, puente, levantada y granby.", "foco": "Movilidad de suelo" },
+    { "bloque": "Sombra libre con escenario", "minutos": 6, "que": "2 rounds contra un rival o situación concreta.", "foco": "Aplicación" },
+    { "bloque": "Vuelta a la calma", "minutos": 6, "que": "Estiramientos, respiración y anotar lo que falló.", "foco": "Recuperar" }
+  ],
+  "sesionNota": "Rounds de 3 minutos con 1 de descanso, como en el combate. Para el nivel 1 alcanza con 3 días por semana de 30 a 40 minutos, solo con pies, sombra técnica y suelo.",
+  "semana": [
+    { "dia": "Lunes", "tema": "Boxeo: manos, esquivas, defensa + contra", "complemento": "Fuerza de piernas (sentadillas, zancadas)" },
+    { "dia": "Martes", "tema": "Muay thai y kickboxing: patadas, chequeos, clinch", "complemento": "Tronco (planchas, rotaciones)" },
+    { "dia": "Miércoles", "tema": "Suelo: drills de BJJ, escapes, levantada", "complemento": "Movilidad y flexibilidad" },
+    { "dia": "Jueves", "tema": "Krav magá: escenarios, reacción, espacios chicos", "complemento": "Explosividad (piques, burpees)" },
+    { "dia": "Viernes", "tema": "Integración total: cadenas completas, sombra libre con cansancio", "complemento": "Cardio (soga, intervalos)" },
+    { "dia": "Sábado y domingo", "tema": "Descanso activo o clase con compañero si podés", "complemento": "Caminar, estirar" }
+  ],
+  "herramientas": [
+    "Espejo: para los niveles 1 y 2; revisá la guardia, el mentón y la vuelta a la base.",
+    "Celular grabando: la más importante. Grabá un round por sesión y miralo en cámara lenta (la app tiene Evaluar con video).",
+    "Cinta en el piso: referencia de pies, ángulos y distancia.",
+    "Timer de rounds (3 min / 1 min): el de la app.",
+    "Señales al azar: Entrenador por voz y Contragolpes de la app.",
+    "Soga: ritmo y resistencia.",
+    "Pelota colgada de un hilo o una banda a la altura de la cabeza: para practicar esquivas y rolidos con algo real.",
+    "Bolsa pesada (si hay lugar): una mala base se nota en el impacto.",
+    "Colchón o muñeco: para el suelo.",
+    "Bandas elásticas: entradas de derribo con resistencia."
+  ],
+  "checklist": [
+    "¿El mentón queda abajo y la mano que no pega vuelve a la cara?",
+    "¿Vuelvo a la guardia base sin acomodar los pies?",
+    "¿La cadera gira en el directo y en la patada, o pega solo el brazo o la pierna?",
+    "¿El pie de apoyo gira en la patada redonda?",
+    "¿Después de cada combinación salgo en ángulo o muevo la cabeza?",
+    "¿El cambio de nivel lo hago con las rodillas y no doblando la espalda?",
+    "¿Mantengo la técnica en el último round, cansado?",
+    "¿Mi sombra tiene intención (rival, distancia, objetivo) o tiro golpes al aire?"
+  ],
+  "limites": "La sombra desarrolla técnica, ritmo, juego de pies y reacción. El tiempo contra un rival real, la distancia exacta, absorber golpes y la presión de un luchador solo se aprenden con compañeros. Si podés, sumá al menos una clase o sparring controlado por semana. La defensa contra armas, siempre con instructor y material de práctica.",
+  "evidencia": [
+    { "titulo": "Primero bloques, después mezclado", "texto": "Practicar una técnica por vez rinde más en el momento; mezclarlas al azar rinde peor en el momento pero se retiene y se transfiere mejor. Por eso los niveles 1 y 2 van por bloques y desde el 3 las combinaciones se mezclan (y el Entrenador por voz las canta al azar). Los metaanálisis recientes discuten cuánto pesa este efecto, así que es una guía, no una ley.", "fuente": "Shea y Morgan 1979; revisión de interferencia contextual; Czyż y otros 2024" },
+    { "titulo": "Grabarte sirve, y mejor cuando vos elegís mirarlo", "texto": "Filmarte y mirarte enseguida mejoró la técnica en artes marciales; elegir vos cuándo mirar el video ayudó a aprender más.", "fuente": "BenitezSantiago y Miltenberger 2016; Ste-Marie y otros 2013" },
+    { "titulo": "El golpe nace en las piernas", "texto": "El empuje de las piernas, sobre todo la de atrás, es clave en la fuerza del golpe, y cansar las piernas la baja. Entrená fuerza y resistencia de piernas.", "fuente": "Lenetsky y otros 2013; University of the West of Scotland" },
+    { "titulo": "La patada alta exige al pie de apoyo", "texto": "Cuanto más alto pateás, más trabaja y más riesgo tiene la pierna de apoyo; los isquiotibiales la estabilizan. Subí la altura de a poco.", "fuente": "Journal of Sports Science and Medicine 2021" },
+    { "titulo": "La sombra puede ser muy intensa", "texto": "En boxeo, la sombra tipo pelea simulada llevó el pulso de unas 136 pulsaciones en sesiones fáciles a unas 187 en las duras: la intensidad la ponés vos con el ritmo.", "fuente": "Journal of Sports Science and Medicine 2014" },
+    { "titulo": "La reacción no lo es todo", "texto": "En karate, el tiempo de reacción a una señal no predijo quién gana; probablemente pesan más leer al rival y decidir. Por eso las señales de la app piden elegir la respuesta, no solo ser rápido.", "fuente": "Martínez de Quel y otros 2015" },
+    { "titulo": "Caídas: técnica y descanso", "texto": "Aprender bien las caídas al principio protege la cabeza, y el cansancio empeora la técnica de caída. Practicalas descansado y sobre algo blando.", "fuente": "Revisión sistemática sobre ukemi, IJERPH 2022" },
+    { "titulo": "Cuchillo: distancia y salida", "texto": "En los videos analizados, el ataque suele llegar sin aviso y con muchas puñaladas seguidas. Entrenar con escenarios variados y con instructor dio mejores resultados que repetir una sola respuesta.", "fuente": "Análisis de agresiones filmadas; Policing: An International Journal 2021" }
+  ]
+}

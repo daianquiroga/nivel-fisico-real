@@ -2,7 +2,8 @@
    y juego de pies (niveles 1 a 6). Todo el contenido está en src/content/combate/. */
 import tecnicasJson from '../content/combate/tecnicas.json'
 import programas from '../content/combate/programas.json'
-import compat from '../content/combate/compatibilidad.json'
+import artesJson from '../content/combate/artes.json'
+import sistemaJson from '../content/combate/sistema.json'
 import { db } from './db/db'
 
 export type Distancia = 'larga' | 'media' | 'corta' | 'clinch' | 'suelo'
@@ -175,18 +176,95 @@ export function revisarCombate(existeDibujo: (id: string) => boolean, existePie:
   return e
 }
 
-/* ---------- Combinar base y secundaria ---------- */
+/* ---------- Las 10 artes y el sistema completo ---------- */
 
-export const FUENTE_COMPATIBILIDAD = compat.fuente
+export interface Postura {
+  nombre: string
+  /** Porcentaje del peso en la pierna de adelante (sin dato en posiciones de suelo). */
+  del?: number
+  uso: string
+  altura?: Altura
+}
+export type Altura = 'muy baja' | 'baja' | 'media' | 'alta'
+export interface Perfil {
+  del: number
+  /** 0 = suelo, 1 = baja, 2 = media, 3 = alta. */
+  altura: number
+  distancias: Distancia[]
+  debil?: string
+}
+export interface Arte {
+  id: string
+  nombre: string
+  idea: string
+  posturas: Postura[]
+  notas: { titulo: string; texto: string }[]
+  sombra: string[]
+  pies: string[]
+  encadenamientos: { combo: string; porque: string }[]
+  combinacion: { con: string[]; texto: string; alternativa: string; alt: string[] }
+  perfil: Perfil
+  evidencia?: string
+}
 
-/** Qué tan bien se combinan dos disciplinas (0 a 100) y por qué. Tabla en content/combate/compatibilidad.json. */
-export function compatibilidad(a: string, b: string): { porcentaje: number; porque: string } | null {
-  const p = compat.pares.find((x) => (x.a === a && x.b === b) || (x.a === b && x.b === a))
-  return p ? { porcentaje: p.porcentaje, porque: p.porque } : null
+export const ARTES = artesJson.artes as unknown as Arte[]
+export const ANALISIS_ARTES = { fuente: artesJson.fuente, ejes: artesJson.ejes, regla: artesJson.regla, formula: artesJson.formula }
+export const SISTEMA = sistemaJson
+export const arte = (id: string) => ARTES.find((a) => a.id === id)
+
+/** Perfil de una disciplina para combinarla (guardia, altura y distancias fuertes). */
+export function perfilDe(id: string): Perfil | undefined {
+  return arte(id)?.perfil ?? (artesJson.perfiles as unknown as Record<string, Perfil>)[id]
+}
+
+/** Lo que ya trae cada sistema combinado. */
+const INCLUYE: Record<string, string[]> = {
+  hibrido: ['boxeo', 'kick', 'muaythai'],
+  completo: ['boxeo', 'kick', 'muaythai', 'kravmaga', 'bjj', 'hibrido'],
+  mma: [],
 }
 
 /** Distancias que la segunda disciplina suma y la base no tiene. */
 export function distanciasNuevas(base: string, segunda: string): Distancia[] {
-  const tiene = new Set(tecnicasDe(base, null).map((t) => t.distancia))
-  return DISTANCIAS.map((d) => d.valor).filter((d) => !tiene.has(d) && tecnicasDe(segunda, null).some((t) => t.distancia === d))
+  const a = perfilDe(base)
+  const b = perfilDe(segunda)
+  if (!a || !b) return []
+  return DISTANCIAS.map((d) => d.valor).filter((d) => !a.distancias.includes(d) && b.distancias.includes(d))
+}
+
+/** Qué tan bien se combina una segunda disciplina con tu base (20 a 100) y por qué. Fórmula: ANALISIS_ARTES.formula. */
+export function compatibilidad(base: string, segunda: string): { porcentaje: number; porque: string } | null {
+  const a = perfilDe(base)
+  const b = perfilDe(segunda)
+  if (!a || !b || base === segunda) return null
+  const nb = disciplina(segunda)?.nombre.split(':')[0] ?? segunda
+  if (INCLUYE[base]?.includes(segunda) || INCLUYE[segunda]?.includes(base))
+    return { porcentaje: 100, porque: INCLUYE[base]?.includes(segunda) ? `${nb} ya está dentro de tu base.` : `Ya incluye a tu base: si querés todo junto, elegí ${nb.toLowerCase()} como base.` }
+  const faltan = DISTANCIAS.map((d) => d.valor).filter((d) => !a.distancias.includes(d))
+  const nuevas = distanciasNuevas(base, segunda)
+  const complemento = faltan.length ? nuevas.length / faltan.length : 0
+  const ra = arte(base)?.combinacion
+  const rb = arte(segunda)?.combinacion
+  const recomendada = ra?.con.includes(segunda) || rb?.con.includes(base) ? 1 : ra?.alt.includes(segunda) || rb?.alt.includes(base) ? 0.5 : 0
+  const guardia = 1 - Math.min(1, Math.abs(a.del - b.del) / 40)
+  const altura = 1 - Math.abs(a.altura - b.altura) / 3
+  const parecido = (guardia + altura) / 2
+  const puntaje = 0.5 * complemento + 0.3 * recomendada + 0.2 * parecido
+  const porcentaje = Math.round(20 + 80 * puntaje)
+  const nombres = (ds: Distancia[]) => ds.map((d) => DISTANCIAS.find((x) => x.valor === d)!.texto.toLowerCase()).join(', ')
+  const partes = [
+    nuevas.length ? `Te suma ${nombres(nuevas)}.` : faltan.length ? 'No te suma distancias nuevas: casi todo se repite.' : 'Tu base ya cubre todas las distancias: suma técnica, no distancias.',
+    `Guardias ${parecido >= 0.75 ? 'parecidas' : parecido >= 0.5 ? 'algo distintas' : 'muy distintas'} (${a.del}/${100 - a.del} y ${b.del}/${100 - b.del}).`,
+    recomendada === 1 ? 'El análisis la recomienda como complemento.' : recomendada === 0.5 ? 'El análisis la da como alternativa.' : '',
+  ]
+  return { porcentaje, porque: partes.filter(Boolean).join(' ') }
+}
+
+/** Texto del análisis sobre por qué combinar estas dos (si el análisis la recomienda). */
+export function textoCombinacion(base: string, segunda: string): string | undefined {
+  const ra = arte(base)?.combinacion
+  if (ra?.con.includes(segunda)) return ra.texto
+  const rb = arte(segunda)?.combinacion
+  if (rb?.con.includes(base)) return rb.texto
+  return undefined
 }

@@ -8,7 +8,10 @@
       "muaythai",
       "mma",
       "karate",
-      "hibrido"
+      "hibrido",
+      "completo",
+      "kravmaga",
+      "kungfu"
     ],
     "distancia": "larga",
     "tipo": "golpe",
@@ -32,7 +35,11 @@
       "kick",
       "muaythai",
       "mma",
-      "hibrido"
+      "hibrido",
+      "completo",
+      "kravmaga",
+      "taekwondo",
+      "kungfu"
     ],
     "distancia": "larga",
     "tipo": "golpe",
@@ -56,7 +63,8 @@
       "kick",
       "muaythai",
       "mma",
-      "hibrido"
+      "hibrido",
+      "completo"
     ],
     "distancia": "media",
     "tipo": "golpe",
@@ -79,7 +87,8 @@
       "boxeo",
       "kick",
       "mma",
-      "hibrido"
+      "hibrido",
+      "completo"
     ],
     "distancia": "corta",
     "tipo": "golpe",
@@ -102,7 +111,8 @@
       "boxeo",
       "kick",
       "mma",
-      "hibrido"
+      "hibrido",
+      "completo"
     ],
     "distancia": "larga",
     "tipo": "defensa",
@@ -124,7 +134,8 @@
     "disciplinas": [
       "boxeo",
       "mma",
-      "hibrido"
+      "hibrido",
+      "completo"
     ],
     "distancia": "media",
     "tipo": "defensa",
@@ -149,7 +160,11 @@
       "muaythai",
       "mma",
       "karate",
-      "hibrido"
+      "hibrido",
+      "completo",
+      "kravmaga",
+      "taekwondo",
+      "kungfu"
     ],
     "distancia": "media",
     "tipo": "defensa",
@@ -172,7 +187,9 @@
       "kick",
       "muaythai",
       "mma",
-      "hibrido"
+      "hibrido",
+      "completo",
+      "kravmaga"
     ],
     "distancia": "larga",
     "tipo": "patada",
@@ -196,7 +213,9 @@
       "muaythai",
       "mma",
       "karate",
-      "hibrido"
+      "hibrido",
+      "completo",
+      "taekwondo"
     ],
     "distancia": "larga",
     "tipo": "patada",
@@ -220,7 +239,10 @@
       "muaythai",
       "mma",
       "karate",
-      "hibrido"
+      "hibrido",
+      "completo",
+      "kravmaga",
+      "taekwondo"
     ],
     "distancia": "larga",
     "tipo": "patada",
@@ -242,7 +264,8 @@
     "disciplinas": [
       "kick",
       "muaythai",
-      "hibrido"
+      "hibrido",
+      "completo"
     ],
     "distancia": "larga",
     "tipo": "defensa",
@@ -265,7 +288,9 @@
       "kick",
       "muaythai",
       "mma",
-      "hibrido"
+      "hibrido",
+      "completo",
+      "kravmaga"
     ],
     "distancia": "clinch",
     "tipo": "rodilla",
@@ -287,7 +312,10 @@
     "disciplinas": [
       "muaythai",
       "mma",
-      "hibrido"
+      "hibrido",
+      "completo",
+      "kravmaga",
+      "kungfu"
     ],
     "distancia": "corta",
     "tipo": "codo",
@@ -327,7 +355,9 @@
     "id": "patada-lateral",
     "nombre": "Patada lateral",
     "disciplinas": [
-      "karate"
+      "karate",
+      "taekwondo",
+      "kungfu"
     ],
     "distancia": "larga",
     "tipo": "patada",
@@ -348,7 +378,10 @@
     "nombre": "Derribo a dos piernas",
     "disciplinas": [
       "mma",
-      "lucha"
+      "lucha",
+      "completo",
+      "bjj",
+      "judo"
     ],
     "distancia": "corta",
     "tipo": "derribo",
@@ -369,7 +402,9 @@
     "nombre": "Sprawl (defensa del derribo)",
     "disciplinas": [
       "mma",
-      "lucha"
+      "lucha",
+      "completo",
+      "bjj"
     ],
     "distancia": "corta",
     "tipo": "defensa",
@@ -392,7 +427,11 @@
       "muaythai",
       "mma",
       "lucha",
-      "hibrido"
+      "hibrido",
+      "completo",
+      "kravmaga",
+      "bjj",
+      "judo"
     ],
     "distancia": "clinch",
     "tipo": "agarre",
@@ -413,7 +452,12 @@
     "nombre": "Caída hacia atrás segura",
     "disciplinas": [
       "lucha",
-      "mma"
+      "mma",
+      "completo",
+      "kravmaga",
+      "bjj",
+      "judo",
+      "aikido"
     ],
     "distancia": "suelo",
     "tipo": "caida",
@@ -434,7 +478,9 @@
     "nombre": "Puente (upa)",
     "disciplinas": [
       "lucha",
-      "mma"
+      "mma",
+      "completo",
+      "bjj"
     ],
     "distancia": "suelo",
     "tipo": "suelo",
@@ -455,7 +501,9 @@
     "nombre": "Escape de cadera (camarón)",
     "disciplinas": [
       "lucha",
-      "mma"
+      "mma",
+      "completo",
+      "bjj"
     ],
     "distancia": "suelo",
     "tipo": "suelo",
@@ -476,7 +524,11 @@
     "nombre": "Levantarse con guardia",
     "disciplinas": [
       "lucha",
-      "mma"
+      "mma",
+      "completo",
+      "kravmaga",
+      "bjj",
+      "judo"
     ],
     "distancia": "suelo",
     "tipo": "suelo",
@@ -490,6 +542,350 @@
     "errores": [
       "Levantarte de frente, hacia el rival.",
       "Bajar la mano que cubre."
+    ]
+  },
+  {
+    "id": "pull-back",
+    "nombre": "Pull back (tronco atrás)",
+    "disciplinas": [
+      "boxeo",
+      "kick",
+      "muaythai",
+      "mma",
+      "hibrido",
+      "completo"
+    ],
+    "distancia": "larga",
+    "tipo": "defensa",
+    "lado": "ambos",
+    "peso": "atras",
+    "pasos": [
+      "Llevá el peso a la pierna de atrás (30/70) y tirá el tronco unos centímetros atrás, sin perder la vertical.",
+      "Los ojos siguen al rival y las manos no bajan.",
+      "Al volver, el peso que cargaste atrás sale en un directo."
+    ],
+    "errores": [
+      "Inclinarte tanto que perdés la base.",
+      "Quedarte atrás sin contestar."
+    ]
+  },
+  {
+    "id": "switch-kick",
+    "nombre": "Switch kick (cambio de guardia y patada)",
+    "disciplinas": [
+      "kick",
+      "taekwondo",
+      "hibrido",
+      "completo"
+    ],
+    "distancia": "larga",
+    "tipo": "patada",
+    "lado": "adelante",
+    "peso": "adelante",
+    "pasos": [
+      "Un saltito corto en el lugar cambia los pies: el de adelante pasa atrás.",
+      "Sin pausa, la pierna que quedó atrás patea al cuerpo girando la cadera.",
+      "Volvé a tu guardia de siempre."
+    ],
+    "errores": [
+      "Saltar alto o largo: avisa la patada.",
+      "Patear sin girar el pie de apoyo."
+    ]
+  },
+  {
+    "id": "mae-geri",
+    "nombre": "Mae geri (patada de frente)",
+    "disciplinas": [
+      "karate",
+      "taekwondo",
+      "kungfu",
+      "kravmaga"
+    ],
+    "distancia": "larga",
+    "tipo": "patada",
+    "lado": "ambos",
+    "peso": "centro",
+    "pasos": [
+      "Subí la rodilla al frente (recámara) con las manos en guardia.",
+      "Estirá la pierna rápido y pegá con la base de los dedos o el talón.",
+      "Recogé la rodilla por el mismo camino antes de apoyar."
+    ],
+    "errores": [
+      "Empujar sin recámara: es lenta y se ve venir.",
+      "Dejar la pierna estirada afuera."
+    ]
+  },
+  {
+    "id": "giratoria",
+    "nombre": "Patada giratoria de atrás",
+    "disciplinas": [
+      "taekwondo"
+    ],
+    "distancia": "larga",
+    "tipo": "patada",
+    "lado": "atras",
+    "peso": "centro",
+    "pasos": [
+      "Girá sobre el pie de adelante mirando por encima del hombro al rival.",
+      "La pierna de atrás sale recta hacia él y pega con el talón.",
+      "Terminá el giro y volvé a la guardia mirando al frente."
+    ],
+    "errores": [
+      "Girar sin mirar: perdés al rival.",
+      "Abrir la patada en círculo en vez de recta."
+    ]
+  },
+  {
+    "id": "cadena-punos",
+    "nombre": "Cadena de puños rectos (Wing Chun)",
+    "disciplinas": [
+      "kungfu"
+    ],
+    "distancia": "corta",
+    "tipo": "golpe",
+    "lado": "ambos",
+    "peso": "centro",
+    "pasos": [
+      "Puños verticales, uno tras otro, por la línea del centro de tu cuerpo.",
+      "Uno sale mientras el otro vuelve por debajo, como una rueda.",
+      "El peso queda quieto y los codos abajo."
+    ],
+    "errores": [
+      "Abrir los codos hacia afuera.",
+      "Inclinarte adelante en vez de quedarte en tu estructura."
+    ]
+  },
+  {
+    "id": "pak-sao",
+    "nombre": "Pak sao (palmada de desvío + golpe)",
+    "disciplinas": [
+      "kungfu"
+    ],
+    "distancia": "corta",
+    "tipo": "defensa",
+    "lado": "ambos",
+    "peso": "centro",
+    "pasos": [
+      "Con la palma de una mano desviá el brazo que viene, corto y hacia el costado.",
+      "En el mismo tiempo, la otra mano pega recto por el centro.",
+      "No empujes lejos: un desvío chico alcanza."
+    ],
+    "errores": [
+      "Desviar y después pegar (en dos tiempos).",
+      "Barrer con todo el brazo."
+    ]
+  },
+  {
+    "id": "barrido",
+    "nombre": "Barrido de pie (de ashi barai)",
+    "disciplinas": [
+      "judo",
+      "kungfu",
+      "aikido"
+    ],
+    "distancia": "clinch",
+    "tipo": "derribo",
+    "lado": "adelante",
+    "peso": "centro",
+    "pasos": [
+      "Con la planta del pie, barré el pie del rival justo cuando lo va a apoyar.",
+      "El barrido va rasante al piso, de costado.",
+      "Las manos acompañan hacia el mismo lado."
+    ],
+    "errores": [
+      "Patear la pierna en vez de barrer.",
+      "Barrer un pie que ya tiene el peso encima."
+    ]
+  },
+  {
+    "id": "uchikomi",
+    "nombre": "Entrada de proyección (uchikomi)",
+    "disciplinas": [
+      "judo"
+    ],
+    "distancia": "clinch",
+    "tipo": "derribo",
+    "lado": "ambos",
+    "peso": "adelante",
+    "pasos": [
+      "Tirá de las manos para desequilibrar al rival imaginario hacia adelante.",
+      "Girá y meté la cadera debajo de la suya, rodillas dobladas.",
+      "Volvé a la guardia y repetí: 10 a 30 entradas por serie (con banda elástica, mejor)."
+    ],
+    "errores": [
+      "Quedar con la cadera más alta que la del rival.",
+      "Doblar la espalda en vez de las rodillas."
+    ]
+  },
+  {
+    "id": "tenkan",
+    "nombre": "Tenkan (giro)",
+    "disciplinas": [
+      "aikido"
+    ],
+    "distancia": "media",
+    "tipo": "defensa",
+    "lado": "ambos",
+    "peso": "centro",
+    "pasos": [
+      "Pivotá sobre el pie de adelante y girá 180° llevando el pie de atrás en arco.",
+      "Quedás al lado del rival mirando hacia donde mira él.",
+      "El movimiento sale de la cadera; los brazos solo acompañan."
+    ],
+    "errores": [
+      "Girar con los brazos y no con el centro.",
+      "Perder la altura de la cadera en el giro."
+    ]
+  },
+  {
+    "id": "irimi",
+    "nombre": "Irimi (entrada al costado)",
+    "disciplinas": [
+      "aikido"
+    ],
+    "distancia": "media",
+    "tipo": "defensa",
+    "lado": "ambos",
+    "peso": "adelante",
+    "pasos": [
+      "Ante el ataque, entrá en diagonal hacia el costado del rival.",
+      "Quedás en su punto ciego, al lado de su hombro.",
+      "Tu centro sigue mirando hacia adelante."
+    ],
+    "errores": [
+      "Entrar de frente contra el golpe.",
+      "Quedarte lejos: la entrada es corta y decidida."
+    ]
+  },
+  {
+    "id": "defensa-360",
+    "nombre": "Defensa 360°",
+    "disciplinas": [
+      "kravmaga",
+      "completo"
+    ],
+    "distancia": "media",
+    "tipo": "defensa",
+    "lado": "ambos",
+    "peso": "adelante",
+    "pasos": [
+      "El antebrazo sale a cortar el golpe circular, con el codo doblado unos 90°.",
+      "A la vez, la otra mano pega recto.",
+      "Hay 7 posiciones de arriba hacia abajo; practicalas lento antes de acelerar."
+    ],
+    "errores": [
+      "Esperar el golpe en vez de salir a cortarlo.",
+      "Defender y recién después pegar."
+    ]
+  },
+  {
+    "id": "estallido",
+    "nombre": "Estallido (burst)",
+    "disciplinas": [
+      "kravmaga",
+      "completo"
+    ],
+    "distancia": "media",
+    "tipo": "defensa",
+    "lado": "ambos",
+    "peso": "adelante",
+    "pasos": [
+      "Desde quieto, un paso explosivo hacia adelante con las manos protegiendo la cabeza.",
+      "Defendé y pegá mientras avanzás.",
+      "Seguí hasta crear la salida."
+    ],
+    "errores": [
+      "Retroceder primero y atacar después.",
+      "Bajar las manos al avanzar."
+    ]
+  },
+  {
+    "id": "liberacion",
+    "nombre": "Liberación de agarre de muñeca",
+    "disciplinas": [
+      "kravmaga",
+      "completo"
+    ],
+    "distancia": "clinch",
+    "tipo": "agarre",
+    "lado": "ambos",
+    "peso": "centro",
+    "pasos": [
+      "Girá la muñeca hacia el pulgar del que te agarra: es la parte más débil del agarre.",
+      "Acompañá con el codo y el cuerpo, no solo con la mano.",
+      "Salí con la mano libre protegiendo y alejate."
+    ],
+    "errores": [
+      "Tirar derecho para atrás contra los cuatro dedos.",
+      "Quedarte cerca después de soltarte."
+    ]
+  },
+  {
+    "id": "granby",
+    "nombre": "Rollo de hombros (granby)",
+    "disciplinas": [
+      "bjj",
+      "lucha",
+      "completo"
+    ],
+    "distancia": "suelo",
+    "tipo": "suelo",
+    "lado": "ambos",
+    "peso": "centro",
+    "pasos": [
+      "Desde el suelo, metete la cabeza al costado y rodá sobre los hombros, no sobre el cuello.",
+      "Las piernas pasan por arriba hacia el otro lado.",
+      "Terminás mirando al rival con la guardia recuperada."
+    ],
+    "errores": [
+      "Apoyar el peso en el cuello: el peso va en los hombros.",
+      "Hacerlo cansado o sobre piso duro."
+    ]
+  },
+  {
+    "id": "sit-out",
+    "nombre": "Sit-out (salida sentado)",
+    "disciplinas": [
+      "bjj",
+      "lucha",
+      "completo"
+    ],
+    "distancia": "suelo",
+    "tipo": "suelo",
+    "lado": "ambos",
+    "peso": "centro",
+    "pasos": [
+      "Desde cuatro apoyos, pasá una pierna por debajo hacia el otro lado.",
+      "La cadera gira y quedás sentado de costado, apoyado en una mano.",
+      "Volvé a cuatro apoyos o levantate."
+    ],
+    "errores": [
+      "Levantar la cadera muy alto.",
+      "Quedarte sentado sin seguir."
+    ]
+  },
+  {
+    "id": "cambio-nivel",
+    "nombre": "Cambio de nivel",
+    "disciplinas": [
+      "lucha",
+      "mma",
+      "bjj",
+      "judo",
+      "completo"
+    ],
+    "distancia": "corta",
+    "tipo": "derribo",
+    "lado": "ambos",
+    "peso": "centro",
+    "pasos": [
+      "Bajá la cadera doblando las rodillas, con la espalda recta y la cabeza alta.",
+      "Las manos quedan adelante, listas para agarrar o defender.",
+      "Volvé a la guardia con la misma altura de siempre."
+    ],
+    "errores": [
+      "Doblar la cintura en vez de las rodillas.",
+      "Mirar el piso."
     ]
   }
 ]

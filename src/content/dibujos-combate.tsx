@@ -200,6 +200,89 @@ const TECNICAS: Record<string, DefTecnica> = {
     flechas: curva([200, 152], [150, 110], [104, 124]),
     extra: <Texto x={250} y={140}>pierna atrás</Texto>,
   },
+  /* Técnicas sumadas con el análisis de las 10 artes */
+  'pull-back': {
+    pose: g({ cadera: [120, 100], rodI: [106, 134], cuello: [116, 52], cabeza: [111, 36], codoD: [130, 74], manoD: [138, 52], codoI: [120, 78], manoI: [128, 56] }),
+    flechas: recta([150, 22], [120, 22]),
+    extra: <>{recta([236, 38], [176, 38])}<Texto x={252} y={62}>golpe que viene</Texto></>,
+  },
+  'switch-kick': {
+    pose: g({ rodD: [172, 92], pieD: [212, 88], puntaD: [220, 86], pieI: [128, 166], puntaI: [140, 166], rodI: [126, 134], cadera: [132, 98], cuello: [124, 50], cabeza: [120, 34], codoD: [134, 70], manoD: [140, 48], codoI: [116, 82], manoI: [104, 98] }),
+    flechas: <>{curva([150, 150], [176, 120], [210, 92])}{curva([100, 176], [116, 186], [128, 176])}</>,
+    extra: <Texto x={256} y={150}>saltito: cambian los pies</Texto>,
+  },
+  'mae-geri': {
+    pose: g({ pieI: [104, 166], rodI: [112, 134], cadera: [126, 98], cuello: [124, 50], cabeza: [122, 34], rodD: [166, 88], pieD: [204, 80], puntaD: [214, 74] }),
+    flechas: <>{curva([150, 128], [168, 100], [166, 92])}{recta([180, 104], [218, 92])}</>,
+    extra: <Texto x={256} y={130}>recámara y látigo</Texto>,
+  },
+  giratoria: {
+    pose: { cabeza: [96, 58], cuello: [108, 68], cadera: [140, 104], rodI: [130, 136], pieI: [126, 166], puntaI: [114, 166], rodD: [180, 98], pieD: [224, 94], puntaD: [226, 106], codoD: [104, 88], manoD: [96, 70], codoI: [116, 92], manoI: [108, 74] },
+    flechas: curva([120, 26], [200, 10], [228, 76]),
+    extra: <Texto x={250} y={140}>girá mirando por el hombro</Texto>,
+  },
+  'cadena-punos': {
+    pose: g({ codoD: [180, 60], manoD: [208, 58], codoI: [158, 72], manoI: [176, 64] }),
+    flechas: <>{recta([182, 44], [216, 44])}{recta([200, 80], [176, 80])}</>,
+    extra: <Texto x={256} y={110}>uno sale, otro vuelve</Texto>,
+  },
+  'pak-sao': {
+    pose: g({ codoI: [156, 74], manoI: [180, 70], codoD: [182, 52], manoD: [208, 48] }),
+    flechas: <>{recta([186, 56], [184, 76])}{recta([182, 36], [216, 36])}</>,
+    extra: <><line x1={240} y1={62} x2={184} y2={68} stroke="var(--muted)" strokeWidth={4} strokeDasharray="5 4" /><Texto x={256} y={92}>brazo del rival</Texto></>,
+  },
+  barrido: {
+    pose: g({ rodD: [174, 142], pieD: [204, 162], puntaD: [212, 158], pieI: [110, 166], rodI: [116, 134], cadera: [130, 100], cuello: [128, 52], cabeza: [126, 36] }),
+    flechas: curva([170, 172], [196, 180], [222, 166]),
+    extra: <><circle cx={226} cy={160} r={7} fill="none" stroke="var(--muted)" strokeWidth={2} strokeDasharray="3 3" /><Texto x={256} y={140}>pie del rival</Texto></>,
+  },
+  uchikomi: {
+    pose: { cabeza: [168, 50], cuello: [160, 64], cadera: [150, 114], rodD: [172, 140], pieD: [166, 166], puntaD: [178, 166], rodI: [132, 142], pieI: [128, 166], puntaI: [140, 166], codoD: [180, 60], manoD: [196, 46], codoI: [178, 74], manoI: [194, 60] },
+    flechas: curva([220, 40], [200, 80], [168, 92]),
+    extra: <>{rival(214, 30)}<Texto x={258} y={120}>cadera debajo</Texto></>,
+  },
+  tenkan: {
+    pose: g({ cuello: [134, 50], cabeza: [134, 34], codoD: [154, 70], manoD: [170, 76], codoI: [142, 74], manoI: [156, 80] }),
+    flechas: curva([100, 176], [70, 120], [130, 120]),
+    extra: <Texto x={250} y={150}>giro de 180° sobre el pie de adelante</Texto>,
+  },
+  irimi: {
+    pose: g({ pieD: [196, 166], puntaD: [210, 166], rodD: [186, 132], pieI: [140, 166], rodI: [148, 134], cadera: [162, 100], cuello: [168, 50], cabeza: [172, 34], codoD: [186, 72], manoD: [196, 56], codoI: [176, 76], manoI: [186, 58] }),
+    flechas: recta([120, 176], [190, 176]),
+    extra: <>{rival(228, 40)}<Texto x={258} y={140}>al costado del rival</Texto></>,
+  },
+  'defensa-360': {
+    pose: g({ codoD: [176, 52], manoD: [170, 22], codoI: [180, 58], manoI: [208, 52] }),
+    flechas: <>{curva([240, 6], [210, 4], [180, 18])}{recta([186, 70], [216, 70])}</>,
+    extra: <Texto x={250} y={100}>cortar + pegar a la vez</Texto>,
+  },
+  estallido: {
+    pose: g({ pieD: [196, 166], puntaD: [210, 166], rodD: [186, 130], pieI: [124, 160], puntaI: [134, 166], rodI: [140, 128], cadera: [160, 98], cuello: [176, 52], cabeza: [182, 36], codoD: [192, 62], manoD: [196, 40], codoI: [184, 66], manoI: [190, 44] }),
+    flechas: recta([110, 178], [196, 178]),
+    extra: <Texto x={256} y={130}>paso explosivo</Texto>,
+  },
+  liberacion: {
+    pose: g({ codoD: [170, 80], manoD: [186, 66] }),
+    flechas: curva([196, 92], [210, 60], [184, 44]),
+    extra: <><circle cx={188} cy={70} r={8} fill="none" stroke="var(--muted)" strokeWidth={2} strokeDasharray="3 3" /><Texto x={250} y={100}>girá hacia el pulgar</Texto></>,
+  },
+  granby: {
+    sinGuardia: true,
+    pose: { cabeza: [118, 158], cuello: [128, 150], cadera: [144, 112], rodD: [172, 98], pieD: [182, 124], rodI: [164, 92], pieI: [176, 118], codoD: [112, 150], manoD: [100, 166], codoI: [140, 162], manoI: [152, 167] },
+    flechas: curva([200, 140], [160, 60], [100, 120]),
+    extra: <Texto x={250} y={150}>sobre los hombros</Texto>,
+  },
+  'sit-out': {
+    sinGuardia: true,
+    pose: { cabeza: [96, 104], cuello: [106, 116], cadera: [150, 140], rodD: [182, 140], pieD: [214, 160], rodI: [138, 166], pieI: [170, 166], codoI: [100, 140], manoI: [98, 166], codoD: [120, 134], manoD: [130, 152] },
+    flechas: curva([160, 166], [200, 172], [222, 156]),
+    extra: <Texto x={250} y={120}>la pierna pasa por abajo</Texto>,
+  },
+  'cambio-nivel': {
+    pose: g({ cadera: [124, 126], rodD: [160, 140], pieD: [166, 166], rodI: [104, 150], pieI: [96, 166], cuello: [148, 92], cabeza: [158, 80], codoD: [164, 112], manoD: [180, 104], codoI: [156, 116], manoI: [172, 108] }),
+    flechas: recta([96, 96], [96, 124]),
+    extra: <Texto x={250} y={60}>baja la cadera, no la cabeza</Texto>,
+  },
 }
 
 export const tieneDibujoTecnica = (id: string) => id in TECNICAS
@@ -534,6 +617,59 @@ export function DosPeleadores({ gana, empate, pierde }: { gana: number; empate: 
       <rect x={20} y={200} width={w(gana)} height={14} fill={acento} />
       <rect x={20 + w(gana)} y={200} width={w(empate)} height={14} fill="var(--muted)" />
       <rect x={20 + w(gana) + w(empate)} y={200} width={w(pierde)} height={14} fill={hecho} />
+    </Lienzo>
+  )
+}
+
+/* ---------- Reparto de peso ---------- */
+
+const ALTURA_CADERA: Record<string, number> = { alta: 92, media: 100, baja: 112, 'muy baja': 124 }
+
+/** Persona de costado en guardia con el peso repartido entre los pies: la cadera se corre hacia el pie que carga,
+    baja según la altura del centro y abajo se ve el porcentaje de cada pie. */
+export function DibujoReparto({ del, altura = 'media', etiqueta }: { del: number; altura?: string; etiqueta?: string }) {
+  const atrasX = 96
+  const adelanteX = 172
+  const cy = ALTURA_CADERA[altura] ?? 100
+  const cx = atrasX + ((adelanteX - atrasX) * del) / 100
+  const levantaAdelante = del <= 10
+  const levantaAtras = del >= 95
+  const pieD: P = levantaAdelante ? [adelanteX - 6, 150] : [adelanteX, 166]
+  const pieI: P = levantaAtras ? [atrasX + 8, 150] : [atrasX, 166]
+  const rod = (pie: P, adelante: boolean): P => [(cx + pie[0]) / 2 + (adelante ? 10 : 6), (cy + pie[1]) / 2 + (cy > 104 ? 4 : 0)]
+  const cuello: P = [cx + 6, cy - 50]
+  const pose: Pose = {
+    cabeza: [cuello[0] + 2, cuello[1] - 16],
+    cuello,
+    cadera: [cx, cy],
+    rodD: rod(pieD, true),
+    pieD,
+    puntaD: [pieD[0] + 14, pieD[1]],
+    rodI: rod(pieI, false),
+    pieI,
+    puntaI: [pieI[0] + 12, pieI[1] - 2],
+    codoD: [cuello[0] + 16, cuello[1] + 22],
+    manoD: [cuello[0] + 24, cuello[1]],
+    codoI: [cuello[0] + 4, cuello[1] + 26],
+    manoI: [cuello[0] + 12, cuello[1] + 2],
+  }
+  const barra = (x: number, pct: number, texto: string) => (
+    <g>
+      <rect x={x - 30} y={180} width={60} height={9} rx={4} fill="var(--surface-2)" />
+      <rect x={x - 30} y={180} width={Math.max(2, (pct / 100) * 60)} height={9} rx={4} fill={acento} />
+      <Texto x={x} y={204}>{`${texto} ${pct} %`}</Texto>
+    </g>
+  )
+  return (
+    <Lienzo etiqueta={etiqueta ?? `Peso: ${del} % adelante y ${100 - del} % atrás, centro ${altura}`} alto={210}>
+      <Piso />
+      <line x1={cx} x2={cx} y1={cy} y2={168} stroke={hecho} strokeWidth={1.5} strokeDasharray="3 4" />
+      <Figura pose={pose} color={acento} />
+      <circle cx={cx} cy={cy} r={6} fill={hecho} />
+      <Texto x={cx + 70} y={cy + 4} ancla="start">{`centro ${altura}`}</Texto>
+      {barra(atrasX, 100 - del, 'atrás')}
+      {barra(adelanteX, del, 'adelante')}
+      <Texto x={300} y={160} ancla="end">rival →</Texto>
     </Lienzo>
   )
 }

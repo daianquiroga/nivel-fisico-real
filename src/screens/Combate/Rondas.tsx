@@ -25,7 +25,7 @@ export function RondasCombate() {
   const actual = esPies ? nivelPies : nivelSombra
   const n = niveles[Math.min(actual, niveles.length - 1)]
   const d = disciplina(disc)!
-  const tecnicas = esPies ? [] : d.basicas.slice(0, n.nivel <= 2 ? (d.id === 'hibrido' ? 6 : 4) : d.basicas.length)
+  const tecnicas = esPies ? [] : d.basicas.slice(0, n.nivel <= 2 ? (['hibrido', 'completo'].includes(d.id) ? 6 : 4) : d.basicas.length)
 
   async function terminar(minutos: number) {
     const hoy = fechaLocal()
@@ -57,7 +57,7 @@ export function RondasCombate() {
         </h1>
         <p className={e.para}>{esPies ? (n as (typeof NIVELES_PIES)[number]).que : n.objetivo}</p>
       </header>
-      <Tarjeta>{esPies ? <DibujoPies nivel={n.nivel} /> : d.id === 'lucha' ? <DibujoTecnica id="escape-cadera" /> : <DibujoGuardia />}</Tarjeta>
+      <Tarjeta>{esPies ? <DibujoPies nivel={n.nivel} /> : ['lucha', 'bjj'].includes(d.id) ? <DibujoTecnica id="escape-cadera" /> : d.id === 'judo' ? <DibujoTecnica id="uchikomi" /> : d.id === 'aikido' ? <DibujoTecnica id="tenkan" /> : <DibujoGuardia />}</Tarjeta>
       <ol className={s.seccion}>
         {n.pasos.map((p) => (
           <li key={p}>{p}</li>

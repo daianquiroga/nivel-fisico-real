@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Aviso, Boton, Tarjeta, estilos } from '../../components/ui'
 import { DibujoGuardia, DibujoPies, DibujoTecnica } from '../../content/dibujos-combate'
-import { DISCIPLINAS, DISTANCIAS, FUENTE_COMPATIBILIDAD, NIVELES_PIES, compatibilidad, distanciasNuevas, NIVELES_SOMBRA, disciplina, guardarAjustesCombate, mesesCon, nivelSombra as nivelDe } from '../../lib/combate'
+import { arte, DISCIPLINAS, DISTANCIAS, ANALISIS_ARTES, textoCombinacion, NIVELES_PIES, compatibilidad, distanciasNuevas, NIVELES_SOMBRA, disciplina, guardarAjustesCombate, mesesCon, nivelSombra as nivelDe } from '../../lib/combate'
 import e from '../Evaluacion/evaluacion.module.css'
 import s from '../Ejercicios/ejercicios.module.css'
 import h from '../Hoy/hoy.module.css'
@@ -67,7 +67,7 @@ export function Combate() {
         ))}
       </div>
       <p className={estilos.chico}>
-        {d.detalle}{' '}
+        {d.detalle} {arte(disc) && <Link to={`/combate/arte/${disc}`}>Ver cómo se mueve.</Link>}{' '}
         {estado.ajustes
           ? meses >= 6
             ? `Llevás ${meses} meses con esta base: si querés, ya podés sumar otra disciplina.`
@@ -83,7 +83,7 @@ export function Combate() {
       {!segunda && sumando && (
         <Tarjeta>
           <p className="etiqueta">Combinar {d.nombre.split(':')[0]} con…</p>
-          <p className={estilos.chico}>El porcentaje dice qué tan bien se combinan con tu base.</p>
+          <p className={estilos.chico}>El porcentaje dice cuánto se complementan con tu base: más alto si suma distancias que te faltan, si el análisis la recomienda y si las guardias no chocan. Dos artes casi iguales dan bajo porque no suman.</p>
           {DISCIPLINAS.filter((x) => x.id !== disc)
             .map((x) => ({ x, c: compatibilidad(disc, x.id) }))
             .sort((a, b) => (b.c?.porcentaje ?? 0) - (a.c?.porcentaje ?? 0))
@@ -103,7 +103,7 @@ export function Combate() {
                   <span>+ {x.nombre}</span>
                   <b style={{ color: (c?.porcentaje ?? 0) >= 75 ? 'var(--done)' : (c?.porcentaje ?? 0) >= 55 ? 'var(--text)' : 'var(--muted)' }}>{c ? `${c.porcentaje} %` : ''}</b>
                 </span>
-                <span className={s.itemDetalle}>{x.id === 'hibrido' && c?.porcentaje === 100 ? `Ya incluye ${d.nombre.toLowerCase()}: si querés las tres juntas, elegí el híbrido como base arriba.` : c?.porque}</span>
+                <span className={s.itemDetalle}>{c?.porque}</span>
               </button>
             ))}
           <Boton onClick={() => setSumando(false)}>Cancelar</Boton>
@@ -119,6 +119,7 @@ export function Combate() {
             <>
               <BarraCompat porcentaje={compat.porcentaje} />
               <p className={estilos.texto2}>{compat.porque}</p>
+              {textoCombinacion(disc, segunda) && <p className={estilos.chico}>{textoCombinacion(disc, segunda)}</p>}
             </>
           )}
           {nuevas.length > 0 && (
@@ -130,7 +131,7 @@ export function Combate() {
           <Boton onClick={() => void elegirSegunda(undefined)}>Sacar {d2.nombre.split(':')[0].toLowerCase()}</Boton>
           <details>
             <summary className={estilos.chico}>¿De dónde sale el porcentaje?</summary>
-            <p className={estilos.chico}>{FUENTE_COMPATIBILIDAD}</p>
+            <p className={estilos.chico}>{ANALISIS_ARTES.formula}</p>
           </details>
         </Tarjeta>
       )}
@@ -153,6 +154,14 @@ export function Combate() {
       </Tarjeta>
 
       <div className={s.lista}>
+        <Link to="/combate/sistema" className={s.item} style={{ borderColor: 'var(--accent)' }}>
+          <span className={s.itemNombre}>Sistema completo (5 estilos)</span>
+          <span className={s.itemDetalle}>Guardia 45/55, modos de peso, niveles, pies, defensas, combos, transiciones, escenarios y sesión guiada de 60 min</span>
+        </Link>
+        <Link to="/combate/artes" className={s.item}>
+          <span className={s.itemNombre}>Las 10 artes: cómo se mueve cada una</span>
+          <span className={s.itemDetalle}>Reparto de peso con dibujo, sombra, pies, encadenamientos y con qué combinarla</span>
+        </Link>
         <Link to="/combate/voz" className={s.item}>
           <span className={s.itemNombre}>Entrenador por voz</span>
           <span className={s.itemDetalle}>Te canta combinaciones durante el round: elegís tempo, complejidad, orden y momento</span>
@@ -175,14 +184,14 @@ export function Combate() {
         <Tarjeta>
           <p className="etiqueta">Sombra · {d2.nombre}</p>
           <h2 className={h.tituloTarjeta}>{nivel2 === 0 ? 'Empezá por el nivel 1' : `Nivel ${nivel2} de 5`}</h2>
-          {segunda === 'lucha' && <DibujoTecnica id="escape-cadera" />}
+          {['lucha', 'bjj'].includes(segunda ?? '') && <DibujoTecnica id="escape-cadera" />}
           <p className={estilos.texto2}>
-            {segunda === 'lucha'
+            {['lucha', 'bjj'].includes(segunda ?? '')
               ? 'Rounds de movimiento de suelo: camarón, puente, levantarte y sprawl. Necesitás unos 2 × 1 m o un colchón finito.'
               : `Ahora: nivel ${Math.min(nivel2 + 1, 5)}. Hacé 1 o 2 rounds al final de tu sombra.`}
           </p>
           <Link to={`/combate/rondas/sombra?d=${segunda}`} className={estilos.boton}>
-            {segunda === 'lucha' ? 'Hacer rounds de suelo' : `Hacer rounds de ${d2.nombre.split(':')[0].toLowerCase()}`}
+            {['lucha', 'bjj'].includes(segunda ?? '') ? 'Hacer rounds de suelo' : `Hacer rounds de ${d2.nombre.split(':')[0].toLowerCase()}`}
           </Link>
           {nivel2 < 5 && (
             <Link to={`/combate/evaluar?d=${segunda}`} className={estilos.boton}>

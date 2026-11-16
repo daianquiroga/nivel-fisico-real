@@ -29,6 +29,15 @@ export const NOMBRE_CORTO: Record<string, string> = {
   'patada-lateral': 'lateral',
   derribo: 'derribo',
   sprawl: 'sprawl',
+  'pull-back': 'atrás',
+  'switch-kick': 'switch',
+  'mae-geri': 'mae geri',
+  giratoria: 'giratoria',
+  'cadena-punos': 'cadena',
+  'defensa-360': 'tres sesenta',
+  estallido: 'estallido',
+  barrido: 'barrido',
+  'cambio-nivel': 'cambio de nivel',
 }
 
 const DEFENSA = new Set(['defensa'])

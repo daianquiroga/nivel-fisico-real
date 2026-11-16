@@ -273,6 +273,85 @@
       }
     },
     {
+      "id": "completo",
+      "nombre": "Sistema completo: boxeo, kick, muay thai, krav magá y BJJ",
+      "detalle": "Una sola guardia base (45/55) de la que salís hacia cada estilo y a la que siempre volvés. Mirá \"Sistema completo\" para la guía entera.",
+      "basicas": [
+        "jab",
+        "directo",
+        "teep",
+        "patada-baja",
+        "esquive",
+        "sprawl",
+        "escape-cadera",
+        "gancho",
+        "chequeo",
+        "pull-back",
+        "patada-media",
+        "switch-kick",
+        "rodilla",
+        "codo",
+        "clinch",
+        "cambio-nivel",
+        "derribo",
+        "defensa-360",
+        "estallido",
+        "levantarse",
+        "granby",
+        "sit-out"
+      ],
+      "criterios": [
+        "Volvés a la guardia base sin acomodar los pies.",
+        "La cadera gira en el directo y en la patada; el pie de apoyo pivota.",
+        "Después de cada combinación salís en ángulo o movés la cabeza.",
+        "El cambio de nivel sale de las rodillas, no doblando la espalda."
+      ],
+      "sombra": {
+        "1": [
+          "Nivel Base: guardia, paso y arrastre, jab, directo, teep, patada redonda lenta, sprawl y camarón.",
+          "Criterio: cada técnica y vuelta a la guardia sin corregir los pies, frente al espejo."
+        ],
+        "2": [
+          "Nivel Conexión: combinaciones de manos, mano y patada, esquiva + contra, pivotes y chequeo.",
+          "Criterio: rounds de 3 minutos sin perder la forma; el peso nunca queda colgado adelante."
+        ],
+        "3": [
+          "Nivel Ritmo y ángulos: cambios de ritmo, fintas, salidas en ángulo, clinch, codos, rodillas y entrada de derribo.",
+          "Desde acá mezclá las combinaciones al azar (el Entrenador por voz lo hace).",
+          "Criterio: 4 a 6 acciones con salida en ángulo; filmado, se ve fluido."
+        ],
+        "4": [
+          "Nivel Integración: golpe → clinch → derribo → suelo → levantarte, y escenarios de krav magá.",
+          "Cadena completa 10 veces por lado al final de la sesión.",
+          "Criterio: 5 rounds de 3 minutos mezclando todo, con la técnica intacta en el último."
+        ],
+        "5": [
+          "Nivel Adaptación: sombra contra un rival concreto (alto, zurdo, que presiona, luchador), con cansancio y señales al azar.",
+          "Criterio: respuesta inmediata a señales al azar y un plan claro contra cada tipo de rival."
+        ]
+      },
+      "pies": {
+        "1": [
+          "Paso y arrastre en 4 direcciones (2 min): primero el pie del lado al que vas; nunca se cruzan."
+        ],
+        "2": [
+          "Caja de cinta de 1 m: avanzá y retrocedé manteniendo 45/55."
+        ],
+        "3": [
+          "Pivote sobre el pie de adelante a 45° y 90°; cambio de modos de peso sin mover los pies."
+        ],
+        "4": [
+          "Entrar, pegar y salir en ángulo; paso en diagonal antes de patear."
+        ],
+        "5": [
+          "Switch y cambio de nivel; rebote solo cuando sirve."
+        ],
+        "6": [
+          "Cortar el ring imaginario y estallido: un paso explosivo con las manos arriba."
+        ]
+      }
+    },
+    {
       "id": "mma",
       "nombre": "MMA (artes marciales mixtas)",
       "detalle": "Golpes, derribos y suelo: lo que más importa son las transiciones.",
@@ -339,11 +418,12 @@
     },
     {
       "id": "karate",
-      "nombre": "Karate y taekwondo",
-      "detalle": "Distancia larga, patadas y golpes con foco.",
+      "nombre": "Karate",
+      "detalle": "Distancia larga y media, entradas y salidas explosivas en línea recta, golpes con foco (kime).",
       "basicas": [
         "jab",
         "gyaku-zuki",
+        "mae-geri",
         "teep",
         "patada-media",
         "patada-lateral",
@@ -400,9 +480,137 @@
       }
     },
     {
+      "id": "taekwondo",
+      "nombre": "Taekwondo",
+      "detalle": "Patadas rápidas a distancia larga, con el peso atrás y mucho trabajo del pie de apoyo.",
+      "basicas": [
+        "patada-media",
+        "teep",
+        "mae-geri",
+        "switch-kick",
+        "patada-lateral",
+        "giratoria",
+        "bloqueo",
+        "directo"
+      ],
+      "criterios": [
+        "El pie de apoyo gira en cada patada circular.",
+        "La pierna vuelve por el mismo camino (recogida) antes de apoyar.",
+        "El contrapeso sale de los brazos, sin tirar el tronco atrás.",
+        "Después de cada patada volvés a una guardia equilibrada."
+      ],
+      "sombra": {
+        "1": [
+          "Patada media, de frente y lateral, lentas: recámara, patada y recogida.",
+          "Pie de apoyo girando en cada patada circular."
+        ],
+        "2": [
+          "Patadas con step-in (el pie de atrás se acerca) y con paso atrás.",
+          "Switch en el lugar y patada con la pierna que quedó atrás."
+        ],
+        "3": [
+          "Cut kick (teep) → patada media de atrás.",
+          "Patada media doble con la misma pierna, sin apoyar.",
+          "Patada media → giratoria."
+        ],
+        "4": [
+          "20 segundos de patadas rápidas a media altura; 40 de ritmo con rebote.",
+          "Subí la altura de a poco: la patada alta exige más al pie de apoyo."
+        ],
+        "5": [
+          "Imaginá que el rival entra: giratoria o patada de frente para frenarlo.",
+          "Imaginá una patada: paso atrás y contraataque."
+        ]
+      },
+      "pies": {
+        "1": [
+          "Guardia de perfil, peso atrás (30/70), rebote suave."
+        ],
+        "2": [
+          "Rebote constante y pasos laterales sin perder el perfil."
+        ],
+        "3": [
+          "Pivote sobre la punta del pie de apoyo, como en cada patada."
+        ],
+        "4": [
+          "Paso atrás y lateral para salir de la línea y contraatacar."
+        ],
+        "5": [
+          "Switch rápido en el lugar sin cambiar la distancia."
+        ],
+        "6": [
+          "Step-in y patada; patada y salida con paso atrás."
+        ]
+      }
+    },
+    {
+      "id": "kungfu",
+      "nombre": "Kung fu (wushu)",
+      "detalle": "Estructura, línea del centro, posturas plantadas y trampas de mano en corta distancia.",
+      "basicas": [
+        "cadena-punos",
+        "pak-sao",
+        "jab",
+        "directo",
+        "mae-geri",
+        "patada-lateral",
+        "barrido",
+        "bloqueo",
+        "codo"
+      ],
+      "criterios": [
+        "La fuerza nace del piso y sube por la cadera.",
+        "Los codos quedan abajo, cuidando la línea del centro.",
+        "Cambiás de postura sin subir ni bajar la cadera.",
+        "Las posturas de pelea son más altas que las de las formas."
+      ],
+      "sombra": {
+        "1": [
+          "Posturas (caballo, arco, gato) sostenidas y transiciones lentas.",
+          "Cadena de puños rectos lenta por la línea del centro."
+        ],
+        "2": [
+          "Pasos en arco y en diagonal con golpe al llegar.",
+          "Pak sao + puño, despacio."
+        ],
+        "3": [
+          "Bloqueo alto → palma al tronco → barrido bajo.",
+          "Patada baja → entrada con codo."
+        ],
+        "4": [
+          "Cadena de puños rápida en rounds de 20 segundos.",
+          "Formas con intención: cada movimiento con su aplicación."
+        ],
+        "5": [
+          "Imaginá un golpe recto: pak sao y contra.",
+          "Imaginá que te avanzan: patada baja para frenar."
+        ]
+      },
+      "pies": {
+        "1": [
+          "Postura plantada: el peso cae por las piernas."
+        ],
+        "2": [
+          "Pasos en arco y cruzados para entrar en diagonal."
+        ],
+        "3": [
+          "Paso de gato: tantear el piso antes de cargarle peso."
+        ],
+        "4": [
+          "Entrada al costado del rival imaginario."
+        ],
+        "5": [
+          "Desplazamientos cortos de Wing Chun manteniendo la línea del centro."
+        ],
+        "6": [
+          "Entrada en diagonal + golpe + barrido."
+        ]
+      }
+    },
+    {
       "id": "lucha",
-      "nombre": "Lucha, judo y BJJ",
-      "detalle": "Agarres, derribos, caídas y suelo.",
+      "nombre": "Lucha libre",
+      "detalle": "Derribos, control y suelo, con postura baja.",
       "basicas": [
         "caida",
         "escape-cadera",
@@ -458,6 +666,256 @@
         ],
         "6": [
           "Sprawl y vuelta a la postura; derribo y levantarte."
+        ]
+      }
+    },
+    {
+      "id": "judo",
+      "nombre": "Judo",
+      "detalle": "Agarre, desequilibrio y proyecciones; caídas seguras.",
+      "basicas": [
+        "caida",
+        "clinch",
+        "barrido",
+        "uchikomi",
+        "cambio-nivel",
+        "derribo",
+        "levantarse"
+      ],
+      "criterios": [
+        "Al entrar, tu cadera queda debajo de la del rival.",
+        "Te protegés con las rodillas, no doblando la espalda.",
+        "Al caer, el mentón va al pecho y la cabeza no toca el piso.",
+        "Los pies no se cruzan al empujar o tirar."
+      ],
+      "sombra": {
+        "1": [
+          "Caídas (ukemi) hacia atrás y de costado, sobre algo blando y descansado.",
+          "Postura natural y jigotai (baja), cambiando de una a otra."
+        ],
+        "2": [
+          "Uchikomi al aire: 3 series de 10 entradas, lentas.",
+          "Pelea por el agarre imaginaria y entrada."
+        ],
+        "3": [
+          "Ko uchi gari → entrada de frente.",
+          "Barrido → entrada por afuera.",
+          "Proyección → inmovilización imaginaria."
+        ],
+        "4": [
+          "Uchikomi con banda elástica: 20 entradas rápidas por serie.",
+          "Caídas solo al principio de la sesión, nunca al final y cansado."
+        ],
+        "5": [
+          "Imaginá que el rival empuja: tirá y entrá.",
+          "Imaginá que tira: empujá y barré."
+        ]
+      },
+      "pies": {
+        "1": [
+          "Tsugi ashi: deslizar sin cruzar los pies."
+        ],
+        "2": [
+          "Ayumi ashi: paso normal para avanzar."
+        ],
+        "3": [
+          "Tai sabaki: giro de 90 a 180° para meter la cadera."
+        ],
+        "4": [
+          "Entrada en ángulo al costado del rival imaginario."
+        ],
+        "5": [
+          "Momento del barrido: cuando el pie del rival va a apoyar."
+        ],
+        "6": [
+          "Desplazamiento + desequilibrio + entrada, en un solo movimiento."
+        ]
+      }
+    },
+    {
+      "id": "bjj",
+      "nombre": "Jiu-jitsu brasileño (BJJ)",
+      "detalle": "Suelo: guardias, pasajes, escapes y sumisiones.",
+      "basicas": [
+        "escape-cadera",
+        "puente",
+        "levantarse",
+        "granby",
+        "sit-out",
+        "sprawl",
+        "cambio-nivel",
+        "caida",
+        "clinch",
+        "derribo"
+      ],
+      "criterios": [
+        "El camarón sale del pie apoyado, no de las manos.",
+        "En el puente la cadera sube explosiva y girás hacia un hombro.",
+        "Te levantás con una mano en el piso y la otra cubriendo.",
+        "En el rollo el peso va en los hombros, nunca en el cuello."
+      ],
+      "sombra": {
+        "1": [
+          "Camarón por lado y puente, lentos (necesitás unos 2 × 1 m o un colchón finito).",
+          "Levantada técnica despacio."
+        ],
+        "2": [
+          "Camarón → camarón → puente, seguidos.",
+          "Sit-out desde cuatro apoyos."
+        ],
+        "3": [
+          "Rollo de hombros (granby) → recuperar la guardia.",
+          "Sprawl → levantarte → guardia."
+        ],
+        "4": [
+          "Sombra de suelo de 2 a 3 minutos encadenando todo sin parar.",
+          "Si tenés muñeco o colchón: pasajes y montada."
+        ],
+        "5": [
+          "Imaginá que te montan: puente y camarón.",
+          "Imaginá que te derriban: guardia y levantada técnica."
+        ]
+      },
+      "pies": {
+        "1": [
+          "De pie: base ancha y baja, manos a la altura de la cadera."
+        ],
+        "2": [
+          "Pasos cortos de lado sin juntar los pies."
+        ],
+        "3": [
+          "Girar alrededor de las piernas del rival imaginario (toreando)."
+        ],
+        "4": [
+          "Cambio de nivel y vuelta a la base."
+        ],
+        "5": [
+          "Cambiar de lado rápido en el pasaje."
+        ],
+        "6": [
+          "Sprawl y levantarte, o derribo y control."
+        ]
+      }
+    },
+    {
+      "id": "aikido",
+      "nombre": "Aikido",
+      "detalle": "Giros, entradas y desequilibrio para llevar al rival al piso sin chocar fuerza contra fuerza.",
+      "basicas": [
+        "tenkan",
+        "irimi",
+        "barrido",
+        "caida"
+      ],
+      "criterios": [
+        "El movimiento nace del centro; los brazos acompañan.",
+        "Los pies deslizan sin despegarse del piso.",
+        "Al girar, la cadera no sube ni baja.",
+        "Caés y rodás sin que la cabeza toque el piso."
+      ],
+      "sombra": {
+        "1": [
+          "Hanmi y tai no henko (giro básico), lentos.",
+          "Caídas y rodadas sobre algo blando."
+        ],
+        "2": [
+          "Irimi y tenkan por separado, 10 por lado."
+        ],
+        "3": [
+          "Irimi tenkan seguidos, cambiando de lado."
+        ],
+        "4": [
+          "Cortes con palo o bastón (suburi) conectando cadera y brazos.",
+          "Secuencias de giros sin pausa."
+        ],
+        "5": [
+          "Imaginá un ataque recto: irimi al costado.",
+          "Imaginá que te agarran: tenkan y salida."
+        ]
+      },
+      "pies": {
+        "1": [
+          "Hanmi: de perfil a 45°, caderas sueltas."
+        ],
+        "2": [
+          "Tsugi ashi y ayumi ashi deslizando."
+        ],
+        "3": [
+          "Tenkan: pivote sobre el pie de adelante."
+        ],
+        "4": [
+          "Irimi: entrada al punto ciego."
+        ],
+        "5": [
+          "Irimi tenkan encadenados."
+        ],
+        "6": [
+          "Entrada, giro y vuelta a hanmi sin pasitos de más."
+        ]
+      }
+    },
+    {
+      "id": "kravmaga",
+      "nombre": "Krav magá",
+      "detalle": "Reacción rápida desde cualquier posición, defensa y ataque a la vez, y escape.",
+      "basicas": [
+        "defensa-360",
+        "estallido",
+        "liberacion",
+        "jab",
+        "directo",
+        "rodilla",
+        "codo",
+        "mae-geri",
+        "clinch",
+        "levantarse"
+      ],
+      "criterios": [
+        "Defendés y pegás al mismo tiempo, nunca en dos tiempos.",
+        "El peso va adelante al defender: no retrocedés para después atacar.",
+        "Terminás cada secuencia creando distancia (escape).",
+        "Mantenés las manos arriba bajo cansancio."
+      ],
+      "sombra": {
+        "1": [
+          "Guardia pasiva y de combate; defensa 360° lenta en las 7 posiciones.",
+          "Liberación de agarre de muñeca, por los dos lados."
+        ],
+        "2": [
+          "Estallido: paso explosivo con defensa y golpe.",
+          "Codo y rodilla cortos."
+        ],
+        "3": [
+          "Defensa 360° → golpe a la vez → rodilla → escape.",
+          "Liberación → codo → patada de frente → escape."
+        ],
+        "4": [
+          "Sombra con cansancio: 10 burpees y enseguida un round.",
+          "Sombra en un pasillo: pasos cortos, sin patadas altas."
+        ],
+        "5": [
+          "Señales al azar (Contragolpes): respondé y escapá.",
+          "Escenarios: empujón, agarre de ropa, desde el suelo."
+        ]
+      },
+      "pies": {
+        "1": [
+          "Guardia un poco adelantada (55/45), rodillas dobladas."
+        ],
+        "2": [
+          "Paso explosivo adelante (estallido)."
+        ],
+        "3": [
+          "Salir en ángulo de la línea de un empujón."
+        ],
+        "4": [
+          "Pasos cortos en espacio reducido."
+        ],
+        "5": [
+          "Alinear a dos agresores imaginarios para que uno tape al otro."
+        ],
+        "6": [
+          "Defensa, ataque y escape hacia una salida."
         ]
       }
     }

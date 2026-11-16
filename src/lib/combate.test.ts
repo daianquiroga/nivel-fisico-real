@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { tieneDibujoPies, tieneDibujoTecnica } from '../content/dibujos-combate'
-import { DISCIPLINAS, aprueba, compatibilidad, criteriosDe, distanciasNuevas, mesesCon, nivelPies, nivelSombra, revisarCombate, tecnicasDe } from './combate'
+import { ARTES, DISCIPLINAS, aprueba, compatibilidad, criteriosDe, distanciasNuevas, mesesCon, nivelPies, nivelSombra, revisarCombate, tecnicasDe } from './combate'
 
 describe('combate', () => {
   it('el contenido está completo y todo tiene dibujo', () => {
@@ -10,7 +10,7 @@ describe('combate', () => {
   it('filtra técnicas por disciplina y distancia', () => {
     expect(tecnicasDe('boxeo', null).every((t) => t.disciplinas.includes('boxeo'))).toBe(true)
     expect(tecnicasDe('boxeo', null).some((t) => t.tipo === 'patada')).toBe(false)
-    expect(tecnicasDe(null, 'suelo').map((t) => t.id)).toEqual(['caida', 'puente', 'escape-cadera', 'levantarse'])
+    expect(tecnicasDe(null, 'suelo').map((t) => t.id)).toEqual(['caida', 'puente', 'escape-cadera', 'levantarse', 'granby', 'sit-out'])
   })
 
   it('8 criterios y se aprueba solo con todos', () => {
@@ -46,10 +46,27 @@ describe('combinar disciplinas', () => {
   it('hay compatibilidad para cada par de disciplinas distintas', () => {
     for (const a of DISCIPLINAS) for (const b of DISCIPLINAS) if (a.id !== b.id) expect(compatibilidad(a.id, b.id), `${a.id}+${b.id}`).not.toBeNull()
   })
-  it('es simétrica y la lucha le suma suelo al boxeo', () => {
-    expect(compatibilidad('boxeo', 'kick')).toEqual(compatibilidad('kick', 'boxeo'))
-    expect(distanciasNuevas('boxeo', 'lucha')).toContain('suelo')
-    expect(distanciasNuevas('kick', 'muaythai')).toEqual([])
+  it('sigue los principios: complementar distancias y respetar lo recomendado', () => {
+    const c = (a: string, b: string) => compatibilidad(a, b)!.porcentaje
+    expect(c('boxeo', 'muaythai')).toBeGreaterThan(c('boxeo', 'karate'))
+    expect(c('karate', 'judo')).toBeGreaterThan(c('karate', 'taekwondo'))
+    expect(c('hibrido', 'boxeo')).toBe(100)
+    for (const a of DISCIPLINAS) for (const b of DISCIPLINAS) if (a.id !== b.id) {
+      const x = c(a.id, b.id)
+      expect(x).toBeGreaterThanOrEqual(20)
+      expect(x).toBeLessThanOrEqual(100)
+    }
+    expect(distanciasNuevas('boxeo', 'bjj')).toContain('suelo')
+    expect(distanciasNuevas('kick', 'muaythai')).toEqual(['clinch'])
+  })
+  it('las 10 artes tienen posturas, sombra, pies, encadenamientos y una combinación que existe', () => {
+    expect(ARTES).toHaveLength(10)
+    for (const x of ARTES) {
+      expect(DISCIPLINAS.some((d) => d.id === x.id), x.id).toBe(true)
+      expect(x.posturas.length).toBeGreaterThan(2)
+      expect(x.encadenamientos.length).toBeGreaterThan(2)
+      for (const id of [...x.combinacion.con, ...x.combinacion.alt]) expect(DISCIPLINAS.some((d) => d.id === id), `${x.id} → ${id}`).toBe(true)
+    }
   })
   it('cada disciplina tiene sombra (5 niveles) y pies (6 niveles) propios', () => {
     for (const d of DISCIPLINAS) {
