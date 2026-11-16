@@ -1,0 +1,57 @@
+{
+  "fuente": "Herrmann SD y otros. 2024 Adult Compendium of Physical Activities: a third update of the energy costs of human activities. J Sport Health Sci 2024;13(1):6-12. Valores verificados en pacompendium.com (adultos de 19 a 59 años).",
+  "enlace": "https://pacompendium.com/adult-compendium/",
+  "intensidad": "Moderada de 3,0 a 5,9 MET; vigorosa 6,0 o más (ACSM). Para los 150 minutos de la OMS, un minuto vigoroso cuenta como dos moderados.",
+  "actividades": {
+    "caminata": {
+      "nombre": "Caminata",
+      "variantes": {
+        "suave": { "texto": "Paseo", "met": 3.5, "codigo": "17160" },
+        "moderada": { "texto": "Ritmo normal (4,5 a 5,5 km/h)", "met": 3.8, "codigo": "17190" },
+        "rapida": { "texto": "Rápida (5,6 a 6,3 km/h)", "met": 4.8, "codigo": "17200" }
+      }
+    },
+    "trote": {
+      "nombre": "Trote o carrera",
+      "variantes": {
+        "moderada": { "texto": "Trote", "met": 7.5, "codigo": "12020" },
+        "rapida": { "texto": "Carrera a unos 10 km/h", "met": 9.3, "codigo": "12050" }
+      }
+    },
+    "bici": {
+      "nombre": "Bici",
+      "variantes": {
+        "suave": { "texto": "Tranquila", "met": 4.3, "codigo": "01015" },
+        "moderada": { "texto": "Moderada", "met": 7.0, "codigo": "01016" },
+        "rapida": { "texto": "Fuerte", "met": 9.0, "codigo": "01017" }
+      }
+    },
+    "bici-fija": {
+      "nombre": "Bici fija",
+      "variantes": { "moderada": { "texto": "General", "met": 6.8, "codigo": "01200" } }
+    },
+    "soga": {
+      "nombre": "Soga",
+      "variantes": {
+        "suave": { "texto": "Lenta (menos de 100 saltos por minuto)", "met": 8.3, "codigo": "15552" },
+        "moderada": { "texto": "Moderada (100 a 120 por minuto)", "met": 11.8, "codigo": "15551" },
+        "rapida": { "texto": "Rápida (120 a 160 por minuto)", "met": 12.3, "codigo": "15550" }
+      }
+    },
+    "calistenia": {
+      "nombre": "Ejercicios en casa (marcha, calistenia)",
+      "variantes": { "moderada": { "texto": "Esfuerzo moderado", "met": 3.8, "codigo": "02022" } }
+    }
+  },
+  "sesiones": {
+    "fuerza": { "texto": "Pesas, varios ejercicios de 8 a 15 repeticiones", "met": 3.5, "codigo": "02054" },
+    "fuerzaCircuito": { "texto": "Circuito o superseries", "met": 5.8, "codigo": "02055" },
+    "pesoCorporal": { "texto": "Peso corporal (sentadilla, estocada, flexión), general", "met": 3.0, "codigo": "02056" }
+  },
+  "porEjercicio": {
+    "caminata-rapida": { "actividad": "caminata", "variante": "rapida" },
+    "trote-suave": { "actividad": "trote", "variante": "moderada" },
+    "soga": { "actividad": "soga", "variante": "suave" },
+    "marcha-rodillas-altas": { "actividad": "calistenia", "variante": "moderada" }
+  }
+}

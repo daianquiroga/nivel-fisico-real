@@ -6,7 +6,9 @@ import { Aviso, Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
 import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
 import { sugerir, type Serie } from '../../lib/calc/progresion'
 import { db } from '../../lib/db/db'
-import { guardarSesionHecha, usarControlHoy } from '../../lib/diario'
+import { guardarActividad, guardarSesionHecha, usarControlHoy } from '../../lib/diario'
+import { metSesionFuerza } from '../../lib/calc/calorias'
+import mets from '../../content/normas/mets.json'
 import { pitido, usarPantallaEncendida, vibrar } from '../../lib/dispositivo'
 import { avisosLimitacion, ejercicio } from '../../lib/ejercicios'
 import { LIMITACIONES, diaDeHoy } from '../../lib/perfil'
@@ -255,6 +257,22 @@ export function Entrenar() {
     for (const [i, series] of Object.entries(run.resultados)) {
       const ep = run.sesion.ejercicios[Number(i)]
       if (ep && series.length) await guardarSesion(ep.id, series)
+    }
+    // Para las calorías y los minutos de cardio: cada cardio como actividad, y la parte de fuerza como otra.
+    const totalMin = Math.max(1, Math.round((Date.now() - run.inicio) / 60000))
+    let cardioMin = 0
+    for (const [i, series] of Object.entries(run.resultados)) {
+      const ep = run.sesion.ejercicios[Number(i)]
+      const mapa = (mets.porEjercicio as Record<string, { actividad: string; variante: string }>)[ep?.id ?? '']
+      if (!ep || !mapa || !series.length) continue
+      const act = (mets.actividades as Record<string, { nombre: string; variantes: Record<string, { met: number }> }>)[mapa.actividad]
+      const min = series.reduce((a, x) => a + x.reps, 0)
+      cardioMin += min
+      await guardarActividad({ fecha: fechaLocal(), nombre: ejercicio(ep.id)?.nombre ?? act.nombre, met: act.variantes[mapa.variante].met, minutos: min, actividad: mapa.actividad, variante: mapa.variante, origen: 'entrenar' })
+    }
+    if (run.sesion.tipo === 'fuerza' && totalMin - cardioMin > 0) {
+      const conPeso = run.sesion.ejercicios.some((x) => ejercicio(x.id)?.carga === 'externa')
+      await guardarActividad({ fecha: fechaLocal(), nombre: run.sesion.titulo, met: metSesionFuerza(run.sesion.metodo, conPeso), minutos: totalMin - cardioMin, origen: 'entrenar' })
     }
     await guardarSesionHecha({
       sesionId: run.sesion.id,

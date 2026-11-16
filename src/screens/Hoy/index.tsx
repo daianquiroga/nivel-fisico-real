@@ -9,6 +9,7 @@ import { usarPlan } from '../../lib/plan/usarPlan'
 import { ControlDiario } from './ControlDiario'
 import { Pasos } from './Pasos'
 import { TuDia } from './TuDia'
+import { Actividad, Agua } from './Actividad'
 import { usarInicio } from '../../lib/usarInicio'
 import s from './hoy.module.css'
 
@@ -154,6 +155,10 @@ export function Hoy() {
       )}
 
       {listo && <Pasos edad={perfil?.edad ?? 30} />}
+
+      {listo && <Actividad pesoKg={perfil?.pesoKg ?? (ultima?.datos as { pesoKg?: number } | undefined)?.pesoKg} />}
+
+      {listo && <Agua sexo={perfil?.sexo ?? 'h'} />}
 
       {listo && semana && plan !== undefined && <TuDia semana={semana} plan={plan} />}
 
