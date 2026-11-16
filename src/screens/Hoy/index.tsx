@@ -7,6 +7,7 @@ import type { Resultados } from '../../lib/evaluacion'
 import { diasParaProxima, usarEvaluaciones } from '../../lib/usarEvaluaciones'
 import { usarPlan } from '../../lib/plan/usarPlan'
 import { ControlDiario } from './ControlDiario'
+import { Pasos } from './Pasos'
 import { usarInicio } from '../../lib/usarInicio'
 import s from './hoy.module.css'
 
@@ -125,6 +126,8 @@ export function Hoy() {
       )}
 
       {listo && <ControlDiario semana={semana} />}
+
+      {listo && <Pasos edad={perfil?.edad ?? 30} />}
 
       {listo && plan && (
         <Tarjeta destacada={plan.dias[diaDeHoy()].sesiones.some((x) => x.ejercicios.length > 0 && !x.titulo.includes('opcional'))}>

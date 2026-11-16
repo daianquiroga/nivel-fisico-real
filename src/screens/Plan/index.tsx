@@ -8,6 +8,7 @@ import { alternativas, type EjercicioPlan, type PlanSemana, type SesionPlan } fr
 import { agregarSesion } from '../../lib/plan/editar'
 import { usarPlan } from '../../lib/plan/usarPlan'
 import { EditorSesion } from './EditorSesion'
+import { usarMetaPasos } from '../Hoy/Pasos'
 import { equilibrio, validarPlan } from '../../lib/plan/validador'
 import { usarInicio } from '../../lib/usarInicio'
 import h from '../Hoy/hoy.module.css'
@@ -95,6 +96,7 @@ export function Plan() {
   const [cambiando, setCambiando] = useState<{ sesion: number; ej: number } | null>(null)
   const [editando, setEditando] = useState<number | null>(null)
   const [nueva, setNueva] = useState(false)
+  const pasos = usarMetaPasos(perfil?.edad ?? 30)
   const hoy = diaDeHoy()
   const dia = params.get('dia') !== null ? Number(params.get('dia')) : hoy
 
@@ -203,6 +205,12 @@ export function Plan() {
         {dia === hoy ? ' · hoy' : ''}
         {!delDia.sesiones.some((x) => x.intensidad === 'fuerte') && !delDia.sesiones.some((x) => x.tipo === 'cardio') ? ' · descanso' : ''}
       </h2>
+      {pasos && (
+        <p className={estilos.texto2} style={{ margin: 0 }}>
+          Todos los días: <b>{pasos.meta.toLocaleString('es-AR')} pasos</b>
+          {pasos.progresiva ? ` (sube de a 1000 por semana hasta ${pasos.final.toLocaleString('es-AR')})` : ''}.
+        </p>
+      )}
       {delDia.sesiones.map((ses, i) =>
         editando === i ? (
           <EditorSesion key={ses.id} plan={plan} dia={dia} idx={i} entrada={entrada} onCambio={(p) => void cambiar(p)} onListo={() => setEditando(null)} />

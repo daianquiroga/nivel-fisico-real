@@ -5,9 +5,30 @@ import r from '../../components/resultados.module.css'
 import { records } from '../../lib/calc/progresion'
 import { ejercicio } from '../../lib/ejercicios'
 import { usarSesiones } from '../../lib/registroEjercicios'
+import { metaPasos } from '../../lib/calc/pasos'
+import { ultimosDias, usarPasos } from '../../lib/diario'
+import { BarrasPasos } from '../Hoy/Pasos'
 import { diasParaProxima, usarEvaluaciones } from '../../lib/usarEvaluaciones'
 import { usarInicio } from '../../lib/usarInicio'
 import h from '../Hoy/hoy.module.css'
+
+function TusPasos({ edad }: { edad: number }) {
+  const { lista } = usarPasos()
+  if (!lista?.length) return null
+  const dias = ultimosDias(lista, 14)
+  const conDato = dias.filter((d) => d.pasos > 0)
+  const promedio = conDato.length ? Math.round(conDato.reduce((a, d) => a + d.pasos, 0) / conDato.length) : 0
+  const { meta } = metaPasos(edad, dias.slice(-8, -1).map((d) => d.pasos))
+  return (
+    <Tarjeta>
+      <p className="etiqueta">Tus pasos · últimas 2 semanas</p>
+      <BarrasPasos dias={dias} meta={meta} />
+      <p className={estilos.chico}>
+        Promedio: {promedio.toLocaleString('es-AR')} por día ({conDato.length} días anotados). La línea punteada es tu meta actual.
+      </p>
+    </Tarjeta>
+  )
+}
 
 function TusEjercicios() {
   const { sesiones } = usarSesiones()
@@ -64,6 +85,7 @@ export function Progreso() {
           </Link>
         </Tarjeta>
         <TusEjercicios />
+        <TusPasos edad={perfil?.edad ?? 30} />
       </>
     )
   }
@@ -89,6 +111,7 @@ export function Progreso() {
       )}
 
       <TusEjercicios />
+      <TusPasos edad={perfil?.edad ?? 30} />
 
       <Tarjeta>
         <p className="etiqueta">Historial de evaluaciones</p>

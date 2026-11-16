@@ -52,3 +52,43 @@ export async function sesionesHechas(): Promise<(SesionHecha & { fecha: string }
   const r = await db.registros.where('[tipo+fecha]').between(['entrenamiento', ''], ['entrenamiento', '￿']).toArray()
   return r.map((x) => ({ ...(x.datos as unknown as SesionHecha), fecha: x.fecha }))
 }
+
+/* ---------- Pasos ---------- */
+
+export interface DiaPasos {
+  fecha: string
+  pasos: number
+}
+
+export async function leerPasos(): Promise<DiaPasos[]> {
+  const r = await db.registros.where('[tipo+fecha]').between(['pasos', ''], ['pasos', '￿']).toArray()
+  return r.map((x) => x.datos as unknown as DiaPasos).sort((a, b) => a.fecha.localeCompare(b.fecha))
+}
+
+export async function guardarPasos(d: DiaPasos) {
+  const previos = await db.registros.where('[tipo+fecha]').between(['pasos', ''], ['pasos', '￿']).toArray()
+  await db.transaction('rw', db.registros, async () => {
+    for (const p of previos) if ((p.datos as unknown as DiaPasos).fecha === d.fecha && p.id) await db.registros.delete(p.id)
+    await db.registros.add({ fecha: `${d.fecha}T12:00:00`, tipo: 'pasos', datos: d as unknown as Record<string, unknown> })
+  })
+}
+
+/** Pasos de los últimos n días (0 si no hay dato), del más viejo a hoy. */
+export function ultimosDias(lista: DiaPasos[], n: number, hoy = new Date()): DiaPasos[] {
+  const mapa = new Map(lista.map((d) => [d.fecha, d.pasos]))
+  return Array.from({ length: n }, (_, i) => {
+    const d = new Date(hoy)
+    d.setDate(d.getDate() - (n - 1 - i))
+    const f = fechaLocal(d)
+    return { fecha: f, pasos: mapa.get(f) ?? 0 }
+  })
+}
+
+export function usarPasos() {
+  const [lista, setLista] = useState<DiaPasos[] | null>(null)
+  const cargar = useCallback(async () => setLista(await leerPasos()), [])
+  useEffect(() => {
+    void cargar()
+  }, [cargar])
+  return { lista, recargar: cargar }
+}

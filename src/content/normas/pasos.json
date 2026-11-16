@@ -1,0 +1,10 @@
+{
+  "fuente": "Paluch AE y otros (Steps for Health Collaborative), Daily steps and all-cause mortality: a meta-analysis of 15 international cohorts. Lancet Public Health 2022;7(3):e219-e228. Cadencia: Tudor-Locke y otros, CADENCE-Adults (2019, 2020).",
+  "enlace": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9289978",
+  "enlaceCadencia": "https://ijbnpa.biomedcentral.com/track/pdf/10.1186/s12966-020-01045-z",
+  "mesetaMenos60": { "desde": 8000, "hasta": 10000 },
+  "meseta60omas": { "desde": 6000, "hasta": 8000 },
+  "cadenciaModerada": 100,
+  "cadenciaVigorosa": 130,
+  "nota": "La meta usa el comienzo de la meseta para la edad. Subir de a 1000 pasos por semana desde el promedio propio es una decisión de diseño de la app."
+}
