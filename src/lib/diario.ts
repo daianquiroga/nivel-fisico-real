@@ -146,3 +146,30 @@ export async function guardarAgua(d: DiaAgua) {
     await db.registros.add({ fecha: `${d.fecha}T12:00:00`, tipo: 'agua', datos: d as unknown as Record<string, unknown> })
   })
 }
+
+/* ---------- Estética ---------- */
+
+export interface Medidas {
+  fecha: string
+  valores: Record<string, number>
+}
+
+export interface Postura {
+  fecha: string
+  respuestas: Record<string, number>
+}
+
+export interface Satisfaccion {
+  fecha: string
+  valor: number
+}
+
+/** Registros de un tipo, del más viejo al más nuevo (con id para poder borrarlos). */
+export async function leerTipo<T>(tipo: string): Promise<(T & { id?: number })[]> {
+  const r = await db.registros.where('[tipo+fecha]').between([tipo, ''], [tipo, '\uffff']).toArray()
+  return r.map((x) => ({ ...(x.datos as unknown as T), id: x.id }))
+}
+
+export async function guardarTipo(tipo: string, fecha: string, datos: object) {
+  await db.registros.add({ fecha: `${fecha}T${new Date().toTimeString().slice(0, 8)}`, tipo, datos: datos as Record<string, unknown> })
+}

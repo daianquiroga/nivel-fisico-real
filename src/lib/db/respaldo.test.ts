@@ -60,3 +60,27 @@ describe('respaldo', () => {
     expect(() => leerRespaldo('{"app":"nivel-fisico-real","version":99,"tablas":{}}')).toThrow(/versión más nueva/)
   })
 })
+
+describe('respaldo con fotos', () => {
+  it('el texto nunca lleva fotos; el archivo solo si se pide; importar sin fotos conserva las del celular', async () => {
+    const { crearBaseDatos } = await import('./db')
+    const { exportarDatos, respaldoATexto, leerRespaldo, importarDatos } = await import('./respaldo')
+    const a = crearBaseDatos('prueba-fotos-a')
+    await a.fotos.add({ fecha: '2026-01-01', vista: 'frente', imagen: new Blob([new Uint8Array([1, 2, 3])], { type: 'image/jpeg' }) })
+    const sin = await exportarDatos(a)
+    expect(sin.fotos).toBeUndefined()
+    const con = await exportarDatos(a, { conFotos: true })
+    expect(con.fotos).toHaveLength(1)
+    expect(leerRespaldo(respaldoATexto(con)).fotos).toBeUndefined()
+
+    const b = crearBaseDatos('prueba-fotos-b')
+    await b.fotos.add({ fecha: '2026-02-02', vista: 'perfil', imagen: new Blob([new Uint8Array([9])]) })
+    await importarDatos(b, sin)
+    expect(await b.fotos.count()).toBe(1)
+    await importarDatos(b, con)
+    const fotos = await b.fotos.toArray()
+    expect(fotos).toHaveLength(1)
+    expect(fotos[0].vista).toBe('frente')
+    expect(new Uint8Array(await fotos[0].imagen.arrayBuffer())).toEqual(new Uint8Array([1, 2, 3]))
+  })
+})

@@ -40,6 +40,7 @@ export function Respaldo() {
   const [textoPegado, setTextoPegado] = useState('')
   const [textoCopia, setTextoCopia] = useState<string | null>(null)
   const [aImportar, setAImportar] = useState<TipoRespaldo | null>(null)
+  const [conFotos, setConFotos] = useState(false)
 
   const leerUltimo = async () => {
     const a = await db.ajustes.get('ultimoRespaldo')
@@ -50,7 +51,7 @@ export function Respaldo() {
   }, [])
 
   async function descargarArchivo() {
-    const r = await exportarDatos(db)
+    const r = await exportarDatos(db, { conFotos })
     const blob = new Blob([respaldoAJson(r)], { type: 'application/json' })
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -115,6 +116,10 @@ export function Respaldo() {
       </p>
       <p className={estilos.chico}>{ultimo ? `Último respaldo: ${formatoFecha(ultimo)}` : 'Todavía no hiciste ningún respaldo.'}</p>
 
+      <label style={{ display: 'flex', gap: 10, alignItems: 'center', minHeight: 44 }} className={estilos.chico}>
+        <input type="checkbox" checked={conFotos} onChange={(e) => setConFotos(e.target.checked)} style={{ width: 22, height: 22, accentColor: 'var(--accent)' }} />
+        Incluir las fotos de progreso en el archivo (queda más pesado). El texto para copiar nunca lleva fotos.
+      </label>
       <div className={estilos.fila}>
         <Boton onClick={descargarArchivo}>
           <Icono nombre="descargar" tam={20} /> Guardar archivo

@@ -1,0 +1,36 @@
+{
+  "expectativas": "Los cambios visibles suelen empezar a notarse entre las 8 y las 12 semanas de entrenar con constancia. Medite cada 2 a 4 semanas, no todos los días: el cuerpo varía de un día a otro por agua, comida y descanso.",
+  "medidas": [
+    { "id": "cintura", "nombre": "Cintura", "como": "De pie, al final de una exhalación normal, en el borde de arriba del hueso de la cadera (como en la evaluación)." },
+    { "id": "cadera", "nombre": "Cadera", "como": "Pies juntos, en la parte más saliente de los glúteos, con la cinta horizontal." },
+    { "id": "pecho", "nombre": "Pecho", "como": "Brazos al costado, a la altura de los pezones, al final de una exhalación normal." },
+    { "id": "brazo", "nombre": "Brazo contraído", "como": "Brazo derecho doblado a 90° y apretado: la parte más gruesa del bíceps." },
+    { "id": "muslo", "nombre": "Muslo", "como": "De pie, peso repartido, unos 15 cm por debajo del pliegue de la cola (siempre el mismo punto)." },
+    { "id": "cuello", "nombre": "Cuello", "como": "Justo debajo de la nuez, con la cinta apenas inclinada hacia adelante y abajo, sin apretar." }
+  ],
+  "consejosMedidas": [
+    "A la mañana, antes de comer y después de ir al baño.",
+    "Cinta apoyada sin apretar ni dejar flojo; medí dos veces y cargá el promedio.",
+    "Siempre en el mismo punto: marcá referencias (por ejemplo, cuántos centímetros arriba de la rodilla)."
+  ],
+  "fotos": [
+    "Misma luz, misma hora (mejor a la mañana) y el mismo lugar.",
+    "Celular a la altura del ombligo, a unos 2 metros, apoyado (con temporizador).",
+    "Misma ropa ajustada o de baño, postura relajada: sin meter panza ni sacar pecho.",
+    "Tres fotos: de frente, de perfil y de espalda, brazos un poco separados del cuerpo."
+  ],
+  "postura": {
+    "como": [
+      "Descalzo, de espaldas a una pared, talones a unos 5 cm.",
+      "Apoyá cola y espalda alta en la pared y mirá al frente, sin levantar el mentón.",
+      "Fijate qué toca la pared sin hacer fuerza, y pasá la mano por el hueco de la cintura."
+    ],
+    "preguntas": [
+      { "id": "cabeza", "texto": "¿La parte de atrás de la cabeza toca la pared mirando al frente?", "opciones": ["Sí, sin esfuerzo", "Solo si levanto el mentón", "No llega"] },
+      { "id": "hombros", "texto": "¿Los hombros tocan la pared?", "opciones": ["Sí, los dos", "Uno sí y otro no", "No, quedan adelante"] },
+      { "id": "lumbar", "texto": "¿Qué entra en el hueco de la cintura?", "opciones": ["La mano plana, justo", "Más que la mano (el puño)", "Nada: la espalda queda pegada"] }
+    ],
+    "nota": "Es una observación para seguir cambios, no un diagnóstico. Si tenés dolor, consultá a un profesional."
+  },
+  "satisfaccion": "Se registra aparte y nunca se mezcla con tu puntaje físico: cómo te sentís con tu cuerpo es tan importante como los números."
+}

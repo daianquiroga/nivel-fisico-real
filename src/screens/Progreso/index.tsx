@@ -13,6 +13,14 @@ import { diasParaProxima, usarEvaluaciones } from '../../lib/usarEvaluaciones'
 import { usarInicio } from '../../lib/usarInicio'
 import h from '../Hoy/hoy.module.css'
 
+function TuCuerpoLink() {
+  return (
+    <Link to="/tu-cuerpo" className={estilos.boton}>
+      Tu cuerpo: medidas, fotos y postura
+    </Link>
+  )
+}
+
 function TusPasos({ edad }: { edad: number }) {
   const { lista } = usarPasos()
   if (!lista?.length) return null
@@ -85,6 +93,7 @@ export function Progreso() {
             Empezar
           </Link>
         </Tarjeta>
+        <TuCuerpoLink />
         <TusEjercicios />
         <TusPasos edad={perfil?.edad ?? 30} />
       </>
@@ -117,6 +126,7 @@ export function Progreso() {
         </Tarjeta>
       )}
 
+      <TuCuerpoLink />
       <TusEjercicios />
       <TusPasos edad={perfil?.edad ?? 30} />
 

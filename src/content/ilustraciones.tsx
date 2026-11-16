@@ -403,3 +403,97 @@ export function EnReserva({ hechas = 8, reserva = 2 }: { hechas?: number; reserv
     </Lienzo>
   )
 }
+
+/** Dónde se toman las medidas del cuerpo: líneas sobre una silueta de frente. */
+export function MedidasCuerpo({ activa }: { activa?: string }) {
+  const lineas: { id: string; y: number; x1: number; x2: number; texto: string }[] = [
+    { id: 'cuello', y: 48, x1: 150, x2: 170, texto: 'cuello' },
+    { id: 'pecho', y: 72, x1: 132, x2: 188, texto: 'pecho' },
+    { id: 'brazo', y: 88, x1: 112, x2: 128, texto: 'brazo' },
+    { id: 'cintura', y: 98, x1: 140, x2: 180, texto: 'cintura' },
+    { id: 'cadera', y: 116, x1: 136, x2: 184, texto: 'cadera' },
+    { id: 'muslo', y: 136, x1: 140, x2: 158, texto: 'muslo' },
+  ]
+  return (
+    <Lienzo etiqueta="Dónde medir cuello, pecho, brazo, cintura, cadera y muslo" alto={196}>
+      <Silueta x={160} hombros={30} cintura={19} cadera={23} alto={168} activa={false} />
+      {lineas.map((l) => (
+        <g key={l.id}>
+          <ellipse
+            cx={(l.x1 + l.x2) / 2}
+            cy={l.y}
+            rx={(l.x2 - l.x1) / 2 + 2}
+            ry={4}
+            fill="none"
+            stroke={activa === l.id ? 'var(--accent)' : 'var(--done)'}
+            strokeWidth={activa === l.id ? 3.5 : 2}
+          />
+          <Texto x={l.x1 < 140 ? l.x1 - 10 : l.x2 + 10} y={l.y + 4} ancla={l.x1 < 140 ? 'end' : 'start'} color={activa === l.id ? 'var(--accent)' : undefined}>
+            {l.texto}
+          </Texto>
+        </g>
+      ))}
+    </Lienzo>
+  )
+}
+
+/** Guía de fotos: tres vistas y el celular a 2 metros. */
+export function GuiaFotos() {
+  return (
+    <Lienzo etiqueta="Fotos de frente, perfil y espalda, con el celular a 2 metros a la altura del ombligo" alto={196}>
+      <Silueta x={50} hombros={24} cintura={16} cadera={18} alto={140} activa={false} />
+      <g>
+        <circle cx={130} cy={40} r={11} fill="var(--surface-2)" stroke="var(--line)" strokeWidth={2} />
+        <path d="M126,52 Q118,70 124,96 Q128,116 124,136 L122,168 L134,168 L136,132 Q142,112 138,92 Q140,70 134,52 Z" fill="var(--surface-2)" stroke="var(--line)" strokeWidth={2} />
+      </g>
+      <Silueta x={210} hombros={24} cintura={16} cadera={18} alto={140} activa={false} />
+      <rect x={282} y={96} width={16} height={28} rx={3} fill="var(--muted)" />
+      <line x1={290} y1={124} x2={290} y2={168} stroke="var(--muted)" strokeWidth={2} />
+      <Flecha de={[242, 182]} a={[290, 182]} doble />
+      <Texto x={50} y={22}>frente</Texto>
+      <Texto x={130} y={22}>perfil</Texto>
+      <Texto x={210} y={22}>espalda</Texto>
+      <Texto x={290} y={88}>2 m</Texto>
+    </Lienzo>
+  )
+}
+
+/** Postura contra la pared: puntos de contacto y el hueco de la cintura. */
+export function PosturaPared() {
+  const punto = (y: number, ly: number, t: string, color = 'var(--accent)') => (
+    <g key={t}>
+      <circle cx={52} cy={y} r={6} fill={color} />
+      <path d={`M58,${y} L150,${ly}`} stroke="var(--line)" strokeDasharray="3 3" fill="none" />
+      <Texto x={156} y={ly + 4} ancla="start" color={color === 'var(--accent)' ? undefined : color}>
+        {t}
+      </Texto>
+    </g>
+  )
+  return (
+    <Lienzo etiqueta="De espaldas a la pared: cabeza, espalda alta, cola y talones; la mano en el hueco de la cintura" alto={190}>
+      <Piso />
+      <Pared x={38} />
+      <Figura
+        pose={{
+          cabeza: [58, 28],
+          cuello: [58, 44],
+          cadera: [60, 98],
+          rodI: [62, 132],
+          pieI: [62, 165],
+          rodD: [60, 132],
+          pieD: [60, 165],
+          puntaD: [76, 165],
+          codoI: [62, 72],
+          manoI: [64, 98],
+          codoD: [60, 72],
+          manoD: [62, 98],
+        }}
+      />
+      {punto(26, 26, 'cabeza')}
+      {punto(52, 58, 'espalda alta y hombros')}
+      {punto(82, 92, 'mano en la cintura', 'var(--done)')}
+      {punto(102, 124, 'cola')}
+      {punto(162, 158, 'talones (a 5 cm)')}
+    </Lienzo>
+  )
+}

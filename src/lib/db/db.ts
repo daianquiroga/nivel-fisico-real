@@ -53,6 +53,16 @@ export interface Registro {
   datos: Record<string, unknown>
 }
 
+export type VistaFoto = 'frente' | 'perfil' | 'espalda'
+
+/** Foto de progreso: solo en el celular. No va en el respaldo de texto. */
+export interface Foto {
+  id?: number
+  fecha: string
+  vista: VistaFoto
+  imagen: Blob
+}
+
 export interface Ajuste {
   clave: string
   valor: unknown
@@ -64,6 +74,7 @@ export type BaseDatos = Dexie & {
   evaluaciones: EntityTable<Evaluacion, 'id'>
   registros: EntityTable<Registro, 'id'>
   ajustes: EntityTable<Ajuste, 'clave'>
+  fotos: EntityTable<Foto, 'id'>
 }
 
 export const TABLAS = ['perfil', 'lugares', 'evaluaciones', 'registros', 'ajustes'] as const
@@ -78,6 +89,8 @@ export function crearBaseDatos(nombre = 'nivel-fisico-real'): BaseDatos {
     registros: '++id, fecha, tipo, [tipo+fecha]',
     ajustes: 'clave',
   })
+  // Versión 2: tabla de fotos. Solo agrega; no toca los datos anteriores.
+  db.version(2).stores({ fotos: '++id, fecha, vista' })
   return db
 }
 
