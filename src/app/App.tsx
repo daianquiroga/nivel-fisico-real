@@ -6,6 +6,7 @@ import { Preguntar } from '../screens/Preguntar'
 import { Combate } from '../screens/Combate'
 import { AnalisisPlan } from '../screens/Plan/Analisis'
 import { ArmarRutina } from '../screens/Plan/Armar'
+import { AsistenteRutina } from '../screens/Plan/Asistente'
 import { Tecnica } from '../screens/Tecnica'
 import { FichaTecnica, Tecnicas } from '../screens/Combate/Tecnicas'
 import { RondasCombate } from '../screens/Combate/Rondas'
@@ -83,6 +84,7 @@ export default function App() {
         <Route path="/preguntar" element={<Preguntar />} />
         <Route path="/plan/analisis" element={<AnalisisPlan />} />
         <Route path="/plan/armar" element={<ArmarRutina />} />
+        <Route path="/plan/asistente" element={<AsistenteRutina />} />
         <Route path="/tecnica" element={<Tecnica />} />
         <Route path="/combate" element={<Combate />} />
         <Route path="/combate/tecnicas" element={<Tecnicas />} />

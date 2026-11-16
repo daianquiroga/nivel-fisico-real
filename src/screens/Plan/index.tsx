@@ -177,8 +177,11 @@ export function Plan() {
             Armame el plan
           </Boton>
         </Tarjeta>
+        <Link to="/plan/asistente" className={estilos.boton}>
+          Prefiero armarla paso a paso
+        </Link>
         <Link to="/plan/armar" className={estilos.boton}>
-          Prefiero cargar mi propia rutina
+          Ya tengo una rutina: cargarla
         </Link>
       </>
     )
@@ -358,8 +361,11 @@ export function Plan() {
           <Link to="/plan/analisis" className={h.botonPrincipal}>
             Analizar mi rutina
           </Link>
+          <Link to="/plan/asistente" className={estilos.boton}>
+            Armar una rutina nueva paso a paso
+          </Link>
           <Link to="/plan/armar" className={estilos.boton}>
-            Armar o cargar mi propia rutina
+            Cargar o editar mi rutina a mano
           </Link>
           <Boton ancho onClick={() => setCalendario(true)}>
             Agregar mis sesiones a Google Calendar

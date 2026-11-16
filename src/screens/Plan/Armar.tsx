@@ -119,6 +119,10 @@ export function ArmarRutina() {
         <h1 className={e.titulo}>Mi rutina</h1>
         <p className={e.para}>Armala tildando ejercicios día por día, o pegá la que ya tenés. Abajo ves en vivo qué aporta y qué le falta.</p>
       </header>
+      <button type="button" className={x.item} style={{ textAlign: 'left', cursor: 'pointer', borderColor: 'var(--accent)' }} onClick={() => navegar('/plan/asistente')}>
+        <span className={x.itemNombre}>¿Preferís que te la arme yo? Paso a paso</span>
+        <span className={x.itemDetalle}>4 preguntas simples (días, horario, objetivo) y te propongo una rutina para ajustar. Recomendado si recién empezás.</span>
+      </button>
       <Segmentado
         etiqueta="Cómo cargarla"
         valor={modo}
