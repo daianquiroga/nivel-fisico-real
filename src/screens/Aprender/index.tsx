@@ -156,7 +156,7 @@ export function Aprender() {
               <Biblioteca />
             </>
           )}
-          {!categoria && <Proximamente entrega="entrega 6" items={['Poder de pelea y simulador de peleas.']} />}
+          {!categoria && <Proximamente entrega="entrega 7" items={['App de Android con lectura automática de pasos desde Health Connect.']} />}
         </>
       )}
     </>

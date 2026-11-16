@@ -9,6 +9,7 @@ import { RondasCombate } from '../screens/Combate/Rondas'
 import { EvaluarSombra } from '../screens/Combate/Evaluar'
 import { VozCombate } from '../screens/Combate/Voz'
 import { ReaccionCombate } from '../screens/Combate/Reaccion'
+import { PoderPelea, Simulador } from '../screens/Combate/Poder'
 import { Entrenar } from '../screens/Entrenar'
 import { Estetica } from '../screens/Estetica'
 import { Evaluacion } from '../screens/Evaluacion'
@@ -84,6 +85,8 @@ export default function App() {
         <Route path="/combate/evaluar" element={<EvaluarSombra />} />
         <Route path="/combate/voz" element={<VozCombate />} />
         <Route path="/combate/reaccion" element={<ReaccionCombate />} />
+        <Route path="/combate/poder" element={<PoderPelea />} />
+        <Route path="/combate/simulador" element={<Simulador />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </HashRouter>

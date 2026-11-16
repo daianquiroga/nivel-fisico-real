@@ -486,3 +486,54 @@ export function DibujoDistancias() {
     </Lienzo>
   )
 }
+
+/** Escala del poder de pelea: 10 = persona promedio, ~100 = campeón del mundo, y dónde estás vos. */
+export function EscalaPoder({ valor, rival }: { valor: number; rival?: { valor: number; nombre: string } }) {
+  const x = (v: number) => 20 + (Math.min(120, Math.max(0, v)) / 120) * 280
+  return (
+    <Lienzo etiqueta={`Escala de poder de pelea: tu valor es ${valor}; 10 es una persona promedio y cerca de 100 un campeón`} alto={110}>
+      <rect x={20} y={50} width={280} height={12} rx={6} fill="var(--surface-2)" />
+      <rect x={20} y={50} width={x(valor) - 20} height={12} rx={6} fill={acento} />
+      {[
+        [10, 'promedio'],
+        [100, 'campeón'],
+      ].map(([v, t]) => (
+        <g key={t}>
+          <line x1={x(Number(v))} x2={x(Number(v))} y1={44} y2={68} stroke="var(--text-2)" strokeWidth={2} />
+          <Texto x={x(Number(v))} y={86}>{`${v} ${t}`}</Texto>
+        </g>
+      ))}
+      <path d={`M${x(valor)},44 l-6,-10 l12,0 z`} fill={acento} />
+      <Texto x={x(valor)} y={26} color={acento}>{`vos: ${valor}`}</Texto>
+      {rival && (
+        <g>
+          <path d={`M${x(rival.valor)},68 l-6,10 l12,0 z`} fill={hecho} />
+          <Texto x={x(rival.valor)} y={104} color={hecho}>{`${rival.nombre.split(' ')[0].toLowerCase()}: ${rival.valor}`}</Texto>
+        </g>
+      )}
+    </Lienzo>
+  )
+}
+
+/** Dos peleadores enfrentados y una barra con cuántas peleas gana cada uno. */
+export function DosPeleadores({ gana, empate, pierde }: { gana: number; empate: number; pierde: number }) {
+  const total = Math.max(1, gana + empate + pierde)
+  const w = (n: number) => (n / total) * 280
+  const espejo = (p: Pose): Pose => Object.fromEntries(Object.entries(p).map(([k, v]) => [k, Array.isArray(v) ? [320 - (v[0] as number) + 40, v[1]] : v])) as unknown as Pose
+  return (
+    <Lienzo etiqueta={`De ${total} peleas: ganás ${gana}, empatás ${empate} y perdés ${pierde}`} alto={230}>
+      <Piso />
+      <g transform="translate(-30,0)">
+        <Figura pose={GUARDIA} color={acento} />
+      </g>
+      <g transform="translate(30,0)">
+        <Figura pose={espejo(GUARDIA)} color={hecho} />
+      </g>
+      <Texto x={100} y={186} color={acento}>vos</Texto>
+      <Texto x={250} y={186} color={hecho}>rival</Texto>
+      <rect x={20} y={200} width={w(gana)} height={14} fill={acento} />
+      <rect x={20 + w(gana)} y={200} width={w(empate)} height={14} fill="var(--muted)" />
+      <rect x={20 + w(gana) + w(empate)} y={200} width={w(pierde)} height={14} fill={hecho} />
+    </Lienzo>
+  )
+}

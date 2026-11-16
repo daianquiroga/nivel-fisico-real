@@ -125,6 +125,10 @@ export interface AjustesCombate {
   /** Disciplina que se suma después (recomendado tras 6 a 12 meses con la base). */
   segunda?: string
   desde: string
+  /** Para el poder de pelea y el simulador. */
+  experienciaGolpes?: string
+  experienciaAgarre?: string
+  sparring?: boolean
 }
 
 export async function leerAjustesCombate(): Promise<AjustesCombate | null> {

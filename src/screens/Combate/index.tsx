@@ -77,6 +77,14 @@ export function Combate() {
           <span className={s.itemNombre}>Entrenador por voz</span>
           <span className={s.itemDetalle}>Te canta combinaciones durante el round: elegís tempo, complejidad, orden y momento</span>
         </Link>
+        <Link to="/combate/poder" className={s.item}>
+          <span className={s.itemNombre}>Poder de pelea</span>
+          <span className={s.itemDetalle}>Tu número en una escala donde 10 es una persona promedio y cerca de 100 un campeón</span>
+        </Link>
+        <Link to="/combate/simulador" className={s.item}>
+          <span className={s.itemNombre}>Simulador</span>
+          <span className={s.itemDetalle}>500 peleas contra un rival y qué te falta para ganarle</span>
+        </Link>
         <Link to="/combate/reaccion" className={s.item}>
           <span className={s.itemNombre}>Contragolpes</span>
           <span className={s.itemDetalle}>Aparece un ataque y respondés con defensa y contragolpe; mide tu reacción</span>
