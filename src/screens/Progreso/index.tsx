@@ -8,6 +8,7 @@ import { usarSesiones } from '../../lib/registroEjercicios'
 import { metaPasos } from '../../lib/calc/pasos'
 import { ultimosDias, usarPasos } from '../../lib/diario'
 import { BarrasPasos } from '../Hoy/Pasos'
+import { Proyeccion } from './Proyeccion'
 import { diasParaProxima, usarEvaluaciones } from '../../lib/usarEvaluaciones'
 import { usarInicio } from '../../lib/usarInicio'
 import h from '../Hoy/hoy.module.css'
@@ -102,6 +103,12 @@ export function Progreso() {
       <h1 className="titulo-pantalla">Nivel físico real</h1>
       <p className={estilos.chico}>Última evaluación: {fechaCorta(ultima.fecha)}</p>
       <VistaResultados r={resultadosDe(ultima)} edad={edad} />
+      <Proyeccion
+        r={resultadosDe(ultima)}
+        edad={edad}
+        sexo={((ultima.datos as { sexo?: 'h' | 'm' }).sexo ?? perfil?.sexo ?? 'h') as 'h' | 'm'}
+        pesoKg={(ultima.datos as { pesoKg?: number }).pesoKg ?? perfil?.pesoKg}
+      />
 
       {puntos.length >= 2 && (
         <Tarjeta>
