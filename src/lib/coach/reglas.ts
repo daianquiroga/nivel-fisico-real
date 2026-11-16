@@ -214,8 +214,8 @@ export function consejos(d: DatosCoach, nivel: NivelLectura): Consejo[] {
       prioridad: 75,
       titulo: `Cumpliste la etapa ${d.etapa.numero}: ${d.etapa.nombre}`,
       ...armar(nivel, {
-        simple: 'Cumpliste los requisitos para pasar a la etapa siguiente. Seguí con el plan: la progresión sigue con tus registros.',
-        tecnico: '8 semanas o más, 80 % de cumplimiento y mejora de cardio y fuerza en el retest. La progresión de cargas y escalones sigue igual, guiada por tus registros.',
+        simple: 'Cumpliste los requisitos para pasar a la etapa siguiente. El plan se vuelve un poco más exigente: una serie más en los ejercicios principales.',
+        tecnico: '8 semanas o más, 80 % de cumplimiento, mejora de cardio y fuerza en el retest y técnica aprobada en los 6 básicos. La etapa nueva suma una serie a los ejercicios principales (y desde la 3, a los accesorios).',
       }),
       accion: { tipo: 'etapa', texto: 'Pasar de etapa' },
     })

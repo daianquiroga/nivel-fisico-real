@@ -91,3 +91,32 @@ describe('generador del plan', () => {
     expect(avisos.some((t) => t.includes('menos de 2 horas de dormir'))).toBe(true)
   })
 })
+
+describe('combate y etapas en el plan', () => {
+  const ids = (p: ReturnType<typeof generarPlan>) => p.dias.flatMap((d) => d.sesiones.flatMap((s) => s.ejercicios.map((x) => x.id)))
+
+  it('sin combate no suma sombra; con 30 o más, sombra y pies en los días de cardio', () => {
+    expect(ids(generarPlan(base({ objetivos: { estetica: 60, condicion: 40, combate: 0 } })))).not.toContain('sombra')
+    const p = generarPlan(base({ objetivos: { estetica: 30, condicion: 30, combate: 40 }, semana: semana([['Casa A'], ['Casa A'], ['Casa A'], ['Casa A'], ['Casa A'], [], []]) }))
+    const cardio = p.dias.flatMap((d) => d.sesiones).filter((s) => s.tipo === 'cardio')
+    expect(cardio.length).toBeGreaterThan(0)
+    for (const s of cardio) {
+      expect(s.titulo).toBe('Cardio y combate')
+      expect(s.ejercicios.map((x) => x.id)).toContain('sombra')
+    }
+    // Los minutos de cardio no cambian: suman lo mismo que antes.
+    const sin = generarPlan(base({ objetivos: { estetica: 30, condicion: 40, combate: 0 }, semana: semana([['Casa A'], ['Casa A'], ['Casa A'], ['Casa A'], ['Casa A'], [], []]) }))
+    const total = (q: typeof p) => q.dias.flatMap((d) => d.sesiones).filter((s) => s.tipo === 'cardio').reduce((a, s) => a + s.ejercicios.reduce((b, x) => b + x.rango[0], 0), 0)
+    expect(total(p)).toBe(total(sin))
+  })
+
+  it('la etapa 2 suma una serie a los principales', () => {
+    const series = (etapa: number) =>
+      generarPlan(base({ etapa }))
+        .dias.flatMap((d) => d.sesiones)
+        .flatMap((s) => s.ejercicios)
+        .filter((x) => x.rol === 'principal')
+        .map((x) => x.series)
+    expect(Math.max(...series(2))).toBeGreaterThan(Math.max(...series(1)))
+  })
+})

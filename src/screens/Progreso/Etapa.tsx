@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Lienzo, Texto } from '../../components/Figura'
 import { Tarjeta, estilos } from '../../components/ui'
 import { ETAPAS, type EstadoEtapa } from '../../lib/coach/etapas'
@@ -27,6 +28,7 @@ export function EscaleraEtapas({ actual }: { actual: number }) {
 export function Etapa() {
   const { nivel } = usarNivelLectura()
   const [etapa, setEtapa] = useState<EstadoEtapa | null | undefined>(undefined)
+  const [aviso, setAviso] = useState<string | null>(null)
   const cargar = () => void calcularCoach(nivel).then((r) => setEtapa(r.etapa))
   useEffect(cargar, [nivel]) // eslint-disable-line react-hooks/exhaustive-deps
   if (!etapa) return null
@@ -51,12 +53,25 @@ export function Etapa() {
           </li>
         ))}
       </ul>
+      <Link to="/tecnica" className={estilos.boton}>
+        Checklist de técnica de los básicos
+      </Link>
+      {aviso && <p className={estilos.chico}>{aviso}</p>}
       {etapa.lista && (
-        <button type="button" className={estilos.boton} onClick={() => void pasarDeEtapa(etapa.numero).then(cargar)}>
+        <button
+          type="button"
+          className={estilos.boton}
+          onClick={() =>
+            void pasarDeEtapa(etapa.numero).then((r) => {
+              setAviso(r.replanificado ? 'Listo: tu plan se volvió a armar con una serie más en los ejercicios principales.' : 'Listo. Como cambiaste el plan a mano, sumale vos una serie a los principales (o volvé a armarlo en Plan).')
+              cargar()
+            })
+          }
+        >
           Pasar a la etapa {etapa.numero + 1}
         </button>
       )}
-      <p className={estilos.chico}>Los requisitos salen de la especificación de la app; el control de técnica de los ejercicios básicos se suma más adelante.</p>
+      <p className={estilos.chico}>Los requisitos salen de la especificación de la app. Cada etapa nueva suma exigencia: una serie más en los principales desde la 2 y en los accesorios desde la 3.</p>
     </Tarjeta>
   )
 }

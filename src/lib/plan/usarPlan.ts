@@ -30,6 +30,7 @@ export async function armarEntrada(): Promise<EntradaPlan | null> {
     nivelCardio: nivel(ultima?.areas?.cardio),
     tipoCuerpo: tipo.tipo,
     escalones: escalonesIniciales(nivelFuerza, sesiones.map((s) => s.ejercicio)),
+    etapa: ((await db.ajustes.get('etapa'))?.valor as { numero?: number } | undefined)?.numero ?? 1,
   }
 }
 

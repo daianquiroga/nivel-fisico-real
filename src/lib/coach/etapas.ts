@@ -3,7 +3,7 @@
    - al menos 8 semanas en la etapa;
    - 80 % de las sesiones planeadas hechas en las últimas 8 semanas;
    - un retest dentro de la etapa que mejore cardio y fuerza respecto de la evaluación anterior.
-   El checklist de técnica de los 6 ejercicios básicos todavía no existe en la app: decisión de diseño, se suma más adelante. */
+   - la técnica aprobada en los 6 ejercicios básicos (checklist con video, src/lib/tecnica.ts). */
 import type { Area } from '../calc/puntajes'
 
 export const ETAPAS = ['Construir la base', 'Desarrollar', 'Rendimiento', 'Dominio', 'Élite personal']
@@ -37,7 +37,8 @@ export interface EstadoEtapa {
 
 const DIA = 86_400_000
 
-export function evaluarEtapa(e: EtapaGuardada, fechasHechas: string[], planeadasPorSemana: number, evaluaciones: EvaluacionAreas[], hoy = new Date()): EstadoEtapa {
+/** `tecnica`: cuántos de los 6 básicos tienen la técnica aprobada (si no se pasa, ese requisito no se muestra). */
+export function evaluarEtapa(e: EtapaGuardada, fechasHechas: string[], planeadasPorSemana: number, evaluaciones: EvaluacionAreas[], hoy = new Date(), tecnica?: number): EstadoEtapa {
   const inicio = new Date(e.inicio)
   const semanas = Math.max(0, Math.floor((hoy.getTime() - inicio.getTime()) / (7 * DIA)))
   const desde = new Date(Math.max(inicio.getTime(), hoy.getTime() - SEMANAS_MIN * 7 * DIA))
@@ -58,6 +59,7 @@ export function evaluarEtapa(e: EtapaGuardada, fechasHechas: string[], planeadas
     { texto: '80 % de las sesiones en las últimas 8 semanas', ok: cumplimiento >= CUMPLIMIENTO_MIN, detalle: `${Math.round(Math.min(1, cumplimiento) * 100)} %` },
     { texto: 'Un retest que mejore cardio y fuerza', ok: mejoro, detalle: ultima && previa ? (mejoro ? 'mejoraron' : 'todavía no mejoraron los dos') : 'falta el retest' },
   ]
+  if (tecnica !== undefined) requisitos.push({ texto: 'Técnica aprobada en los 6 ejercicios básicos', ok: tecnica >= 6, detalle: `${Math.min(6, tecnica)} de 6` })
   const numero = Math.min(ETAPAS.length, Math.max(1, e.numero))
   return { numero, nombre: ETAPAS[numero - 1], semanas, requisitos, lista: numero < ETAPAS.length && requisitos.every((r) => r.ok) }
 }

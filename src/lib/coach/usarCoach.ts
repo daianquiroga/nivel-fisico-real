@@ -5,7 +5,10 @@ import { ejercicio } from '../ejercicios'
 import type { Resultados } from '../evaluacion'
 import { faltasSeguidas, sesionesQueCuentan } from '../habitos'
 import { LIMITACIONES, cargarInicio, diaDeHoy } from '../perfil'
-import { leerPlan } from '../plan/usarPlan'
+import { armarEntrada, guardarPlan, leerPlan } from '../plan/usarPlan'
+import { generarPlan } from '../plan/generador'
+import { aprobados, basicosPara, type PruebaTecnica } from '../tecnica'
+import { equipoDisponible } from '../ejercicios'
 import { fechaLocal } from '../plan/sesion'
 import { todasLasSesiones } from '../registroEjercicios'
 import type { NivelLectura } from '../aprender'
@@ -26,9 +29,16 @@ export async function leerEtapa(inicioPorDefecto: string): Promise<EtapaGuardada
   return nueva
 }
 
-export async function pasarDeEtapa(actual: number) {
+/** Pasa a la etapa siguiente. Si el plan no lo cambió la persona a mano, se vuelve a armar con la exigencia nueva. */
+export async function pasarDeEtapa(actual: number): Promise<{ replanificado: boolean }> {
   const numero = Math.min(ETAPAS.length, actual + 1)
   await db.ajustes.put({ clave: CLAVE_ETAPA, valor: { numero, inicio: new Date().toISOString() } })
+  const plan = await leerPlan()
+  if (!plan || plan.editado) return { replanificado: false }
+  const entrada = await armarEntrada()
+  if (!entrada) return { replanificado: false }
+  await guardarPlan(generarPlan(entrada))
+  return { replanificado: true }
 }
 
 export async function activarLimitacion(valor: string) {
@@ -51,7 +61,7 @@ function leerOcultos(): string[] {
 
 /** Junta los datos guardados y devuelve los consejos de hoy y el estado de la etapa. */
 export async function calcularCoach(nivel: NivelLectura): Promise<{ consejos: Consejo[]; etapa: EstadoEtapa | null }> {
-  const [{ perfil }, plan, controles, hechas, sesiones, medidas, evs] = await Promise.all([
+  const [{ perfil, lugares }, plan, controles, hechas, sesiones, medidas, evs, tecnica] = await Promise.all([
     cargarInicio(),
     leerPlan(),
     leerControles(),
@@ -59,6 +69,7 @@ export async function calcularCoach(nivel: NivelLectura): Promise<{ consejos: Co
     todasLasSesiones(),
     leerTipo<Medidas>('medidas'),
     db.evaluaciones.orderBy('fecha').toArray(),
+    leerTipo<PruebaTecnica>('tecnica'),
   ])
   if (!perfil?.inicioCompleto) return { consejos: [], etapa: null }
   const hoy = fechaLocal()
@@ -77,7 +88,8 @@ export async function calcularCoach(nivel: NivelLectura): Promise<{ consejos: Co
   let etapa: EstadoEtapa | null = null
   if (plan) {
     const guardada = await leerEtapa(plan.creado)
-    etapa = evaluarEtapa(guardada, fechas, sesionesQueCuentan(plan).length, evaluaciones)
+    const basicos = basicosPara(plan, equipoDisponible(lugares), perfil.limitaciones ?? []).map((e) => e.id)
+    etapa = evaluarEtapa(guardada, fechas, sesionesQueCuentan(plan).length, evaluaciones, new Date(), aprobados(tecnica, basicos))
   }
 
   const idxHoy = plan ? plan.dias[diaDeHoy()].sesiones.findIndex((s) => s.tipo !== 'movilidad' && s.ejercicios.length > 0) : -1

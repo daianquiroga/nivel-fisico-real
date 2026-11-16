@@ -59,6 +59,8 @@ export interface EntradaPlan {
   /** Nivel de 1 a 5 en fuerza y cardio (de la última evaluación); 2 si no hay datos. */
   nivelFuerza: number
   nivelCardio: number
+  /** Etapa del plan (1 a 5). Desde la 2 los ejercicios principales llevan una serie más; desde la 3, también los accesorios. */
+  etapa?: number
   tipoCuerpo?: Tendencia
   /** Índice del escalón actual en cada escalera (id de la escalera → índice). */
   escalones: Record<string, number>
@@ -219,7 +221,7 @@ function armarFuerza(entrada: EntradaPlan, lugar: Lugar, foco: keyof typeof SLOT
       id: elegido.id,
       patrones: slot.patrones,
       rol: slot.rol,
-      series: principal ? 3 : estetica >= 50 && slot.rol === 'accesorio' ? 3 : 2,
+      series: (principal ? 3 : estetica >= 50 && slot.rol === 'accesorio' ? 3 : 2) + ((entrada.etapa ?? 1) >= 2 && principal ? 1 : 0) + ((entrada.etapa ?? 1) >= 3 && slot.rol === 'accesorio' ? 1 : 0),
       rango: elegido.rango,
       descansoSeg: principal ? (elegido.carga === 'externa' ? 120 : 90) : slot.rol === 'accesorio' ? 60 : 45,
     })
@@ -394,6 +396,30 @@ export function cuantasDeFuerza(diasDisponibles: number, estetica: number): numb
   return estetica >= 40 ? 4 : 3
 }
 
+/** Si "Saber defenderme" pesa, suma sombra y juego de pies (decisión de diseño de la app):
+    - 20 puntos o más: 2 rounds de sombra (6 minutos) como entrada en calor de la fuerza, si entran en el horario libre;
+    - 30 o más: en los días de cardio, la mitad de los minutos pasa a sombra y 6 a juego de pies (el total no cambia). */
+export function sumarCombate(sesion: SesionPlan, entrada: EntradaPlan, minutosHueco: number) {
+  const combate = entrada.objetivos.combate
+  const ep = (id: string, minutos: number): EjercicioPlan => ({ id, patrones: ['cardio'], rol: 'cardio', series: 1, rango: [minutos, minutos], descansoSeg: 0 })
+  if (sesion.tipo === 'fuerza' && combate >= 20 && minutosHueco - sesion.minutos >= 6) {
+    sesion.ejercicios.unshift(ep('sombra', 6))
+    sesion.minutos += 6
+    sesion.nota = `Empezá con 2 rounds de sombra suave como entrada en calor. ${sesion.nota ?? ''}`.trim()
+  }
+  if (sesion.tipo === 'cardio' && combate >= 30 && sesion.ejercicios.length === 1) {
+    const total = sesion.ejercicios[0].rango[0]
+    const sombra = Math.max(6, Math.round((total * 0.5) / 3) * 3)
+    const pies = total - sombra >= 12 ? 6 : 0
+    const resto = total - sombra - pies
+    const base = sesion.ejercicios[0]
+    const resto2: EjercicioPlan = { ...base, rango: [resto, resto] }
+    sesion.ejercicios = [ep('juego-pies', pies), ep('sombra', sombra), resto2].filter((x) => x.rango[0] > 0)
+    sesion.titulo = 'Cardio y combate'
+    sesion.nota = 'Juego de pies y rounds de sombra (2 minutos con 1 de pausa), después el resto del cardio. Todo cuenta para los minutos de la OMS.'
+  }
+}
+
 export function generarPlan(entrada: EntradaPlan, hoy = new Date()): PlanSemana {
   const { semana, lugares } = entrada
   const porNombre = new Map(lugares.map((l) => [l.nombre, l]))
@@ -428,6 +454,7 @@ export function generarPlan(entrada: EntradaPlan, hoy = new Date()): PlanSemana 
     } else {
       sesion = armarCardio(entrada, principal, Math.min(minutosCardio, minutosHueco), nuevoId())
     }
+    sumarCombate(sesion, entrada, minutosHueco)
     if (h1) {
       sesion.desde = h1.desde
       sesion.hasta = aHora(aMin(h1.desde) + sesion.minutos)

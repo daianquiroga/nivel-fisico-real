@@ -29,8 +29,8 @@ export const Coach = forwardRef<CoachRef, { onCambioPerfil?: () => void }>(funct
       setHecho('Listo: modo cuidado activado. Lo podés sacar desde Perfil.')
       onCambioPerfil?.()
     } else if (a.tipo === 'etapa' && estado?.etapa) {
-      await pasarDeEtapa(estado.etapa.numero)
-      setHecho(`¡Bienvenido a la etapa ${estado.etapa.numero + 1}!`)
+      const r = await pasarDeEtapa(estado.etapa.numero)
+      setHecho(`¡Etapa ${estado.etapa.numero + 1}!${r.replanificado ? ' Tu plan se volvió a armar con una serie más en los principales.' : ''}`)
     }
     await recargar()
   }
