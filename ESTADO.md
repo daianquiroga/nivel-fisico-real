@@ -8,6 +8,7 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.35.0: causa real de que Android no se actualizara sola. El plugin (@capgo/capacitor-updater 8.54) rechaza toda descarga sin `checksum` ("Checksum required"). Ahora `publicar.yml` calcula el SHA-256 del zip y lo pone en `version.json`, y la app lo pasa a `download`. Las apps instaladas antes de esta versión no pueden actualizarse solas: hay que instalar el APK una vez.
 - Versión 0.34.1: el resultado de "Buscar actualización ahora" se muestra justo debajo del botón (antes quedaba al final de la tarjeta y no se veía), con la versión instalada.
 - Versión 0.34.0: más de un entrenamiento por día y limpieza.
   - Asistente: la propuesta muestra los 7 días; en cada uno, "+ Sumar otro entrenamiento" (cardio 30 min, combate 15 min o movilidad 10 min, a la hora que elijas) y "Sacar este entrenamiento". Si sacás todos los ejercicios de uno, desaparece. Ya no guarda las movilidades opcionales escondidas de los días libres (eran la "movilidad de tobillo" que quedaba después de borrar todo). Minutos de los extras: decisión de diseño.

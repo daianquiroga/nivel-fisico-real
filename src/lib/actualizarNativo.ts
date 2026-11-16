@@ -21,6 +21,8 @@ export interface InfoVersion {
   version: string
   url: string
   apkMinima: string
+  /** Huella SHA-256 del zip (el plugin la exige para aceptar la descarga). */
+  checksum?: string
   /** Dirección del APK para cuando hace falta instalarlo de nuevo. */
   apk?: string
 }
@@ -108,6 +110,7 @@ export async function buscarActualizacion(aplicarYa = false): Promise<ResultadoB
     const r = await fetch(`${__URL_ACTUALIZACION__}version.json?t=${Date.now()}`, { cache: 'no-store' })
     if (!r.ok) return anotar('error', `version.json respondió ${r.status}`)
     const info = (await r.json()) as InfoVersion
+    if (!info.checksum) return anotar('error', 'falta la huella del archivo en version.json')
     const apk = (await CapacitorUpdater.getBuiltinVersion()).version
     const d = decidir(info, __VERSION_APP__, apk)
     const estado = await leerEstadoActualizacion()
@@ -120,7 +123,7 @@ export async function buscarActualizacion(aplicarYa = false): Promise<ResultadoB
       return anotar('al-dia')
     }
     const ya = (await CapacitorUpdater.list()).bundles.find((b) => b.version === info.version && b.status !== 'error' && b.status !== 'deleted')
-    const bajada = ya ?? (await CapacitorUpdater.download({ url: info.url, version: info.version }))
+    const bajada = ya ?? (await CapacitorUpdater.download({ url: info.url, version: info.version, checksum: info.checksum ?? '' }))
     await guardar({ ...estado, pendiente: info.version, apkNueva: undefined })
     await anotar('aplicando')
     if (aplicarYa) {

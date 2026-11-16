@@ -37,7 +37,9 @@ jobs:
           npx vite build --mode android --outDir dist-android
           mkdir -p dist/android
           (cd dist-android && zip -qr "../dist/android/web-$VERSION.zip" .)
-          node -e "require('fs').writeFileSync('dist/android/version.json', JSON.stringify({ version: '$VERSION', url: process.env.URL_ACTUALIZACION + 'web-$VERSION.zip', apkMinima: require('fs').readFileSync('android/apk-minima.txt', 'utf8').trim(), apk: process.env.APK }))"
+          # Huella SHA-256 del zip: la app la exige para aceptar la descarga.
+          CHECKSUM=$(sha256sum "dist/android/web-$VERSION.zip" | cut -d' ' -f1)
+          node -e "require('fs').writeFileSync('dist/android/version.json', JSON.stringify({ version: '$VERSION', url: process.env.URL_ACTUALIZACION + 'web-$VERSION.zip', checksum: '$CHECKSUM', apkMinima: require('fs').readFileSync('android/apk-minima.txt', 'utf8').trim(), apk: process.env.APK }))"
           cat dist/android/version.json
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
