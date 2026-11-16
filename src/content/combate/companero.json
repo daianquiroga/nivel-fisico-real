@@ -1,0 +1,18 @@
+{
+  "fuente": "Reglas básicas de práctica con compañero en clubes de boxeo, muay thai y BJJ, y el artículo \"Sparring: cuándo y cómo, con seguridad\" de la app (England Boxing). Los ejercicios y tiempos son decisión de diseño de la app.",
+  "reglas": [
+    "Acuerden la intensidad antes de empezar (por ejemplo, golpes al 30 %) y respétenla. Si uno sube, el otro avisa.",
+    "Protector bucal y guantes siempre que haya golpes; vendas debajo.",
+    "En agarre y suelo, se palmea dos veces (o se dice \"tap\") para soltar enseguida. Se suelta siempre, sin discutir.",
+    "Primero lento y sin resistencia; la resistencia se sube de a poco.",
+    "Ante un golpe en la cabeza con mareo, dolor de cabeza o confusión, se termina el día (mirá \"Golpes en la cabeza\" en Aprender)."
+  ],
+  "ejercicios": [
+    { "nombre": "Manoplas (focos)", "tecnica": "jab", "como": "El compañero sostiene las manoplas y canta combinaciones (1-2, 1-2-3…). Vos pegás a la manopla y volvés a la guardia. Después devuelve un golpe suave para que esquives.", "tiempo": "3 rounds de 2 minutos por persona" },
+    { "nombre": "Defensa y contra a ritmo lento", "tecnica": "esquive", "como": "Uno ataca solo con jab o directo al 30 %; el otro esquiva, bloquea o hace pull back y contesta tocando. Cambian cada round.", "tiempo": "4 rounds de 2 minutos" },
+    { "nombre": "Chequeo y contra", "tecnica": "chequeo", "como": "Uno tira patadas bajas suaves a la canilla con protector; el otro chequea y contesta con un directo a la manopla o al guante.", "tiempo": "3 rounds de 2 minutos" },
+    { "nombre": "Pelea por el clinch", "tecnica": "clinch", "como": "De pie, buscan las dos manos en la nuca del otro sin golpear. El que lo logra cuenta 3 y se separan.", "tiempo": "3 rounds de 1 minuto" },
+    { "nombre": "Escapes con resistencia progresiva", "tecnica": "escape-cadera", "como": "Uno arriba en montada o cien kilos; el de abajo escapa con puente y camarón. El de arriba resiste al 30 %, después al 60 %.", "tiempo": "5 intentos por persona" },
+    { "nombre": "Sprawl ante la entrada", "tecnica": "sprawl", "como": "Uno entra lento a las piernas; el otro hace sprawl y vuelve a la guardia. Suban la velocidad de a poco.", "tiempo": "3 series de 6 por persona" }
+  ]
+}

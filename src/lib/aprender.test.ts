@@ -51,6 +51,7 @@ describe('búsqueda flexible', () => {
     expect(ids('agujetas en las piernas')[0]).toBe('dolor-muscular')
   })
   it('no confunde palabras cortas dentro de otras', () => {
-    expect(ids('doms')).toEqual(['dolor-muscular'])
+    expect(ids('doms')[0]).toBe('dolor-muscular')
+    expect(ids('doms')).not.toContain('guia-pausas')
   })
 })

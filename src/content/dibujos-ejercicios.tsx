@@ -876,6 +876,107 @@ const DIBUJOS: Record<string, () => ReactNode> = {
       textos={['Hombros abajo', 'Hombros arriba']}
     />
   ),
+  /* Potencia, cuello, agarre y cadera */
+  'salto-vertical': () => (
+    <Dos
+      etiqueta="Salto vertical: bajar rápido a media sentadilla y saltar lo más alto posible"
+      a={{ pose: pose({ cabeza: [92, 56], cuello: [88, 70], cadera: [70, 116], rod: [100, 132], pie: [82, 165], punta: [96, 165], codo: [66, 92], mano: [52, 108] }) }}
+      b={{ pose: pose({ cabeza: [80, 12], cuello: [80, 26], cadera: [80, 80], rod: [82, 112], pie: [82, 142], punta: [92, 146], codo: [88, 14], mano: [92, 2] }), adelante: <Flecha de={[120, 140]} a={[120, 90]} /> }}
+      textos={['Carga', 'Salto']}
+    />
+  ),
+  'salto-largo': () => (
+    <Dos
+      etiqueta="Salto en largo: brazos atrás, cadera atrás y salto hacia adelante, caída con rodillas dobladas"
+      a={{ pose: pose({ cabeza: [62, 60], cuello: [58, 74], cadera: [40, 116], rod: [70, 132], pie: [52, 165], punta: [66, 165], codo: [36, 92], mano: [22, 106] }) }}
+      b={{ pose: pose({ cabeza: [124, 62], cuello: [120, 76], cadera: [102, 118], rod: [134, 134], pie: [118, 165], punta: [132, 165], codo: [134, 92], mano: [148, 104] }), atras: <Flecha de={[20, 150]} a={[96, 150]} /> }}
+      textos={['Carga', 'Caída firme']}
+    />
+  ),
+  'salto-patinador': () => (
+    <Dos
+      etiqueta="Saltos de patinador vistos de frente: de una pierna a la otra, frenando cada caída"
+      a={{ pose: pose({ cabeza: [104, 52], cuello: [102, 66], cadera: [96, 112], rod: [104, 138], pie: [106, 165], rodI: [80, 134], pieI: [66, 150], codo: [86, 86], mano: [74, 100], codoI: [116, 84], manoI: [126, 96] }) }}
+      b={{ pose: pose({ cabeza: [56, 52], cuello: [58, 66], cadera: [64, 112], rod: [56, 138], pie: [54, 165], rodI: [80, 134], pieI: [94, 150], codo: [74, 86], mano: [86, 100], codoI: [44, 84], manoI: [34, 96] }), adelante: <Flecha de={[130, 24]} a={[40, 24]} /> }}
+      textos={['Sobre la derecha', 'Caída a la izquierda']}
+    />
+  ),
+  'flexion-explosiva': () => (
+    <Dos
+      etiqueta="Flexión explosiva: bajar controlado y empujar fuerte hasta despegar las manos"
+      a={{ pose: flexion({ mano: [128, 165], pie: [12, 165], abajo: true }) }}
+      b={{ pose: { ...flexion({ mano: [128, 165], pie: [12, 165] }), manoD: [130, 148], manoI: [126, 146] }, adelante: <Flecha de={[150, 160]} a={[150, 118]} /> }}
+      textos={['Abajo', 'Manos en el aire']}
+    />
+  ),
+  'lanzamiento-pelota': () => (
+    <Dos
+      etiqueta="Lanzamiento contra el piso: pelota arriba de la cabeza y tirarla con todo el cuerpo delante de los pies"
+      a={{ pose: pose({ ...DE_PIE, pie: [80, 160], punta: [92, 165], codo: [84, 22], mano: [86, 12] }), adelante: <circle cx={86} cy={10} r={9} fill={metal} /> }}
+      b={{ pose: pose({ cabeza: [108, 70], cuello: [100, 82], cadera: [70, 116], rod: [96, 134], pie: [82, 165], punta: [96, 165], codo: [116, 108], mano: [124, 132] }), adelante: <><circle cx={128} cy={156} r={11} fill={metal} /><Flecha de={[140, 100]} a={[140, 140]} /></> }}
+      textos={['Arriba', 'Contra el piso']}
+    />
+  ),
+  'lanzamiento-rotacion': () => (
+    <Dos
+      etiqueta="Lanzamiento con giro: la pelota sale desde la cadera girando el pie de atrás, como un directo"
+      a={{ pose: pose({ ...DE_PIE, rod: [92, 134], pie: [100, 165], rodI: [70, 134], pieI: [58, 165], cadera: [78, 100], cuello: [74, 50], cabeza: [72, 34], codo: [64, 86], mano: [60, 106] }), adelante: <circle cx={56} cy={110} r={10} fill={metal} /> }}
+      b={{ pose: pose({ ...DE_PIE, rod: [100, 132], pie: [106, 165], rodI: [76, 134], pieI: [62, 162], cadera: [86, 100], cuello: [92, 50], cabeza: [96, 34], codo: [116, 66], mano: [138, 62] }), adelante: <><circle cx={148} cy={60} r={10} fill={metal} /><rect x={154} y={20} width={6} height={148} fill="var(--surface-2)" stroke="var(--line)" /></> }}
+      textos={['Carga del lado de afuera', 'Giro y lanzamiento']}
+    />
+  ),
+  'cuello-isometrico': () => (
+    <Dos
+      etiqueta="Cuello isométrico: la mano empuja y la cabeza no se mueve, adelante y a los costados"
+      a={{ pose: pose({ ...DE_PIE, codo: [104, 46], mano: [92, 28] }), adelante: <Flecha de={[112, 30]} a={[96, 30]} /> }}
+      b={{ pose: pose({ cabeza: [80, 30], cuello: [80, 44], cadera: [80, 98], rod: [72, 132], pie: [70, 165], rodI: [88, 132], pieI: [90, 165], codo: [102, 40], mano: [92, 26], codoI: [62, 72], manoI: [58, 98] }), adelante: <Flecha de={[106, 22]} a={[94, 26]} /> }}
+      textos={['De frente (perfil)', 'Al costado (de frente)']}
+    />
+  ),
+  'colgado-toalla': () => {
+    const p = bajar(colgado(0.18), 26)
+    const toalla = (
+      <>
+        <BarraFija />
+        <path d={`M${p.manoD[0] - 4},18 L${p.manoD[0] - 4},${p.manoD[1] + 6} M${p.manoD[0] + 4},18 L${p.manoD[0] + 4},${p.manoD[1] + 6}`} stroke={acento} strokeWidth={5} strokeLinecap="round" />
+      </>
+    )
+    return <Dos etiqueta="Colgado con toalla: colgado de una toalla pasada por la barra, apretándola fuerte" a={{ atras: toalla, pose: p }} b={{ atras: toalla, pose: p }} textos={['Agarrá la toalla', 'Aguantá apretando']} />
+  },
+  'cadera-90-90': () => (
+    <Dos
+      etiqueta="Cadera 90/90: sentado con las dos rodillas a 90 grados, girarlas juntas hacia el otro lado"
+      a={{ pose: pose({ cabeza: [62, 70], cuello: [62, 84], cadera: [62, 150], rod: [104, 150], pie: [104, 166], punta: [116, 166], rodI: [30, 156], pieI: [30, 136], codo: [46, 120], mano: [36, 160], codoI: [78, 120], manoI: [88, 160] }) }}
+      b={{ pose: pose({ cabeza: [98, 70], cuello: [98, 84], cadera: [98, 150], rod: [56, 150], pie: [56, 166], punta: [44, 166], rodI: [130, 156], pieI: [130, 136], codo: [114, 120], mano: [124, 160], codoI: [82, 120], manoI: [72, 160] }), adelante: <FlechaCurvaSimple /> }}
+      textos={['Hacia un lado', 'Hacia el otro']}
+    />
+  ),
+  'aductores-mariposa': () => (
+    <Dos
+      etiqueta="Mariposa vista de frente: plantas juntas, rodillas que bajan solas y pecho alto"
+      a={{ pose: pose({ cabeza: [80, 70], cuello: [80, 84], cadera: [80, 150], rod: [118, 132], pie: [86, 162], rodI: [42, 132], pieI: [74, 162], codo: [100, 120], mano: [86, 156], codoI: [60, 120], manoI: [74, 156] }) }}
+      b={{ pose: pose({ cabeza: [80, 78], cuello: [80, 92], cadera: [80, 150], rod: [126, 148], pie: [86, 162], rodI: [34, 148], pieI: [74, 162], codo: [104, 130], mano: [86, 156], codoI: [56, 130], manoI: [74, 156] }), adelante: <><Flecha de={[128, 126]} a={[132, 144]} /><Flecha de={[32, 126]} a={[28, 144]} /></> }}
+      textos={['Inicio (de frente)', 'Rodillas abajo']}
+    />
+  ),
+  'balanceo-piernas': () => (
+    <Dos
+      etiqueta="Balanceos de pierna: de costado a una pared, la pierna de afuera va adelante y atrás"
+      a={{ atras: <rect x={36} y={14} width={7} height={154} fill="var(--surface-2)" stroke="var(--line)" />, pose: pose({ ...DE_PIE, codoI: [62, 70], manoI: [44, 76], rod: [94, 140], pie: [58, 158], punta: [52, 166] }) }}
+      b={{ atras: <rect x={36} y={14} width={7} height={154} fill="var(--surface-2)" stroke="var(--line)" />, pose: pose({ ...DE_PIE, codoI: [62, 70], manoI: [44, 76], rod: [110, 82], pie: [140, 68], punta: [144, 58] }), adelante: <Flecha de={[100, 150]} a={[140, 84]} /> }}
+      textos={['Atrás', 'Adelante y arriba']}
+    />
+  ),
+}
+
+/** Corre una posición hacia abajo (para colgarse de algo más largo que la barra). */
+function bajar(p: Pose, dy: number): Pose {
+  return Object.fromEntries(Object.entries(p).map(([k, v]) => [k, Array.isArray(v) ? [v[0], v[1] + dy] : v])) as unknown as Pose
+}
+
+/** Flecha curva corta para cambios de lado (sin depender del módulo de combate). */
+function FlechaCurvaSimple() {
+  return <path d="M50,120 Q80,96 110,120" fill="none" stroke="var(--done)" strokeWidth={2.5} strokeLinecap="round" />
 }
 
 export function DibujoEjercicio({ id }: { id: string }) {

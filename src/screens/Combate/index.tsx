@@ -162,6 +162,10 @@ export function Combate() {
           <span className={s.itemNombre}>Las 10 artes: cómo se mueve cada una</span>
           <span className={s.itemDetalle}>Reparto de peso con dibujo, sombra, pies, encadenamientos y con qué combinarla</span>
         </Link>
+        <Link to="/combate/bolsa" className={s.item}>
+          <span className={s.itemNombre}>Bolsa y con compañero</span>
+          <span className={s.itemDetalle}>4 niveles de rounds de bolsa con cuidado de manos, y ejercicios para cuando tengas con quién</span>
+        </Link>
         <Link to="/combate/pruebas" className={s.item}>
           <span className={s.itemNombre}>Pruebas de combate</span>
           <span className={s.itemDetalle}>Velocidad y aguante de patada (pruebas publicadas) y el test de judo, con tu evolución</span>

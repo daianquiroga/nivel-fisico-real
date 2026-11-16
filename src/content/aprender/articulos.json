@@ -704,5 +704,279 @@
         "enlace": ""
       }
     ]
+  },
+  {
+    "id": "lesiones-combate",
+    "categoria": "salud",
+    "titulo": "Lesiones en combate: dónde pasan y cómo evitarlas",
+    "resumen": "Qué zonas se lastiman más en cada disciplina, cómo prevenir y cómo volver.",
+    "etiquetas": [
+      "lesion",
+      "lesiones",
+      "mano",
+      "muñeca",
+      "hombro",
+      "rodilla",
+      "tobillo",
+      "dedos",
+      "prevenir",
+      "volver"
+    ],
+    "dibujo": "zonas-lesion",
+    "niveles": {
+      "principiante": [
+        "Cada disciplina tiene sus zonas: en boxeo, sobre todo mano, muñeca y hombro; en BJJ, manos y dedos, pies y codos; en MMA (en pelea), la cabeza primero y después mano y muñeca.",
+        "Lo que más protege: vendas y guantes para pegar, entrar en calor, subir la carga de a poco (ver Progreso → Carga) y dormir bien.",
+        "Dolor punzante, en una articulación, que te hace cambiar el movimiento o que no se va en 2 o 3 días: pará eso y consultá a un profesional. La app no diagnostica."
+      ],
+      "intermedio": [
+        "Fuerza que protege: cuello (golpes en la cabeza y suelo), hombros (manguito: face pull, pájaro) y agarre (BJJ y judo). Están en la biblioteca.",
+        "En BJJ muchas lesiones son de los dedos y las manos por agarrar el kimono: soltá a tiempo y fortalecé el agarre de a poco.",
+        "Para volver de una molestia: el movimiento que no duele (o con molestia de 3 de 10 como máximo, que no empeora al otro día) se puede hacer; el resto, con el modo cuidado de la app."
+      ],
+      "avanzado": [
+        "En boxeo, una revisión de lesiones de brazo en Estados Unidos encontró que las más frecuentes eran en mano, muñeca y hombro, y que bajaron después de cambios de reglas en 2013.",
+        "En MMA las lesiones se concentran en la pelea más que en el entrenamiento; en el entrenamiento sin contacto (sombra, bolsa con vendas) el riesgo es mucho menor."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Lystad y otros 2014, The Epidemiology of Injuries in Mixed Martial Arts (revisión y metaanálisis)",
+        "enlace": "https://journals.sagepub.com/doi/10.1177/2325967113518492"
+      },
+      {
+        "texto": "McDonald y otros 2017, lesiones en jiu-jitsu brasileño",
+        "enlace": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5968975"
+      },
+      {
+        "texto": "Epidemiología de lesiones de brazo en boxeo en Estados Unidos (NEISS 2012-2016)",
+        "enlace": "https://lida.sport-iat.de/twm/Record/4051875?lng=en"
+      }
+    ]
+  },
+  {
+    "id": "golpes-cabeza",
+    "categoria": "salud",
+    "titulo": "Golpes en la cabeza: cuándo parar",
+    "resumen": "Señales de conmoción, qué hacer ese día y cómo se vuelve.",
+    "etiquetas": [
+      "conmocion",
+      "conmoción",
+      "cabeza",
+      "golpe",
+      "mareo",
+      "nocaut",
+      "knockout",
+      "sparring",
+      "dolor de cabeza"
+    ],
+    "dibujo": "cabeza",
+    "niveles": {
+      "principiante": [
+        "Después de un golpe en la cabeza, estas señales piden parar ese mismo día: dolor de cabeza, mareo, náuseas, ver borroso o doble, confusión, no recordar qué pasó, sentirte \"en una nube\" o más lento.",
+        "Ese día no se vuelve a entrenar. Avisale a alguien y que no te dejen solo las primeras horas.",
+        "Andá a la guardia ya si: el dolor de cabeza empeora, vomitás más de una vez, te cuesta despertarte, te convulsionás, perdiste el conocimiento, tenés debilidad u hormigueo, o la confusión aumenta."
+      ],
+      "intermedio": [
+        "No hace falta reposo absoluto: el consenso actual dice que la actividad liviana (como caminar) en las primeras 48 horas ayuda a recuperarte, y que conviene limitar pantallas al principio.",
+        "La vuelta es por pasos y sin síntomas en cada uno; el sparring y el contacto, al final y con alta de un profesional de la salud.",
+        "Un cuello más fuerte se asoció a menos conmociones en deportistas: sumá el cuello isométrico 2 o 3 veces por semana."
+      ],
+      "avanzado": [
+        "Collins y otros (2014) encontraron que, en deportistas escolares, cada libra (unos 0,45 kg) más de fuerza de cuello se asoció con 5 % menos riesgo de conmoción. Es una asociación, no prueba que entrenar el cuello las evite.",
+        "Más sparring duro no es mejor: la mayor parte del trabajo con compañero debería ser técnico y con contacto controlado."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Patricios y otros 2023, Consensus statement on concussion in sport (6.ª conferencia, Ámsterdam 2022), British Journal of Sports Medicine",
+        "enlace": "https://bmjgroup.com/international-expert-panel-revises-management-of-concussion-in-sport"
+      },
+      {
+        "texto": "Collins y otros 2014, Neck strength: a protective factor reducing risk for concussion in high school sports",
+        "enlace": "https://link.springer.com/content/pdf/10.1007%2Fs10935-014-0355-2.pdf"
+      },
+      {
+        "texto": "Revisión de biomecánica del cuello y conmoción (PMC7102493)",
+        "enlace": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7102493"
+      }
+    ]
+  },
+  {
+    "id": "fuerza-y-combate",
+    "categoria": "entrenamiento",
+    "titulo": "Fuerza y combate juntos sin que una frene a la otra",
+    "resumen": "Qué dice la ciencia de mezclar pesas, cardio y artes marciales.",
+    "etiquetas": [
+      "fuerza",
+      "combate",
+      "cardio",
+      "interferencia",
+      "concurrente",
+      "potencia",
+      "saltos",
+      "pliometria",
+      "orden"
+    ],
+    "dibujo": "orden",
+    "niveles": {
+      "principiante": [
+        "Podés hacer fuerza y combate en la misma semana y ganar músculo y fuerza igual: los estudios no encuentran que el cardio frene la fuerza máxima ni el músculo cuando se combinan bien.",
+        "Si los hacés el mismo día, hacé primero lo que más te importa. Si la meta es fuerza, fuerza primero; o separalos unas horas.",
+        "Los saltos (pliometría) 2 o 3 veces por semana te hacen más explosivo: están en la biblioteca, en \"Potencia y saltos\"."
+      ],
+      "intermedio": [
+        "Lo que sí se resiente al mezclar mucho cardio es la fuerza explosiva: cuidá que los días de potencia estés fresco.",
+        "Hacer cardio justo antes de las pesas baja la fuerza en esa sesión, sobre todo si el cardio es intenso.",
+        "Los saltos se hacen al principio de la sesión, frescos, pocas repeticiones (3 a 6) y con pausa larga entre series."
+      ],
+      "avanzado": [
+        "Un metaanálisis de 43 estudios (Schumann y otros 2022) no encontró interferencia sobre fuerza máxima ni hipertrofia, pero sí sobre la fuerza explosiva.",
+        "En deportistas de combate, 4 a 12 semanas de pliometría (2 o 3 sesiones por semana) dieron mejoras chicas a moderadas en fuerza, salto y cambios de dirección (Ojeda-Aravena y otros 2023)."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Schumann y otros 2022, Compatibility of concurrent aerobic and strength training (metaanálisis), resumen",
+        "enlace": "https://sci-sport.com/en/concurrent-training-does-cardio-affect-muscle-mass-and-strength-gains-233/"
+      },
+      {
+        "texto": "Efectos agudos del ejercicio aeróbico sobre la fuerza (Sports Medicine 2022)",
+        "enlace": "https://pubmed.ncbi.nlm.nih.gov/34878640/"
+      },
+      {
+        "texto": "Ojeda-Aravena y otros 2023, pliometría en deportistas de combate (metaanálisis), Sports 11:33",
+        "enlace": "https://doi.org/10.3390/sports11020033"
+      }
+    ]
+  },
+  {
+    "id": "comer-objetivo",
+    "categoria": "comida",
+    "titulo": "Comer para bajar grasa o ganar músculo",
+    "resumen": "Lo que importa de verdad, sin dietas raras ni contar todo.",
+    "etiquetas": [
+      "comida",
+      "comer",
+      "dieta",
+      "bajar",
+      "grasa",
+      "ganar",
+      "musculo",
+      "músculo",
+      "proteina",
+      "calorias",
+      "calorías"
+    ],
+    "dibujo": "mano",
+    "niveles": {
+      "principiante": [
+        "Bajar grasa depende de comer un poco menos de lo que gastás, todos los días, durante semanas. Ganar músculo, de entrenar fuerza y comer un poco más, con suficiente proteína.",
+        "Usá las porciones con la mano (ver \"Proteína y porciones con la mano\"): proteína en cada comida, verduras en la mitad del plato y el resto según tu objetivo.",
+        "Mirá la tendencia de tu cintura y tu peso cada semana, no día por día: el agua sube y baja."
+      ],
+      "intermedio": [
+        "Para bajar grasa sin perder músculo: déficit moderado, proteína alta y seguir entrenando fuerza. Si el entrenamiento se cae mucho, estás comiendo demasiado poco.",
+        "Para ganar músculo: un superávit chico alcanza; uno grande suma más grasa que músculo.",
+        "Alrededor del entrenamiento, una comida con proteína y algo de carbohidrato ayuda a rendir y recuperar."
+      ],
+      "avanzado": [
+        "La ISSN recomienda 1,4 a 2,0 g de proteína por kilo de peso por día para la mayoría de las personas que entrenan, repartida en comidas cada 3 a 4 horas.",
+        "Ninguna comida \"quema grasa\": lo que cuenta es el balance de la semana. Si algo te ayuda a sostenerlo (más proteína, más verdura, menos ultraprocesados), es la estrategia buena para vos."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Jäger y otros 2017, ISSN Position Stand: protein and exercise",
+        "enlace": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5477153/"
+      },
+      {
+        "texto": "Organización Mundial de la Salud, Alimentación sana (nota descriptiva)",
+        "enlace": "https://www.who.int/es/news-room/fact-sheets/detail/healthy-diet"
+      }
+    ]
+  },
+  {
+    "id": "miedo-adrenalina",
+    "categoria": "mente",
+    "titulo": "Miedo, nervios y adrenalina",
+    "resumen": "Qué le pasa al cuerpo bajo estrés y cómo entrenar para responder igual.",
+    "etiquetas": [
+      "miedo",
+      "nervios",
+      "adrenalina",
+      "estres",
+      "estrés",
+      "pelea",
+      "calle",
+      "ansiedad",
+      "respirar"
+    ],
+    "dibujo": "respiracion",
+    "niveles": {
+      "principiante": [
+        "Ante una amenaza el cuerpo se acelera: sube el pulso, te tiemblan las manos, ves como en un túnel y te cuesta pensar. Es normal y le pasa a todo el mundo.",
+        "Lo que más ayuda es haber practicado: los movimientos simples y muy repetidos salen mejor bajo estrés que los complicados.",
+        "Antes de entrenar o en un momento tenso: respiración lenta (inhalá 4, sostené 4, exhalá 4, sostené 4) para bajar un cambio."
+      ],
+      "intermedio": [
+        "Entrená con algo de estrés: sombra después de burpees, señales al azar (Contragolpes) y escenarios con un rival concreto. Así el cuerpo se acostumbra.",
+        "En la calle, la mejor respuesta suele ser la más simple: distancia, manos arriba, salir. Lo vistoso es lo primero que se pierde."
+      ],
+      "avanzado": [
+        "Una revisión sobre policías (Anderson y otros 2019) describe cómo el estrés agudo cambia la tensión muscular y el control fino, y que el entrenamiento con escenarios ayuda a sostener el rendimiento.",
+        "Los cortes que circulan (\"a tantas pulsaciones perdés la motricidad fina\") no están bien demostrados: el efecto depende de la persona, la tarea y cuánto practicó."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Anderson y otros 2019, The Impact of Acute Stress Physiology on Skilled Motor Performance: Implications for Policing",
+        "enlace": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6856650/"
+      },
+      {
+        "texto": "Police Chief Magazine, The Impact of Stress in Critical Incidents (crítica de los cortes por pulsaciones)",
+        "enlace": "https://www.policechiefmagazine.org/impact-stress-critical-incidents/"
+      }
+    ]
+  },
+  {
+    "id": "legitima-defensa",
+    "categoria": "salud",
+    "titulo": "Defensa personal y la ley (Argentina)",
+    "resumen": "Qué pide el Código Penal para la legítima defensa, en general.",
+    "etiquetas": [
+      "ley",
+      "legitima defensa",
+      "legítima defensa",
+      "defensa personal",
+      "calle",
+      "codigo penal",
+      "abogado"
+    ],
+    "dibujo": "escape",
+    "niveles": {
+      "principiante": [
+        "La mejor defensa es no estar ahí: evitar, alejarte y pedir ayuda vale más que cualquier técnica.",
+        "El Código Penal argentino (artículo 34, inciso 6) pide tres cosas para la legítima defensa: una agresión ilegítima, que el medio que usás para frenarla sea razonablemente necesario, y que no la hayas provocado vos.",
+        "Esto es información general, no asesoramiento legal: cada caso lo decide la Justicia. Ante un hecho, consultá a un abogado."
+      ],
+      "intermedio": [
+        "\"Necesidad racional del medio\" quiere decir que la respuesta tiene que guardar proporción con el peligro: frenar la agresión y salir, no seguir pegando cuando ya terminó.",
+        "Por eso en la app los escenarios de calle terminan siempre en escape."
+      ],
+      "avanzado": [
+        "El inciso 7 del mismo artículo cubre la defensa de terceros. Hay proyectos de ley para cambiar el inciso 6 (por ejemplo, con perspectiva de género): lo vigente es lo que dice el Código hoy."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Código Penal argentino, art. 34 inc. 6 y 7 (análisis doctrinario de los tres requisitos), Pensamiento Penal",
+        "enlace": "https://mail.pensamientopenal.com.ar/system/files/2006/10/doctrina30951.pdf"
+      },
+      {
+        "texto": "Cámara de Diputados, proyecto 5989-D-2024 (texto vigente del inciso 6 y propuesta de cambio)",
+        "enlace": "https://www4.hcdn.gob.ar/dependencias/dsecretaria/Periodo2024/PDF2024/TP2024/5989-D-2024.pdf"
+      }
+    ]
   }
 ]

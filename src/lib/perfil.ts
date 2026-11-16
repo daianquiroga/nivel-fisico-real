@@ -50,6 +50,7 @@ export const EQUIPO = [
   { valor: 'barra-dominadas', texto: 'Barra de dominadas' },
   { valor: 'kettlebell', texto: 'Kettlebell (pesa rusa)' },
   { valor: 'soga', texto: 'Soga' },
+  { valor: 'pelota', texto: 'Pelota medicinal (sin rebote)' },
   { valor: 'bolsa', texto: 'Bolsa de boxeo' },
   { valor: 'banco', texto: 'Banco' },
   { valor: 'silla', texto: 'Silla firme' },

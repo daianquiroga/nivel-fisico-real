@@ -8,10 +8,11 @@ import traccion from '../content/ejercicios/traccion.json'
 import combate from '../content/ejercicios/combate.json'
 import gimnasio from '../content/ejercicios/gimnasio.json'
 import variantes from '../content/ejercicios/variantes.json'
+import potencia from '../content/ejercicios/potencia.json'
 import type { Lugar } from './db/db'
 
 export type NivelLimitacion = 'adaptar' | 'evitar'
-export type Patron = 'empuje' | 'empuje-vertical' | 'traccion' | 'traccion-vertical' | 'sentadilla' | 'zancada' | 'bisagra' | 'core' | 'transporte' | 'accesorio' | 'movilidad' | 'cardio'
+export type Patron = 'empuje' | 'empuje-vertical' | 'traccion' | 'traccion-vertical' | 'sentadilla' | 'zancada' | 'bisagra' | 'core' | 'transporte' | 'accesorio' | 'movilidad' | 'cardio' | 'potencia'
 
 export interface Ejercicio {
   id: string
@@ -41,7 +42,7 @@ export interface Ejercicio {
 }
 
 // El JSON no conserva los tipos exactos; revisarContenido() (con test) verifica los valores.
-export const EJERCICIOS = [...empuje, ...traccion, ...piernas, ...coreAccesorios, ...movilidadCardio, ...gimnasio, ...variantes, ...combate] as unknown as Ejercicio[]
+export const EJERCICIOS = [...empuje, ...traccion, ...piernas, ...coreAccesorios, ...movilidadCardio, ...gimnasio, ...variantes, ...potencia, ...combate] as unknown as Ejercicio[]
 const POR_ID = new Map(EJERCICIOS.map((e) => [e.id, e]))
 
 export const ejercicio = (id: string): Ejercicio | undefined => POR_ID.get(id)
@@ -80,6 +81,7 @@ export const PATRONES: { valor: string; texto: string; incluye: Patron[] }[] = [
   { valor: 'piernas', texto: 'Piernas', incluye: ['sentadilla', 'zancada'] },
   { valor: 'cadera', texto: 'Cadera', incluye: ['bisagra'] },
   { valor: 'core', texto: 'Tronco', incluye: ['core', 'transporte'] },
+  { valor: 'potencia', texto: 'Potencia y saltos', incluye: ['potencia'] },
   { valor: 'accesorio', texto: 'Brazos y otros', incluye: ['accesorio'] },
   { valor: 'movilidad', texto: 'Movilidad', incluye: ['movilidad'] },
   { valor: 'cardio', texto: 'Cardio', incluye: ['cardio'] },
@@ -97,10 +99,11 @@ export const NOMBRES_EQUIPO: Record<string, string> = {
   poleas: 'poleas',
   'barras-plaza': 'barra baja',
   soga: 'soga',
+  pelota: 'pelota medicinal',
 }
 
 /** Lo que suele haber en cualquier gimnasio. */
-const EQUIPO_GIMNASIO = ['mancuernas', 'banco', 'barra', 'maquinas', 'poleas', 'barra-dominadas', 'kettlebell', 'barras-plaza', 'bandas']
+const EQUIPO_GIMNASIO = ['mancuernas', 'banco', 'barra', 'maquinas', 'poleas', 'barra-dominadas', 'kettlebell', 'barras-plaza', 'bandas', 'pelota']
 
 /** Equipo disponible en un lugar. */
 export function equipoDeLugar(l: Lugar): Set<string> {

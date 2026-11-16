@@ -1,0 +1,351 @@
+[
+  {
+    "id": "salto-vertical",
+    "nombre": "Salto vertical con contramovimiento",
+    "patron": "potencia",
+    "principal": ["cuádriceps", "glúteos"],
+    "secundarios": ["pantorrillas"],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [3, 6],
+    "inicial": "De pie, pies al ancho de la cadera, brazos sueltos.",
+    "pasos": [
+      "Bajá rápido a media sentadilla llevando los brazos atrás.",
+      "Sin pausa, saltá lo más alto que puedas tirando los brazos arriba.",
+      "Caé suave en la punta de los pies, rodillas dobladas y alineadas con los pies. Pará, acomodate y repetí."
+    ],
+    "respiracion": "Tomá aire al bajar y soltalo al saltar.",
+    "errores": [
+      { "error": "Rodillas hacia adentro al caer", "detectar": "Las rodillas se juntan: apuntalas hacia los dedos del pie." },
+      { "error": "Caer duro", "detectar": "Hace ruido: caé como un resorte, sin sonido." },
+      { "error": "Encadenar saltos cansado", "detectar": "Cada salto es más bajo: cortá la serie, la potencia se entrena fresca." }
+    ],
+    "facil": "sentadilla",
+    "dificil": "salto-largo",
+    "limitaciones": {
+      "rodilla": { "nivel": "evitar", "texto": "Con dolor de rodilla, sin saltos: hacé sentadilla rápida sin despegar." },
+      "tobillo": { "nivel": "evitar", "texto": "Sin saltos hasta que el tobillo esté bien: elevación de talones lenta." }
+    },
+    "subir": "Más alto no se mide en repeticiones: hacé 3 a 5 series de 3 a 6 saltos con 1 a 2 minutos de pausa, siempre a máxima intención.",
+    "video": "countermovement jump tecnica salto vertical"
+  },
+  {
+    "id": "salto-largo",
+    "nombre": "Salto en largo sin carrera",
+    "patron": "potencia",
+    "principal": ["glúteos", "cuádriceps"],
+    "secundarios": ["isquiotibiales", "pantorrillas"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [3, 6],
+    "inicial": "De pie detrás de una marca, pies al ancho de la cadera.",
+    "pasos": [
+      "Llevá los brazos atrás y bajá la cadera como para sentarte.",
+      "Saltá hacia adelante empujando el piso con todo, brazos adelante.",
+      "Caé con los dos pies a la vez, rodillas dobladas, y quedate quieto 2 segundos. Volvé caminando."
+    ],
+    "respiracion": "Soltá el aire al saltar.",
+    "errores": [
+      { "error": "Caer con las piernas rectas", "detectar": "Se siente el golpe en las rodillas: doblalas al caer." },
+      { "error": "Perder el equilibrio al caer", "detectar": "Das pasos para no caerte: saltá un poco menos." },
+      { "error": "No usar los brazos", "detectar": "Los brazos quedan quietos: el impulso de los brazos suma distancia." }
+    ],
+    "facil": "salto-vertical",
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": { "nivel": "evitar", "texto": "Con dolor de rodilla, sin saltos." },
+      "tobillo": { "nivel": "evitar", "texto": "Sin saltos hasta que el tobillo esté bien." }
+    },
+    "subir": "Marcá en el piso tu mejor salto y tratá de superarlo cada 2 semanas. 3 a 5 series de 3 a 5.",
+    "video": "standing broad jump tecnica"
+  },
+  {
+    "id": "salto-patinador",
+    "nombre": "Saltos de patinador (laterales)",
+    "patron": "potencia",
+    "principal": ["glúteos", "cuádriceps"],
+    "secundarios": ["aductores", "pantorrillas"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [6, 10],
+    "inicial": "Parado sobre la pierna derecha, la izquierda apenas atrás.",
+    "pasos": [
+      "Empujá con la pierna derecha y saltá hacia la izquierda.",
+      "Caé sobre la pierna izquierda, frená y quedate 1 segundo en equilibrio.",
+      "Saltá de vuelta al otro lado. Cada salto cuenta uno."
+    ],
+    "respiracion": "Respirá suelto, un salto por respiración.",
+    "errores": [
+      { "error": "Rodilla hacia adentro al caer", "detectar": "La rodilla se va para adentro: apuntala hacia el pie." },
+      { "error": "Saltar sin frenar", "detectar": "Rebotás de un lado al otro sin control: primero frená cada caída." },
+      { "error": "Tronco muy inclinado", "detectar": "Quedás mirando el piso: pecho arriba." }
+    ],
+    "facil": "zancada-atras",
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": { "nivel": "evitar", "texto": "Con dolor de rodilla, hacé pasos laterales sin saltar." },
+      "tobillo": { "nivel": "evitar", "texto": "Sin saltos laterales hasta que el tobillo esté bien." }
+    },
+    "subir": "Primero más distancia lateral con caída firme; después menos pausa entre saltos.",
+    "video": "skater jumps tecnica"
+  },
+  {
+    "id": "flexion-explosiva",
+    "nombre": "Flexión explosiva",
+    "patron": "potencia",
+    "principal": ["pecho", "tríceps"],
+    "secundarios": ["hombros"],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [3, 6],
+    "inicial": "En posición de flexión, manos un poco más abiertas que los hombros. Si recién empezás, con las manos en una mesa firme.",
+    "pasos": [
+      "Bajá controlado hasta casi tocar el piso.",
+      "Empujá lo más fuerte que puedas para que las manos se despeguen un poco.",
+      "Caé con los codos apenas doblados y el cuerpo recto, y pará antes de la siguiente."
+    ],
+    "respiracion": "Soltá el aire al empujar.",
+    "errores": [
+      { "error": "Caer con los brazos trabados", "detectar": "Golpe en codos y muñecas: caé con los codos blandos." },
+      { "error": "Cadera caída", "detectar": "La panza toca primero: apretá cola y abdomen." },
+      { "error": "Hacerlas lentas", "detectar": "Si no podés despegar las manos, hacelas inclinado en una mesa." }
+    ],
+    "facil": "flexion-inclinada-baja",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": { "nivel": "evitar", "texto": "Con dolor de muñeca, nada de impactos: lanzamiento de pelota al pecho o flexión lenta en puños." },
+      "hombro": { "nivel": "adaptar", "texto": "Hacela inclinada en una mesa y sin palmada." }
+    },
+    "subir": "Cuando despegues bien las manos en 5 repeticiones, sumá una palmada.",
+    "video": "plyometric push up tecnica"
+  },
+  {
+    "id": "lanzamiento-pelota",
+    "nombre": "Lanzamiento de pelota medicinal contra el piso",
+    "patron": "potencia",
+    "principal": ["dorsales", "abdomen"],
+    "secundarios": ["hombros", "tríceps"],
+    "equipo": ["pelota"],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [5, 10],
+    "inicial": "De pie, pies al ancho de los hombros, la pelota (sin rebote) arriba de la cabeza con los brazos estirados.",
+    "pasos": [
+      "Estirate en puntas de pie con la pelota bien arriba.",
+      "Tirala con fuerza contra el piso, delante de tus pies, doblando la cadera y las rodillas.",
+      "Agarrala, volvé arriba y repetí."
+    ],
+    "respiracion": "Soltá el aire fuerte al tirar.",
+    "errores": [
+      { "error": "Usar pelota que rebota", "detectar": "Te vuelve a la cara: usá una pelota de lanzar (slam ball), sin rebote." },
+      { "error": "Tirar solo con los brazos", "detectar": "El tronco no se mueve: el golpe sale de todo el cuerpo." },
+      { "error": "Espalda redonda al agarrarla", "detectar": "Bajá con las piernas, como en una sentadilla." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "espalda-baja": { "nivel": "adaptar", "texto": "Pelota liviana y bajá doblando las rodillas, sin curvar la espalda." },
+      "hombro": { "nivel": "adaptar", "texto": "Tirala desde el pecho en vez de desde arriba de la cabeza." }
+    },
+    "subir": "Más velocidad antes que más peso: 3 a 5 series de 5 a 8 a toda intención.",
+    "pesoInicial": "Pelota de 3 a 6 kg: tiene que salir rápida.",
+    "video": "medicine ball slam tecnica"
+  },
+  {
+    "id": "lanzamiento-rotacion",
+    "nombre": "Lanzamiento de pelota con giro contra la pared",
+    "patron": "potencia",
+    "principal": ["oblicuos", "abdomen"],
+    "secundarios": ["glúteos", "hombros"],
+    "equipo": ["pelota"],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [5, 8],
+    "inicial": "De costado a una pared, a un metro y medio, pelota a la altura de la cadera del lado de afuera.",
+    "pasos": [
+      "Girá la cadera y el pie de atrás como en un directo y lanzá la pelota contra la pared.",
+      "Agarrala del rebote y volvé a la posición.",
+      "Hacé todas de un lado y después del otro."
+    ],
+    "respiracion": "Soltá el aire fuerte al lanzar.",
+    "errores": [
+      { "error": "Girar solo los brazos", "detectar": "La cadera queda quieta: el giro sale del pie y la cadera, como en el golpe." },
+      { "error": "Espalda que se tuerce sin control", "detectar": "Duele la cintura: girá con la cadera, no solo con la espalda." },
+      { "error": "Pelota muy pesada", "detectar": "Sale lenta: bajá el peso." }
+    ],
+    "facil": "pallof-banda",
+    "dificil": null,
+    "limitaciones": {
+      "espalda-baja": { "nivel": "adaptar", "texto": "Pelota liviana y giro corto; si duele, cambialo por Pallof con banda." }
+    },
+    "subir": "Más velocidad antes que más peso. Es la misma cadena que el directo y la patada.",
+    "pesoInicial": "Pelota de 2 a 4 kg.",
+    "video": "medicine ball rotational throw wall"
+  },
+  {
+    "id": "cuello-isometrico",
+    "nombre": "Cuello isométrico con la mano",
+    "patron": "accesorio",
+    "principal": ["cuello"],
+    "secundarios": ["trapecios"],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "segundos",
+    "carga": "corporal",
+    "rango": [10, 20],
+    "inicial": "Sentado o de pie, espalda derecha, mentón apenas metido.",
+    "pasos": [
+      "Apoyá la mano en la frente y empujá la cabeza contra la mano sin que se mueva.",
+      "Repetí con la mano atrás de la cabeza y a cada costado (4 direcciones).",
+      "Empezá suave (3 de 10 de fuerza) y subí de a poco."
+    ],
+    "respiracion": "Respirá normal, sin aguantar el aire.",
+    "errores": [
+      { "error": "Empujar de golpe", "detectar": "Aumentá la fuerza en 2 o 3 segundos, nunca de un tirón." },
+      { "error": "Mover la cabeza", "detectar": "La cabeza se va para un lado: es quieto, la mano solo aguanta." },
+      { "error": "Aguantar la respiración", "detectar": "Te ponés colorado: respirá." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "cuello": { "nivel": "adaptar", "texto": "Con dolor de cuello, muy suave y consultá a un profesional antes de cargarlo." }
+    },
+    "subir": "Primero más segundos (hasta 20), después más fuerza. 2 o 3 series por dirección, 2 o 3 veces por semana.",
+    "video": "isometric neck strengthening hand"
+  },
+  {
+    "id": "colgado-toalla",
+    "nombre": "Colgado con toalla (agarre)",
+    "patron": "accesorio",
+    "principal": ["antebrazos"],
+    "secundarios": ["dorsales"],
+    "equipo": ["barra-dominadas"],
+    "espacio": "1x1",
+    "tipo": "segundos",
+    "carga": "corporal",
+    "rango": [10, 30],
+    "inicial": "Pasá una toalla por la barra y agarrá una punta con cada mano, o dos toallas, una por mano.",
+    "pasos": [
+      "Colgate de las toallas con los brazos estirados y los hombros activos (no colgados de las orejas).",
+      "Apretá fuerte las toallas, como un agarre de kimono.",
+      "Bajá antes de que se te resbalen."
+    ],
+    "respiracion": "Respirá normal.",
+    "errores": [
+      { "error": "Hombros sueltos", "detectar": "Las orejas quedan entre los brazos: bajá un poco los hombros." },
+      { "error": "Soltarte de golpe", "detectar": "Bajá apoyando los pies en una silla." },
+      { "error": "Balancearte", "detectar": "Las piernas se mueven: quedate quieto." }
+    ],
+    "facil": "colgado-activo",
+    "dificil": null,
+    "limitaciones": {
+      "hombro": { "nivel": "adaptar", "texto": "Con los pies apoyados en el piso o una silla para descargar peso." },
+      "muneca": { "nivel": "adaptar", "texto": "Menos tiempo y muñeca recta." }
+    },
+    "subir": "Más segundos hasta 30; después una sola toalla con las dos manos o una mano por vez.",
+    "video": "towel hang grip training"
+  },
+  {
+    "id": "cadera-90-90",
+    "nombre": "Cadera 90/90",
+    "patron": "movilidad",
+    "principal": ["glúteos"],
+    "secundarios": ["aductores"],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [6, 10],
+    "inicial": "Sentado en el piso, una pierna adelante y otra al costado, las dos con la rodilla a 90°.",
+    "pasos": [
+      "Con el pecho alto, girá las dos rodillas hacia el otro lado hasta que queden 90/90 al revés.",
+      "Hacelo despacio, usando las manos atrás si hace falta.",
+      "Cada cambio de lado cuenta uno."
+    ],
+    "respiracion": "Soltá el aire en cada cambio.",
+    "errores": [
+      { "error": "Encorvarte", "detectar": "La espalda se redondea: apoyá las manos atrás." },
+      { "error": "Forzar con dolor", "detectar": "Tirón en la rodilla: abrí un poco menos." },
+      { "error": "Hacerlo rápido", "detectar": "Sin control: despacio sirve más." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": { "nivel": "adaptar", "texto": "Rodillas menos dobladas (más de 90°) y sin forzar." }
+    },
+    "subir": "Primero sin manos; después quedate 3 respiraciones en cada lado inclinando el pecho hacia la pierna de adelante.",
+    "video": "90 90 hip switch tecnica"
+  },
+  {
+    "id": "aductores-mariposa",
+    "nombre": "Aductores en mariposa",
+    "patron": "movilidad",
+    "principal": ["aductores"],
+    "secundarios": [],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "segundos",
+    "carga": "corporal",
+    "rango": [30, 60],
+    "inicial": "Sentado, plantas de los pies juntas, rodillas abiertas hacia los costados.",
+    "pasos": [
+      "Agarrá los tobillos y llevá el pecho un poco adelante con la espalda derecha.",
+      "Dejá que las rodillas bajen solas; podés empujar suave con los codos.",
+      "Quedate respirando lento."
+    ],
+    "respiracion": "Respirá lento y soltá un poco más en cada exhalación.",
+    "errores": [
+      { "error": "Rebotar", "detectar": "Las rodillas suben y bajan: quedate quieto." },
+      { "error": "Espalda redonda", "detectar": "Mirá hacia adelante, no al piso." },
+      { "error": "Forzar con dolor", "detectar": "Tiene que tirar, no doler." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": { "nivel": "adaptar", "texto": "Pies más lejos del cuerpo y sin empujar las rodillas." }
+    },
+    "subir": "Acercá los pies al cuerpo de a poco. Para patadas altas, sumalo 3 o más veces por semana.",
+    "video": "butterfly stretch tecnica"
+  },
+  {
+    "id": "balanceo-piernas",
+    "nombre": "Balanceos de pierna",
+    "patron": "movilidad",
+    "principal": ["isquiotibiales", "aductores"],
+    "secundarios": ["glúteos"],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [10, 15],
+    "inicial": "De pie de costado a una pared, una mano apoyada.",
+    "pasos": [
+      "Balanceá la pierna de afuera adelante y atrás, cada vez un poco más alto.",
+      "Después, de frente a la pared, balanceala de lado a lado.",
+      "Torso derecho: se mueve la pierna, no la espalda."
+    ],
+    "respiracion": "Respirá suelto.",
+    "errores": [
+      { "error": "Patear con fuerza", "detectar": "Es un balanceo: dejá que la pierna suba sola." },
+      { "error": "Doblar la espalda", "detectar": "El tronco acompaña: quedate derecho." },
+      { "error": "Rodilla de apoyo trabada", "detectar": "Dejala apenas doblada." }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "espalda-baja": { "nivel": "adaptar", "texto": "Balanceos más cortos." }
+    },
+    "subir": "Ideal como entrada en calor antes de patear: 10 a 15 por dirección y pierna.",
+    "video": "leg swings dynamic warm up"
+  }
+]

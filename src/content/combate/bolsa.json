@@ -1,0 +1,60 @@
+{
+  "fuente": "Niveles, tiempos y porcentajes de fuerza: decisión de diseño de la app, siguiendo la misma progresión que la sombra (forma → combinación → velocidad → pelea simulada). Cuidado de manos: guía de vendaje de la app (Everlast, Fairtex) y Home Fitness, CUNY (los guantes y vendas ayudan pero no hacen segura cualquier forma de pegar).",
+  "seguridad": [
+    "Siempre con vendas y guantes de bolsa (14 a 16 oz para empezar). Mirá \"Cómo vendarte las manos\" en Aprender.",
+    "Empezá pegando al 50 % y subí de a poco durante semanas: la muñeca y los nudillos se adaptan más lento que los músculos.",
+    "Pegale a la parte firme de la bolsa, a la altura de tu cara y tu pecho. En la parte de arriba, floja, la muñeca se dobla.",
+    "Puño cerrado al llegar, muñeca recta y en línea con el antebrazo; pegás con los dos nudillos grandes.",
+    "Dolor en la muñeca o los nudillos que no se va al otro día: pará la bolsa y seguí con sombra."
+  ],
+  "niveles": [
+    {
+      "nivel": 1,
+      "nombre": "Técnica y distancia",
+      "rounds": { "rondas": 3, "trabajo": 120, "descanso": 60 },
+      "fuerza": "50 %",
+      "pasos": [
+        "Parate a la distancia en que el jab llega con el brazo casi estirado.",
+        "Jab y directo sueltos, de a uno: tocá y volvé a la guardia.",
+        "Entre golpe y golpe, un paso: adelante, atrás o al costado."
+      ],
+      "criterio": "Muñeca recta en todos los golpes y la mano que no pega siempre en la cara."
+    },
+    {
+      "nivel": 2,
+      "nombre": "Combinaciones y movimiento",
+      "rounds": { "rondas": 4, "trabajo": 120, "descanso": 60 },
+      "fuerza": "60 a 70 %",
+      "pasos": [
+        "1-2, 1-2-3 y 1-2 + patada baja (si tu disciplina patea).",
+        "Después de cada combinación, girá alrededor de la bolsa un cuarto de vuelta.",
+        "Cuando la bolsa vuelve hacia vos, esquivala o salí en ángulo: es tu rival."
+      ],
+      "criterio": "3 rounds seguidos sin empujar la bolsa con el cuerpo y saliendo en ángulo después de cada combinación."
+    },
+    {
+      "nivel": 3,
+      "nombre": "Potencia y ritmo",
+      "rounds": { "rondas": 5, "trabajo": 180, "descanso": 60 },
+      "fuerza": "80 a 100 % en los tramos fuertes",
+      "pasos": [
+        "Cada minuto: 20 segundos de combinaciones fuertes y 40 de ritmo medio.",
+        "Golpes al cuerpo y a la cabeza; patadas con la canilla si tu disciplina patea.",
+        "La fuerza sale de las piernas y la cadera: no te inclines adentro de la bolsa."
+      ],
+      "criterio": "En el último round los golpes fuertes siguen saliendo con la misma forma."
+    },
+    {
+      "nivel": 4,
+      "nombre": "Pelea simulada",
+      "rounds": { "rondas": 5, "trabajo": 180, "descanso": 60 },
+      "fuerza": "Variada, como en una pelea",
+      "pasos": [
+        "Imaginá un rival concreto (Sistema completo → Escenarios) y pelealo con la bolsa.",
+        "Fintas, cambios de ritmo, defensa y contra cuando la bolsa vuelve.",
+        "Clinch y rodillas sobre la bolsa si tu disciplina los tiene."
+      ],
+      "criterio": "Un plan claro contra el rival imaginario, filmado, con técnica intacta en el último round."
+    }
+  ]
+}

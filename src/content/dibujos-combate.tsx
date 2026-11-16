@@ -673,3 +673,34 @@ export function DibujoReparto({ del, altura = 'media', etiqueta }: { del: number
     </Lienzo>
   )
 }
+
+/* ---------- Bolsa y compañero ---------- */
+
+/** Persona pegando un directo a una bolsa colgada. */
+export function DibujoBolsa() {
+  const pose = resaltar(g({ cadera: [132, 100], cuello: [142, 50], cabeza: [147, 34], codoI: [178, 54], manoI: [204, 50], codoD: [150, 70], manoD: [152, 46], puntaI: [108, 158] }), 'brazos')
+  return (
+    <Lienzo etiqueta="Directo a la bolsa: la mano llega con la muñeca recta, a la parte firme de la bolsa" alto={192}>
+      <Piso />
+      <line x1={236} x2={236} y1={0} y2={16} stroke="var(--muted)" strokeWidth={2} />
+      <rect x={210} y={16} width={52} height={120} rx={22} fill="var(--surface-2)" stroke="var(--muted)" strokeWidth={2} />
+      <rect x={210} y={34} width={52} height={70} rx={10} fill="none" stroke={hecho} strokeWidth={1.5} strokeDasharray="4 4" />
+      <Texto x={300} y={70} ancla="end">acá</Texto>
+      <Figura pose={pose} color={acento} />
+    </Lienzo>
+  )
+}
+
+/** Dos personas: una con manoplas y otra pegando. */
+export function DibujoCompanero() {
+  const pega = resaltar(g({ cadera: [112, 100], cuello: [122, 50], cabeza: [127, 34], codoI: [158, 54], manoI: [184, 50], codoD: [130, 70], manoD: [132, 46], puntaI: [88, 158], pieI: [80, 166], rodI: [92, 134], pieD: [140, 166], puntaD: [154, 166], rodD: [130, 132] }), 'brazos')
+  const sostiene: Pose = { cabeza: [236, 34], cuello: [238, 50], cadera: [244, 100], rodD: [224, 132], pieD: [214, 166], puntaD: [202, 166], rodI: [258, 134], pieI: [268, 166], puntaI: [256, 164], codoD: [222, 66], manoD: [196, 48], codoI: [230, 72], manoI: [206, 66] }
+  return (
+    <Lienzo etiqueta="Trabajo con compañero: uno sostiene las manoplas y el otro pega" alto={192}>
+      <Piso />
+      <Figura pose={sostiene} />
+      <rect x={188} y={38} width={12} height={18} rx={4} fill={hecho} />
+      <Figura pose={pega} color={acento} />
+    </Lienzo>
+  )
+}

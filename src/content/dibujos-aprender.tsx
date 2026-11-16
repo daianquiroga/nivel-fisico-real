@@ -295,7 +295,103 @@ function Habitos() {
   )
 }
 
+/** Zonas que más se lastiman en combate, sobre una figura de frente. */
+function ZonasLesion() {
+  const pose = { cabeza: [160, 30] as [number, number], cuello: [160, 44] as [number, number], cadera: [160, 100] as [number, number], rodD: [150, 134] as [number, number], pieD: [146, 166] as [number, number], rodI: [170, 134] as [number, number], pieI: [174, 166] as [number, number], codoD: [138, 72] as [number, number], manoD: [130, 96] as [number, number], codoI: [182, 72] as [number, number], manoI: [190, 96] as [number, number] }
+  const punto = (x: number, y: number, lx: number, ly: number, texto: string, ancla: 'start' | 'end') => (
+    <g key={texto}>
+      <circle cx={x} cy={y} r={6} fill={acento} opacity={0.85} />
+      <path d={`M${x},${y} L${lx},${ly}`} stroke="var(--line)" strokeDasharray="3 3" />
+      <Texto x={lx + (ancla === 'start' ? 4 : -4)} y={ly + 4} ancla={ancla}>
+        {texto}
+      </Texto>
+    </g>
+  )
+  return (
+    <Lienzo etiqueta="Zonas que más se lastiman en combate: cabeza, mano y muñeca, hombro, codo, rodilla, tobillo y dedos" alto={190}>
+      <Piso />
+      <Figura pose={pose} />
+      {punto(160, 30, 226, 20, 'cabeza', 'start')}
+      {punto(130, 96, 104, 112, 'mano y muñeca', 'end')}
+      {punto(148, 52, 104, 46, 'hombro', 'end')}
+      {punto(182, 72, 226, 66, 'codo', 'start')}
+      {punto(170, 134, 226, 128, 'rodilla', 'start')}
+      {punto(146, 166, 104, 150, 'tobillo y pie', 'end')}
+      {punto(190, 96, 226, 100, 'dedos (agarre)', 'start')}
+    </Lienzo>
+  )
+}
+
+/** Cabeza con las señales que piden parar. */
+function Cabeza() {
+  const senales = ['dolor de cabeza', 'mareo o náuseas', 'ver borroso o doble', 'confusión, "en una nube"']
+  return (
+    <Lienzo etiqueta="Después de un golpe en la cabeza, señales para parar ese día: dolor de cabeza, mareo, ver borroso, confusión" alto={190}>
+      <circle cx={80} cy={86} r={44} fill="none" stroke="var(--text-2)" strokeWidth={6} />
+      <path d="M62,80 q6,-6 12,0 M86,80 q6,-6 12,0" stroke="var(--text-2)" strokeWidth={3} fill="none" />
+      <path d="M68,104 q12,-8 24,0" stroke="var(--text-2)" strokeWidth={3} fill="none" />
+      <path d="M30,40 q8,-12 16,0 q8,12 16,0" stroke={hecho} strokeWidth={2.5} fill="none" />
+      {senales.map((s, i) => (
+        <Texto key={s} x={150} y={52 + i * 24} ancla="start" color="var(--text)">
+          {`• ${s}`}
+        </Texto>
+      ))}
+      <rect x={146} y={146} width={160} height={30} rx={8} fill={acento} />
+      <Texto x={226} y={166} color="var(--text)">
+        Ese día se termina
+      </Texto>
+    </Lienzo>
+  )
+}
+
+/** Orden recomendado: fuerza primero o separado del cardio intenso. */
+function Orden() {
+  const bloque = (x: number, w: number, texto: string, color: string) => (
+    <g key={texto + x}>
+      <rect x={x} y={70} width={w} height={36} rx={8} fill={color} />
+      <Texto x={x + w / 2} y={93} color="var(--bg)">
+        {texto}
+      </Texto>
+    </g>
+  )
+  return (
+    <Lienzo etiqueta="Mismo día: primero fuerza y potencia, después combate o cardio; o separados unas horas" alto={170}>
+      <Texto x={10} y={50} ancla="start">
+        Mismo día
+      </Texto>
+      {bloque(10, 92, 'saltos', hecho)}
+      {bloque(108, 92, 'fuerza', hecho)}
+      {bloque(206, 104, 'combate/cardio', acento)}
+      <Flecha de={[56, 122]} a={[260, 122]} />
+      <Texto x={160} y={150}>
+        lo explosivo, fresco y primero
+      </Texto>
+    </Lienzo>
+  )
+}
+
+/** Crear distancia y salir: la mejor defensa. */
+function Escape() {
+  const agresor = { cabeza: [80, 34] as [number, number], cuello: [82, 50] as [number, number], cadera: [86, 100] as [number, number], rodD: [96, 134] as [number, number], pieD: [104, 166] as [number, number], rodI: [76, 134] as [number, number], pieI: [68, 166] as [number, number], codoD: [104, 66] as [number, number], manoD: [118, 54] as [number, number], codoI: [96, 72] as [number, number], manoI: [110, 62] as [number, number] }
+  const vos = { cabeza: [230, 34] as [number, number], cuello: [228, 50] as [number, number], cadera: [232, 100] as [number, number], rodD: [246, 132] as [number, number], pieD: [262, 162] as [number, number], rodI: [222, 134] as [number, number], pieI: [210, 166] as [number, number], codoD: [214, 66] as [number, number], manoD: [204, 50] as [number, number], codoI: [222, 70] as [number, number], manoI: [212, 52] as [number, number] }
+  return (
+    <Lienzo etiqueta="Crear distancia, manos arriba y salir: la respuesta más segura" alto={190}>
+      <Piso />
+      <Figura pose={agresor} />
+      <Figura pose={vos} color={acento} />
+      <Flecha de={[150, 150]} a={[300, 150]} />
+      <Texto x={226} y={184}>
+        distancia y salida
+      </Texto>
+    </Lienzo>
+  )
+}
+
 const DIBUJOS: Record<string, () => ReactNode> = {
+  'zonas-lesion': ZonasLesion,
+  cabeza: Cabeza,
+  orden: Orden,
+  escape: Escape,
   'intervalos-correr': IntervalosCorrer,
   bici: Bici,
   respiracion: Respiracion,
