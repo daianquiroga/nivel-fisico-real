@@ -8,6 +8,9 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.40.0: rutinas de gimnasio listas y comparar rutinas.
+  - `content/plantillas.json` + `lib/plan/plantillas.ts` (con tests): cuerpo completo 3 días (A/B), torso y pierna 4 días, y empuje/tirón/piernas 3 o 6 días. Cada lugar de la plantilla tiene opciones en orden (barra → mancuernas → máquina → banda → peso del cuerpo) y se elige la primera que se puede hacer con el equipo del día y sin chocar con limitaciones; se ubica en tus días y horarios. Fuentes: ACSM 2009, Schoenfeld 2016 (frecuencia) y 2017 (volumen); elección y reparto: decisión de diseño.
+  - `/plan/plantillas`: lista con el puntaje para tus objetivos, vista con dibujos y "Comparar con" (tu plan o las otras plantillas): aporte, días, minutos, series totales y por músculo, cardio y veredicto. Componente `Comparar` reutilizado en Mi rutina ("Comparar con mi plan guardado"). Accesos desde Plan.
 - Versión 0.39.0:
   - 11 ejercicios nuevos con dibujo (`content/ejercicios/potencia.json`): potencia (salto vertical, salto en largo, saltos de patinador, flexión explosiva, lanzamiento de pelota contra el piso y con giro), cuello isométrico, colgado con toalla (agarre), cadera 90/90, aductores en mariposa y balanceos de pierna. Patrón nuevo `potencia` (filtro "Potencia y saltos"; el generador no lo elige solo) y equipo nuevo "pelota medicinal" (incluido en gimnasio).
   - Bolsa y con compañero (`/combate/bolsa`, `content/combate/bolsa.json` y `companero.json`): cuidado de manos, 4 niveles de rounds con temporizador, esfuerzo al terminar y actividad a 5,8 MET (Compendium 2024, 15110); reglas y 6 ejercicios con compañero, con dibujos nuevos `DibujoBolsa` y `DibujoCompanero`. Niveles y tiempos: decisión de diseño.

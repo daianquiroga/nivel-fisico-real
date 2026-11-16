@@ -8,6 +8,7 @@ import { Combate } from '../screens/Combate'
 import { AnalisisPlan } from '../screens/Plan/Analisis'
 import { ArmarRutina } from '../screens/Plan/Armar'
 import { AsistenteRutina } from '../screens/Plan/Asistente'
+import { Plantillas } from '../screens/Plan/Plantillas'
 import { Tecnica } from '../screens/Tecnica'
 import { FichaArte, ListaArtes } from '../screens/Combate/Artes'
 import { SesionCompleta, Sistema } from '../screens/Combate/Sistema'
@@ -91,6 +92,7 @@ export default function App() {
         <Route path="/plan/analisis" element={<AnalisisPlan />} />
         <Route path="/plan/armar" element={<ArmarRutina />} />
         <Route path="/plan/asistente" element={<AsistenteRutina />} />
+        <Route path="/plan/plantillas" element={<Plantillas />} />
         <Route path="/tecnica" element={<Tecnica />} />
         <Route path="/combate" element={<Combate />} />
         <Route path="/combate/tecnicas" element={<Tecnicas />} />

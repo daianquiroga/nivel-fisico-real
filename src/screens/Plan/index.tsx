@@ -181,6 +181,9 @@ export function Plan() {
         <Link to="/plan/asistente" className={estilos.boton}>
           Prefiero armarla paso a paso
         </Link>
+        <Link to="/plan/plantillas" className={estilos.boton}>
+          Elegir una rutina de gimnasio lista
+        </Link>
         <Link to="/plan/armar" className={estilos.boton}>
           Ya tengo una rutina: cargarla
         </Link>
@@ -367,6 +370,9 @@ export function Plan() {
           </Link>
           <Link to="/combate/sistema?tema=sesion" className={estilos.boton}>
             Semana de combate (sistema completo)
+          </Link>
+          <Link to="/plan/plantillas" className={estilos.boton}>
+            Rutinas de gimnasio listas y comparar
           </Link>
           <Link to="/plan/armar" className={estilos.boton}>
             Cargar o editar mi rutina a mano

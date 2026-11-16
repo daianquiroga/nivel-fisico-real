@@ -9,6 +9,8 @@ import { analizarRutina } from '../../lib/plan/analisis'
 import { asegurarCiclo } from '../../lib/plan/ciclo'
 import { armarPlanPropio, leerTexto, seleccionDesdePlan, type DiaRutina, type LecturaTexto } from '../../lib/plan/rutinaPropia'
 import { guardarPlan, leerPlan } from '../../lib/plan/usarPlan'
+import type { PlanSemana } from '../../lib/plan/generador'
+import { Comparar } from './Plantillas'
 import { usarInicio } from '../../lib/usarInicio'
 import { normalizar } from '../../lib/aprender'
 import e from '../Evaluacion/evaluacion.module.css'
@@ -42,11 +44,13 @@ export function ArmarRutina() {
   const [elegidos, setElegidos] = useState<Record<number, string>>({})
   const [confirmar, setConfirmar] = useState(false)
   const [tenePlan, setTenePlan] = useState(false)
+  const [guardado, setGuardado] = useState<PlanSemana | null>(null)
   const [vaciar, setVaciar] = useState(false)
 
   useEffect(() => {
     void leerPlan().then((p) => {
       setTenePlan(Boolean(p))
+      setGuardado(p ?? null)
       setSel(p ? seleccionDesdePlan(p) : [])
     })
   }, [])
@@ -387,6 +391,12 @@ export function ArmarRutina() {
         }}
       />
       <p className={estilos.chico}>Tocá una sugerencia para sumarla al entrenamiento que estás editando.</p>
+      {guardado && sel.some((d) => d.items.length) && (
+        <details className={x.detalle}>
+          <summary>Comparar con mi plan guardado</summary>
+          <Comparar nombres={['Esta rutina', 'Mi plan guardado']} planes={[plan, guardado]} ctx={ctx} />
+        </details>
+      )}
 
       <Boton variante="principal" ancho disabled={!sel.some((d) => d.items.length)} onClick={() => (tenePlan ? setConfirmar(true) : void guardar())}>
         Guardar como mi plan

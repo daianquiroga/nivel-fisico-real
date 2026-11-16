@@ -1,0 +1,130 @@
+{
+  "fuente": "Estructuras clásicas de entrenamiento de fuerza. Rangos de repeticiones y series: ACSM 2009 (modelos de progresión). Entrenar cada músculo 2 veces por semana rinde más que 1 (Schoenfeld y otros 2016, metaanálisis). 10 o más series semanales por músculo para crecer (Schoenfeld y otros 2017). La elección de ejercicios y el reparto por día son decisión de diseño de la app.",
+  "enlaces": [
+    { "texto": "ACSM 2009, Progression models in resistance training for healthy adults", "enlace": "https://pubmed.ncbi.nlm.nih.gov/19204579/" },
+    { "texto": "Schoenfeld y otros 2016, frecuencia de entrenamiento e hipertrofia (metaanálisis)", "enlace": "https://pubmed.ncbi.nlm.nih.gov/27102172/" }
+  ],
+  "plantillas": [
+    {
+      "id": "cuerpo-completo-3",
+      "nombre": "Cuerpo completo · 3 días",
+      "para": "Ideal para empezar o con poco tiempo: todo el cuerpo en cada sesión, alternando A y B.",
+      "diasMin": 2,
+      "diasIdeal": 3,
+      "orden": ["A", "B", "A", "B"],
+      "dias": {
+        "A": {
+          "titulo": "Cuerpo completo A",
+          "ejercicios": [
+            { "opciones": ["sentadilla-barra", "sentadilla-goblet", "prensa", "sentadilla-bulgara", "sentadilla"], "series": 3 },
+            { "opciones": ["press-banca-barra", "press-banca-mancuernas", "press-pecho-maquina", "press-piso-mancuernas", "press-banda", "flexion"], "series": 3 },
+            { "opciones": ["remo-barra", "remo-inclinado-mancuernas", "remo-polea", "remo-mancuerna", "remo-invertido", "remo-inclinado-banda"], "series": 3 },
+            { "opciones": ["hip-thrust", "peso-muerto-rumano-mancuernas", "puente-una-pierna", "puente-gluteo"], "series": 2 },
+            { "opciones": ["plancha"], "series": 2 }
+          ]
+        },
+        "B": {
+          "titulo": "Cuerpo completo B",
+          "ejercicios": [
+            { "opciones": ["peso-muerto-barra", "peso-muerto-rumano-mancuernas", "swing-kettlebell", "peso-muerto-una-pierna", "puente-gluteo"], "series": 3 },
+            { "opciones": ["press-militar-barra", "press-hombros-mancuernas", "press-militar-banda", "flexion-pica"], "series": 3 },
+            { "opciones": ["dominada", "jalon-polea", "dominada-asistida-banda", "dominada-negativa", "remo-invertido", "remo-banda"], "series": 3 },
+            { "opciones": ["zancada-atras", "subida-banco"], "series": 2 },
+            { "opciones": ["curl-martillo", "curl-martillo-banda", "curl-biceps", "curl-banda"], "series": 2 },
+            { "opciones": ["extension-triceps", "extension-triceps-banda", "fondos"], "series": 2 }
+          ]
+        }
+      }
+    },
+    {
+      "id": "torso-pierna-4",
+      "nombre": "Torso y pierna · 4 días",
+      "para": "Para quien ya entrena: cada músculo 2 veces por semana con más volumen.",
+      "diasMin": 4,
+      "diasIdeal": 4,
+      "orden": ["Torso 1", "Pierna 1", "Torso 2", "Pierna 2"],
+      "dias": {
+        "Torso 1": {
+          "titulo": "Torso 1",
+          "ejercicios": [
+            { "opciones": ["press-banca-barra", "press-banca-mancuernas", "press-pecho-maquina", "press-piso-mancuernas", "press-banda", "flexion"], "series": 3 },
+            { "opciones": ["remo-barra", "remo-inclinado-mancuernas", "remo-polea", "remo-mancuerna", "remo-inclinado-banda"], "series": 3 },
+            { "opciones": ["press-militar-barra", "press-hombros-mancuernas", "press-militar-banda", "flexion-pica"], "series": 3 },
+            { "opciones": ["curl-barra", "curl-biceps", "curl-banda"], "series": 2 },
+            { "opciones": ["extension-triceps", "extension-triceps-banda"], "series": 2 }
+          ]
+        },
+        "Pierna 1": {
+          "titulo": "Pierna 1",
+          "ejercicios": [
+            { "opciones": ["sentadilla-barra", "sentadilla-goblet", "prensa", "sentadilla-bulgara", "sentadilla"], "series": 4 },
+            { "opciones": ["peso-muerto-rumano-mancuernas", "hip-thrust", "peso-muerto-una-pierna", "puente-una-pierna"], "series": 3 },
+            { "opciones": ["zancada-atras", "subida-banco"], "series": 2 },
+            { "opciones": ["elevacion-talones"], "series": 3 },
+            { "opciones": ["plancha-lateral", "plancha"], "series": 2 }
+          ]
+        },
+        "Torso 2": {
+          "titulo": "Torso 2",
+          "ejercicios": [
+            { "opciones": ["dominada", "jalon-polea", "dominada-asistida-banda", "dominada-negativa", "remo-banda"], "series": 3 },
+            { "opciones": ["press-banca-mancuernas", "press-piso-mancuernas", "fondos", "press-banda", "flexion"], "series": 3 },
+            { "opciones": ["elevaciones-laterales", "elevaciones-laterales-banda"], "series": 3 },
+            { "opciones": ["pajaro-mancuernas", "pajaro-banda", "face-pull-banda"], "series": 2 },
+            { "opciones": ["curl-martillo", "curl-martillo-banda"], "series": 2 }
+          ]
+        },
+        "Pierna 2": {
+          "titulo": "Pierna 2",
+          "ejercicios": [
+            { "opciones": ["peso-muerto-barra", "peso-muerto-rumano-mancuernas", "swing-kettlebell", "puente-gluteo"], "series": 3 },
+            { "opciones": ["sentadilla-bulgara", "zancada-atras"], "series": 3 },
+            { "opciones": ["hip-thrust", "puente-una-pierna", "puente-gluteo"], "series": 3 },
+            { "opciones": ["curl-femoral", "peso-muerto-una-pierna"], "series": 2 },
+            { "opciones": ["pallof-banda", "dead-bug"], "series": 2 }
+          ]
+        }
+      }
+    },
+    {
+      "id": "empuje-tiron-piernas",
+      "nombre": "Empuje, tirón y piernas · 3 o 6 días",
+      "para": "Cada día un grupo de movimientos. Con 6 días, cada músculo trabaja 2 veces por semana; con 3, una.",
+      "diasMin": 3,
+      "diasIdeal": 6,
+      "orden": ["Empuje", "Tirón", "Piernas", "Empuje", "Tirón", "Piernas"],
+      "dias": {
+        "Empuje": {
+          "titulo": "Empuje (pecho, hombros, tríceps)",
+          "ejercicios": [
+            { "opciones": ["press-banca-barra", "press-banca-mancuernas", "press-pecho-maquina", "press-piso-mancuernas", "press-banda", "flexion"], "series": 3 },
+            { "opciones": ["press-militar-barra", "press-hombros-mancuernas", "press-militar-banda", "flexion-pica"], "series": 3 },
+            { "opciones": ["fondos", "flexion-pies-elevados", "flexion"], "series": 2 },
+            { "opciones": ["elevaciones-laterales", "elevaciones-laterales-banda"], "series": 3 },
+            { "opciones": ["extension-triceps", "extension-triceps-banda"], "series": 2 }
+          ]
+        },
+        "Tirón": {
+          "titulo": "Tirón (espalda, bíceps)",
+          "ejercicios": [
+            { "opciones": ["dominada", "jalon-polea", "dominada-asistida-banda", "dominada-negativa", "remo-banda"], "series": 3 },
+            { "opciones": ["remo-barra", "remo-inclinado-mancuernas", "remo-polea", "remo-mancuerna", "remo-invertido", "remo-inclinado-banda"], "series": 3 },
+            { "opciones": ["pajaro-mancuernas", "pajaro-banda", "face-pull-banda"], "series": 2 },
+            { "opciones": ["curl-barra", "curl-biceps", "curl-banda"], "series": 2 },
+            { "opciones": ["curl-martillo", "curl-martillo-banda"], "series": 2 }
+          ]
+        },
+        "Piernas": {
+          "titulo": "Piernas y tronco",
+          "ejercicios": [
+            { "opciones": ["sentadilla-barra", "sentadilla-goblet", "prensa", "sentadilla-bulgara", "sentadilla"], "series": 3 },
+            { "opciones": ["peso-muerto-rumano-mancuernas", "peso-muerto-barra", "hip-thrust", "puente-una-pierna", "puente-gluteo"], "series": 3 },
+            { "opciones": ["zancada-atras", "subida-banco"], "series": 2 },
+            { "opciones": ["elevacion-talones"], "series": 3 },
+            { "opciones": ["plancha", "dead-bug"], "series": 2 }
+          ]
+        }
+      }
+    }
+  ]
+}
