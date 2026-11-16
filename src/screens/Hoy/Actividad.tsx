@@ -120,10 +120,13 @@ export function Actividad({ pesoKg }: { pesoKg?: number }) {
           {CON_DISTANCIA.includes(form.actividad) && (
             <Stepper etiqueta="Distancia (opcional)" valor={form.km} min={0} max={200} paso={0.5} unidad="km" onCambio={(v) => setForm({ ...form, km: v })} />
           )}
+          <details>
+            <summary className={estilos.chico}>Saber más</summary>
           <p className={estilos.chico}>
             {ACTIVIDADES[form.actividad].variantes[form.variante].met.toString().replace('.', ',')} MET (Compendium of Physical Activities 2024). Las calorías son una
             estimación: MET × peso × horas.
           </p>
+          </details>
           <div className={estilos.fila}>
             <Boton onClick={() => setForm(null)}>Cancelar</Boton>
             <Boton variante="principal" onClick={() => void guardar()}>

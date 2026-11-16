@@ -1,0 +1,89 @@
+{
+  "nota": "Textos de ayuda por pantalla y del recorrido de la primera vez. Cortos y sin palabras técnicas.",
+  "pantallas": {
+    "/": {
+      "pestana": 0,
+      "titulo": "Hoy",
+      "queEs": "Lo que te toca hoy, y nada más.",
+      "pasos": [
+        "Tocá \"Entrenar\" y la app te guía ejercicio por ejercicio.",
+        "Una vez por día, completá el control diario (30 segundos): cómo dormiste y si algo te duele.",
+        "Si algo cambia, el coach te avisa acá abajo.",
+        "Pasos, agua y racha están en \"Ver más\"."
+      ]
+    },
+    "/plan": {
+      "pestana": 1,
+      "titulo": "Plan",
+      "queEs": "Tu semana de entrenamiento, día por día.",
+      "pasos": [
+        "Tocá un día para ver sus ejercicios.",
+        "¿Querés empezar de nuevo? Tocá \"Armar una rutina nueva paso a paso\".",
+        "Para cambiar un ejercicio, tocá \"Cambiar\" al lado. Para sacar o sumar, tocá \"Editar\".",
+        "\"Analizar mi rutina\" te dice qué trabaja y qué le falta."
+      ]
+    },
+    "/progreso": {
+      "pestana": 2,
+      "titulo": "Progreso",
+      "queEs": "Cómo vas mejorando con el tiempo.",
+      "pasos": [
+        "Acá ves tu nivel, tu edad física y tus medidas.",
+        "Cada 4 semanas la app te pide repetir la evaluación para comparar.",
+        "Los gráficos suben cuando mejorás."
+      ]
+    },
+    "/aprender": {
+      "pestana": 3,
+      "titulo": "Aprender",
+      "queEs": "Cómo hacer cada ejercicio y por qué funciona.",
+      "pasos": [
+        "Buscá un ejercicio para ver el dibujo y los pasos.",
+        "Leé artículos cortos sobre dormir, comer, dolor y constancia.",
+        "Cada artículo tiene una versión corta y una con más detalle."
+      ]
+    },
+    "/perfil": {
+      "pestana": 4,
+      "titulo": "Perfil",
+      "queEs": "Tus datos, tus horarios y tu respaldo.",
+      "pasos": [
+        "Cambiá tus objetivos, lugares y horarios cuando quieras.",
+        "Guardá una copia de tus datos (respaldo) de vez en cuando: todo vive solo en tu celular.",
+        "Avisos, pasos del celular y actualizaciones de la app también están acá."
+      ]
+    }
+  },
+  "recorrido": [
+    {
+      "pestana": 0,
+      "titulo": "Hoy: tu entrenamiento del día",
+      "texto": "Abrí la app y tocá \"Entrenar\". Te guía ejercicio por ejercicio, con dibujos y cronómetro."
+    },
+    {
+      "pestana": 1,
+      "titulo": "Plan: tu semana",
+      "texto": "Acá está tu rutina. La podés armar paso a paso con 4 preguntas, o cambiar ejercicios cuando quieras."
+    },
+    {
+      "pestana": 2,
+      "titulo": "Progreso: cómo vas",
+      "texto": "Tu nivel, tus medidas y tus marcas. Cada tanto repetís la evaluación y ves cuánto mejoraste."
+    },
+    {
+      "pestana": 3,
+      "titulo": "Aprender: cómo se hace",
+      "texto": "Cada ejercicio con su dibujo y sus pasos, y artículos cortos sobre el cuerpo y la cabeza."
+    },
+    {
+      "pestana": 4,
+      "titulo": "Perfil: tus datos",
+      "texto": "Tus horarios, lugares y objetivos. Todo queda solo en tu celular: guardá un respaldo cada tanto."
+    },
+    {
+      "pestana": -1,
+      "titulo": "¿Te perdiste? Tocá el ?",
+      "texto": "Arriba a la derecha de cada pantalla hay un botón ? que te explica esa pantalla en pocas líneas."
+    }
+  ]
+}

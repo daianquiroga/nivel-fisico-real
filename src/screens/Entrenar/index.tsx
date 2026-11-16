@@ -364,7 +364,7 @@ export function Entrenar() {
             onCambio={setVersion}
           />
         )}
-        {descarga && sesion.tipo === 'fuerza' && <Aviso tipo="ok">Semana de descarga: la mitad de las series y un 10 % menos de peso.</Aviso>}
+        {descarga && sesion.tipo === 'fuerza' && <Aviso tipo="ok">Semana liviana: la mitad de las series y un 10 % menos de peso.</Aviso>}
         {zona && <Aviso tipo="error">Marcaste molestia o dolor en {nombreLim(zona)}: ya cambiamos los ejercicios que la cargan.</Aviso>}
         <Tarjeta>
           {sesion.ejercicios.map((y, i) => (
@@ -489,7 +489,7 @@ export function Entrenar() {
       <header>
         <p className="etiqueta" style={{ color: 'var(--accent)', margin: 0 }}>
           {paso.total > 1 ? `Serie ${paso.serie} de ${paso.total}` : unico ? (ejPlan.rol === 'cardio' ? 'Cardio' : 'Movilidad') : 'Serie única'}
-          {ejPlan.grupo && ejPlan.grupo !== 'C' ? ` · superserie ${ejPlan.grupo}` : ejPlan.grupo === 'C' ? ' · circuito' : ''}
+          {ejPlan.grupo && ejPlan.grupo !== 'C' ? ` · de a dos (grupo ${ejPlan.grupo})` : ejPlan.grupo === 'C' ? ' · en ronda' : ''}
         </p>
         <h1 className={e.titulo}>{ej.nombre}</h1>
         <p className={e.para}>Objetivo: {objetivo}</p>

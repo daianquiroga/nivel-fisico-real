@@ -28,6 +28,21 @@ export function Hoy() {
   const { plan } = usarPlan()
   const coach = useRef<CoachRef>(null)
   const [act, setAct] = useState<EstadoActualizacion>({})
+  const [mas, setMas] = useState(() => {
+    try {
+      return localStorage.getItem('hoy-ver-mas') === '1'
+    } catch {
+      return false
+    }
+  })
+  const guardarMas = (v: boolean) => {
+    setMas(v)
+    try {
+      localStorage.setItem('hoy-ver-mas', v ? '1' : '0')
+    } catch {
+      /* sin almacenamiento: no pasa nada */
+    }
+  }
   useEffect(() => {
     void leerEstadoActualizacion().then((e) => {
       setAct(e)
@@ -59,89 +74,6 @@ export function Hoy() {
         <h1 className="titulo-pantalla">Hoy</h1>
       </header>
 
-      {listo && (
-        <div className={s.chips}>
-          <span className={s.chip}>{lugaresHoy.length ? `Hoy entrenás en ${textoLugares}` : 'Hoy es día de descanso'}</span>
-        </div>
-      )}
-
-      {listo && dias !== null && (
-        <div className={s.chips}>
-          <span className={s.chip}>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--done)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z" />
-              <path d="M2 21c0-3 1.9-5.4 5-6" />
-            </svg>
-            {dias} {dias === 1 ? 'día' : 'días'} sin fumar
-          </span>
-          {ahorro !== null && <span className={s.chip}>{formatoPesos(ahorro)} ahorrados</span>}
-          <Link to="/ganas" className={s.chip} style={{ borderColor: 'var(--accent)', color: 'var(--text)', textDecoration: 'none' }}>
-            Tengo ganas de fumar
-          </Link>
-        </div>
-      )}
-
-      {!listo ? (
-        <Tarjeta destacada>
-          <p className="etiqueta" style={{ color: 'var(--accent)' }}>
-            Para empezar
-          </p>
-          <h2 className={s.tituloTarjeta}>Configurá tu app</h2>
-          <p className={estilos.texto2}>
-            En 3 a 5 minutos: tus datos, tus objetivos, dónde entrenás, tus horarios y tu salud. Con eso la app se arma para vos.
-          </p>
-          <Link to="/inicio" className={s.botonPrincipal}>
-            Empezar
-          </Link>
-        </Tarjeta>
-      ) : (
-        <Tarjeta destacada>
-          {!ultima ? (
-            <>
-              <p className="etiqueta" style={{ color: 'var(--accent)' }}>
-                Próximo paso
-              </p>
-              <h2 className={s.tituloTarjeta}>Tu evaluación inicial</h2>
-              <p className={estilos.texto2}>
-                En tu habitación, sin equipos: vas a saber tu condición física, tu edad física y tu nivel en cada área. La completa lleva unos
-                40 minutos; la rápida, 15.
-              </p>
-              <Link to="/evaluacion" className={s.botonPrincipal}>
-                Empezar evaluación
-              </Link>
-            </>
-          ) : (
-            <>
-              <p className="etiqueta" style={{ color: 'var(--done)' }}>
-                Tu nivel hoy
-              </p>
-              <h2 className={s.tituloTarjeta}>
-                {res?.condicion !== undefined
-                  ? `${Math.round(res.condicion)} / 100 · ${nivelPorPercentil(res.condicion).nombre}`
-                  : 'Evaluación guardada'}
-              </h2>
-              <p className={estilos.texto2}>
-                {res?.edadFisica !== undefined ? `Edad física: ${Math.round(res.edadFisica)} años. ` : ''}
-                {faltan > 0 ? `Próxima evaluación en ${faltan} ${faltan === 1 ? 'día' : 'días'}.` : 'Ya toca repetir la evaluación.'}
-              </p>
-              <Link to={faltan > 0 ? '/progreso' : '/evaluacion'} className={s.botonPrincipal}>
-                {faltan > 0 ? 'Ver mis resultados' : 'Evaluarme otra vez'}
-              </Link>
-            </>
-          )}
-        </Tarjeta>
-      )}
-
-      {listo && plan === null && (
-        <Tarjeta>
-          <p className="etiqueta">Tu semana</p>
-          <p className={estilos.texto2}>Todavía no armaste tu plan de entrenamiento.</p>
-          <Link to="/plan" className={estilos.boton}>
-            Armar mi plan
-          </Link>
-        </Tarjeta>
-      )}
-
       {act.actualizadaDesde && <Aviso tipo="ok">¡La app se actualizó sola a la versión {__VERSION_APP__}! Tus datos siguen igual.</Aviso>}
 
       {act.apkNueva && (
@@ -150,73 +82,136 @@ export function Hoy() {
         </Aviso>
       )}
 
-      {listo && <ControlDiario semana={semana} onCambio={() => coach.current?.recargar()} />}
-
-      {listo && <Coach ref={coach} />}
-
-      {listo && (perfil?.objetivos?.combate ?? 0) >= 10 && (
-        <Link to="/combate" className={estilos.boton}>
-          Combate: sombra, juego de pies y técnicas
-        </Link>
-      )}
-
-
-      {listo && plan && (
-        <Tarjeta destacada={plan.dias[diaDeHoy()].sesiones.some((x) => x.ejercicios.length > 0 && !x.titulo.includes('opcional'))}>
-          <p className="etiqueta">Hoy te toca</p>
-          {plan.dias[diaDeHoy()].sesiones.map((x) => (
-            <p key={x.id} className={estilos.texto2}>
-              <b>{x.titulo}</b>
-              {x.desde ? ` · ${x.desde}` : ''}
-              {x.lugar ? ` · ${x.lugar}` : ''}
-            </p>
-          ))}
-          {(() => {
-            const i = plan.dias[diaDeHoy()].sesiones.findIndex((x) => x.ejercicios.length > 0)
-            return i >= 0 ? (
-              <Link to={`/entrenar/${diaDeHoy()}/${i}`} className={s.botonPrincipal}>
-                Entrenar ahora
-              </Link>
-            ) : null
-          })()}
-          <Link to={`/plan?dia=${diaDeHoy()}`} className={estilos.boton}>
-            Ver el plan de hoy
+      {!listo && (
+        <Tarjeta destacada>
+          <p className="etiqueta" style={{ color: 'var(--accent)' }}>
+            Para empezar
+          </p>
+          <h2 className={s.tituloTarjeta}>Configurá tu app</h2>
+          <p className={estilos.texto2}>Unas preguntas simples (3 a 5 minutos) y la app se arma para vos.</p>
+          <Link to="/inicio" className={s.botonPrincipal}>
+            Empezar
           </Link>
         </Tarjeta>
       )}
 
-      {listo && plan && <Constancia plan={plan} />}
-
-      {listo && <Pasos edad={perfil?.edad ?? 30} />}
-
-      {listo && <Actividad pesoKg={perfil?.pesoKg ?? (ultima?.datos as { pesoKg?: number } | undefined)?.pesoKg} />}
-
-      {listo && <Agua sexo={perfil?.sexo ?? 'h'} />}
-
-      {listo && semana && plan !== undefined && <TuDia semana={semana} plan={plan} />}
-
       {listo && perfil?.salud && !perfil.salud.apto && (
-        <Aviso tipo="error">
-          Por tus respuestas de salud, consultá a un médico antes de las pruebas de esfuerzo. Las mediciones en reposo las podés hacer igual.
-        </Aviso>
+        <Aviso tipo="error">Por tus respuestas de salud, consultá a un médico antes de las pruebas de esfuerzo.</Aviso>
       )}
 
-      {listo && limitaciones.length > 0 && (
-        <Tarjeta>
-          <p className="etiqueta">Te vamos a cuidar</p>
-          <p className={estilos.texto2}>
-            Marcaste molestias en: {limitaciones.join(', ').toLowerCase()}. El plan va a cambiar los ejercicios que cargan esas zonas.
+      {listo && plan === null && (
+        <Tarjeta destacada>
+          <p className="etiqueta" style={{ color: 'var(--accent)' }}>
+            Próximo paso
           </p>
+          <h2 className={s.tituloTarjeta}>Armá tu rutina</h2>
+          <p className={estilos.texto2}>Te hago 4 preguntas y te propongo una rutina para tu semana.</p>
+          <Link to="/plan/asistente" className={s.botonPrincipal}>
+            Armar mi rutina
+          </Link>
         </Tarjeta>
       )}
+
+      {listo && plan && (() => {
+        const sesiones = plan.dias[diaDeHoy()].sesiones
+        const i = sesiones.findIndex((x) => x.ejercicios.length > 0 && !x.titulo.includes('opcional'))
+        const ses = i >= 0 ? sesiones[i] : undefined
+        return (
+          <Tarjeta destacada={Boolean(ses)}>
+            <p className="etiqueta" style={{ color: ses ? 'var(--accent)' : undefined }}>
+              Hoy te toca
+            </p>
+            <h2 className={s.tituloTarjeta}>{ses ? ses.titulo : 'Descanso'}</h2>
+            <p className={estilos.texto2}>
+              {ses
+                ? [ses.desde, ses.lugar ?? textoLugares, `${ses.minutos} min`, `${ses.ejercicios.length} ejercicios`].filter(Boolean).join(' · ')
+                : 'Hoy no hay entrenamiento. Caminar un rato y dormir bien también suma.'}
+            </p>
+            {ses && (
+              <Link to={`/entrenar/${diaDeHoy()}/${i}`} className={s.botonPrincipal}>
+                Entrenar
+              </Link>
+            )}
+            <Link to={`/plan?dia=${diaDeHoy()}`} className={estilos.boton}>
+              {ses ? 'Ver los ejercicios' : 'Ver mi semana'}
+            </Link>
+          </Tarjeta>
+        )
+      })()}
+
+      {listo && !ultima && (
+        <Link to="/evaluacion" className={estilos.boton}>
+          Medir mi estado físico (15 a 40 min)
+        </Link>
+      )}
+
+      {listo && dias !== null && (
+        <div className={s.chips}>
+          <span className={s.chip}>
+            {dias} {dias === 1 ? 'día' : 'días'} sin fumar
+          </span>
+          <Link to="/ganas" className={s.chip} style={{ borderColor: 'var(--accent)', color: 'var(--text)', textDecoration: 'none' }}>
+            Tengo ganas de fumar
+          </Link>
+        </div>
+      )}
+
+      {listo && <ControlDiario semana={semana} onCambio={() => coach.current?.recargar()} />}
+
+      {listo && <Coach ref={coach} />}
 
       {listo && (
-        <Tarjeta>
-          <p className="etiqueta">Tus datos</p>
-          <p className={estilos.texto2}>
-            Podés cambiar tus objetivos, lugares y horarios cuando quieras desde <Link to="/perfil">Perfil</Link>.
+        <button type="button" className={estilos.boton} aria-expanded={mas} onClick={() => guardarMas(!mas)}>
+          {mas ? 'Ver menos' : 'Ver más: nivel, racha, pasos, agua y tu día'}
+        </button>
+      )}
+
+      {listo && mas && (
+        <>
+          {ultima && (
+            <Tarjeta>
+              <p className="etiqueta" style={{ color: 'var(--done)' }}>
+                Tu nivel
+              </p>
+              <h2 className={s.tituloTarjeta}>
+                {res?.condicion !== undefined ? `${Math.round(res.condicion)} / 100 · ${nivelPorPercentil(res.condicion).nombre}` : 'Evaluación guardada'}
+              </h2>
+              <p className={estilos.texto2}>
+                {res?.edadFisica !== undefined ? `Edad física: ${Math.round(res.edadFisica)} años. ` : ''}
+                {faltan > 0 ? `Próxima evaluación en ${faltan} ${faltan === 1 ? 'día' : 'días'}.` : 'Ya toca repetir la evaluación.'}
+              </p>
+              <Link to={faltan > 0 ? '/progreso' : '/evaluacion'} className={estilos.boton}>
+                {faltan > 0 ? 'Ver mis resultados' : 'Evaluarme otra vez'}
+              </Link>
+            </Tarjeta>
+          )}
+
+          {(perfil?.objetivos?.combate ?? 0) >= 10 && (
+            <Link to="/combate" className={estilos.boton}>
+              Combate: sombra, juego de pies y técnicas
+            </Link>
+          )}
+
+          {plan && <Constancia plan={plan} />}
+
+          <Pasos edad={perfil?.edad ?? 30} />
+
+          <Actividad pesoKg={perfil?.pesoKg ?? (ultima?.datos as { pesoKg?: number } | undefined)?.pesoKg} />
+
+          <Agua sexo={perfil?.sexo ?? 'h'} />
+
+          {semana && plan !== undefined && <TuDia semana={semana} plan={plan} />}
+
+          {ahorro !== null && <p className={estilos.chico}>Llevás {formatoPesos(ahorro)} ahorrados sin fumar.</p>}
+
+          {limitaciones.length > 0 && (
+            <p className={estilos.chico}>Cuidamos tus molestias en: {limitaciones.join(', ').toLowerCase()}. El plan evita ejercicios que carguen esas zonas.</p>
+          )}
+
+          <p className={estilos.chico}>
+            Tus objetivos, lugares y horarios se cambian desde <Link to="/perfil">Perfil</Link>.
           </p>
-        </Tarjeta>
+        </>
       )}
     </>
   )

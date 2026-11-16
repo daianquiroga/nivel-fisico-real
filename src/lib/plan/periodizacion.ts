@@ -8,16 +8,16 @@ import type { SesionPlan } from './generador'
 export type Fase = 'adaptacion' | 'base' | 'desarrollo' | 'descarga'
 
 export const NOMBRES_FASE: Record<Fase, string> = {
-  adaptacion: 'Adaptación',
+  adaptacion: 'Arranque',
   base: 'Base',
   desarrollo: 'Desarrollo',
-  descarga: 'Descarga',
+  descarga: 'Liviana',
 }
 
 export const TEXTO_FASE: Record<Fase, string> = {
-  adaptacion: 'Aprender la técnica con 3 o 4 repeticiones en reserva. El cuerpo se acostumbra.',
+  adaptacion: 'Aprender bien los movimientos. Terminá cada serie sintiendo que podías hacer 3 o 4 más.',
   base: 'Sumar de a poco: repeticiones primero, después peso.',
-  desarrollo: 'Más exigencia: series cerca del tope y progresiones más difíciles.',
+  desarrollo: 'Más exigencia: series casi hasta no poder y versiones más difíciles.',
   descarga: 'Semana liviana para recuperarte y volver más fuerte: la mitad de las series y algo menos de peso.',
 }
 

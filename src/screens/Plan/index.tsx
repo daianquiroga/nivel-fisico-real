@@ -252,13 +252,13 @@ export function Plan() {
           <p className={estilos.texto2}>{TEXTO_FASE[ciclo.fase]}</p>
           {ciclo.fase !== 'descarga' && (
             <p className={estilos.chico}>
-              Próxima semana de descarga: {ciclo.faltan === 1 ? 'la que viene' : `en ${ciclo.faltan} semanas`}. En "Entrenar ahora" se aplica sola.
+              Próxima semana liviana: {ciclo.faltan === 1 ? 'la que viene' : `en ${ciclo.faltan} semanas`}. Se aplica sola al entrenar.
             </p>
           )}
           {ciclo.fase !== 'descarga' && fatiga && (
             <>
-              <Aviso tipo="error">Tu control diario muestra cansancio varios días esta semana. Conviene adelantar la descarga.</Aviso>
-              <Boton onClick={() => void adelantarDescarga()}>Hacer la semana de descarga ahora</Boton>
+              <Aviso tipo="error">Tu control diario muestra cansancio varios días esta semana. Conviene hacer ahora la semana liviana.</Aviso>
+              <Boton onClick={() => void adelantarDescarga()}>Hacer la semana liviana ahora</Boton>
             </>
           )}
         </Tarjeta>

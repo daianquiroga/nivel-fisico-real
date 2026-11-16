@@ -8,6 +8,11 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.32.0 (más fácil de usar, parte 2):
+  - Hoy simplificado: arriba solo lo de hoy con un botón grande "Entrenar" (o "Armar mi rutina" si no hay plan), el control diario y el coach. Nivel, racha, pasos, actividad, agua y tu día quedan en "Ver más" (se recuerda si lo dejaste abierto).
+  - Ayuda: botón "?" arriba a la derecha en las 5 pestañas, con qué es la pantalla, 3 o 4 pasos y un dibujo del celular marcando la pestaña. Textos en `src/content/ayuda.json`.
+  - Recorrido de la primera vez (6 pantallitas, se puede saltar y volver a ver desde el "?"). Se guarda como visto en `ajustes` (`recorrido-visto`).
+  - Lenguaje más simple: "descarga" pasa a "semana liviana", "adaptación" a "arranque", "superserie" a "de a dos", "en reserva" explicado como "cortá cuando sientas que podías hacer 3 más". Los MET de Actividad quedan en "Saber más".
 - Versión 0.31.0 (más fácil de usar, parte 1): asistente "Armar mi rutina paso a paso" (`/plan/asistente`, `src/lib/plan/asistente.ts` con tests): días, hora y tiempo, lugar (si hay más de uno) y qué querés lograr (ganar músculo, bajar grasa, más fuerza, más aire, defenderme, moverme mejor; y zonas opcionales). Arranca con lo que ya está cargado, usa el mismo generador y muestra la propuesta con dibujos, "Cambiar", "Sacar", el aporte y sugerencias para completarla. Accesos desde Plan y desde Mi rutina.
 - Versión 0.30.2: botón "Empezar de cero" en Mi rutina (vacía la pantalla; el plan guardado no cambia hasta guardar).
 - Versión 0.30.1: primera actualización sola de prueba; Hoy muestra una vez "La app se actualizó sola a la versión…".

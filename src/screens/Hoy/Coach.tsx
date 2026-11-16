@@ -42,13 +42,16 @@ export const Coach = forwardRef<CoachRef, { onCambioPerfil?: () => void }>(funct
       {lista.length === 0 && (
         <>
           <h3 className={c.titulo}>Hoy está todo en orden</h3>
-          <p className={estilos.texto2}>Seguí con tu plan. Miro tus registros todos los días y te aviso acá si:</p>
+          <p className={estilos.texto2}>Seguí con tu plan. Si algo cambia, te aviso acá.</p>
+          <details>
+            <summary className={estilos.chico} style={{ cursor: 'pointer', minHeight: 32 }}>¿Cuándo te aviso?</summary>
           <ul className={c.pasos}>
             <li>dormiste menos de 6 horas o marcaste una molestia en el control diario;</li>
             <li>faltaste dos sesiones seguidas;</li>
             <li>un ejercicio lleva 3 sesiones sin mejorar o ya podés subir de escalón;</li>
             <li>tu cintura sube, mejorás en el retest o cumplís tu etapa.</li>
           </ul>
+          </details>
         </>
       )}
       {lista.map((k) => (

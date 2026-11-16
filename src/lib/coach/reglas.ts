@@ -115,7 +115,7 @@ export function consejos(d: DatosCoach, nivel: NivelLectura): Consejo[] {
       titulo: 'Dormiste poco',
       ...armar(nivel, {
         simple: `Dormiste ${String(c.sueno).replace('.', ',')} horas. Hoy hacé la versión reducida: una serie menos y nada al máximo.`,
-        pasos: ['Tocá Entrenar.', 'Elegí "Reducida".', 'Dejá 3 repeticiones en reserva en vez de 2.'],
+        pasos: ['Tocá Entrenar.', 'Elegí "Reducida".', 'Cortá cada serie cuando sientas que podías hacer 3 más (en vez de 2).'],
         tecnico: 'Con menos de 6 h de sueño baja la capacidad de trabajo y sube el esfuerzo percibido: menos volumen (−1 serie por ejercicio) y RIR 3 o más. Una noche no cambia el progreso; varias seguidas sí.',
       }),
       accion: d.rutaHoy ? { tipo: 'ir', texto: 'Entrenar reducida', a: d.rutaHoy } : undefined,

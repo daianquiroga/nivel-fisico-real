@@ -1,5 +1,6 @@
 import { HashRouter, NavLink, Navigate, Outlet, Route, Routes } from 'react-router-dom'
 import { Icono } from '../components/Icono'
+import { Ayuda } from '../components/Ayuda'
 import { Aprender } from '../screens/Aprender'
 import { Articulo } from '../screens/Aprender/Articulo'
 import { Preguntar } from '../screens/Preguntar'
@@ -43,6 +44,7 @@ function ConBarra() {
       <main className={s.contenido}>
         <Outlet />
       </main>
+      <Ayuda />
       <nav className={s.nav} aria-label="Secciones">
         {PESTANAS.map((p) => (
           <NavLink

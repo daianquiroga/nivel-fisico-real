@@ -132,7 +132,7 @@ export function Ficha() {
           <p className={estilos.texto2}>{ej.pesoInicial}</p>
           <p className={estilos.chico}>
             Regla de la serie de prueba: hacé 10 y fijate cuántas más podrías haber hecho. Más de 4: subí un 10%. Entre 2 y 4: quedate ahí. Menos de 2:
-            bajá un 10%. Las primeras 2 semanas dejá 3 o 4 en reserva para aprender bien la técnica.
+            bajá un 10%. Las primeras 2 semanas cortá cada serie cuando sientas que podías hacer 3 o 4 más: así aprendés bien el movimiento.
           </p>
         </Tarjeta>
       )}
