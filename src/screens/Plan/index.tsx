@@ -29,10 +29,12 @@ function Sesion({
   sesion,
   onCambiar,
   onEditar,
+  entrenar,
 }: {
   sesion: SesionPlan
   onCambiar: (i: number) => void
   onEditar: () => void
+  entrenar: string
 }) {
   const unico = sesion.tipo === 'cardio' ? sesion.ejercicios[0] : undefined
   return (
@@ -75,6 +77,11 @@ function Sesion({
         })}
       </div>
       {sesion.ejercicios.length === 0 && <p className={estilos.texto2}>Sin ejercicios todavía: tocá Editar y agregá los que quieras.</p>}
+      {sesion.ejercicios.length > 0 && (
+        <Link to={entrenar} className={`${estilos.boton} ${estilos.principal}`}>
+          Entrenar ahora
+        </Link>
+      )}
       {sesion.nota && <p className={estilos.chico}>{sesion.nota}</p>}
     </Tarjeta>
   )
@@ -200,7 +207,7 @@ export function Plan() {
         editando === i ? (
           <EditorSesion key={ses.id} plan={plan} dia={dia} idx={i} entrada={entrada} onCambio={(p) => void cambiar(p)} onListo={() => setEditando(null)} />
         ) : (
-          <Sesion key={ses.id} sesion={ses} onCambiar={(ej) => setCambiando({ sesion: i, ej })} onEditar={() => setEditando(i)} />
+          <Sesion key={ses.id} sesion={ses} entrenar={`/entrenar/${dia}/${i}`} onCambiar={(ej) => setCambiando({ sesion: i, ej })} onEditar={() => setEditando(i)} />
         ),
       )}
       <Boton ancho onClick={() => setNueva(true)}>

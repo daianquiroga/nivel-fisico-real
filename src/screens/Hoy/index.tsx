@@ -6,6 +6,7 @@ import { nivelPorPercentil } from '../../lib/calc/puntajes'
 import type { Resultados } from '../../lib/evaluacion'
 import { diasParaProxima, usarEvaluaciones } from '../../lib/usarEvaluaciones'
 import { usarPlan } from '../../lib/plan/usarPlan'
+import { ControlDiario } from './ControlDiario'
 import { usarInicio } from '../../lib/usarInicio'
 import s from './hoy.module.css'
 
@@ -123,8 +124,10 @@ export function Hoy() {
         </Tarjeta>
       )}
 
+      {listo && <ControlDiario semana={semana} />}
+
       {listo && plan && (
-        <Tarjeta>
+        <Tarjeta destacada={plan.dias[diaDeHoy()].sesiones.some((x) => x.ejercicios.length > 0 && !x.titulo.includes('opcional'))}>
           <p className="etiqueta">Hoy te toca</p>
           {plan.dias[diaDeHoy()].sesiones.map((x) => (
             <p key={x.id} className={estilos.texto2}>
@@ -133,8 +136,16 @@ export function Hoy() {
               {x.lugar ? ` · ${x.lugar}` : ''}
             </p>
           ))}
+          {(() => {
+            const i = plan.dias[diaDeHoy()].sesiones.findIndex((x) => x.ejercicios.length > 0)
+            return i >= 0 ? (
+              <Link to={`/entrenar/${diaDeHoy()}/${i}`} className={s.botonPrincipal}>
+                Entrenar ahora
+              </Link>
+            ) : null
+          })()}
           <Link to={`/plan?dia=${diaDeHoy()}`} className={estilos.boton}>
-            Ver la sesión de hoy
+            Ver el plan de hoy
           </Link>
         </Tarjeta>
       )}
