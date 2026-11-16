@@ -1,0 +1,76 @@
+# Arma la app de Android (Capacitor) y la publica en la página de versiones del repositorio,
+# en la versión llamada "android", con el archivo nivel-fisico-real.apk.
+name: App de Android
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: android
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Revisar que esté la firma
+        id: firma
+        env:
+          FIRMA: ${{ secrets.ANDROID_FIRMA }}
+        run: |
+          if [ -z "$FIRMA" ]; then
+            echo "::notice::Falta el secreto ANDROID_FIRMA: no se arma el APK (así nunca cambia la firma). Ver ESTADO.md."
+            echo "hay=no" >> "$GITHUB_OUTPUT"
+          else
+            echo "hay=si" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/checkout@v4
+        if: steps.firma.outputs.hay == 'si'
+      - uses: actions/setup-node@v4
+        if: steps.firma.outputs.hay == 'si'
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+        if: steps.firma.outputs.hay == 'si'
+      - run: npm test
+        if: steps.firma.outputs.hay == 'si'
+      - run: npm run build:android
+        if: steps.firma.outputs.hay == 'si'
+      - uses: actions/setup-java@v4
+        if: steps.firma.outputs.hay == 'si'
+        with:
+          distribution: temurin
+          java-version: 21
+      - uses: gradle/actions/setup-gradle@v4
+        if: steps.firma.outputs.hay == 'si'
+      - name: Armar el APK
+        if: steps.firma.outputs.hay == 'si'
+        working-directory: android
+        env:
+          FIRMA: ${{ secrets.ANDROID_FIRMA }}
+          NFR_FIRMA_CLAVE: ${{ secrets.ANDROID_FIRMA_CLAVE }}
+        run: |
+          echo "$FIRMA" | base64 -d > "$RUNNER_TEMP/firma.jks"
+          export NFR_FIRMA_ARCHIVO="$RUNNER_TEMP/firma.jks"
+          VERSION=$(node -p "require('../package.json').version")
+          ./gradlew assembleRelease -PversionCode=${{ github.run_number }} -PversionName="$VERSION"
+          cp app/build/outputs/apk/release/app-release.apk ../nivel-fisico-real.apk
+      - name: Publicar en la página de versiones
+        if: steps.firma.outputs.hay == 'si'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          NOTAS="App de Android, versión $VERSION. Para instalarla: abrí esta página desde Chrome en el celular, tocá nivel-fisico-real.apk y seguí los pasos."
+          if gh release view android >/dev/null 2>&1; then
+            gh release edit android --title "App de Android $VERSION" --notes "$NOTAS"
+          else
+            gh release create android --title "App de Android $VERSION" --notes "$NOTAS" --latest
+          fi
+          gh release upload android nivel-fisico-real.apk --clobber

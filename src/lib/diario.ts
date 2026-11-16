@@ -58,6 +58,10 @@ export async function sesionesHechas(): Promise<(SesionHecha & { fecha: string }
 export interface DiaPasos {
   fecha: string
   pasos: number
+  /** Distancia en km (solo si vino de Health Connect). */
+  km?: number
+  /** De dónde salió el dato: cargado a mano o leído de Health Connect. */
+  origen?: 'manual' | 'health-connect'
 }
 
 export async function leerPasos(): Promise<DiaPasos[]> {

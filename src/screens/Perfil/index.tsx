@@ -5,6 +5,7 @@ import { LIMITACIONES, OBJETIVOS, TIPOS_LUGAR, tipoDeLugar } from '../../lib/per
 import { usarInicio } from '../../lib/usarInicio'
 import s from '../Hoy/hoy.module.css'
 import { Respaldo } from './Respaldo'
+import { AppAndroid } from './AppAndroid'
 
 export function Perfil() {
   const { cargado, perfil, lugares } = usarInicio()
@@ -49,6 +50,8 @@ export function Perfil() {
 
       <Respaldo />
 
+      <AppAndroid />
+
       <Tarjeta>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center', color: 'var(--done)' }}>
           <Icono nombre="escudo" />
@@ -58,7 +61,7 @@ export function Perfil() {
         </div>
         <p className={estilos.texto2}>
           La app no tiene servidores ni cuentas. Nada de lo que cargás sale de este celular, salvo que vos hagas un respaldo y lo guardes en
-          otro lado.
+          otro lado. La app de Android tampoco hace copias en la nube.
         </p>
         <p className={estilos.chico}>Nivel Físico Real · versión {__VERSION_APP__}</p>
       </Tarjeta>
