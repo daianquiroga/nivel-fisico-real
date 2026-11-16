@@ -8,6 +8,7 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Confirmado en el celular (16/11/2026): la app de Android se actualizó sola hasta la 0.40.0. La actualización sola funciona desde la 0.38.0 (con la huella SHA-256 y los arreglos de 0.33.0 a 0.35.0).
 - Versión 0.40.0: rutinas de gimnasio listas y comparar rutinas.
   - `content/plantillas.json` + `lib/plan/plantillas.ts` (con tests): cuerpo completo 3 días (A/B), torso y pierna 4 días, y empuje/tirón/piernas 3 o 6 días. Cada lugar de la plantilla tiene opciones en orden (barra → mancuernas → máquina → banda → peso del cuerpo) y se elige la primera que se puede hacer con el equipo del día y sin chocar con limitaciones; se ubica en tus días y horarios. Fuentes: ACSM 2009, Schoenfeld 2016 (frecuencia) y 2017 (volumen); elección y reparto: decisión de diseño.
   - `/plan/plantillas`: lista con el puntaje para tus objetivos, vista con dibujos y "Comparar con" (tu plan o las otras plantillas): aporte, días, minutos, series totales y por músculo, cardio y veredicto. Componente `Comparar` reutilizado en Mi rutina ("Comparar con mi plan guardado"). Accesos desde Plan.
