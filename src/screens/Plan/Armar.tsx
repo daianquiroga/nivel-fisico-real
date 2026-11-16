@@ -33,6 +33,7 @@ export function ArmarRutina() {
   const [modo, setModo] = useState<'tildar' | 'texto'>('tildar')
   const [sel, setSel] = useState<DiaRutina[] | null>(null)
   const [dia, setDia] = useState(0)
+  const [turno, setTurno] = useState(0)
   const [busqueda, setBusqueda] = useState('')
   const [filtro, setFiltro] = useState<string | null>(null)
   const [texto, setTexto] = useState('')
@@ -53,15 +54,17 @@ export function ArmarRutina() {
   const analisis = useMemo(() => (ctx ? analizarRutina(plan, ctx) : null), [plan, ctx])
   if (!sel || !ctx || !analisis) return null
 
-  const delDia = sel.find((d) => d.dia === dia) ?? { dia, items: [] }
+  const mismo = (d: DiaRutina) => d.dia === dia && (d.turno ?? 0) === turno
+  const turnosDia = Math.max(1, ...sel.filter((d) => d.dia === dia).map((d) => (d.turno ?? 0) + 1))
+  const delDia = sel.find(mismo) ?? { dia, turno, items: [] }
   const lugar = lugares.find((l) => l.nombre === delDia.lugar)
   const equipo = lugar ? equipoDeLugar(lugar) : null
   const limitaciones = perfil?.limitaciones ?? []
 
   const cambiarDia = (c: Partial<DiaRutina>) =>
     setSel((s) => {
-      const lista = (s ?? []).filter((d) => d.dia !== dia)
-      return [...lista, { ...delDia, ...c }].sort((a, b) => a.dia - b.dia)
+      const lista = (s ?? []).filter((d) => !mismo(d))
+      return [...lista, { ...delDia, ...c }].sort((a, b) => a.dia - b.dia || (a.turno ?? 0) - (b.turno ?? 0))
     })
   const tiene = (id: string) => delDia.items.some((i) => i.id === id)
   const alternar = (id: string) => cambiarDia({ items: tiene(id) ? delDia.items.filter((i) => i.id !== id) : [...delDia.items, { id }] })
@@ -99,7 +102,7 @@ export function ArmarRutina() {
     lectura.noReconocidas.forEach((n, i) => {
       const id = elegidos[i]
       if (!id) return
-      let d = dias.find((x) => x.dia === n.dia)
+      let d = dias.find((x) => x.dia === n.dia && !x.turno)
       if (!d) {
         d = { dia: n.dia, items: [] }
         dias.push(d)
@@ -110,6 +113,7 @@ export function ArmarRutina() {
     setLectura(null)
     setModo('tildar')
     setDia(dias[0]?.dia ?? 0)
+    setTurno(0)
   }
 
   return (
@@ -146,6 +150,7 @@ export function ArmarRutina() {
             onClick={() => {
               setSel([])
               setDia(0)
+              setTurno(0)
               setLectura(null)
               setVaciar(false)
             }}
@@ -208,9 +213,19 @@ export function ArmarRutina() {
         <>
           <div className={x.filtros} role="tablist" aria-label="Día">
             {CORTO.map((t, i) => {
-              const n = sel.find((d) => d.dia === i)?.items.length ?? 0
+              const n = sel.filter((d) => d.dia === i).reduce((a, d) => a + d.items.length, 0)
               return (
-                <button key={t} type="button" role="tab" aria-selected={dia === i} className={`${x.filtro} ${dia === i ? x.filtroOn : ''}`} onClick={() => setDia(i)}>
+                <button
+                  key={t}
+                  type="button"
+                  role="tab"
+                  aria-selected={dia === i}
+                  className={`${x.filtro} ${dia === i ? x.filtroOn : ''}`}
+                  onClick={() => {
+                    setDia(i)
+                    setTurno(0)
+                  }}
+                >
                   {t}
                   {n ? ` · ${n}` : ''}
                 </button>
@@ -218,8 +233,32 @@ export function ArmarRutina() {
             })}
           </div>
 
+          <div className={x.filtros} role="tablist" aria-label="Entrenamiento del día">
+            {Array.from({ length: turnosDia }, (_, k) => (
+              <button key={k} type="button" role="tab" aria-selected={turno === k} className={`${x.filtro} ${turno === k ? x.filtroOn : ''}`} onClick={() => setTurno(k)}>
+                {k + 1}º entrenamiento
+              </button>
+            ))}
+            {turnosDia < 3 && (
+              <button
+                type="button"
+                className={x.filtro}
+                onClick={() => {
+                  const k = turnosDia
+                  setSel((s) => [...(s ?? []), { dia, turno: k, items: [] }])
+                  setTurno(k)
+                }}
+              >
+                + Sumar otro
+              </button>
+            )}
+          </div>
+
           <Tarjeta>
-            <p className="etiqueta">{NOMBRES_DIAS[dia]}</p>
+            <p className="etiqueta">
+              {NOMBRES_DIAS[dia]}
+              {turnosDia > 1 ? ` · ${turno + 1}º entrenamiento` : ''}
+            </p>
             <div className={estilos.fila}>
               <label style={{ display: 'flex', flexDirection: 'column', gap: 4, flex: 1 }}>
                 <span className={estilos.chico}>Hora de inicio</span>
@@ -238,7 +277,7 @@ export function ArmarRutina() {
               </label>
             </div>
             {delDia.items.length === 0 ? (
-              <p className={estilos.chico}>Día libre. Tildá ejercicios abajo para sumarlos.</p>
+              <p className={estilos.chico}>{turno > 0 ? 'Tildá ejercicios abajo para este entrenamiento (por ejemplo, cardio a la mañana y fuerza a la tarde).' : 'Día libre. Tildá ejercicios abajo para sumarlos.'}</p>
             ) : (
               delDia.items.map((i) => {
                 const ej = ejercicio(i.id)!
@@ -261,9 +300,30 @@ export function ArmarRutina() {
                 )
               })
             )}
+            {(turnosDia > 1 || delDia.items.length > 0) && (
+              <button
+                type="button"
+                className={x.filtro}
+                style={{ alignSelf: 'flex-start' }}
+                onClick={() => {
+                  // Saca este entrenamiento y corre los siguientes un lugar.
+                  setSel((s) =>
+                    (s ?? [])
+                      .filter((d) => !mismo(d))
+                      .map((d) => (d.dia === dia && (d.turno ?? 0) > turno ? { ...d, turno: (d.turno ?? 0) - 1 } : d)),
+                  )
+                  setTurno(Math.max(0, turno - 1))
+                }}
+              >
+                Sacar este entrenamiento
+              </button>
+            )}
           </Tarjeta>
 
-          <p className="etiqueta">Sumar ejercicios al {NOMBRES_DIAS[dia].toLowerCase()}</p>
+          <p className="etiqueta">
+            Sumar ejercicios al {NOMBRES_DIAS[dia].toLowerCase()}
+            {turnosDia > 1 ? ` (${turno + 1}º entrenamiento)` : ''}
+          </p>
           <input className={x.buscador} type="search" placeholder="Buscar: banca, sentadilla, soga…" aria-label="Buscar ejercicio" value={busqueda} onChange={(ev) => setBusqueda(ev.target.value)} />
           <div className={x.filtros} role="group" aria-label="Filtrar por tipo">
             <button type="button" className={`${x.filtro} ${filtro === null ? x.filtroOn : ''}`} aria-pressed={filtro === null} onClick={() => setFiltro(null)}>
@@ -303,16 +363,10 @@ export function ArmarRutina() {
         a={analisis}
         compacto
         onAgregar={(id) => {
-          const destino = sel.find((d) => d.items.length && d.dia === dia) ?? sel.find((d) => d.items.length) ?? { dia, items: [] }
-          setDia(destino.dia)
-          setSel((s) => {
-            const otros = (s ?? []).filter((d) => d.dia !== destino.dia)
-            const d = (s ?? []).find((d0) => d0.dia === destino.dia) ?? destino
-            return d.items.some((i) => i.id === id) ? (s ?? []) : [...otros, { ...d, items: [...d.items, { id }] }].sort((a, b) => a.dia - b.dia)
-          })
+          if (!tiene(id)) cambiarDia({ items: [...delDia.items, { id }] })
         }}
       />
-      <p className={estilos.chico}>Tocá una sugerencia para sumarla al día que estás editando.</p>
+      <p className={estilos.chico}>Tocá una sugerencia para sumarla al entrenamiento que estás editando.</p>
 
       <Boton variante="principal" ancho disabled={!sel.some((d) => d.items.length)} onClick={() => (tenePlan ? setConfirmar(true) : void guardar())}>
         Guardar como mi plan

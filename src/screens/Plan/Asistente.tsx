@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Boton, Tarjeta, estilos } from '../../components/ui'
+import { Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
 import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
 import { BarrasAporte } from '../../content/dibujos-rutina'
 import { ejercicio, equipoDisponible } from '../../lib/ejercicios'
 import { NOMBRES_DIAS, ZONAS } from '../../lib/perfil'
 import { analizarRutina } from '../../lib/plan/analisis'
-import { DURACIONES, PRIORIDADES, entradaDesdeRespuestas, respuestasIniciales, type Prioridad, type Respuestas } from '../../lib/plan/asistente'
+import { DURACIONES, EXTRAS, PRIORIDADES, entradaDesdeRespuestas, sinOpcionales, sinVacias, sumarEntrenamiento, respuestasIniciales, type Prioridad, type Respuestas } from '../../lib/plan/asistente'
 import { asegurarCiclo } from '../../lib/plan/ciclo'
-import { agregarEjercicio, quitarEjercicio } from '../../lib/plan/editar'
+import { agregarEjercicio, borrarSesion, quitarEjercicio } from '../../lib/plan/editar'
 import { alternativas, generarPlan, type EntradaPlan, type PlanSemana } from '../../lib/plan/generador'
 import { armarEntrada, guardarPlan } from '../../lib/plan/usarPlan'
 import e from '../Evaluacion/evaluacion.module.css'
@@ -17,6 +17,11 @@ import h from '../Hoy/hoy.module.css'
 import { Volver } from '../Combate/comun'
 
 const CORTO = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom']
+const sumarMinutos = (h: string, m: number) => {
+  const [a, b] = h.split(':').map(Number)
+  const t = Math.min(23 * 60 + 30, a * 60 + b + m)
+  return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`
+}
 const PASOS = ['Días', 'Horario', 'Lugar', 'Objetivo', 'Tu rutina']
 
 function Chips<T extends string | number>({ opciones, elegidos, cambiar, etiqueta }: { opciones: { valor: T; texto: string }[]; elegidos: T[]; cambiar: (v: T) => void; etiqueta: string }) {
@@ -45,6 +50,7 @@ export function AsistenteRutina() {
   const [r, setR] = useState<Respuestas | null>(null)
   const [paso, setPaso] = useState(0)
   const [plan, setPlan] = useState<PlanSemana | null>(null)
+  const [extra, setExtra] = useState<{ dia: number; hora: string } | null>(null)
 
   useEffect(() => {
     void armarEntrada().then((b) => {
@@ -80,7 +86,7 @@ export function AsistenteRutina() {
   const alternar = <T,>(lista: T[], v: T) => (lista.includes(v) ? lista.filter((y) => y !== v) : [...lista, v])
 
   const siguiente = () => {
-    if (pasos[paso + 1] === 'Tu rutina') setPlan(generarPlan(entrada))
+    if (pasos[paso + 1] === 'Tu rutina') setPlan(sinOpcionales(generarPlan(entrada)))
     setPaso(paso + 1)
     window.scrollTo(0, 0)
   }
@@ -88,7 +94,7 @@ export function AsistenteRutina() {
 
   async function guardar() {
     if (!plan) return
-    const p = { ...plan, editado: true }
+    const p = { ...sinVacias(plan), editado: true }
     await guardarPlan(p)
     await asegurarCiclo(p.creado)
     navegar('/plan')
@@ -185,17 +191,21 @@ export function AsistenteRutina() {
       {nombre === 'Tu rutina' && plan && analisis && (
         <>
           <h1 className={e.titulo}>Tu rutina</h1>
-          <p className={e.para}>Así queda tu semana. Podés cambiar o sacar cualquier ejercicio antes de guardar.</p>
+          <p className={e.para}>Así queda tu semana. Podés cambiar o sacar ejercicios, y sumar más de un entrenamiento por día, antes de guardar.</p>
           <Tarjeta destacada>
             <p className="etiqueta">Qué aporta</p>
             <BarrasAporte fisico={analisis.puntajes.fisico} estetico={analisis.puntajes.estetico} marcial={analisis.puntajes.marcial} />
           </Tarjeta>
-          {plan.dias.map((d, dia) =>
-            d.sesiones.map((s, idx) =>
-              s.titulo.includes('opcional') ? null : (
+          {plan.dias.map((d, dia) => (
+            <section key={dia} style={{ display: 'flex', flexDirection: 'column', gap: 8 }} aria-label={NOMBRES_DIAS[dia]}>
+              <p className="etiqueta" style={{ margin: '6px 0 0' }}>
+                {NOMBRES_DIAS[dia]}
+                {d.sesiones.length === 0 ? ' · libre' : d.sesiones.length > 1 ? ` · ${d.sesiones.length} entrenamientos` : ''}
+              </p>
+              {d.sesiones.map((s, idx) => (
                 <Tarjeta key={s.id}>
-                  <p className="etiqueta">
-                    {NOMBRES_DIAS[dia]} · {s.desde ?? ''} · {s.minutos} min
+                  <p className={estilos.chico} style={{ margin: 0 }}>
+                    {s.desde ?? ''} · {s.minutos} min
                   </p>
                   <h2 style={{ margin: 0, fontSize: 19 }}>{s.titulo}</h2>
                   {s.ejercicios.map((ep, i) => {
@@ -211,7 +221,9 @@ export function AsistenteRutina() {
                           <span className={x.itemNombre} style={{ display: 'block', fontSize: 15 }}>
                             {ej.nombre}
                           </span>
-                          <span className={x.itemDetalle}>{ej.tipo === 'minutos' ? `${ep.rango[0]} min` : `${ep.series} ${ep.series === 1 ? "serie" : "series"} de ${ep.rango[0]} a ${ep.rango[1]}`}</span>
+                          <span className={x.itemDetalle}>
+                            {ej.tipo === 'minutos' ? `${ep.rango[0]} min` : `${ep.series} ${ep.series === 1 ? 'serie' : 'series'} de ${ep.rango[0]} a ${ep.rango[1]}`}
+                          </span>
                           <span style={{ display: 'flex', gap: 6, marginTop: 6 }}>
                             {alt.length > 0 && (
                               <button
@@ -227,7 +239,7 @@ export function AsistenteRutina() {
                                 Cambiar
                               </button>
                             )}
-                            <button type="button" className={x.filtro} onClick={() => setPlan(quitarEjercicio(plan, dia, idx, i))}>
+                            <button type="button" className={x.filtro} onClick={() => setPlan(sinVacias(quitarEjercicio(plan, dia, idx, i)))}>
                               Sacar
                             </button>
                           </span>
@@ -235,9 +247,48 @@ export function AsistenteRutina() {
                       </div>
                     )
                   })}
+                  <button type="button" className={x.filtro} style={{ alignSelf: 'flex-start' }} onClick={() => setPlan(borrarSesion(plan, dia, idx))}>
+                    Sacar este entrenamiento
+                  </button>
                 </Tarjeta>
-              ),
-            ),
+              ))}
+              <button
+                type="button"
+                className={estilos.boton}
+                onClick={() => {
+                  const ultimo = d.sesiones[d.sesiones.length - 1]
+                  setExtra({ dia, hora: ultimo?.hasta ? sumarMinutos(ultimo.hasta, 60) : r.hora })
+                }}
+              >
+                + {d.sesiones.length ? 'Sumar otro entrenamiento' : 'Sumar un entrenamiento'} el {NOMBRES_DIAS[dia].toLowerCase()}
+              </button>
+            </section>
+          ))}
+          {extra && (
+            <Dialogo titulo={`Otro entrenamiento el ${NOMBRES_DIAS[extra.dia].toLowerCase()}`} onCerrar={() => setExtra(null)}>
+              <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <span className="etiqueta">¿A qué hora?</span>
+                <input className={x.buscador} style={{ fontSize: 20, minHeight: 52 }} type="time" value={extra.hora} onChange={(ev) => ev.target.value && setExtra({ ...extra, hora: ev.target.value })} />
+              </label>
+              <p className="etiqueta">¿Qué querés hacer?</p>
+              {EXTRAS.map((o) => (
+                <button
+                  key={o.valor}
+                  type="button"
+                  className={x.item}
+                  style={{ textAlign: 'left', cursor: 'pointer' }}
+                  onClick={() => {
+                    setPlan(sumarEntrenamiento(plan, extra.dia, o.valor, extra.hora, r.lugar))
+                    setExtra(null)
+                  }}
+                >
+                  <span className={x.itemNombre}>{o.texto}</span>
+                  <span className={x.itemDetalle}>{o.detalle}</span>
+                </button>
+              ))}
+              <p className={estilos.chico}>¿Querés otra sesión de fuerza o elegir vos los ejercicios? Guardá y después tocá "Cargar o editar mi rutina a mano" en Plan.</p>
+              <Boton onClick={() => setExtra(null)}>Cancelar</Boton>
+            </Dialogo>
           )}
           {analisis.faltas.length > 0 && (
             <Tarjeta>
@@ -265,7 +316,7 @@ export function AsistenteRutina() {
               ))}
             </Tarjeta>
           )}
-          <button type="button" className={h.botonPrincipal} onClick={() => void guardar()}>
+          <button type="button" className={h.botonPrincipal} disabled={!plan.dias.some((d) => d.sesiones.length)} onClick={() => void guardar()}>
             Guardar mi rutina
           </button>
           <p className={estilos.chico}>Se guarda como tu plan de la semana. Después la podés seguir cambiando desde Plan.</p>

@@ -8,6 +8,10 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.34.0: más de un entrenamiento por día y limpieza.
+  - Asistente: la propuesta muestra los 7 días; en cada uno, "+ Sumar otro entrenamiento" (cardio 30 min, combate 15 min o movilidad 10 min, a la hora que elijas) y "Sacar este entrenamiento". Si sacás todos los ejercicios de uno, desaparece. Ya no guarda las movilidades opcionales escondidas de los días libres (eran la "movilidad de tobillo" que quedaba después de borrar todo). Minutos de los extras: decisión de diseño.
+  - Mi rutina (tildar): cada día puede tener 1º, 2º y 3º entrenamiento, cada uno con su hora y lugar. Al cargar el plan actual no se traen las movilidades opcionales.
+  - Hoy: si hay más de un entrenamiento, aparece "También hoy: …" con acceso directo.
 - Versión 0.33.0: arreglo de la actualización sola en Android. Antes la versión bajada quedaba "para la próxima" y el plugin, en modo manual, no siempre la aplicaba. Ahora: (1) al abrir la app, si hay una versión nueva ya bajada (y que no falló), se aplica en el momento con `set`; (2) al salir de la app se llama `reload` para aplicarla; (3) en Perfil → App de Android hay un botón "Buscar actualización ahora", que baja y aplica al instante, y se muestra la última revisión con su resultado o error. Las versiones 0.30.x a 0.32.0 en el celular pueden no aplicarse solas: hay que instalar el APK una vez más (encima, sin desinstalar: los datos quedan).
 - Versión 0.32.0 (más fácil de usar, parte 2):
   - Hoy simplificado: arriba solo lo de hoy con un botón grande "Entrenar" (o "Armar mi rutina" si no hay plan), el control diario y el coach. Nivel, racha, pasos, actividad, agua y tu día quedan en "Ver más" (se recuerda si lo dejaste abierto).

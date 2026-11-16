@@ -135,6 +135,15 @@ export function Hoy() {
             <Link to={`/plan?dia=${diaDeHoy()}`} className={estilos.boton}>
               {ses ? 'Ver los ejercicios' : 'Ver mi semana'}
             </Link>
+            {sesiones
+              .map((x, j) => ({ x, j }))
+              .filter(({ x, j }) => j !== i && x.ejercicios.length > 0 && !x.titulo.includes('opcional'))
+              .map(({ x, j }) => (
+                <Link key={x.id} to={`/entrenar/${diaDeHoy()}/${j}`} className={estilos.boton}>
+                  También hoy: {x.titulo}
+                  {x.desde ? ` · ${x.desde}` : ''}
+                </Link>
+              ))}
           </Tarjeta>
         )
       })()}

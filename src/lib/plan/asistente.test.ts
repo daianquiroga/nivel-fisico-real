@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { semanaPorDefecto } from '../perfil'
-import { escalonesIniciales, generarPlan, type EntradaPlan } from './generador'
-import { entradaDesdeRespuestas, objetivosDe, respuestasIniciales } from './asistente'
+import { escalonesIniciales, generarPlan, type EntradaPlan, type PlanSemana } from './generador'
+import { entradaDesdeRespuestas, objetivosDe, respuestasIniciales, sinOpcionales, sinVacias, sumarEntrenamiento } from './asistente'
 
 const base: EntradaPlan = {
   objetivos: { estetica: 34, condicion: 33, combate: 33 },
@@ -45,5 +45,23 @@ describe('asistente de rutina', () => {
     expect(r.hora).toBe('20:00')
     expect(r.minutos).toBe(60)
     expect(r.lugar).toBe('Casa')
+  })
+})
+
+describe('entrenamientos extra y limpieza', () => {
+  const vacio = (): PlanSemana => ({ creado: '2026-01-01', dias: Array.from({ length: 7 }, () => ({ sesiones: [] })) })
+  it('suma un segundo entrenamiento al mismo día, ordenado por hora', () => {
+    let p = sumarEntrenamiento(vacio(), 0, 'cardio', '19:00')
+    p = sumarEntrenamiento(p, 0, 'combate', '07:30')
+    expect(p.dias[0].sesiones.map((s) => s.titulo)).toEqual(['Combate: pies y sombra', 'Cardio'])
+    expect(p.dias[0].sesiones[0].hasta).toBe('07:45')
+    expect(new Set(p.dias[0].sesiones.map((s) => s.id)).size).toBe(2)
+  })
+  it('saca movilidades opcionales y entrenamientos vacíos', () => {
+    const p = vacio()
+    p.dias[1].sesiones.push({ ...sumarEntrenamiento(vacio(), 1, 'movilidad', '08:00').dias[1].sesiones[0], titulo: 'Movilidad (opcional, 10 minutos)' })
+    p.dias[2].sesiones.push({ ...sumarEntrenamiento(vacio(), 2, 'cardio', '08:00').dias[2].sesiones[0], ejercicios: [] })
+    expect(sinOpcionales(p).dias[1].sesiones).toHaveLength(0)
+    expect(sinVacias(p).dias[2].sesiones).toHaveLength(0)
   })
 })

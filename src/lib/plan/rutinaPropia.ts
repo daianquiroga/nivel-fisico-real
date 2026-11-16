@@ -129,6 +129,8 @@ export interface ItemRutina {
 
 export interface DiaRutina {
   dia: number
+  /** Número de entrenamiento dentro del día (0 = el primero). Permite más de uno por día. */
+  turno?: number
   desde?: string
   lugar?: string
   items: ItemRutina[]
@@ -225,7 +227,7 @@ export function armarPlanPropio(dias: DiaRutina[], creado = new Date().toISOStri
     const vigoroso = cardio.some((x) => ['soga', 'trote-suave', 'clase-golpes', 'clase-agarre'].includes(x.id))
     const combate = cardio.some((x) => ejercicio(x.id)?.combate)
     plan.dias[d.dia].sesiones.push({
-      id: `propia-${d.dia}`,
+      id: `propia-${d.dia}-${d.turno ?? 0}`,
       tipo,
       titulo: tipo === 'fuerza' ? 'Mi rutina · fuerza' : combate ? 'Mi rutina · combate' : tipo === 'cardio' ? 'Mi rutina · cardio' : 'Mi rutina · movilidad',
       lugar: d.lugar,
@@ -236,18 +238,23 @@ export function armarPlanPropio(dias: DiaRutina[], creado = new Date().toISOStri
       metodo: 'clasico',
       ejercicios: orden,
     })
+    plan.dias[d.dia].sesiones.sort((a, b) => (a.desde ?? '99').localeCompare(b.desde ?? '99'))
   }
   return plan
 }
 
 /** Pasa un plan a la selección por días (para editar el plan actual con el armador). */
 export function seleccionDesdePlan(plan: PlanSemana): DiaRutina[] {
-  return plan.dias
-    .map((d, i) => ({
-      dia: i,
-      desde: d.sesiones.find((s) => s.desde)?.desde,
-      lugar: d.sesiones.find((s) => s.lugar && s.lugar !== 'Afuera')?.lugar,
-      items: d.sesiones.flatMap((s) => s.ejercicios.map((x) => ({ id: x.id, series: x.series, rango: x.rango }))),
-    }))
-    .filter((d) => d.items.length)
+  // Cada entrenamiento del día es un turno; las movilidades opcionales de los días libres no se cargan.
+  return plan.dias.flatMap((d, i) =>
+    d.sesiones
+      .filter((s) => !s.titulo.includes('opcional') && s.ejercicios.length)
+      .map((s, turno) => ({
+        dia: i,
+        turno,
+        desde: s.desde,
+        lugar: s.lugar && s.lugar !== 'Afuera' ? s.lugar : undefined,
+        items: s.ejercicios.map((x) => ({ id: x.id, series: x.series, rango: x.rango })),
+      })),
+  )
 }

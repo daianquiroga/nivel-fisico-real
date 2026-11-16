@@ -1,7 +1,7 @@
 /* Asistente "Armar mi rutina paso a paso": unas pocas preguntas simples se convierten en la entrada del generador.
    El reparto de puntos entre objetivos según lo que se prioriza es una decisión de diseño de la app. */
 import type { Semana } from '../perfil'
-import type { EntradaPlan } from './generador'
+import type { EjercicioPlan, EntradaPlan, PlanSemana, SesionPlan } from './generador'
 
 export type Prioridad = 'musculo' | 'grasa' | 'fuerza' | 'cardio' | 'defensa' | 'movilidad'
 
@@ -81,4 +81,62 @@ export function respuestasIniciales(base: EntradaPlan): Respuestas {
   const lugar = base.semana.lugaresPorDia[primero]?.[0] ?? base.lugares[0]?.nombre ?? 'Casa'
   const minutos = hueco ? DURACIONES.reduce((a, b) => (Math.abs(b - (aMin(hueco.hasta) - aMin(hueco.desde))) < Math.abs(a - (aMin(hueco.hasta) - aMin(hueco.desde))) ? b : a)) : 45
   return { dias: dias.length ? dias : [0, 2, 4], hora: hueco?.desde ?? '19:00', lugar, minutos, prioridades: [], zonas: base.zonas.filter((z) => z !== 'definicion') }
+}
+
+export type Extra = 'cardio' | 'combate' | 'movilidad'
+
+/** Entrenamientos que se pueden sumar a un día (además del que ya tiene). Minutos: decisión de diseño. */
+export const EXTRAS: { valor: Extra; texto: string; detalle: string }[] = [
+  { valor: 'cardio', texto: 'Cardio', detalle: 'Caminata rápida de 30 minutos.' },
+  { valor: 'combate', texto: 'Combate', detalle: 'Juego de pies y sombra, 15 minutos.' },
+  { valor: 'movilidad', texto: 'Movilidad', detalle: '10 minutos para soltar el cuerpo.' },
+]
+
+const ep = (id: string, rol: EjercicioPlan['rol'], minutosOReps: [number, number]): EjercicioPlan => ({
+  id,
+  patrones: [rol === 'cardio' ? 'cardio' : 'movilidad'],
+  rol,
+  series: 1,
+  rango: minutosOReps,
+  descansoSeg: 0,
+})
+
+/** Suma otro entrenamiento a un día, a la hora elegida. Los entrenamientos del día quedan ordenados por hora. */
+export function sumarEntrenamiento(plan: PlanSemana, dia: number, extra: Extra, desde: string, lugar?: string): PlanSemana {
+  const p: PlanSemana = structuredClone(plan)
+  const usados = new Set(p.dias.flatMap((d) => d.sesiones.map((s) => s.id)))
+  let n = 1
+  while (usados.has(`extra-${dia}-${n}`)) n++
+  const ejercicios =
+    extra === 'cardio'
+      ? [ep('caminata-rapida', 'cardio', [30, 30])]
+      : extra === 'combate'
+        ? [ep('juego-pies', 'cardio', [6, 6]), ep('sombra', 'cardio', [9, 9])]
+        : [ep('gato-camello', 'movilidad', [6, 10]), ep('movilidad-tobillo', 'movilidad', [8, 10]), ep('estiramiento-flexor-cadera', 'movilidad', [30, 30])]
+  const minutos = extra === 'cardio' ? 30 : extra === 'combate' ? 15 : 10
+  const s: SesionPlan = {
+    id: `extra-${dia}-${n}`,
+    tipo: extra === 'movilidad' ? 'movilidad' : 'cardio',
+    titulo: extra === 'cardio' ? 'Cardio' : extra === 'combate' ? 'Combate: pies y sombra' : 'Movilidad',
+    lugar,
+    desde,
+    hasta: aHora(aMin(desde) + minutos),
+    minutos,
+    intensidad: extra === 'combate' ? 'fuerte' : 'suave',
+    metodo: 'clasico',
+    ejercicios,
+  }
+  p.dias[dia].sesiones.push(s)
+  p.dias[dia].sesiones.sort((a, b) => (a.desde ?? '99').localeCompare(b.desde ?? '99'))
+  return p
+}
+
+/** Saca las movilidades opcionales que el generador pone en los días libres. */
+export function sinOpcionales(plan: PlanSemana): PlanSemana {
+  return { ...plan, dias: plan.dias.map((d) => ({ ...d, sesiones: d.sesiones.filter((s) => !s.titulo.includes('opcional')) })) }
+}
+
+/** Saca los entrenamientos que quedaron sin ejercicios. */
+export function sinVacias(plan: PlanSemana): PlanSemana {
+  return { ...plan, dias: plan.dias.map((d) => ({ ...d, sesiones: d.sesiones.filter((s) => s.ejercicios.length > 0) })) }
 }
