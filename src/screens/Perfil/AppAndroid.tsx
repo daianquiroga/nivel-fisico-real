@@ -13,6 +13,7 @@ export function AppAndroid() {
   const [mensaje, setMensaje] = useState<string | null>(null)
   const [act, setAct] = useState<EstadoActualizacion>({})
   const [buscando, setBuscando] = useState(false)
+  const [resultado, setResultado] = useState<string | null>(null)
   useEffect(() => {
     if (!nativo) return
     void leerEstadoActualizacion().then(setAct)
@@ -59,7 +60,7 @@ export function AppAndroid() {
     <Tarjeta>
       <p className="etiqueta">App de Android</p>
       <p className={estilos.texto2}>
-        Versión {__VERSION_APP__}. Se actualiza sola: al abrirla con internet baja lo nuevo y lo aplica la próxima vez que la abrís.
+        Versión {__VERSION_APP__}. Se actualiza sola al abrirla con internet. Si no, tocá el botón.
         {act.pendiente ? ` Ya está bajada la ${act.pendiente}: cerrala y volvé a abrirla.` : ''}
       </p>
       <Boton
@@ -67,11 +68,12 @@ export function AppAndroid() {
         onClick={async () => {
           setBuscando(true)
           const r = await buscarActualizacion(true)
+          setResultado(null)
           setAct(await leerEstadoActualizacion())
           setBuscando(false)
-          setMensaje(
+          setResultado(
             r === 'al-dia'
-              ? 'Ya tenés la última versión.'
+              ? `Ya tenés la última versión (${__VERSION_APP__}).`
               : r === 'sin-internet'
                 ? 'No hay internet. Probá de nuevo con wifi o datos.'
                 : r === 'apk-nueva'
@@ -84,6 +86,11 @@ export function AppAndroid() {
       >
         {buscando ? 'Buscando…' : 'Buscar actualización ahora'}
       </Boton>
+      {resultado && (
+        <p className={estilos.texto2} role="status" style={{ fontWeight: 600 }}>
+          {resultado}
+        </p>
+      )}
       {act.revisado && (
         <p className={estilos.chico}>
           Última revisión: {new Date(act.revisado).toLocaleString('es-AR', { dateStyle: 'short', timeStyle: 'short' })} · {act.resultado}
