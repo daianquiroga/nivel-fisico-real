@@ -1,5 +1,6 @@
 /* Cambios a mano sobre el plan. Todas las funciones devuelven un plan nuevo (no tocan el original). */
 import { ejercicio, type Ejercicio } from '../ejercicios'
+import { ordenRecomendado } from './orden'
 import { agrupar, estimarMinutos, type EjercicioPlan, type Metodo, type PlanSemana, type SesionPlan, type TipoSesion } from './generador'
 
 const copiar = (p: PlanSemana): PlanSemana => ({ ...structuredClone(p), editado: true })
@@ -17,6 +18,9 @@ function rolDe(e: Ejercicio): EjercicioPlan['rol'] {
   if (e.patron === 'accesorio') return 'accesorio'
   return 'principal'
 }
+
+/** Flujo de movilidad de 10 minutos: columna, cadera y espalda alta, cadera, tobillos y hombros, en este orden (decisión de diseño a partir de rutinas de movilidad usuales). */
+export const FLUJO_MOVILIDAD = ['gato-camello', 'mejor-estiramiento', 'cadera-90-90', 'sentadilla-profunda-balanceo', 'circulos-hombro']
 
 /** Valores por defecto para un ejercicio agregado a mano. */
 export function nuevoEjercicioPlan(e: Ejercicio): EjercicioPlan {
@@ -66,6 +70,27 @@ export const moverEjercicio = (plan: PlanSemana, dia: number, idx: number, i: nu
     const j = i + delta
     if (j < 0 || j >= s.ejercicios.length) return
     ;[s.ejercicios[i], s.ejercicios[j]] = [s.ejercicios[j], s.ejercicios[i]]
+  })
+
+/** Ordena los ejercicios como recomienda la app (ver lib/plan/orden.ts). */
+export const ordenarSesion = (plan: PlanSemana, dia: number, idx: number) =>
+  conSesion(plan, dia, idx, (s) => {
+    s.ejercicios = ordenRecomendado(s.ejercicios)
+    s.ordenLibre = false
+  })
+
+/** Día liviano: una serie menos en cada ejercicio de fuerza y sin llegar al fallo (decisión de diseño). */
+export const suavizarSesion = (plan: PlanSemana, dia: number, idx: number) =>
+  conSesion(plan, dia, idx, (s) => {
+    s.intensidad = 'suave'
+    for (const x of s.ejercicios) if (x.rol !== 'cardio' && x.rol !== 'movilidad') x.series = Math.max(1, x.series - 1)
+    s.nota = 'Día liviano: una serie menos y cortando cada serie cuando te quedan 3 o 4 repeticiones.'
+  })
+
+/** Deja el orden como está y no lo vuelve a sugerir. */
+export const dejarOrden = (plan: PlanSemana, dia: number, idx: number) =>
+  conSesion(plan, dia, idx, (s) => {
+    s.ordenLibre = true
   })
 
 export const ajustarEjercicio = (plan: PlanSemana, dia: number, idx: number, i: number, c: Partial<Pick<EjercicioPlan, 'series' | 'rango' | 'descansoSeg'>>) =>
@@ -131,7 +156,7 @@ export function agregarSesion(plan: PlanSemana, dia: number, tipo: TipoSesion, l
     const e = ejercicio('caminata-rapida')
     if (e) ejercicios.push({ ...nuevoEjercicioPlan(e), rango: [30, 30] })
   }
-  if (tipo === 'movilidad') for (const id of ['gato-camello', 'movilidad-tobillo', 'estiramiento-flexor-cadera']) ejercicios.push(nuevoEjercicioPlan(ejercicio(id)!))
+  if (tipo === 'movilidad') for (const id of FLUJO_MOVILIDAD) ejercicios.push(nuevoEjercicioPlan(ejercicio(id)!))
   const s: SesionPlan = {
     id: nuevoId(p),
     tipo,

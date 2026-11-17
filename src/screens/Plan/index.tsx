@@ -1,23 +1,27 @@
 import { useEffect, useState } from 'react'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { Aviso, Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
 import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
 import { ejercicio, variantesDe } from '../../lib/ejercicios'
 import { NOMBRES_DIAS, diaDeHoy } from '../../lib/perfil'
 import { alternativas, type EjercicioPlan, type PlanSemana, type SesionPlan } from '../../lib/plan/generador'
-import { agregarSesion, cambiarDatosSesion } from '../../lib/plan/editar'
+import { agregarSesion, cambiarDatosSesion, dejarOrden, ordenarSesion } from '../../lib/plan/editar'
+import { FASES, faseDe, fasesDe } from '../../lib/plan/orden'
+import { ConsejoOrden } from './Orden'
 import { Implementos } from '../../components/Implementos'
 import { intencionPorDefecto } from '../../lib/habitos'
 import { generarIcs } from '../../lib/ics'
 import { usarPlan } from '../../lib/plan/usarPlan'
-import { Segmentado } from '../../components/controles'
+import { Segmentado, Stepper } from '../../components/controles'
 import { usarCiclo } from '../../lib/plan/ciclo'
 import { NOMBRES_FASE, TEXTO_FASE, fatigaAcumulada } from '../../lib/plan/periodizacion'
 import { leerControles } from '../../lib/diario'
 import { Agenda } from './Agenda'
 import { EditorSesion } from './EditorSesion'
 import { usarMetaPasos } from '../Hoy/Pasos'
-import { equilibrio, validarPlan } from '../../lib/plan/validador'
+import { equilibrio, horaPara, validarPlan } from '../../lib/plan/validador'
+import { ARTES_RUTINA, nombreCorto, sumarSombraGuiada } from '../../lib/plan/marcial'
+import { aplicarArreglo } from '../../lib/plan/arreglos'
 import { usarInicio } from '../../lib/usarInicio'
 import h from '../Hoy/hoy.module.css'
 import s from './plan.module.css'
@@ -41,6 +45,8 @@ function Sesion({
   entrenar,
   nombreDia,
   onIntencion,
+  onOrdenar,
+  onDejarOrden,
 }: {
   sesion: SesionPlan
   onCambiar: (i: number) => void
@@ -48,8 +54,11 @@ function Sesion({
   entrenar: string
   nombreDia: string
   onIntencion: () => void
+  onOrdenar: () => void
+  onDejarOrden: () => void
 }) {
-  const unico = sesion.tipo === 'cardio' ? sesion.ejercicios[0] : undefined
+  const unico = sesion.tipo === 'cardio' && sesion.ejercicios.length === 1 ? sesion.ejercicios[0] : undefined
+  const variasFases = !sesion.combate && fasesDe(sesion.ejercicios).length > 1
   return (
     <Tarjeta destacada={sesion.intensidad === 'fuerte'}>
       <div className={s.cabeza}>
@@ -76,8 +85,16 @@ function Sesion({
         {sesion.ejercicios.map((x, i) => {
           const e = ejercicio(x.id)
           if (!e) return null
+          const fase = faseDe(x.id)
+          const nuevaFase = variasFases && (i === 0 || faseDe(sesion.ejercicios[i - 1].id) !== fase)
           return (
-            <div key={`${x.id}-${i}`} className={s.ejercicio}>
+            <div key={`${x.id}-${i}`}>
+              {nuevaFase && (
+                <p className="etiqueta" style={{ margin: '8px 0 0', fontSize: 11 }}>
+                  {FASES[fase].nombre}
+                </p>
+              )}
+              <div className={s.ejercicio}>
               {x.grupo ? <span className={s.letra}>{x.grupo === 'C' ? '↻' : x.grupo}</span> : <span className={s.letra}>{i + 1}</span>}
               <Link to={`/ejercicio/${x.id}`} className={s.info}>
                 <b>{e.nombre}</b>
@@ -91,10 +108,12 @@ function Sesion({
               <Link to={`/registrar/${x.id}`} className={s.accion} aria-label={`Anotar ${e.nombre}`}>
                 Anotar
               </Link>
+              </div>
             </div>
           )
         })}
       </div>
+      {!sesion.combate && !sesion.ordenLibre && <ConsejoOrden ejercicios={sesion.ejercicios} onOrdenar={onOrdenar} onDejar={onDejarOrden} />}
       {sesion.ejercicios.length === 0 && <p className={estilos.texto2}>Sin ejercicios todavía: tocá Editar y agregá los que quieras.</p>}
       {sesion.tipo !== 'movilidad' && sesion.ejercicios.length > 0 && (
         <button
@@ -120,6 +139,7 @@ function Sesion({
 
 export function Plan() {
   const [params, setParams] = useSearchParams()
+  const navegar = useNavigate()
   const { cargado, perfil } = usarInicio()
   const { plan, entrada, generar, cambiar } = usarPlan()
   const [rearmar, setRearmar] = useState(false)
@@ -129,6 +149,7 @@ export function Plan() {
   } | null>(null)
   const [editando, setEditando] = useState<number | null>(null)
   const [nueva, setNueva] = useState(false)
+  const [sombra, setSombra] = useState<{ arte: string; minutos: number; movilidad: boolean } | null>(null)
   const [intencion, setIntencion] = useState<{ idx: number; texto: string } | null>(null)
   const [calendario, setCalendario] = useState(false)
   const pasos = usarMetaPasos(perfil?.edad ?? 30)
@@ -325,6 +346,8 @@ export function Plan() {
                 entrenar={`/entrenar/${dia}/${i}`}
                 onCambiar={(ej) => setCambiando({ sesion: i, ej })}
                 onEditar={() => setEditando(i)}
+                onOrdenar={() => void cambiar(ordenarSesion(plan, dia, i))}
+                onDejarOrden={() => void cambiar(dejarOrden(plan, dia, i))}
                 nombreDia={NOMBRES_DIAS[dia]}
                 onIntencion={() => {
                   setIntencion({ idx: i, texto: ses.intencion ?? intencionPorDefecto(NOMBRES_DIAS[dia], ses) })
@@ -340,10 +363,25 @@ export function Plan() {
             <Tarjeta>
               <p className="etiqueta">Avisos de la semana</p>
               {avisos.map((a) => (
-                <Aviso key={a.texto} tipo={a.tipo === 'cuidado' ? 'error' : 'ok'}>
-                  {a.texto}
-                </Aviso>
+                <div key={a.texto} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <Aviso tipo={a.tipo === 'cuidado' ? 'error' : 'ok'}>{a.texto}</Aviso>
+                  {a.arreglos?.map((r) => (
+                    <button
+                      key={r.texto}
+                      type="button"
+                      className={s.alternativa}
+                      style={{ minHeight: 48, borderColor: 'var(--accent)' }}
+                      onClick={() => {
+                        if (r.tipo === 'ir') navegar(r.ruta)
+                        else void cambiar(aplicarArreglo(plan, r, entrada.lugares[0]?.nombre))
+                      }}
+                    >
+                      <b>{r.texto}</b>
+                    </button>
+                  ))}
+                </div>
               ))}
+              <p className={estilos.chico}>Tocá una opción y el plan se corrige solo. Si no te sirve, podés cambiarlo a mano con Editar.</p>
             </Tarjeta>
           )}
 
@@ -443,7 +481,50 @@ export function Plan() {
               <span>{texto}</span>
             </button>
           ))}
-          <Boton onClick={() => setNueva(false)}>Cancelar</Boton>
+          <button type="button" className={s.alternativa} onClick={() => setSombra({ arte: 'hibrido', minutos: 30, movilidad: false })} aria-expanded={Boolean(sombra)}>
+            <b>Sombra guiada (combate)</b>
+            <span>Un arte, round por round, con reloj y voz. Elegís el arte y los minutos.</span>
+          </button>
+          {sombra && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <div className={s.semana} role="group" aria-label="Arte" style={{ flexWrap: 'wrap' }}>
+                {ARTES_RUTINA.map((d) => (
+                  <button
+                    key={d.id}
+                    type="button"
+                    aria-pressed={sombra.arte === d.id}
+                    className={s.accion}
+                    style={{ minHeight: 44, padding: '0 12px', fontSize: 14, borderColor: sombra.arte === d.id ? 'var(--accent)' : undefined, background: sombra.arte === d.id ? 'var(--accent-tint)' : undefined }}
+                    onClick={() => setSombra({ ...sombra, arte: d.id })}
+                  >
+                    {nombreCorto(d.id)}
+                  </button>
+                ))}
+              </div>
+              <Stepper etiqueta="Minutos" valor={sombra.minutos} min={10} max={90} paso={5} unidad="min" onCambio={(m) => setSombra({ ...sombra, minutos: m })} />
+              <button type="button" aria-pressed={sombra.movilidad} className={s.accion} onClick={() => setSombra({ ...sombra, movilidad: !sombra.movilidad })}>
+                {sombra.movilidad ? '✓ Con movilidad al final' : '+ Sumar movilidad al final'}
+              </button>
+              <Boton
+                variante="principal"
+                onClick={() => {
+                  void cambiar(sumarSombraGuiada(plan, dia, sombra.arte, sombra.minutos, horaPara(plan, entrada.semana, dia), sombra.movilidad, plan.dias[dia].sesiones[0]?.lugar ?? entrada.lugares[0]?.nombre))
+                  setSombra(null)
+                  setNueva(false)
+                }}
+              >
+                Sumar {nombreCorto(sombra.arte).toLowerCase()} · {sombra.minutos} min
+              </Boton>
+            </div>
+          )}
+          <Boton
+            onClick={() => {
+              setNueva(false)
+              setSombra(null)
+            }}
+          >
+            Cancelar
+          </Boton>
         </Dialogo>
       )}
 

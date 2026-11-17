@@ -4,6 +4,7 @@
 import { normalizar } from '../aprender'
 import { EJERCICIOS, ejercicio, implemento, variantesDe, type Ejercicio } from '../ejercicios'
 import { nuevoEjercicioPlan } from './editar'
+import { ordenRecomendado } from './orden'
 import { agrupar, estimarMinutos, type EjercicioPlan, type PlanSemana, type SesionPlan } from './generador'
 
 /** Nombres comunes de gimnasio → ejercicio de la biblioteca (sin tildes, en minúscula). Gana el más largo que aparezca. */
@@ -108,6 +109,18 @@ const ALIAS: [string, string][] = [
   ['lucha', 'clase-agarre'],
   ['movilidad de tobillo', 'movilidad-tobillo'],
   ['gato camello', 'gato-camello'],
+  ['gato vaca', 'gato-camello'],
+  ['burpee explosivo', 'burpee-explosivo'],
+  ['burpee sin salto', 'burpee-sin-salto'],
+  ['burpee', 'burpee'],
+  ['burpees', 'burpee'],
+  ['sentadilla con salto', 'sentadilla-salto'],
+  ['jump squat', 'sentadilla-salto'],
+  ['mejor estiramiento', 'mejor-estiramiento'],
+  ['worlds greatest', 'mejor-estiramiento'],
+  ['sentadilla profunda', 'sentadilla-profunda-balanceo'],
+  ['circulos de hombro', 'circulos-hombro'],
+  ['cars', 'circulos-hombro'],
   ['estiramientos', 'estiramiento-flexor-cadera'],
   ['elongacion', 'estiramiento-flexor-cadera'],
 ].map(([a, b]) => [normalizar(a), b] as [string, string])
@@ -151,6 +164,8 @@ export interface ItemRutina {
 }
 
 export interface DiaRutina {
+  /** La persona ordenó los ejercicios a mano: se respeta su orden. */
+  ordenPropio?: boolean
   dia: number
   /** Número de entrenamiento dentro del día (0 = el primero). Permite más de uno por día. */
   turno?: number
@@ -241,8 +256,8 @@ export function armarPlanPropio(dias: DiaRutina[], creado = new Date().toISOStri
     if (!ejercicios.length) continue
     const fuerza = ejercicios.filter((x) => x.rol !== 'cardio' && x.rol !== 'movilidad')
     const cardio = ejercicios.filter((x) => x.rol === 'cardio')
-    // Primero la fuerza, después el cardio y al final la movilidad.
-    const orden = [...fuerza, ...cardio, ...ejercicios.filter((x) => x.rol === 'movilidad')]
+    // Orden: el que eligió la persona con ↑ ↓, o si no el recomendado (movilidad para entrar en calor, potencia, fuerza, cardio y estiramientos quietos al final).
+    const orden = d.ordenPropio ? ejercicios : ordenRecomendado(ejercicios)
     const minCardio = cardio.reduce((a, x) => a + x.rango[0] * Math.max(1, x.series), 0)
     const tipo: SesionPlan['tipo'] = fuerza.length ? 'fuerza' : cardio.length ? 'cardio' : 'movilidad'
     if (tipo === 'fuerza') agrupar(orden, 'clasico', false)
@@ -278,6 +293,8 @@ export function seleccionDesdePlan(plan: PlanSemana): DiaRutina[] {
         desde: s.desde,
         lugar: s.lugar && s.lugar !== 'Afuera' ? s.lugar : undefined,
         items: s.ejercicios.map((x) => ({ id: x.id, series: x.series, rango: x.rango })),
+        // Si el plan ya tenía otro orden (elegido a mano o por el generador), se respeta.
+        ordenPropio: ordenRecomendado(s.ejercicios).some((x, k) => x !== s.ejercicios[k]) || undefined,
       })),
   )
 }

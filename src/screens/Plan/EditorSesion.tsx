@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Hora, Segmentado, Stepper } from '../../components/controles'
 import { Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
+import { ComoEncadenar, ConsejoOrden } from './Orden'
 import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
 import { EJERCICIOS, PATRONES, equipoDeLugar, evitarPorLimitacion, ejercicio, sePuedeHacer } from '../../lib/ejercicios'
 import { NOMBRES_DIAS } from '../../lib/perfil'
@@ -11,6 +12,7 @@ import {
   cambiarDatosSesion,
   cambiarMetodo,
   moverEjercicio,
+  ordenarSesion,
   moverSesion,
   quitarEjercicio,
 } from '../../lib/plan/editar'
@@ -237,6 +239,8 @@ export function EditorSesion({
       <Boton ancho onClick={() => setAgregando(true)}>
         + Agregar ejercicio
       </Boton>
+      {!sesion.combate && <ConsejoOrden ejercicios={sesion.ejercicios} onOrdenar={() => onCambio(ordenarSesion(plan, dia, idx))} />}
+      <ComoEncadenar ejercicios={sesion.ejercicios} />
 
       <p className={estilos.chico} style={{ marginTop: 8 }}>
         Mover o copiar esta sesión a otro día

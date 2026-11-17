@@ -967,6 +967,71 @@ const DIBUJOS: Record<string, () => ReactNode> = {
       textos={['Atrás', 'Adelante y arriba']}
     />
   ),
+  /* Burpees y saltos en intervalos */
+  burpee: () => (
+    <Dos
+      etiqueta="Burpee: plancha con flexión y después salto vertical con los brazos arriba"
+      a={{ pose: flexion({ mano: [128, 165], pie: [12, 165] }) }}
+      b={{ pose: pose({ cabeza: [80, 24], cuello: [80, 38], cadera: [80, 90], rod: [82, 118], pie: [82, 146], punta: [92, 150], codo: [94, 24], mano: [102, 10] }), adelante: <Flecha de={[122, 140]} a={[122, 92]} /> }}
+      textos={['Plancha y flexión', 'Salto con brazos arriba']}
+    />
+  ),
+  'burpee-sin-salto': () => (
+    <Dos
+      etiqueta="Burpee sin salto: un pie atrás y después el otro hasta la plancha, y pararse sin saltar"
+      a={{ pose: { ...flexion({ mano: [128, 165], pie: [12, 165] }), rodI: [70, 140], pieI: [86, 165], puntaI: [98, 165] }, adelante: <Flecha de={[90, 150]} a={[30, 150]} /> }}
+      b={{ pose: pose({ ...DE_PIE, codo: [94, 26], mano: [102, 12] }) }}
+      textos={['Un pie y después el otro', 'Parate, sin saltar']}
+    />
+  ),
+  'burpee-explosivo': () => (
+    <Dos
+      etiqueta="Burpee explosivo: los pies llegan a las manos de un golpe y el salto es el más alto posible"
+      a={{ pose: pose({ cabeza: [104, 88], cuello: [96, 100], cadera: [54, 124], rod: [96, 124], pie: [80, 165], punta: [94, 165], codo: [104, 132], mano: [108, 163] }), adelante: <Flecha de={[20, 156]} a={[66, 156]} /> }}
+      b={{ pose: pose({ cabeza: [80, 22], cuello: [80, 36], cadera: [80, 86], rod: [90, 106], pie: [80, 130], punta: [90, 134], codo: [94, 22], mano: [102, 8] }), adelante: <Flecha de={[122, 150]} a={[122, 90]} /> }}
+      textos={['Pies a las manos, de golpe', 'Salto máximo y pausa']}
+    />
+  ),
+  'sentadilla-salto': () => (
+    <Dos
+      etiqueta="Sentadilla con salto: bajar la cadera atrás y saltar suave, cayendo con las rodillas dobladas"
+      a={{ pose: sentadilla(0.75, 'adelante') }}
+      b={{ pose: pose({ cabeza: [80, 22], cuello: [80, 36], cadera: [80, 88], rod: [84, 118], pie: [82, 146], punta: [94, 150], codo: [70, 62], mano: [62, 82] }), adelante: <Flecha de={[122, 140]} a={[122, 96]} /> }}
+      textos={['Abajo', 'Salto suave']}
+    />
+  ),
+  /* Flujo de movilidad */
+  'mejor-estiramiento': () => {
+    const piernas = { cadera: [62, 122] as P, rod: [100, 126] as P, pie: [104, 165] as P, punta: [116, 165] as P, rodI: [34, 144] as P, pieI: [6, 162] as P, puntaI: [4, 154] as P }
+    return (
+      <Dos
+        etiqueta="El mejor estiramiento del mundo: pie al lado de la mano, codo hacia el piso y después el brazo hacia el techo"
+        a={{ pose: pose({ ...piernas, cabeza: [124, 102], cuello: [110, 110], codo: [118, 138], mano: [124, 164], codoI: [100, 136], manoI: [98, 150] }), adelante: <Flecha de={[100, 112]} a={[98, 142]} /> }}
+        b={{ pose: pose({ ...piernas, cabeza: [118, 92], cuello: [108, 108], codo: [118, 138], mano: [124, 164], codoI: [104, 78], manoI: [102, 48] }), adelante: <path d="M98,140 Q124,96 104,52" fill="none" stroke="var(--done)" strokeWidth={2.5} strokeDasharray="5 4" /> }}
+        textos={['Codo hacia el piso', 'Brazo al techo']}
+      />
+    )
+  },
+  'sentadilla-profunda-balanceo': () => {
+    const cuclillas = (dx: number): Pose =>
+      pose({ cabeza: [80 + dx, 88], cuello: [80 + dx, 102], cadera: [80 + dx * 0.6, 148], rod: [114, 132], pie: [102, 165], punta: [110, 165], rodI: [46, 132], pieI: [58, 165], puntaI: [50, 165], codo: [104 + dx, 132], mano: [86 + dx, 116], codoI: [56 + dx, 132], manoI: [74 + dx, 116] })
+    return (
+      <Dos
+        etiqueta="Sentadilla profunda vista de frente: talones apoyados, codos que abren las rodillas y balanceo de un lado al otro"
+        a={{ pose: cuclillas(-10), adelante: <Flecha de={[96, 70]} a={[60, 70]} /> }}
+        b={{ pose: cuclillas(10), adelante: <Flecha de={[64, 70]} a={[100, 70]} /> }}
+        textos={['Carga un tobillo (de frente)', 'Carga el otro']}
+      />
+    )
+  },
+  'circulos-hombro': () => (
+    <Dos
+      etiqueta="Círculos de hombro: el brazo estirado dibuja el círculo más grande y lento posible, con el cuerpo quieto"
+      a={{ pose: pose({ ...DE_PIE, codo: [100, 46], mano: [122, 46] }), atras: <circle cx={80} cy={46} r={42} fill="none" stroke="var(--done)" strokeWidth={2} strokeDasharray="4 5" /> }}
+      b={{ pose: pose({ ...DE_PIE, codo: [78, 26], mano: [74, 8] }), atras: <circle cx={80} cy={46} r={42} fill="none" stroke="var(--done)" strokeWidth={2} strokeDasharray="4 5" />, adelante: <Flecha de={[44, 20]} a={[40, 60]} /> }}
+      textos={['Adelante', 'Arriba y atrás, lento']}
+    />
+  ),
 }
 
 /** Corre una posición hacia abajo (para colgarse de algo más largo que la barra). */

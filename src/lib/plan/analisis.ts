@@ -46,7 +46,7 @@ export const PATRONES_BASE: { id: string; texto: string; incluye: Patron[] }[] =
 ]
 
 const TECNICA = new Set(['sombra', 'juego-pies', 'clase-golpes', 'clase-agarre'])
-const INTERVALOS = new Set(['soga', 'sombra', 'juego-pies', 'clase-golpes', 'clase-agarre', 'trote-suave'])
+const INTERVALOS = new Set(['soga', 'sombra', 'juego-pies', 'clase-golpes', 'clase-agarre', 'trote-suave', 'burpee', 'sentadilla-salto'])
 
 export interface ContextoAnalisis {
   objetivos: { estetica: number; condicion: number; combate: number }

@@ -12,7 +12,7 @@ import { analizarRutina } from '../../lib/plan/analisis'
 import { horariosDe, respuestasIniciales, type Horario } from '../../lib/plan/asistente'
 import { asegurarCiclo } from '../../lib/plan/ciclo'
 import type { EntradaPlan } from '../../lib/plan/generador'
-import { ARTES_RUTINA, bloquesSesion, nombreCorto, resumenBloques, semanaMarcial, vecesPorArte } from '../../lib/plan/marcial'
+import { ARTES_RUTINA, SOMBRA_VS_SISTEMA, bloquesSesion, nombreCorto, resumenBloques, semanaMarcial, vecesPorArte } from '../../lib/plan/marcial'
 import { guardarRutina } from '../../lib/plan/rutinas'
 import { armarEntrada, guardarPlan } from '../../lib/plan/usarPlan'
 import e from '../Evaluacion/evaluacion.module.css'
@@ -184,6 +184,17 @@ export function RutinaMarcial() {
             >
               {movilidad ? '✓ Con movilidad' : '+ Sumar movilidad'}
             </button>
+          </Tarjeta>
+          <Tarjeta>
+            <p className="etiqueta">¿Y el sistema completo?</p>
+            {SOMBRA_VS_SISTEMA.slice(1).map((d) => (
+              <p key={d.titulo} className={estilos.texto2} style={{ margin: 0 }}>
+                <b>{d.titulo}:</b> {d.texto}
+              </p>
+            ))}
+            <Link to="/plan/combinar" className={x.filtro} style={{ alignSelf: 'flex-start', minHeight: 44, display: 'inline-flex', alignItems: 'center' }}>
+              Sumarlo a mi rutina en Combinar
+            </Link>
           </Tarjeta>
           <p className={estilos.chico}>El % sale de cuántas distancias nuevas te suma, si el análisis de artes la recomienda y si las guardias se parecen (decisión de diseño; ver Combate → Artes).</p>
         </>

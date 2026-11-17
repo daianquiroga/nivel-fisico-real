@@ -251,5 +251,355 @@
     },
     "subir": "Más minutos o bloques de 30 segundos más rápidos.",
     "video": "high knee march in place"
+  },
+  {
+    "id": "burpee",
+    "nombre": "Burpees en intervalos",
+    "patron": "cardio",
+    "principal": [
+      "corazón y pulmones",
+      "piernas"
+    ],
+    "secundarios": [
+      "pecho",
+      "hombros",
+      "tríceps",
+      "abdomen"
+    ],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "minutos",
+    "carga": "corporal",
+    "rango": [
+      4,
+      10
+    ],
+    "inicial": "De pie, pies al ancho de los hombros. Necesitás el largo de tu cuerpo acostado.",
+    "pasos": [
+      "Bajá en sentadilla y apoyá las manos en el piso, delante de los pies.",
+      "Llevá los pies atrás de un salto y quedá en plancha: abdomen firme, sin hundir la cintura.",
+      "Bajá el pecho cerca del piso y empujá para subir (flexión).",
+      "Traé los pies de un salto cerca de las manos.",
+      "Saltá hacia arriba estirando la cadera y con los brazos arriba; caé suave con las rodillas apenas dobladas.",
+      "En intervalos: 30 a 45 segundos de burpees y 15 a 30 de pausa, durante los minutos que elijas."
+    ],
+    "respiracion": "Soltá el aire al empujar y al saltar; tomalo al bajar.",
+    "errores": [
+      {
+        "error": "Cintura hundida en la plancha",
+        "detectar": "La panza cae hacia el piso: apretá abdomen y glúteos."
+      },
+      {
+        "error": "Caer duro del salto",
+        "detectar": "Hace ruido: caé como un resorte."
+      },
+      {
+        "error": "Rodillas hacia adentro",
+        "detectar": "Al caer o al subir, las rodillas se juntan: apuntalas hacia los dedos."
+      }
+    ],
+    "facil": "burpee-sin-salto",
+    "dificil": "burpee-explosivo",
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Apoyá los puños o las manos en un banco o un escalón."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Hacé la versión sin salto y sin bajar del todo."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Sacá la flexión: plancha y volvé."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Versión sin salto y con las manos en un banco; sin hundir la cintura."
+      },
+      "tobillo": {
+        "nivel": "evitar",
+        "texto": "Sin saltos hasta que el tobillo esté bien: usá la versión sin salto."
+      }
+    },
+    "subir": "Para más aire: más minutos o menos pausa. Si querés potencia, no sirve hacer más: pasá a burpees explosivos (pocos y con pausas largas). Medio burpee (sin flexión) es un paso intermedio.",
+    "video": "como hacer un burpee tecnica"
+  },
+  {
+    "id": "burpee-sin-salto",
+    "nombre": "Burpee sin salto (sin impacto)",
+    "patron": "cardio",
+    "principal": [
+      "corazón y pulmones",
+      "piernas"
+    ],
+    "secundarios": [
+      "hombros",
+      "abdomen"
+    ],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "minutos",
+    "carga": "corporal",
+    "rango": [
+      4,
+      10
+    ],
+    "inicial": "De pie, frente a un banco, una silla firme o el piso.",
+    "pasos": [
+      "Bajá en sentadilla y apoyá las manos en el piso (o en el banco, más fácil).",
+      "Llevá un pie atrás y después el otro hasta quedar en plancha.",
+      "Volvé un pie y después el otro, cerca de las manos.",
+      "Parate sin saltar, estirando la cadera y con los brazos arriba.",
+      "30 a 45 segundos de trabajo y 15 a 30 de pausa."
+    ],
+    "respiracion": "Respirá con ritmo: soltá el aire al pararte.",
+    "errores": [
+      {
+        "error": "Cintura hundida",
+        "detectar": "En la plancha la panza cae: apretá abdomen."
+      },
+      {
+        "error": "Ir apurado",
+        "detectar": "Los pies se arrastran o perdés la plancha: más lento y prolijo."
+      },
+      {
+        "error": "Saltear la parada",
+        "detectar": "Quedás agachado entre repeticiones: parate del todo, con la cadera estirada."
+      }
+    ],
+    "facil": null,
+    "dificil": "burpee",
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Manos en un banco o puños."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Manos en un banco alto."
+      }
+    },
+    "subir": "Cuando hagas 45 segundos seguidos sin perder la plancha, probá el burpee con salto.",
+    "video": "burpee sin salto bajo impacto"
+  },
+  {
+    "id": "sentadilla-salto",
+    "nombre": "Sentadillas con salto en intervalos",
+    "patron": "cardio",
+    "principal": [
+      "corazón y pulmones",
+      "cuádriceps",
+      "glúteos"
+    ],
+    "secundarios": [
+      "pantorrillas"
+    ],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "minutos",
+    "carga": "corporal",
+    "rango": [
+      3,
+      8
+    ],
+    "inicial": "De pie, pies al ancho de los hombros.",
+    "pasos": [
+      "Bajá la cadera llevando la cola hacia atrás, como para sentarte.",
+      "Subí rápido y hacé un salto vertical suave.",
+      "Caé con las rodillas un poco dobladas, alineadas con los pies, y encadená la siguiente.",
+      "30 segundos de trabajo y 30 de pausa (o 20 y 40 si recién empezás)."
+    ],
+    "respiracion": "Soltá el aire al saltar.",
+    "errores": [
+      {
+        "error": "Rodillas hacia adentro al caer",
+        "detectar": "Se juntan: apuntalas hacia los dedos del pie."
+      },
+      {
+        "error": "Caer duro",
+        "detectar": "Hace ruido: caé suave en la punta y bajá el talón."
+      },
+      {
+        "error": "Saltar con la espalda redonda",
+        "detectar": "El pecho se va al piso al bajar: mirá adelante y pecho arriba."
+      }
+    ],
+    "facil": "sentadilla",
+    "dificil": "salto-vertical",
+    "limitaciones": {
+      "rodilla": {
+        "nivel": "evitar",
+        "texto": "Con dolor de rodilla, sin saltos: sentadilla rápida sin despegar."
+      },
+      "tobillo": {
+        "nivel": "evitar",
+        "texto": "Sin saltos hasta que el tobillo esté bien."
+      }
+    },
+    "subir": "Sumá un intervalo o acortá la pausa. Si buscás potencia y no aire, pasá al salto vertical: pocos saltos y pausas largas.",
+    "video": "jump squat tecnica sentadilla con salto"
+  },
+  {
+    "id": "mejor-estiramiento",
+    "nombre": "El mejor estiramiento del mundo",
+    "patron": "movilidad",
+    "principal": [
+      "cadera",
+      "espalda alta"
+    ],
+    "secundarios": [
+      "hombros",
+      "isquiotibiales"
+    ],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [
+      4,
+      6
+    ],
+    "inicial": "En plancha alta, con los brazos estirados.",
+    "pasos": [
+      "Llevá el pie derecho por fuera de la mano derecha.",
+      "Bajá el codo derecho hacia el piso, por dentro del pie.",
+      "Girá el torso y abrí ese brazo hacia el techo, siguiendo la mano con la mirada.",
+      "Volvé a la plancha y hacé el otro lado. 5 por lado, lento."
+    ],
+    "respiracion": "Soltá el aire al girar y abrir el brazo.",
+    "errores": [
+      {
+        "error": "Pie que no llega",
+        "detectar": "Queda atrás de la mano: ayudalo con la mano o bajá la rodilla de atrás."
+      },
+      {
+        "error": "Girar solo el brazo",
+        "detectar": "El pecho no se abre: girá desde la espalda alta."
+      },
+      {
+        "error": "Rodilla de adelante hacia adentro",
+        "detectar": "Que apunte hacia los dedos del pie."
+      }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Apoyá los puños o la rodilla de atrás en el piso."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Rodilla de atrás apoyada sobre algo blando."
+      }
+    },
+    "subir": "Es de movilidad: buscá más rango, no más velocidad. Va bien para entrar en calor.",
+    "video": "worlds greatest stretch tecnica"
+  },
+  {
+    "id": "sentadilla-profunda-balanceo",
+    "nombre": "Sentadilla profunda con balanceo",
+    "patron": "movilidad",
+    "principal": [
+      "tobillos",
+      "cadera"
+    ],
+    "secundarios": [
+      "aductores",
+      "rodillas"
+    ],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "segundos",
+    "carga": "corporal",
+    "rango": [
+      45,
+      60
+    ],
+    "inicial": "De pie, pies un poco más abiertos que los hombros, puntas apenas hacia afuera.",
+    "pasos": [
+      "Bajá a una sentadilla profunda con los talones apoyados (si se levantan, poné un libro debajo).",
+      "Con los codos, empujá suave las rodillas hacia afuera.",
+      "Balanceate despacio de un lado al otro, cargando un tobillo y después el otro.",
+      "Movimiento suave de 45 a 60 segundos."
+    ],
+    "respiracion": "Respirá lento y largo.",
+    "errores": [
+      {
+        "error": "Talones en el aire",
+        "detectar": "Calzá un libro bajo los talones o agarrate de algo."
+      },
+      {
+        "error": "Espalda muy redonda",
+        "detectar": "Llevá el pecho un poco arriba."
+      },
+      {
+        "error": "Rebotar abajo",
+        "detectar": "Es un balanceo lento, no rebotes."
+      }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Bajá solo hasta donde no moleste, agarrado de algo firme."
+      }
+    },
+    "subir": "Es de movilidad: sumá segundos y bajá un poco más con el tiempo, sin dolor.",
+    "video": "deep squat hold ankle mobility"
+  },
+  {
+    "id": "circulos-hombro",
+    "nombre": "Círculos de hombro lentos (CARs)",
+    "patron": "movilidad",
+    "principal": [
+      "hombros"
+    ],
+    "secundarios": [
+      "escápulas",
+      "espalda alta"
+    ],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [
+      4,
+      6
+    ],
+    "inicial": "De pie o de rodillas, abdomen firme para no arquear la espalda.",
+    "pasos": [
+      "Estirá un brazo hacia adelante.",
+      "Dibujá el círculo más grande y lento que puedas: adelante, arriba, atrás y abajo.",
+      "El resto del cuerpo quieto: solo se mueve el hombro.",
+      "5 hacia adelante y 5 hacia atrás con cada brazo."
+    ],
+    "respiracion": "Respirá normal, sin aguantar el aire.",
+    "errores": [
+      {
+        "error": "Arquear la espalda",
+        "detectar": "Las costillas se van adelante: apretá el abdomen."
+      },
+      {
+        "error": "Ir rápido",
+        "detectar": "Cada círculo tarda unos 10 segundos."
+      },
+      {
+        "error": "Doblar el codo",
+        "detectar": "El brazo va estirado todo el círculo."
+      }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Círculos más chicos, sin dolor."
+      }
+    },
+    "subir": "Es de movilidad: buscá círculos más grandes y lentos, manteniendo el cuerpo quieto.",
+    "video": "shoulder CARs controlled articular rotations"
   }
 ]

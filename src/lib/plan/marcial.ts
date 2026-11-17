@@ -240,3 +240,33 @@ export function resumenBloques(bloques: Bloque[]): string[] {
   }
   return out
 }
+
+/** Diferencia entre la rutina marcial (sombra guiada) y el sistema completo, para mostrar en la app. */
+export const SOMBRA_VS_SISTEMA = [
+  {
+    titulo: 'Rutina marcial (sombra guiada)',
+    texto:
+      'Un arte por sesión (o tu híbrido de boxeo, kick y muay thai), del tiempo que vos elijas: entrada en calor, juego de pies, rounds de sombra según tu nivel y movilidad si querés. Sirve para aprender y pulir un estilo.',
+  },
+  {
+    titulo: 'Sistema completo',
+    texto:
+      'Un método que junta 5 estilos (boxeo, muay thai, kickboxing, suelo y krav magá) con una guardia y reglas comunes. En la semana va un tema por día (boxeo, muay thai y kick, suelo, krav magá e integración), cada uno con un complemento de fuerza, tronco, movilidad o cardio. Tiene su propia sesión guiada de 60 minutos.',
+  },
+  {
+    titulo: '¿Cuál elijo?',
+    texto:
+      'Si querés mejorar en uno o dos estilos, la rutina marcial. Si querés defenderte en cualquier distancia (parado y en el suelo), el sistema completo. Cualquiera de los dos se combina con tu fuerza; los dos juntos se pisan, mejor uno.',
+  },
+]
+
+/** Suma una sesión de sombra guiada a un día del plan. */
+export function sumarSombraGuiada(plan: PlanSemana, dia: number, arteId: string, minutos: number, desde: string, movilidad = false, lugar?: string): PlanSemana {
+  const p: PlanSemana = { ...structuredClone(plan), editado: true }
+  const usados = new Set(p.dias.flatMap((d) => d.sesiones.map((s) => s.id)))
+  let n = 1
+  while (usados.has(`sombra-${dia}-${n}`)) n++
+  p.dias[dia].sesiones.push(sesionMarcial(`sombra-${dia}-${n}`, arteId, { hora: desde, minutos }, movilidad, undefined, lugar))
+  p.dias[dia].sesiones.sort((a, b) => (a.desde ?? '99').localeCompare(b.desde ?? '99'))
+  return p
+}

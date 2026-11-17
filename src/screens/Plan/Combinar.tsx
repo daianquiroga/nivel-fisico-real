@@ -7,6 +7,7 @@ import { asegurarCiclo } from '../../lib/plan/ciclo'
 import type { PlanSemana } from '../../lib/plan/generador'
 import { NOMBRE_ORIGEN, borrarRutina, combinarPlanes, guardarRutina, leerRutinas, type RutinaGuardada } from '../../lib/plan/rutinas'
 import { semanaSistema } from '../../lib/plan/sistemaSemana'
+import { SOMBRA_VS_SISTEMA } from '../../lib/plan/marcial'
 import { armarEntrada, guardarPlan, leerPlan } from '../../lib/plan/usarPlan'
 import e from '../Evaluacion/evaluacion.module.css'
 import x from '../Ejercicios/ejercicios.module.css'
@@ -34,6 +35,7 @@ export function CombinarRutinas() {
   const [confirmar, setConfirmar] = useState(false)
   const [guardada, setGuardada] = useState(false)
   const [recarga, setRecarga] = useState(0)
+  const [verDiferencia, setVerDiferencia] = useState(false)
 
   useEffect(() => {
     void Promise.all([leerRutinas(), leerPlan(), armarEntrada()]).then(([rutinas, actual, entrada]) => {
@@ -53,6 +55,7 @@ export function CombinarRutinas() {
   const solos = elegidosPlanes.map((f) => analizarRutina(f.plan, ctx))
   const largos = combinacion ? combinacion.minutosPorDia.map((m, d) => [d, m] as const).filter(([, m]) => m > 120) : []
   const sinDescanso = combinacion ? combinacion.plan.dias.every((d) => d.sesiones.length > 0) : false
+  const dosDeCombate = elegidas.includes('sistema') && elegidosPlanes.some((f) => f.rutina?.origen === 'marcial')
 
   async function usar() {
     if (!combinacion) return
@@ -115,6 +118,18 @@ export function CombinarRutinas() {
       </div>
 
       <Tarjeta>
+        <button type="button" className={x.filtro} aria-expanded={verDiferencia} onClick={() => setVerDiferencia(!verDiferencia)} style={{ alignSelf: 'flex-start' }}>
+          {verDiferencia ? 'Cerrar' : '¿Qué diferencia hay entre la rutina marcial y el sistema completo?'}
+        </button>
+        {verDiferencia &&
+          SOMBRA_VS_SISTEMA.map((d) => (
+            <p key={d.titulo} className={estilos.texto2} style={{ margin: 0 }}>
+              <b>{d.titulo}:</b> {d.texto}
+            </p>
+          ))}
+      </Tarjeta>
+
+      <Tarjeta>
         <p className="etiqueta">Armar otra para sumar</p>
         <div className={x.etiquetas} style={{ gap: 6 }}>
           <Link to="/plan/marcial" className={x.filtro}>
@@ -168,6 +183,14 @@ export function CombinarRutinas() {
             <p className={estilos.chico}>De 0 a 100. Con 65 o más en lo que te importa, la rutina es buena para vos (cortes de la app: decisión de diseño).</p>
           </Tarjeta>
 
+          {dosDeCombate && (
+            <Aviso tipo="error">
+              Elegiste la rutina marcial y el sistema completo: son dos programas de combate y se pisan. Mejor quedate con uno.
+              <button type="button" className={x.filtro} style={{ marginTop: 8 }} onClick={() => setElegidas(elegidas.filter((k) => k !== 'sistema'))}>
+                Sacar el sistema completo
+              </button>
+            </Aviso>
+          )}
           {(combinacion.movidos.length > 0 || largos.length > 0 || sinDescanso) && (
             <Tarjeta>
               <p className="etiqueta">Para tener en cuenta</p>

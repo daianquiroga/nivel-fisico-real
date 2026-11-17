@@ -8,6 +8,11 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.42.0: orden de los ejercicios, avisos con opciones y ejercicios nuevos (pedido del dueño).
+  - Ejercicios nuevos con dibujo: burpees en intervalos, burpee sin salto, burpee explosivo (potencia), sentadillas con salto en intervalos, el mejor estiramiento del mundo, sentadilla profunda con balanceo y círculos de hombro. Flujo de movilidad de 10 minutos (`FLUJO_MOVILIDAD`: gato-camello, mejor estiramiento, cadera 90/90, sentadilla profunda y círculos de hombro) para las sesiones de movilidad nuevas.
+  - Orden de los ejercicios (`lib/plan/orden.ts` con tests, fuentes Simão 2012, Nunes 2021, Eddens 2018 y Behm 2016): cada ejercicio cae en una parte (entrada en calor, técnica, potencia, grandes, chicos, zona media, cardio, estiramientos quietos). En Plan se ven las partes, y si algo está fuera de lugar aparece el porqué con "Ordenar así" o "Dejarlo como está". En Editar, "Cómo encadenarlos y qué va después de qué". En "Cargar o editar mi rutina a mano", ↑ ↓ para elegir el orden (si no, se usa el recomendado). Test: lo que arman el generador y las plantillas no dispara el aviso.
+  - Avisos de la semana con opciones de un toque (`Arreglo` en `validador.ts`, `aplicarArreglo` en `arreglos.ts`, con tests): pasar una sesión a otro día, hacerla más liviana, empezarla antes, repetir la fuerza otro día, sumar caminatas o movilidad, o ir a cambiar horarios.
+  - Plan → Agregar una sesión → Sombra guiada: elegís arte, minutos y movilidad. Explicación de la diferencia entre rutina marcial y sistema completo en Combinar y en la rutina marcial; aviso si se combinan los dos.
 - Versión 0.41.0: armado de rutinas más claro (pedido del dueño).
   - Horarios por día: componente `HorariosDia` ("igual para todos" o cada día con su hora y sus minutos, de 10 a 180, y hasta 3 horarios por día). `Semana.huecosPorDia` (opcional) y `huecosDelDia` en `lib/perfil.ts`; lo usan el generador, el sistema completo y las plantillas. En el asistente, los horarios que el generador deja libres se llenan con un entrenamiento corto (`completarHorarios`: combate si "Defenderme", cardio si "Más aire" o "Bajar grasa", si no movilidad).
   - Rutina marcial (`/plan/marcial`, `lib/plan/marcial.ts` con tests): días, tiempo de cada día, artes de a una (la única combinada es "Mi híbrido": boxeo + kickboxing + muay thai; el sistema completo ya no se elige como arte) con % de compatibilidad con la base, y movilidad opcional (al final de cada sesión, o sola si el día tiene un segundo horario). Las artes se turnan día por día.
@@ -105,6 +110,8 @@ Claude Code actualiza este archivo al final de cada sesión.
 - Ideas para más adelante: más ejercicios de gimnasio en la biblioteca; que el análisis compare dos rutinas lado a lado.
 
 ## Decisiones tomadas
+
+- 0.42.0: orden exacto de las partes de la sesión, "día liviano" (una serie menos y 3 o 4 repeticiones en reserva), cuántos días de cardio o movilidad se proponen sumar (hasta 3 de 30 minutos) y el flujo de movilidad de 10 minutos: decisiones de diseño. La movilidad en movimiento puede ir al principio o al final, así que no se marca como fuera de lugar.
 
 - 0.41.0: si al combinar rutinas dos entrenamientos se pisan, el segundo empieza 15 minutos después del primero; a la misma hora va primero la técnica de combate, después fuerza, cardio y movilidad. Partes de la sesión guiada (entrada en calor de 5 min, vuelta a la calma de 3, movilidad de 4 a 8, 1 o 2 rounds de pies), rotación de las artes y aviso de día largo de más de 120 minutos: decisiones de diseño.
 

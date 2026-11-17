@@ -152,7 +152,7 @@ export function sumarEntrenamiento(plan: PlanSemana, dia: number, extra: Extra, 
       ? [ep('caminata-rapida', 'cardio', [minutos, minutos])]
       : extra === 'combate'
         ? [ep('juego-pies', 'cardio', [6, 6]), ep('sombra', 'cardio', [minutos - 6, minutos - 6])]
-        : [ep('gato-camello', 'movilidad', [6, 10]), ep('movilidad-tobillo', 'movilidad', [8, 10]), ep('estiramiento-flexor-cadera', 'movilidad', [30, 30])]
+        : [ep('gato-camello', 'movilidad', [8, 10]), ep('mejor-estiramiento', 'movilidad', [4, 6]), ep('cadera-90-90', 'movilidad', [8, 10]), ep('sentadilla-profunda-balanceo', 'movilidad', [45, 60]), ep('circulos-hombro', 'movilidad', [4, 6])]
   const s: SesionPlan = {
     id: `extra-${dia}-${n}`,
     tipo: extra === 'movilidad' ? 'movilidad' : 'cardio',

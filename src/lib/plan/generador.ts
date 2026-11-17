@@ -39,6 +39,8 @@ export interface SesionPlan {
   intencion?: string
   /** Sesión de un arte marcial: al entrenar se abre la sombra guiada round por round. */
   combate?: { arte: string; movilidad?: boolean }
+  /** La persona eligió dejar el orden de los ejercicios como está (no se le vuelve a sugerir otro). */
+  ordenLibre?: boolean
 }
 
 export interface DiaPlan {

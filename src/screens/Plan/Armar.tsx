@@ -10,6 +10,8 @@ import { asegurarCiclo } from '../../lib/plan/ciclo'
 import { armarPlanPropio, leerTexto, seleccionDesdePlan, type DiaRutina, type LecturaTexto } from '../../lib/plan/rutinaPropia'
 import { guardarPlan, leerPlan } from '../../lib/plan/usarPlan'
 import { guardarRutina } from '../../lib/plan/rutinas'
+import { FASES, faseDe, ordenRecomendado } from '../../lib/plan/orden'
+import { ComoEncadenar, ConsejoOrden } from './Orden'
 import type { PlanSemana } from '../../lib/plan/generador'
 import { Comparar } from './Plantillas'
 import { usarInicio } from '../../lib/usarInicio'
@@ -89,6 +91,16 @@ export function ArmarRutina() {
         return { ...i, series: Math.max(1, Math.min(8, (i.series ?? 3) + delta)) }
       }),
     })
+
+  // Orden en que se van a hacer: el propio (si se tocó ↑ ↓) o el recomendado.
+  const enOrden = delDia.ordenPropio ? delDia.items : ordenRecomendado(delDia.items)
+  const mover = (k: number, delta: -1 | 1) => {
+    const nuevo = [...enOrden]
+    const j = k + delta
+    if (j < 0 || j >= nuevo.length) return
+    ;[nuevo[k], nuevo[j]] = [nuevo[j], nuevo[k]]
+    cambiarDia({ items: nuevo, ordenPropio: true })
+  }
 
   const representante = (ej: (typeof EJERCICIOS)[number]) => {
     const vs = variantesDe(ej.id)
@@ -293,14 +305,23 @@ export function ArmarRutina() {
             {delDia.items.length === 0 ? (
               <p className={estilos.chico}>{turno > 0 ? 'Tildá ejercicios abajo para este entrenamiento (por ejemplo, cardio a la mañana y fuerza a la tarde).' : 'Día libre. Tildá ejercicios abajo para sumarlos.'}</p>
             ) : (
-              delDia.items.map((i) => {
+              enOrden.map((i, k) => {
                 const ej = ejercicio(i.id)!
                 const minutos = ej.tipo === 'minutos'
                 return (
                   <div key={i.id} style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
                     <span className={estilos.texto2} style={{ flex: 1, minWidth: 140 }}>
-                      {ej.nombre}
+                      {k + 1}. {ej.nombre}
+                      <span className={estilos.chico} style={{ display: 'block' }}>
+                        {FASES[faseDe(i.id)].nombre}
+                      </span>
                     </span>
+                    <button type="button" className={x.filtro} aria-label={`Subir ${ej.nombre}`} disabled={k === 0} onClick={() => mover(k, -1)}>
+                      ↑
+                    </button>
+                    <button type="button" className={x.filtro} aria-label={`Bajar ${ej.nombre}`} disabled={k === enOrden.length - 1} onClick={() => mover(k, 1)}>
+                      ↓
+                    </button>
                     <button type="button" className={x.filtro} aria-label={`Menos ${minutos ? 'minutos' : 'series'} de ${ej.nombre}`} onClick={() => series(i.id, -1)}>
                       −
                     </button>
@@ -319,6 +340,13 @@ export function ArmarRutina() {
                 )
               })
             )}
+            {delDia.items.length > 1 && (
+              <p className={estilos.chico} style={{ margin: 0 }}>
+                {delDia.ordenPropio ? 'Orden elegido por vos.' : 'Ordenados como recomienda la app. Con ↑ ↓ los cambiás.'}
+              </p>
+            )}
+            {delDia.ordenPropio && <ConsejoOrden ejercicios={enOrden} onOrdenar={() => cambiarDia({ items: ordenRecomendado(enOrden), ordenPropio: false })} />}
+            {delDia.items.length > 1 && <ComoEncadenar ejercicios={enOrden} />}
             {(turnosDia > 1 || delDia.items.length > 0) && (
               <button
                 type="button"

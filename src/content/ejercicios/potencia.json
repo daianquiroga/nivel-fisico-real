@@ -347,5 +347,73 @@
     },
     "subir": "Ideal como entrada en calor antes de patear: 10 a 15 por dirección y pierna.",
     "video": "leg swings dynamic warm up"
+  },
+  {
+    "id": "burpee-explosivo",
+    "nombre": "Burpee explosivo (potencia)",
+    "patron": "potencia",
+    "principal": [
+      "cuádriceps",
+      "glúteos",
+      "pecho"
+    ],
+    "secundarios": [
+      "hombros",
+      "tríceps",
+      "pantorrillas"
+    ],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [
+      4,
+      6
+    ],
+    "inicial": "Al principio de la sesión, después de entrar en calor y sin cansancio.",
+    "pasos": [
+      "Burpee completo, pero cada parte lo más rápido que puedas.",
+      "Al subir de la flexión, meté los pies cerca de las manos de un solo golpe.",
+      "Saltá lo más alto posible, con los brazos arriba y la cadera estirada.",
+      "Caé, quedate quieto 1 o 2 segundos y recién ahí el siguiente.",
+      "4 a 6 series de 4 a 6, con 90 segundos a 2 minutos de pausa."
+    ],
+    "respiracion": "Soltá el aire en el empuje y en el salto.",
+    "errores": [
+      {
+        "error": "Seguir cuando el salto baja",
+        "detectar": "Si saltás más bajo, cortá la serie: ya es cardio, no potencia."
+      },
+      {
+        "error": "Rebotar sin pausa",
+        "detectar": "Pará 1 o 2 segundos entre burpees."
+      },
+      {
+        "error": "Cintura hundida",
+        "detectar": "Plancha firme aunque vayas rápido."
+      }
+    ],
+    "facil": "burpee",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Puños o manos en un banco."
+      },
+      "rodilla": {
+        "nivel": "evitar",
+        "texto": "Con dolor de rodilla, sin saltos."
+      },
+      "tobillo": {
+        "nivel": "evitar",
+        "texto": "Sin saltos hasta que el tobillo esté bien."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Sin la flexión."
+      }
+    },
+    "subir": "Más difícil: flexión con despegue de manos, rodillas al pecho en el salto o salto a un cajón firme de 50 a 60 cm. Nunca más repeticiones: la potencia se entrena fresca.",
+    "video": "explosive burpee"
   }
 ]
