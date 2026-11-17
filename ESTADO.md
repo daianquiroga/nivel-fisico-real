@@ -8,6 +8,7 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.46.0: comparar dos rutinas lado a lado (pedido del dueño). Plan → "Comparar dos rutinas" (`/plan/comparar`, `screens/Plan/CompararRutinas.tsx`): elegís la A y la B entre tu plan actual, las rutinas guardadas, las 3 plantillas de gimnasio y el sistema completo con tus días. Muestra la tabla de `Comparar` que ya existía (reutilizada: aporte, días, minutos, series por músculo, cardio y veredicto), abajo la semana de cada una en dos columnas día por día, y "Usar A" / "Usar B" con diálogo propio de confirmación. La lista de rutinas quedó en una función compartida con Combinar (`lib/plan/fuentes.ts`: `fuentesRutinas` y `semanaLadoALado`, con tests). Probado a 390 px sin scroll de costado.
 - Versión 0.45.0: más ejercicios de gimnasio (pedido del dueño). 18 ejercicios nuevos con ficha completa (posición inicial, pasos, respiración, 3 errores con cómo detectarlos, más fácil y más difícil, y qué hacer con muñeca, rodilla, hombro o espalda limitados) y dibujo propio, en `content/ejercicios/gimnasio-mas.json`:
   - Piernas: estocadas con mancuernas, sentadilla búlgara con mancuernas, peso muerto rumano con barra, hip thrust con barra, elevación de talones con mancuernas y en máquina, abductores y aductores en máquina (dibujo nuevo `SillonPiernas`, vista de frente).
   - Pecho: press inclinado con mancuernas, aperturas con mancuernas y cruce de poleas. Espalda: remo en máquina y pullover en polea. Brazos: tríceps en polea (soga o barra) y curl en polea. Hombros: press Arnold. Zona media: elevación de piernas colgado y crunch en polea.
@@ -120,9 +121,11 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Ideas y pendientes
 
-- Ideas para más adelante: que el análisis compare dos rutinas lado a lado.
+- Ideas para más adelante: ninguna anotada por ahora.
 
 ## Decisiones tomadas
+
+- 0.46.0: en Comparar dos rutinas se eligen con dos listas desplegables (A y B) porque entran cómodas en 390 px; por defecto, A es la primera de la lista (tu plan) y B la siguiente. Si A y B son la misma, se pide cambiar una. "Usar" no aparece para la que ya es tu plan.
 
 - 0.45.0: la técnica de los ejercicios nuevos sigue descripciones comunes de manuales de entrenamiento (por ejemplo, NSCA, Essentials of Strength Training and Conditioning); rangos de repeticiones dentro de ACSM 2009. Los pesos iniciales, los saltos de progresión y en qué lugar de cada plantilla va cada ejercicio son decisión de diseño. "Búlgaras" (así, sola) se lee como búlgara con mancuernas porque es como suele aparecer en rutinas de gimnasio; "sentadilla búlgara" sigue siendo la versión sin peso. Aperturas, cruce de poleas, pullover, abductores, aductores y press Arnold no se eligen solos en las plantillas (salvo como reemplazo): se suman a mano desde "+ Sumar ejercicio", Mi rutina o Cambiar. El press Arnold y colgarse de la barra quedan en "evitar" con el hombro limitado.
 
@@ -196,6 +199,7 @@ Dirección: https://daianquiroga.github.io/nivel-fisico-real/
 5. Progreso: aparece la última evaluación y el historial; tocar una fecha abre sus resultados.
 6. Aprender: buscar un ejercicio, filtrar por tipo, abrir la ficha y moverse por la escalera.
 7. Ficha de un ejercicio → Anotar series → Guardar; volver a anotar y ver la sugerencia, el historial y Progreso → Tus ejercicios.
+18. Plan → Comparar dos rutinas → elegir A y B → mirar la tabla y la semana en dos columnas → Usar B → Cancelar.
 17. Aprender → Ejercicios → filtro "Brazos y otros" o buscar "polea": aparecen los nuevos con su dibujo. Plan → Plantillas → Torso y pierna (con un lugar de gimnasio): Pierna 1 trae estocadas con mancuernas. Mi rutina → Pegar texto: "Búlgaras 3x10", "Polea tríceps 3x12".
 16. Plan → Armar o cargar mi propia rutina → Pegar texto (ejemplo en el cuadro) → Leer → Usar → revisar tildando → Guardar. Plan → Analizar mi rutina.
 15. En Chrome de Android: Perfil → App de Android → Bajar la app; instalarla, restaurar el respaldo, y en Hoy → Pasos de hoy → Leer mis pasos solo. Perfil → avisos antes de cada sesión.
