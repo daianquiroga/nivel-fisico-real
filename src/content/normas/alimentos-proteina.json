@@ -1,0 +1,174 @@
+{
+  "fuente": "Proteína aproximada por porción, redondeada, de USDA FoodData Central (Departamento de Agricultura de Estados Unidos). Varía según la marca y la preparación: son referencias, no valores exactos.",
+  "enlace": "https://fdc.nal.usda.gov/",
+  "alimentos": [
+    {
+      "id": "pollo",
+      "nombre": "Pechuga de pollo cocida",
+      "porcion": "100 g (una palma)",
+      "proteina": 31
+    },
+    {
+      "id": "carne",
+      "nombre": "Carne vacuna magra cocida",
+      "porcion": "100 g (una palma)",
+      "proteina": 27
+    },
+    {
+      "id": "pescado",
+      "nombre": "Pescado blanco cocido (merluza)",
+      "porcion": "100 g (una palma)",
+      "proteina": 23
+    },
+    {
+      "id": "huevo",
+      "nombre": "Huevo",
+      "porcion": "1 unidad",
+      "proteina": 6
+    },
+    {
+      "id": "atun",
+      "nombre": "Atún al natural escurrido",
+      "porcion": "1 lata (unos 120 g)",
+      "proteina": 30
+    },
+    {
+      "id": "lentejas",
+      "nombre": "Lentejas cocidas",
+      "porcion": "1 taza (200 g)",
+      "proteina": 18
+    },
+    {
+      "id": "garbanzos",
+      "nombre": "Garbanzos cocidos",
+      "porcion": "1 taza (165 g)",
+      "proteina": 15
+    },
+    {
+      "id": "leche",
+      "nombre": "Leche",
+      "porcion": "1 vaso (250 ml)",
+      "proteina": 8
+    },
+    {
+      "id": "yogur",
+      "nombre": "Yogur natural",
+      "porcion": "1 pote (200 g)",
+      "proteina": 7
+    },
+    {
+      "id": "queso",
+      "nombre": "Queso cremoso",
+      "porcion": "1 feta gruesa (30 g)",
+      "proteina": 7
+    },
+    {
+      "id": "ricota",
+      "nombre": "Ricota",
+      "porcion": "100 g",
+      "proteina": 11
+    },
+    {
+      "id": "pan",
+      "nombre": "Pan",
+      "porcion": "2 rebanadas (50 g)",
+      "proteina": 5
+    },
+    {
+      "id": "arroz",
+      "nombre": "Arroz cocido",
+      "porcion": "1 taza (160 g)",
+      "proteina": 4
+    },
+    {
+      "id": "fideos",
+      "nombre": "Fideos cocidos",
+      "porcion": "1 taza (140 g)",
+      "proteina": 8
+    },
+    {
+      "id": "mani",
+      "nombre": "Maní",
+      "porcion": "1 puñado (30 g)",
+      "proteina": 7
+    }
+  ],
+  "platos": [
+    {
+      "nombre": "Desayuno con huevos",
+      "momento": "Desayuno",
+      "alimentos": [
+        "huevo",
+        "huevo",
+        "pan",
+        "leche"
+      ],
+      "como": "2 huevos revueltos, 2 rebanadas de pan y un vaso de leche."
+    },
+    {
+      "nombre": "Pollo al horno con arroz y ensalada",
+      "momento": "Almuerzo o cena",
+      "alimentos": [
+        "pollo",
+        "pollo",
+        "arroz"
+      ],
+      "como": "Una palma y media de pollo (150 g), una taza de arroz y la mitad del plato de ensalada."
+    },
+    {
+      "nombre": "Guiso de lentejas con arroz",
+      "momento": "Almuerzo o cena",
+      "alimentos": [
+        "lentejas",
+        "arroz",
+        "huevo"
+      ],
+      "como": "Una taza de lentejas, una de arroz y un huevo duro arriba para sumar proteína."
+    },
+    {
+      "nombre": "Bife con puré y ensalada",
+      "momento": "Almuerzo o cena",
+      "alimentos": [
+        "carne",
+        "carne"
+      ],
+      "como": "Una palma y media de carne magra (150 g), puré chico y la mitad del plato de verduras."
+    },
+    {
+      "nombre": "Fideos con atún",
+      "momento": "Almuerzo o cena",
+      "alimentos": [
+        "fideos",
+        "fideos",
+        "atun"
+      ],
+      "como": "Dos tazas de fideos con una lata de atún, tomate y verduras salteadas."
+    },
+    {
+      "nombre": "Merienda con yogur y maní",
+      "momento": "Merienda",
+      "alimentos": [
+        "yogur",
+        "mani"
+      ],
+      "como": "Un pote de yogur natural con un puñado de maní y una fruta."
+    },
+    {
+      "nombre": "Tostadas con ricota y queso",
+      "momento": "Merienda",
+      "alimentos": [
+        "pan",
+        "ricota",
+        "queso"
+      ],
+      "como": "Dos rebanadas de pan con 100 g de ricota y una feta de queso."
+    }
+  ],
+  "plato": {
+    "fuente": "Plato de alimentación saludable (Harvard T.H. Chan School of Public Health) y Guías Alimentarias para la Población Argentina (Ministerio de Salud, 2016): 5 porciones de frutas y verduras por día.",
+    "enlaces": [
+      "https://www.hsph.harvard.edu/nutritionsource/healthy-eating-plate/",
+      "https://www.argentina.gob.ar/salud/glosario/guiasalimentarias"
+    ]
+  }
+}

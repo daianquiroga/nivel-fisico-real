@@ -1032,6 +1032,107 @@ const DIBUJOS: Record<string, () => ReactNode> = {
       textos={['Adelante', 'Arriba y atrás, lento']}
     />
   ),
+  /* Equilibrio */
+  'caminata-tandem': () => (
+    <Dos
+      etiqueta="Caminata talón-punta: sobre una línea, el talón de un pie pegado a la punta del otro, brazos abiertos"
+      a={{ atras: <line x1={20} x2={150} y1={166} y2={166} stroke="var(--done)" strokeWidth={2} strokeDasharray="6 5" />, pose: pose({ ...DE_PIE, rod: [86, 132], pie: [92, 165], punta: [104, 165], rodI: [76, 132], pieI: [74, 165], puntaI: [88, 165], codo: [102, 60], mano: [122, 66], codoI: [60, 60], manoI: [40, 66] }) }}
+      b={{ atras: <line x1={20} x2={150} y1={166} y2={166} stroke="var(--done)" strokeWidth={2} strokeDasharray="6 5" />, pose: pose({ ...DE_PIE, rod: [90, 130], pie: [108, 165], punta: [120, 165], rodI: [84, 132], pieI: [92, 165], puntaI: [104, 165], codo: [102, 60], mano: [122, 66], codoI: [60, 60], manoI: [40, 66] }), adelante: <Flecha de={[60, 150]} a={[110, 150]} /> }}
+      textos={['Talón contra punta', 'Paso a paso, mirando adelante']}
+    />
+  ),
+  'equilibrio-un-pie': () => (
+    <Dos
+      etiqueta="Equilibrio en un pie: cerca de una pared, un pie levantado unos 10 centímetros y la cadera nivelada"
+      a={{ atras: <rect x={30} y={14} width={7} height={154} fill="var(--surface-2)" stroke="var(--line)" />, pose: pose(DE_PIE) }}
+      b={{ atras: <rect x={30} y={14} width={7} height={154} fill="var(--surface-2)" stroke="var(--line)" />, pose: pose({ ...DE_PIE, rodI: [96, 128], pieI: [92, 154], puntaI: [104, 154] }), adelante: <Flecha de={[126, 166]} a={[126, 150]} /> }}
+      textos={['Cerca de la pared', 'Un pie arriba, quieto']}
+    />
+  ),
+  'equilibrio-ojos-cerrados': () => (
+    <Dos
+      etiqueta="Equilibrio en un pie con los ojos cerrados, al lado de una pared para apoyar un dedo si hace falta"
+      a={{ atras: <rect x={44} y={14} width={7} height={154} fill="var(--surface-2)" stroke="var(--line)" />, pose: pose({ ...DE_PIE, rodI: [96, 128], pieI: [92, 154], puntaI: [104, 154] }) }}
+      b={{ atras: <rect x={44} y={14} width={7} height={154} fill="var(--surface-2)" stroke="var(--line)" />, pose: { ...pose({ ...DE_PIE, rodI: [96, 128], pieI: [92, 154], puntaI: [104, 154], codoI: [66, 78], manoI: [54, 92] }), ojosCerrados: true } }}
+      textos={['Ojos abiertos', 'Ojos cerrados']}
+    />
+  ),
+  'equilibrio-almohadon': () => {
+    const almohadon = <rect x={58} y={156} width={50} height={12} rx={5} fill="var(--surface-2)" stroke="var(--done)" strokeWidth={2} />
+    return (
+      <Dos
+        etiqueta="Equilibrio sobre almohadón: un pie sobre un almohadón firme, el otro levantado, la rodilla alineada con el pie"
+        a={{ atras: almohadon, pose: bajar(pose({ ...DE_PIE, pie: [80, 165], punta: [94, 165], rodI: [74, 132], pieI: [72, 165], puntaI: [86, 165] }), -9) }}
+        b={{ atras: almohadon, pose: bajar(pose({ ...DE_PIE, rodI: [96, 128], pieI: [92, 154], puntaI: [104, 154] }), -9) }}
+        textos={['Subí un pie', 'El otro arriba']}
+      />
+    )
+  },
+  'equilibrio-estrella': () => (
+    <Dos
+      etiqueta="Alcances en estrella: en un pie, la punta del otro toca el piso lejos adelante y después atrás en diagonal"
+      a={{ pose: pose({ cabeza: [70, 48], cuello: [72, 62], cadera: [68, 112], rod: [84, 138], pie: [70, 165], punta: [82, 165], rodI: [102, 136], pieI: [134, 162], puntaI: [146, 164], codo: [86, 84], mano: [100, 98], codoI: [56, 84], manoI: [44, 98] }), adelante: <Flecha de={[100, 158]} a={[140, 158]} /> }}
+      b={{ pose: pose({ cabeza: [92, 50], cuello: [90, 64], cadera: [86, 112], rod: [96, 138], pie: [84, 165], punta: [96, 165], rodI: [60, 138], pieI: [28, 162], puntaI: [20, 164], codo: [108, 84], mano: [120, 96], codoI: [74, 84], manoI: [62, 96] }), adelante: <Flecha de={[64, 158]} a={[26, 158]} /> }}
+      textos={['Adelante (y al costado)', 'Atrás en diagonal']}
+    />
+  ),
+  /* Agilidad */
+  'saltos-hexagono': () => {
+    const hexagono = (
+      <path d="M30,162 L55,152 L105,152 L130,162 L105,172 L55,172 Z" fill="none" stroke="var(--done)" strokeWidth={2} />
+    )
+    return (
+      <Dos
+        etiqueta="Saltos en hexágono: con los pies juntos, saltar afuera por cada lado y volver al centro, siempre mirando al mismo frente"
+        a={{ atras: hexagono, pose: pose({ ...DE_PIE, rod: [86, 132], pie: [80, 162], punta: [92, 162], codo: [94, 74], mano: [100, 92] }) }}
+        b={{ atras: hexagono, pose: bajar(pose({ ...DE_PIE, cadera: [116, 98], cabeza: [116, 30], cuello: [116, 44], rod: [124, 128], pie: [120, 156], punta: [132, 158], codo: [128, 72], mano: [134, 90] }), -10), adelante: <Flecha de={[84, 146]} a={[124, 146]} /> }}
+        textos={['En el centro', 'Afuera y volvé']}
+      />
+    )
+  },
+  'escalera-coordinacion': () => {
+    const escalera = (
+      <g stroke="var(--done)" strokeWidth={2} fill="none">
+        <path d="M14,158 L146,158 M10,172 L150,172" />
+        {[14, 47, 80, 113, 146].map((x, i) => (
+          <line key={i} x1={x} x2={x - 4} y1={158} y2={172} />
+        ))}
+      </g>
+    )
+    return (
+      <Dos
+        etiqueta="Escalera de coordinación: pies adentro, adentro, afuera, afuera, cuadrado por cuadrado, sobre la punta de los pies"
+        a={{ atras: escalera, pose: pose({ ...DE_PIE, cadera: [62, 98], cabeza: [64, 30], cuello: [64, 44], rod: [70, 132], pie: [66, 164], punta: [76, 164], rodI: [56, 134], pieI: [56, 164], puntaI: [66, 164], codo: [76, 74], mano: [84, 90], codoI: [52, 74], manoI: [44, 90] }) }}
+        b={{ atras: escalera, pose: pose({ ...DE_PIE, cadera: [96, 98], cabeza: [98, 30], cuello: [98, 44], rod: [106, 132], pie: [108, 154], punta: [118, 154], rodI: [88, 134], pieI: [86, 164], puntaI: [96, 164], codo: [110, 74], mano: [118, 90], codoI: [86, 74], manoI: [78, 90] }), adelante: <Flecha de={[60, 146]} a={[110, 146]} /> }}
+        textos={['Adentro, adentro', 'Afuera y al siguiente']}
+      />
+    )
+  },
+  'cambio-direccion': () => (
+    <Dos
+      etiqueta="Desplazamiento lateral visto de frente: pasos de costado sin cruzar los pies y toque al piso al lado de la marca"
+      a={{ atras: <><circle cx={14} cy={166} r={4} fill="var(--done)" /><circle cx={146} cy={166} r={4} fill="var(--done)" /></>, pose: pose({ cabeza: [80, 50], cuello: [80, 64], cadera: [80, 114], rod: [104, 136], pie: [110, 165], punta: [118, 165], rodI: [56, 136], pieI: [50, 165], puntaI: [42, 165], codo: [100, 90], mano: [104, 106], codoI: [60, 90], manoI: [56, 106] }), adelante: <Flecha de={[60, 30]} a={[120, 30]} doble /> }}
+      b={{ atras: <><circle cx={14} cy={166} r={4} fill="var(--done)" /><circle cx={146} cy={166} r={4} fill="var(--done)" /></>, pose: pose({ cabeza: [116, 82], cuello: [110, 94], cadera: [96, 128], rod: [120, 142], pie: [128, 165], punta: [136, 165], rodI: [72, 146], pieI: [66, 165], puntaI: [58, 165], codo: [128, 128], mano: [140, 162], codoI: [94, 112], manoI: [86, 128] }) }}
+      textos={['De costado (de frente)', 'Tocá el piso y volvé']}
+    />
+  ),
+  /* Pruebas de flexibilidad (marca propia) */
+  'prueba-alcance-espalda': () => (
+    <Dos
+      etiqueta="Alcance detrás de la espalda visto de atrás: una mano baja por arriba del hombro y la otra sube por la cintura; se mide la distancia entre los dedos medios"
+      a={{ pose: pose({ ...DE_PIE, codo: [98, 20], mano: [84, 62], codoI: [60, 92], manoI: [76, 76] }), adelante: <Flecha de={[96, 70]} a={[96, 82]} doble /> }}
+      b={{ pose: pose({ ...DE_PIE, codo: [98, 20], mano: [82, 70], codoI: [60, 92], manoI: [78, 70] }) }}
+      textos={['No se tocan: en menos', 'Se pasan: en más']}
+    />
+  ),
+  'prueba-sentado-alcanzar': () => (
+    <Dos
+      etiqueta="Sentado y alcanzar: sentado en el piso con las piernas estiradas, estirarse hacia las puntas de los pies y medir cuánto falta o cuánto pasa"
+      a={{ pose: pose({ cabeza: [54, 82], cuello: [52, 96], cadera: [40, 150], rod: [90, 150], pie: [136, 150], punta: [136, 134], codo: [76, 112], mano: [100, 124] }), adelante: <Flecha de={[106, 128]} a={[130, 128]} doble /> }}
+      b={{ pose: pose({ cabeza: [96, 108], cuello: [84, 116], cadera: [40, 150], rod: [90, 150], pie: [136, 150], punta: [136, 134], codo: [112, 132], mano: [140, 136] }) }}
+      textos={['No llegás: en menos', 'Pasás la punta: en más']}
+    />
+  ),
 }
 
 /** Corre una posición hacia abajo (para colgarse de algo más largo que la barra). */

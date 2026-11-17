@@ -9,6 +9,7 @@ import combate from '../content/ejercicios/combate.json'
 import gimnasio from '../content/ejercicios/gimnasio.json'
 import variantes from '../content/ejercicios/variantes.json'
 import potencia from '../content/ejercicios/potencia.json'
+import equilibrioAgilidad from '../content/ejercicios/equilibrio-agilidad.json'
 import type { Lugar } from './db/db'
 
 export type NivelLimitacion = 'adaptar' | 'evitar'
@@ -42,7 +43,7 @@ export interface Ejercicio {
 }
 
 // El JSON no conserva los tipos exactos; revisarContenido() (con test) verifica los valores.
-export const EJERCICIOS = [...empuje, ...traccion, ...piernas, ...coreAccesorios, ...movilidadCardio, ...gimnasio, ...variantes, ...potencia, ...combate] as unknown as Ejercicio[]
+export const EJERCICIOS = [...empuje, ...traccion, ...piernas, ...coreAccesorios, ...movilidadCardio, ...gimnasio, ...variantes, ...potencia, ...equilibrioAgilidad, ...combate] as unknown as Ejercicio[]
 const POR_ID = new Map(EJERCICIOS.map((e) => [e.id, e]))
 
 export const ejercicio = (id: string): Ejercicio | undefined => POR_ID.get(id)

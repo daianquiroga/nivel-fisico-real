@@ -1,0 +1,436 @@
+[
+  {
+    "id": "caminata-tandem",
+    "nombre": "Caminata talón-punta",
+    "patron": "movilidad",
+    "principal": [
+      "equilibrio"
+    ],
+    "secundarios": [
+      "tobillos",
+      "tronco"
+    ],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [
+      10,
+      20
+    ],
+    "inicial": "De pie al lado de una pared o un mueble, mirando hacia adelante.",
+    "pasos": [
+      "Poné el talón de un pie pegado a la punta del otro, como sobre una cuerda.",
+      "Caminá 10 pasos así, despacio, con los brazos sueltos o abiertos.",
+      "Volvé de la misma forma. Si perdés el equilibrio, tocá la pared y seguí."
+    ],
+    "respiracion": "Respirá normal y mirá un punto fijo adelante.",
+    "errores": [
+      {
+        "error": "Mirar los pies",
+        "detectar": "La cabeza baja: mirá un punto a la altura de los ojos."
+      },
+      {
+        "error": "Separar los pies",
+        "detectar": "Queda un espacio entre talón y punta: tienen que tocarse."
+      },
+      {
+        "error": "Ir rápido",
+        "detectar": "Si corrés para no caerte, bajá la velocidad: cada paso, quieto un instante."
+      }
+    ],
+    "facil": null,
+    "dificil": "equilibrio-un-pie",
+    "limitaciones": {
+      "tobillo": {
+        "nivel": "adaptar",
+        "texto": "Cerca de una pared para apoyarte con un dedo, sin dolor."
+      }
+    },
+    "subir": "Cuando hacés 20 pasos ida y vuelta sin tocar la pared, pasá a equilibrio en un pie.",
+    "video": "tandem walk heel to toe balance"
+  },
+  {
+    "id": "equilibrio-un-pie",
+    "nombre": "Equilibrio en un pie",
+    "patron": "movilidad",
+    "principal": [
+      "equilibrio"
+    ],
+    "secundarios": [
+      "tobillos",
+      "glúteo medio",
+      "tronco"
+    ],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "segundos",
+    "carga": "corporal",
+    "rango": [
+      30,
+      45
+    ],
+    "inicial": "De pie cerca de una pared, descalzo o con zapatillas planas.",
+    "pasos": [
+      "Levantá un pie del piso unos 10 cm, sin apoyarlo en la otra pierna.",
+      "Quedate quieto con la cadera nivelada y la rodilla de apoyo apenas flexionada.",
+      "Hacé el tiempo con cada pierna. Si tocás el piso, apoyá y seguí contando."
+    ],
+    "respiracion": "Respirá lento por la nariz.",
+    "errores": [
+      {
+        "error": "Cadera que cae",
+        "detectar": "La cadera de la pierna levantada baja: apretá el glúteo de la que apoya."
+      },
+      {
+        "error": "Rodilla trabada",
+        "detectar": "La rodilla de apoyo queda dura: aflojala un poco."
+      },
+      {
+        "error": "Apoyar el pie en la otra pierna",
+        "detectar": "El pie levantado no toca la otra pierna: queda en el aire."
+      }
+    ],
+    "facil": "caminata-tandem",
+    "dificil": "equilibrio-ojos-cerrados",
+    "limitaciones": {
+      "tobillo": {
+        "nivel": "adaptar",
+        "texto": "Cerca de una pared para apoyarte con un dedo, sin dolor."
+      }
+    },
+    "subir": "Cuando sostenés 45 segundos con cada pierna, pasá a ojos cerrados.",
+    "video": "single leg balance exercise"
+  },
+  {
+    "id": "equilibrio-ojos-cerrados",
+    "nombre": "Equilibrio en un pie con ojos cerrados",
+    "patron": "movilidad",
+    "principal": [
+      "equilibrio"
+    ],
+    "secundarios": [
+      "tobillos",
+      "tronco"
+    ],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "segundos",
+    "carga": "corporal",
+    "rango": [
+      15,
+      30
+    ],
+    "inicial": "Al lado de una pared o en una esquina, para apoyarte si hace falta.",
+    "pasos": [
+      "Parate en un pie como en el ejercicio anterior.",
+      "Cuando estés quieto, cerrá los ojos.",
+      "Si te tambaleás, apoyá un dedo en la pared, abrí los ojos y volvé a empezar."
+    ],
+    "respiracion": "Respirá lento: si aguantás el aire, te tambaleás más.",
+    "errores": [
+      {
+        "error": "Lejos de la pared",
+        "detectar": "Si no llegás a tocar la pared con la mano, acercate: es por seguridad."
+      },
+      {
+        "error": "Moverse mucho",
+        "detectar": "Movimientos grandes de brazos: buscá quedarte quieto, con ajustes chicos del tobillo."
+      },
+      {
+        "error": "Aguantar el aire",
+        "detectar": "Si te ponés rígido y sin respirar, el cuerpo se tambalea más: soltá el aire."
+      }
+    ],
+    "facil": "equilibrio-un-pie",
+    "dificil": "equilibrio-almohadon",
+    "limitaciones": {
+      "tobillo": {
+        "nivel": "adaptar",
+        "texto": "Solo al lado de una pared y sin dolor."
+      }
+    },
+    "subir": "Cuando sostenés 30 segundos con cada pierna, pasá a sobre almohadón.",
+    "video": "single leg balance eyes closed"
+  },
+  {
+    "id": "equilibrio-almohadon",
+    "nombre": "Equilibrio en un pie sobre almohadón",
+    "patron": "movilidad",
+    "principal": [
+      "equilibrio"
+    ],
+    "secundarios": [
+      "tobillos",
+      "rodillas",
+      "tronco"
+    ],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "segundos",
+    "carga": "corporal",
+    "rango": [
+      20,
+      40
+    ],
+    "inicial": "Un almohadón firme o una colchoneta doblada en el piso, al lado de una pared.",
+    "pasos": [
+      "Subite al almohadón con un pie.",
+      "Levantá el otro y quedate quieto con los ojos abiertos.",
+      "El tobillo va a hacer ajustes chicos todo el tiempo: es lo que entrena."
+    ],
+    "respiracion": "Respirá normal.",
+    "errores": [
+      {
+        "error": "Rodilla hacia adentro",
+        "detectar": "La rodilla de apoyo se cierra: mantenela alineada con el pie."
+      },
+      {
+        "error": "Almohadón muy blando",
+        "detectar": "Si te hundís mucho, usá uno más firme o doblá la colchoneta."
+      },
+      {
+        "error": "Mirar los pies",
+        "detectar": "Mirá un punto fijo adelante, a la altura de los ojos."
+      }
+    ],
+    "facil": "equilibrio-ojos-cerrados",
+    "dificil": "equilibrio-estrella",
+    "limitaciones": {
+      "tobillo": {
+        "nivel": "adaptar",
+        "texto": "Empezá en el piso y subí al almohadón solo sin dolor."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Rodilla apenas flexionada y alineada con el pie."
+      }
+    },
+    "subir": "Cuando sostenés 40 segundos con cada pierna, pasá a alcances en estrella.",
+    "video": "single leg balance on cushion unstable surface"
+  },
+  {
+    "id": "equilibrio-estrella",
+    "nombre": "Alcances en estrella",
+    "patron": "movilidad",
+    "principal": [
+      "equilibrio"
+    ],
+    "secundarios": [
+      "glúteos",
+      "cuádriceps",
+      "tobillos"
+    ],
+    "equipo": [],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [
+      3,
+      5
+    ],
+    "inicial": "De pie en un pie en el centro de una cruz imaginaria (o marcada con cinta).",
+    "pasos": [
+      "Con el pie libre, llegá lo más lejos que puedas hacia adelante y tocá el piso con la punta, sin apoyar peso.",
+      "Volvé al centro sin apoyar y repetí hacia el costado y hacia atrás en diagonal.",
+      "Esa es una repetición. Hacé las repeticiones con cada pierna."
+    ],
+    "respiracion": "Soltá el aire al estirarte y tomalo al volver.",
+    "errores": [
+      {
+        "error": "Apoyar el peso en la punta",
+        "detectar": "La punta solo toca: si apoyás, ya no es equilibrio."
+      },
+      {
+        "error": "Talón de apoyo que se levanta",
+        "detectar": "El pie de apoyo queda entero en el piso."
+      },
+      {
+        "error": "Inclinar el tronco de más",
+        "detectar": "El pecho se va muy adelante: la cadera baja, el tronco acompaña un poco."
+      }
+    ],
+    "facil": "equilibrio-almohadon",
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Alcances más cortos, sin dolor."
+      },
+      "tobillo": {
+        "nivel": "adaptar",
+        "texto": "Alcances cortos al lado de una pared."
+      }
+    },
+    "subir": "Más difícil: alcances más lejos o con los ojos cerrados un instante al volver al centro.",
+    "video": "star excursion balance reach exercise"
+  },
+  {
+    "id": "saltos-hexagono",
+    "nombre": "Saltos en hexágono",
+    "patron": "potencia",
+    "principal": [
+      "agilidad"
+    ],
+    "secundarios": [
+      "pantorrillas",
+      "cuádriceps",
+      "tobillos"
+    ],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [
+      2,
+      3
+    ],
+    "inicial": "Marcá en el piso un hexágono con cinta, de 60 cm por lado (o imaginalo). Parate en el centro, mirando siempre al mismo lado.",
+    "pasos": [
+      "Con los dos pies juntos, saltá afuera por un lado y volvé al centro.",
+      "Seguí con el lado siguiente, en el sentido de las agujas del reloj, sin girar el cuerpo.",
+      "Una vuelta = los 6 lados. Hacé las vueltas que diga la serie, descansando 1 minuto entre series."
+    ],
+    "respiracion": "Respirá suelto; no aguantes el aire.",
+    "errores": [
+      {
+        "error": "Pisar la línea",
+        "detectar": "Si pisás la cinta, ese salto no cuenta: saltos más chicos y precisos."
+      },
+      {
+        "error": "Girar el cuerpo",
+        "detectar": "Mirá siempre al mismo frente: el cambio de dirección lo hacen los pies."
+      },
+      {
+        "error": "Caer duro",
+        "detectar": "Hace ruido: caé sobre la punta de los pies, con las rodillas apenas dobladas."
+      }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": {
+        "nivel": "evitar",
+        "texto": "Con dolor de rodilla, sin saltos: hacé los mismos recorridos caminando rápido."
+      },
+      "tobillo": {
+        "nivel": "evitar",
+        "texto": "Sin saltos hasta que el tobillo esté bien: equilibrio en un pie, cerca de una pared."
+      }
+    },
+    "subir": "Más rápido sin pisar las líneas. Medí el tiempo de 3 vueltas en Progreso → Más pruebas.",
+    "video": "hexagon agility test"
+  },
+  {
+    "id": "escalera-coordinacion",
+    "nombre": "Escalera de coordinación en el piso",
+    "patron": "potencia",
+    "principal": [
+      "agilidad",
+      "coordinación"
+    ],
+    "secundarios": [
+      "pantorrillas",
+      "tobillos"
+    ],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [
+      3,
+      5
+    ],
+    "inicial": "Marcá con cinta (o imaginá) 4 cuadrados seguidos de unos 40 cm, en línea.",
+    "pasos": [
+      "Entrá con un pie y después el otro en el primer cuadrado, y salí igual al siguiente: adentro, adentro, afuera, afuera.",
+      "Avanzá cuadrado por cuadrado sobre la punta de los pies.",
+      "Al final volvé caminando y repetí. Primero lento y preciso; después rápido."
+    ],
+    "respiracion": "Respirá suelto.",
+    "errores": [
+      {
+        "error": "Mirar los pies",
+        "detectar": "Mirá al frente: los pies tienen que aprender solos."
+      },
+      {
+        "error": "Pasos largos",
+        "detectar": "Pasos cortos y rápidos, sin pisar las líneas."
+      },
+      {
+        "error": "Ir rápido antes de ser preciso",
+        "detectar": "Si pisás las líneas, bajá la velocidad hasta que salga limpio."
+      }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "tobillo": {
+        "nivel": "adaptar",
+        "texto": "Despacio y sin saltar."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Pasos chicos, sin saltar."
+      }
+    },
+    "subir": "Más difícil: más rápido, o cambiá el patrón (lateral, en zigzag).",
+    "video": "agility ladder in out drill"
+  },
+  {
+    "id": "cambio-direccion",
+    "nombre": "Desplazamiento lateral con toque al piso",
+    "patron": "potencia",
+    "principal": [
+      "agilidad"
+    ],
+    "secundarios": [
+      "glúteos",
+      "cuádriceps",
+      "aductores"
+    ],
+    "equipo": [],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [
+      6,
+      10
+    ],
+    "inicial": "Dos marcas en el piso a 2 m (por ejemplo, dos medias). Parate en el medio, semiagachado.",
+    "pasos": [
+      "Desplazate de costado hasta una marca, sin cruzar los pies.",
+      "Tocá el piso al lado de la marca con la mano de afuera, bajando la cadera.",
+      "Frená, cambiá de dirección y andá a la otra. Ida y vuelta = una repetición."
+    ],
+    "respiracion": "Soltá el aire al frenar.",
+    "errores": [
+      {
+        "error": "Cruzar los pies",
+        "detectar": "Los pies se cruzan: pasos cortos de costado, como en guardia."
+      },
+      {
+        "error": "Agacharse con la espalda",
+        "detectar": "Bajá la cadera, no solo el tronco."
+      },
+      {
+        "error": "Frenar con la rodilla hacia adentro",
+        "detectar": "La rodilla se cierra al frenar: tiene que apuntar a los dedos del pie."
+      }
+    ],
+    "facil": null,
+    "dificil": null,
+    "limitaciones": {
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Despacio, frenando suave y sin girar la rodilla."
+      },
+      "tobillo": {
+        "nivel": "adaptar",
+        "texto": "Despacio y sin saltar."
+      }
+    },
+    "subir": "Más rápido, o reaccionando a una señal (alguien que te diga \"derecha\" o \"izquierda\").",
+    "video": "lateral shuffle touch agility drill"
+  }
+]

@@ -4,27 +4,65 @@
     {
       "id": "empuje",
       "nombre": "Empuje (flexiones)",
-      "pasos": ["flexion-pared", "flexion-inclinada-alta", "flexion-inclinada-baja", "flexion-rodillas", "flexion", "flexion-pies-elevados", "flexion-arquera"]
+      "pasos": [
+        "flexion-pared",
+        "flexion-inclinada-alta",
+        "flexion-inclinada-baja",
+        "flexion-rodillas",
+        "flexion",
+        "flexion-pies-elevados",
+        "flexion-arquera"
+      ]
     },
     {
       "id": "traccion-vertical",
       "nombre": "Tracción (dominadas)",
-      "pasos": ["colgado-activo", "dominada-negativa", "dominada-asistida-banda", "dominada"]
+      "pasos": [
+        "colgado-activo",
+        "dominada-negativa",
+        "dominada-asistida-banda",
+        "dominada"
+      ]
     },
     {
       "id": "piernas",
       "nombre": "Piernas (sentadilla y zancada)",
-      "pasos": ["sentadilla-silla", "sentadilla", "zancada-atras", "sentadilla-bulgara"]
+      "pasos": [
+        "sentadilla-silla",
+        "sentadilla",
+        "zancada-atras",
+        "sentadilla-bulgara"
+      ]
     },
     {
       "id": "bisagra",
       "nombre": "Cadera (puente y bisagra)",
-      "pasos": ["puente-gluteo", "puente-una-pierna", "peso-muerto-una-pierna"]
+      "pasos": [
+        "puente-gluteo",
+        "puente-una-pierna",
+        "peso-muerto-una-pierna"
+      ]
     },
     {
       "id": "core",
       "nombre": "Tronco (core)",
-      "pasos": ["bird-dog", "dead-bug", "plancha", "plancha-lateral"]
+      "pasos": [
+        "bird-dog",
+        "dead-bug",
+        "plancha",
+        "plancha-lateral"
+      ]
+    },
+    {
+      "id": "equilibrio",
+      "nombre": "Equilibrio",
+      "pasos": [
+        "caminata-tandem",
+        "equilibrio-un-pie",
+        "equilibrio-ojos-cerrados",
+        "equilibrio-almohadon",
+        "equilibrio-estrella"
+      ]
     }
   ]
 }

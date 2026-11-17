@@ -18,9 +18,14 @@ import h from '../Hoy/hoy.module.css'
 
 function TuCuerpoLink() {
   return (
-    <Link to="/tu-cuerpo" className={estilos.boton}>
-      Tu cuerpo: medidas, fotos y postura
-    </Link>
+    <>
+      <Link to="/tu-cuerpo" className={estilos.boton}>
+        Tu cuerpo: medidas, fotos y postura
+      </Link>
+      <Link to="/mas-pruebas" className={estilos.boton}>
+        Más pruebas: agilidad y flexibilidad
+      </Link>
+    </>
   )
 }
 

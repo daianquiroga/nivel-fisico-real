@@ -353,7 +353,11 @@ function armarCardio(entrada: EntradaPlan, lugar: Lugar, minutos: number, id: st
 function armarMovilidad(entrada: EntradaPlan, lugar: Lugar | undefined, id: string): SesionPlan {
   const l = lugar ?? { nombre: 'Casa', equipo: [], espacio: '1x1' as const }
   const ctx = contexto(entrada, l)
-  const lista = candidatos(['movilidad'], ctx).slice(0, 3)
+  // 3 de movilidad y el escalón de equilibrio que toca (entrenar el equilibrio baja las caídas y los esguinces de tobillo:
+  // Sherrington 2019, Cochrane; Hübscher 2010, Med Sci Sports Exerc). Que vaya en las sesiones de movilidad es decisión de diseño.
+  const deEquilibrio = new Set(ESCALERAS.find((e) => e.id === 'equilibrio')?.pasos ?? [])
+  const todos = candidatos(['movilidad'], ctx)
+  const lista = [...todos.filter((e) => !deEquilibrio.has(e.id)).slice(0, 3), ...todos.filter((e) => deEquilibrio.has(e.id)).slice(0, 1)]
   return {
     id,
     tipo: 'movilidad',

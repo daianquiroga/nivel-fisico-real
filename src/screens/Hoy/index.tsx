@@ -195,6 +195,12 @@ export function Hoy() {
       {listo && <Coach ref={coach} />}
 
       {listo && (
+        <Link to="/comida" className={estilos.boton}>
+          Tu comida: proteína del día y el plato
+        </Link>
+      )}
+
+      {listo && (
         <button type="button" className={estilos.boton} aria-expanded={mas} onClick={() => guardarMas(!mas)}>
           {mas ? 'Ver menos' : 'Ver más: nivel, racha, pasos, agua y tu día'}
         </button>

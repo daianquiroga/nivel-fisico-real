@@ -8,6 +8,12 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.43.0: lo que faltaba del área 2 (Salud y capacidades físicas).
+  - Equilibrio: escalera nueva `equilibrio` (caminata talón-punta → un pie → ojos cerrados → sobre almohadón → alcances en estrella), con dibujos. El escalón que toca va en cada sesión de movilidad del generador (Sherrington 2019, Cochrane; Hübscher 2010).
+  - Agilidad: saltos en hexágono, escalera de coordinación en el piso y desplazamiento lateral con toque (patrón `potencia`, 2 × 2 m, con dibujos; el generador no los elige solo).
+  - Más pruebas (`/mas-pruebas`, desde Progreso): hexágono (cronómetro, 3 vueltas; mejora real si baja más de 1,015 s, Beekhuizen 2009), alcance detrás de la espalda por lado (Rikli y Jones; normas solo para mayores de 60) y sentado y alcanzar casero. Se comparan con la marca anterior (`lib/calc/marcas.ts` con tests); 2 cm de mínimo en flexibilidad: decisión de diseño.
+  - Tu comida (`/comida`, desde Hoy): proteína del día con tu peso (1,6 g/kg, Morton 2018; rango 1,4 a 2,0, ISSN 2017; 0,4 g/kg por comida, Schoenfeld y Aragon 2018), en palmas (25 g por palma: aproximación) con contador del día, dibujo del plato (Harvard; Guías Alimentarias Argentinas 2016), 7 ejemplos de platos y tabla de 15 alimentos (`normas/alimentos-proteina.json`, USDA FoodData Central, aproximados). `lib/calc/nutricion.ts` con tests.
+  - Artículo "Equilibrio y agilidad: las que más se olvidan".
 - Versión 0.42.0: orden de los ejercicios, avisos con opciones y ejercicios nuevos (pedido del dueño).
   - Ejercicios nuevos con dibujo: burpees en intervalos, burpee sin salto, burpee explosivo (potencia), sentadillas con salto en intervalos, el mejor estiramiento del mundo, sentadilla profunda con balanceo y círculos de hombro. Flujo de movilidad de 10 minutos (`FLUJO_MOVILIDAD`: gato-camello, mejor estiramiento, cadera 90/90, sentadilla profunda y círculos de hombro) para las sesiones de movilidad nuevas.
   - Orden de los ejercicios (`lib/plan/orden.ts` con tests, fuentes Simão 2012, Nunes 2021, Eddens 2018 y Behm 2016): cada ejercicio cae en una parte (entrada en calor, técnica, potencia, grandes, chicos, zona media, cardio, estiramientos quietos). En Plan se ven las partes, y si algo está fuera de lugar aparece el porqué con "Ordenar así" o "Dejarlo como está". En Editar, "Cómo encadenarlos y qué va después de qué". En "Cargar o editar mi rutina a mano", ↑ ↓ para elegir el orden (si no, se usa el recomendado). Test: lo que arman el generador y las plantillas no dispara el aviso.

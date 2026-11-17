@@ -1049,5 +1049,54 @@
         "enlace": "https://www4.hcdn.gob.ar/dependencias/dsecretaria/Periodo2024/PDF2024/TP2024/5989-D-2024.pdf"
       }
     ]
+  },
+  {
+    "id": "equilibrio-agilidad",
+    "categoria": "entrenamiento",
+    "titulo": "Equilibrio y agilidad: las que más se olvidan",
+    "resumen": "Cómo entrenarlas en casa y medir si mejorás.",
+    "etiquetas": [
+      "equilibrio",
+      "agilidad",
+      "coordinacion",
+      "coordinación",
+      "hexagono",
+      "hexágono",
+      "tobillo",
+      "caidas",
+      "caídas",
+      "esguince"
+    ],
+    "dibujo": "ej:equilibrio-un-pie",
+    "niveles": {
+      "principiante": [
+        "El equilibrio se entrena como la fuerza: con ejercicios que suben de a un escalón. En la app la escalera es caminar talón-punta, un pie, un pie con ojos cerrados, un pie sobre almohadón y alcances en estrella.",
+        "Va solo en tus sesiones de movilidad: 1 o 2 minutos alcanzan, siempre cerca de una pared.",
+        "La agilidad es cambiar de dirección rápido sin perder el control: saltos en hexágono, escalera en el piso y desplazamientos de costado. Necesitás unos 2 × 2 m."
+      ],
+      "intermedio": [
+        "Entrenar el equilibrio baja las caídas en personas mayores (revisión Cochrane de Sherrington y otros 2019) y los esguinces de tobillo en deportistas (Hübscher y otros 2010).",
+        "La agilidad se entrena fresco, al principio de la sesión, igual que los saltos: si estás cansado, se vuelve cardio y la técnica se ensucia.",
+        "Medila en Progreso → Más pruebas con la prueba del hexágono, cada 4 semanas."
+      ],
+      "avanzado": [
+        "La prueba del hexágono es confiable para comparar tus marcas: una mejora real es bajar más de 1 segundo (Beekhuizen y otros 2009). No hay tablas por edad para adultos que no son deportistas, por eso la app compara con vos mismo.",
+        "Para combate, sumá reacción: desplazamientos que cambian ante una señal (alguien que diga \"derecha\" o la pantalla de Contragolpes)."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Sherrington y otros 2019, Exercise for preventing falls in older people living in the community, Cochrane",
+        "enlace": "https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD012424.pub2/full"
+      },
+      {
+        "texto": "Hübscher y otros 2010, Neuromuscular training for sports injury prevention: a systematic review, Med Sci Sports Exerc",
+        "enlace": "https://pubmed.ncbi.nlm.nih.gov/19952811/"
+      },
+      {
+        "texto": "Beekhuizen y otros 2009, Test-retest reliability and minimal detectable change of the hexagon agility test, J Strength Cond Res",
+        "enlace": "https://nsuworks.nova.edu/hpd_pt_facarticles/89"
+      }
+    ]
   }
 ]
