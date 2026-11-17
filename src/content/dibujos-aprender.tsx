@@ -387,7 +387,30 @@ function Escape() {
   )
 }
 
+/** Seis columnas que sostienen el techo: los pilares del cambio del cuerpo. */
+function Pilares() {
+  const nombres = ['Fuerza', 'Proteína', 'Balance', 'Sueño', 'Moverse', 'Tiempo']
+  return (
+    <Lienzo etiqueta="Seis pilares sostienen el resultado: fuerza, proteína, balance de comida, sueño, movimiento y tiempo" alto={198}>
+      <path d="M20,44 L160,12 L300,44 Z" fill={acento} opacity={0.9} />
+      <Texto x={160} y={38} color="var(--bg)">
+        Tu cuerpo, sostenible
+      </Texto>
+      {nombres.map((n, i) => (
+        <g key={n}>
+          <rect x={30 + i * 46} y={50} width={30} height={104} rx={4} fill="var(--surface-2)" stroke="var(--line)" />
+          <Texto x={45 + i * 46} y={i % 2 ? 190 : 176}>
+            {n}
+          </Texto>
+        </g>
+      ))}
+      <rect x={20} y={154} width={280} height={8} rx={3} fill={hecho} />
+    </Lienzo>
+  )
+}
+
 const DIBUJOS: Record<string, () => ReactNode> = {
+  pilares: Pilares,
   'zonas-lesion': ZonasLesion,
   cabeza: Cabeza,
   orden: Orden,

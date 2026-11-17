@@ -1,5 +1,76 @@
 [
   {
+    "id": "seis-pilares",
+    "categoria": "entrenamiento",
+    "titulo": "Los 6 pilares: qué cambia de verdad tu cuerpo",
+    "resumen": "No hay un cuerpo perfecto: hay unos pocos principios sostenidos durante años.",
+    "etiquetas": [
+      "pilares",
+      "cuerpo perfecto",
+      "empezar",
+      "base",
+      "fuerza",
+      "proteina",
+      "calorias",
+      "sueño",
+      "pasos",
+      "cardio",
+      "genetica",
+      "grasa",
+      "constancia"
+    ],
+    "dibujo": "pilares",
+    "niveles": {
+      "principiante": [
+        "No existe un cuerpo perfecto que sirva para todos. Lo que más se le parece es un cuerpo fuerte, que se mueve bien, con buena composición y que podés sostener durante años.",
+        "1. Fuerza que progresa: cada músculo unas 2 veces por semana, sumando peso o repeticiones con el tiempo. Es lo que más cambia la forma del cuerpo.",
+        "2. Proteína suficiente en cada comida. 3. Comer un poco menos de lo que gastás para bajar grasa, o un poco más para ganar músculo: los extremos te hacen perder músculo o ganar grasa de más.",
+        "4. Dormir 7 a 9 horas. 5. Moverte todos los días (pasos) y hacer cardio cada semana. 6. Tiempo: un cambio grande lleva años, no 12 semanas.",
+        "El mejor plan es el que podés seguir: uno decente que sostenés cinco años le gana a uno perfecto que dejás en dos meses."
+      ],
+      "intermedio": [
+        "Fuerza: unas 10 a 20 series por semana por músculo, cortando cada serie cuando sentís que te quedan 1 a 3 repeticiones, con ejercicios grandes (sentadilla, peso muerto, press, dominadas, remos).",
+        "Proteína: unos 1,6 g por kilo por día alcanzan para la mayoría; hasta 2,2 g por kilo es un margen de seguridad. Repartila en 3 a 5 comidas.",
+        "Bajar grasa: un ritmo de 0,5 a 1 % de tu peso por semana cuida el músculo. Ganar músculo: un superávit chico (del orden de 200 a 300 kcal por día, como referencia).",
+        "Cardio: la OMS pide 150 a 300 minutos de actividad moderada por semana, o 75 a 150 de intensa. Cardio suave varias veces y una sesión más fuerte es una buena forma de llegar, no la única.",
+        "Pasos: en adultos, el beneficio sigue subiendo hasta unos 8.000 a 10.000 por día antes de los 60 años, y hasta unos 6.000 a 8.000 después."
+      ],
+      "avanzado": [
+        "La genética define tus proporciones, dónde guardás grasa y la forma de tus músculos: podés mejorar mucho, pero sobre tu propia estructura.",
+        "Las fotos de \"cuerpo perfecto\" suelen ser picos de competencia, con luz y deshidratación, imposibles de mantener. Como referencia aproximada (no es un estándar publicado), un rango sostenible de grasa suele estar cerca de 10 a 18 % en hombres y 18 a 26 % en mujeres.",
+        "Cuánto músculo se gana: estimaciones de entrenadores hablan de 0,5 a 1 kg por mes el primer año en hombres que empiezan, menos en mujeres y en personas mayores, y mucho menos después. Son referencias, no datos medidos.",
+        "La capacidad aeróbica (el VO₂máx que estima tu evaluación) se asoció en un estudio de más de 120.000 personas con menos mortalidad, sin un techo de beneficio.",
+        "Suplementos, horarios de comida y rutinas sofisticadas mueven poco comparados con estos pilares: primero las bases."
+      ]
+    },
+    "fuentes": [
+      {
+        "texto": "Schoenfeld y otros 2016 (frecuencia) y 2017 (volumen), metaanálisis sobre hipertrofia",
+        "enlace": "https://pubmed.ncbi.nlm.nih.gov/27102172/"
+      },
+      {
+        "texto": "Morton y otros 2018, proteína y entrenamiento de fuerza (metaanálisis de 49 estudios), British Journal of Sports Medicine",
+        "enlace": "https://pubmed.ncbi.nlm.nih.gov/28698222/"
+      },
+      {
+        "texto": "Helms y otros 2014, ritmo de pérdida de 0,5 a 1 % por semana para cuidar el músculo, JISSN",
+        "enlace": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4033492"
+      },
+      {
+        "texto": "Paluch y otros 2022, pasos diarios y mortalidad (15 cohortes), The Lancet Public Health",
+        "enlace": "https://hdl.handle.net/10037/25693"
+      },
+      {
+        "texto": "Mandsager y otros 2018, capacidad aeróbica y mortalidad, JAMA Network Open",
+        "enlace": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6324439"
+      },
+      {
+        "texto": "OMS 2020, directrices sobre actividad física y comportamiento sedentario",
+        "enlace": "https://www.who.int/publications/i/item/9789240015128"
+      }
+    ]
+  },
+  {
     "id": "guia-caminar",
     "categoria": "guias",
     "titulo": "Caminar mejor",

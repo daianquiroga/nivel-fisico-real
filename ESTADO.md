@@ -8,6 +8,7 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.40.1: artículo "Los 6 pilares: qué cambia de verdad tu cuerpo" (a partir de un texto del usuario, revisado): fuerza que progresa, proteína (Morton 2018), balance de energía (0,5 a 1 %/semana, Helms 2014), sueño, pasos (Paluch 2022) y cardio (OMS 2020), y tiempo; capacidad aeróbica y mortalidad (Mandsager 2018). Lo que no es estándar publicado (rango de grasa, kg de músculo por mes, superávit de 200 a 300 kcal) se presenta como referencia aproximada. Dibujo nuevo `pilares`.
 - Confirmado en el celular (16/11/2026): la app de Android se actualizó sola hasta la 0.40.0. La actualización sola funciona desde la 0.38.0 (con la huella SHA-256 y los arreglos de 0.33.0 a 0.35.0).
 - Versión 0.40.0: rutinas de gimnasio listas y comparar rutinas.
   - `content/plantillas.json` + `lib/plan/plantillas.ts` (con tests): cuerpo completo 3 días (A/B), torso y pierna 4 días, y empuje/tirón/piernas 3 o 6 días. Cada lugar de la plantilla tiene opciones en orden (barra → mancuernas → máquina → banda → peso del cuerpo) y se elige la primera que se puede hacer con el equipo del día y sin chocar con limitaciones; se ubica en tus días y horarios. Fuentes: ACSM 2009, Schoenfeld 2016 (frecuencia) y 2017 (volumen); elección y reparto: decisión de diseño.
