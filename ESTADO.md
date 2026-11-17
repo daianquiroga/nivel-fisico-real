@@ -8,6 +8,12 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.45.0: más ejercicios de gimnasio (pedido del dueño). 18 ejercicios nuevos con ficha completa (posición inicial, pasos, respiración, 3 errores con cómo detectarlos, más fácil y más difícil, y qué hacer con muñeca, rodilla, hombro o espalda limitados) y dibujo propio, en `content/ejercicios/gimnasio-mas.json`:
+  - Piernas: estocadas con mancuernas, sentadilla búlgara con mancuernas, peso muerto rumano con barra, hip thrust con barra, elevación de talones con mancuernas y en máquina, abductores y aductores en máquina (dibujo nuevo `SillonPiernas`, vista de frente).
+  - Pecho: press inclinado con mancuernas, aperturas con mancuernas y cruce de poleas. Espalda: remo en máquina y pullover en polea. Brazos: tríceps en polea (soga o barra) y curl en polea. Hombros: press Arnold. Zona media: elevación de piernas colgado y crunch en polea.
+  - Familias nuevas o ampliadas (botones Barra / Mancuernas / Máquina / Polea): peso muerto rumano (mancuernas, barra), talones con carga (mancuernas, máquina), aperturas (mancuernas, polea), remo sentado (+ máquina), tríceps (+ polea), curl (+ polea).
+  - Plantillas: en el gimnasio ahora eligen estocadas con mancuernas, búlgara con mancuernas, rumano con barra, hip thrust con barra, talones con mancuernas, press inclinado (Torso 2) y elevación de piernas colgado (Pierna 2); el resto queda como opción cuando hay limitaciones o falta equipo (por ejemplo, con el hombro limitado, crunch en polea en vez de colgarse). Test nuevo en `plantillas.test.ts`.
+  - "Mi rutina" al pegar texto: más de 70 nombres comunes nuevos ("búlgaras", "polea tríceps", "tríceps con soga", "pushdown", "gemelos en máquina", "aperturas", "cruces", "pullover", "Arnold", "abductores", "RDL"…), con test.
 - Versión 0.44.0: sombra y juego de pies guiados dentro de cualquier entrenamiento (pedido del dueño, principiante). Al tocar Entrenar en una sesión con "Sombra" o "Juego de pies": antes de empezar, qué es, la guardia con dibujo y la lista de tus rounds; en cada round, qué hacer, las técnicas con dibujo y, con la voz activada, lo dice al empezar el round, a la mitad y en el descanso ("Sigue: …"). Usa tu arte de Combate y tus niveles. La lógica de los rounds quedó compartida con la sesión guiada (`rondasSombra` y `rondaPies` en `lib/plan/marcial.ts`, con tests; componente `screens/Entrenar/GuiaCombate.tsx`).
 - Versión 0.43.0: lo que faltaba del área 2 (Salud y capacidades físicas).
   - Equilibrio: escalera nueva `equilibrio` (caminata talón-punta → un pie → ojos cerrados → sobre almohadón → alcances en estrella), con dibujos. El escalón que toca va en cada sesión de movilidad del generador (Sherrington 2019, Cochrane; Hübscher 2010).
@@ -114,9 +120,11 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Ideas y pendientes
 
-- Ideas para más adelante: más ejercicios de gimnasio en la biblioteca; que el análisis compare dos rutinas lado a lado.
+- Ideas para más adelante: que el análisis compare dos rutinas lado a lado.
 
 ## Decisiones tomadas
+
+- 0.45.0: la técnica de los ejercicios nuevos sigue descripciones comunes de manuales de entrenamiento (por ejemplo, NSCA, Essentials of Strength Training and Conditioning); rangos de repeticiones dentro de ACSM 2009. Los pesos iniciales, los saltos de progresión y en qué lugar de cada plantilla va cada ejercicio son decisión de diseño. "Búlgaras" (así, sola) se lee como búlgara con mancuernas porque es como suele aparecer en rutinas de gimnasio; "sentadilla búlgara" sigue siendo la versión sin peso. Aperturas, cruce de poleas, pullover, abductores, aductores y press Arnold no se eligen solos en las plantillas (salvo como reemplazo): se suman a mano desde "+ Sumar ejercicio", Mi rutina o Cambiar. El press Arnold y colgarse de la barra quedan en "evitar" con el hombro limitado.
 
 - 0.42.0: orden exacto de las partes de la sesión, "día liviano" (una serie menos y 3 o 4 repeticiones en reserva), cuántos días de cardio o movilidad se proponen sumar (hasta 3 de 30 minutos) y el flujo de movilidad de 10 minutos: decisiones de diseño. La movilidad en movimiento puede ir al principio o al final, así que no se marca como fuera de lugar.
 
@@ -188,6 +196,7 @@ Dirección: https://daianquiroga.github.io/nivel-fisico-real/
 5. Progreso: aparece la última evaluación y el historial; tocar una fecha abre sus resultados.
 6. Aprender: buscar un ejercicio, filtrar por tipo, abrir la ficha y moverse por la escalera.
 7. Ficha de un ejercicio → Anotar series → Guardar; volver a anotar y ver la sugerencia, el historial y Progreso → Tus ejercicios.
+17. Aprender → Ejercicios → filtro "Brazos y otros" o buscar "polea": aparecen los nuevos con su dibujo. Plan → Plantillas → Torso y pierna (con un lugar de gimnasio): Pierna 1 trae estocadas con mancuernas. Mi rutina → Pegar texto: "Búlgaras 3x10", "Polea tríceps 3x12".
 16. Plan → Armar o cargar mi propia rutina → Pegar texto (ejemplo en el cuadro) → Leer → Usar → revisar tildando → Guardar. Plan → Analizar mi rutina.
 15. En Chrome de Android: Perfil → App de Android → Bajar la app; instalarla, restaurar el respaldo, y en Hoy → Pasos de hoy → Leer mis pasos solo. Perfil → avisos antes de cada sesión.
 14. Combate → Poder de pelea (marcar experiencia) → Ir al simulador → elegir rival, reglamento y estrategias → Simular 500 peleas.

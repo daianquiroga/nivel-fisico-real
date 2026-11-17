@@ -12,6 +12,36 @@ describe('rutina propia', () => {
     expect(reconocer('zzz')).toBeUndefined()
   })
 
+  it('reconoce los ejercicios de gimnasio de la 0.45.0 por sus nombres comunes', () => {
+    const casos: [string, string][] = [
+      ['Estocadas con mancuernas 3x10', 'estocadas-mancuernas'],
+      ['Búlgaras 3x8', 'sentadilla-bulgara-mancuernas'],
+      ['Sentadilla búlgara 3x10', 'sentadilla-bulgara'],
+      ['Peso muerto rumano con barra 4x8', 'peso-muerto-rumano-barra'],
+      ['Hip thrust con barra 4x10', 'hip-thrust-barra'],
+      ['Gemelos en máquina 4x15', 'elevacion-talones-maquina'],
+      ['Pantorrillas con mancuernas 3x15', 'elevacion-talones-mancuernas'],
+      ['Gemelos 3x20', 'elevacion-talones'],
+      ['Abductores 3x15', 'abductores-maquina'],
+      ['Aductores 3x15', 'aductores-maquina'],
+      ['Press inclinado con mancuernas 3x10', 'press-inclinado-mancuernas'],
+      ['Aperturas 3x12', 'aperturas-mancuernas'],
+      ['Aperturas en polea 3x12', 'cruce-poleas'],
+      ['Cruce de poleas 3x12', 'cruce-poleas'],
+      ['Remo en máquina 4x10', 'remo-maquina'],
+      ['Remo sentado en máquina 4x10', 'remo-maquina'],
+      ['Pullover en polea 3x12', 'pullover-polea'],
+      ['Polea tríceps 3x12', 'triceps-polea'],
+      ['Tríceps en polea con soga 3x12', 'triceps-polea'],
+      ['Curl en polea 3x12', 'curl-polea'],
+      ['Press Arnold 3x10', 'press-arnold'],
+      ['Elevación de piernas colgado 3x10', 'elevacion-piernas-colgado'],
+      ['Crunch en polea 3x15', 'crunch-polea'],
+      ['Soga 10 min', 'soga'],
+    ]
+    for (const [texto, id] of casos) expect([texto, reconocer(texto)?.id]).toEqual([texto, id])
+  })
+
   it('lee un texto con días, horas, series y minutos', () => {
     const r = leerTexto(`Lunes 19:30
 - Press banca 4x10

@@ -1,0 +1,1190 @@
+[
+  {
+    "id": "estocadas-mancuernas",
+    "nombre": "Estocadas con mancuernas",
+    "patron": "zancada",
+    "principal": [
+      "cuádriceps",
+      "glúteos"
+    ],
+    "secundarios": [
+      "aductores",
+      "antebrazos"
+    ],
+    "equipo": [
+      "mancuernas"
+    ],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      8,
+      12
+    ],
+    "inicial": "De pie, una mancuerna en cada mano a los costados, pies al ancho de la cadera.",
+    "pasos": [
+      "Dá un paso largo hacia adelante con un pie.",
+      "Bajá hasta que la rodilla de atrás casi toque el piso, con el torso derecho.",
+      "Empujá con el talón de adelante para volver al inicio. Alterná las piernas o hacé todas de un lado."
+    ],
+    "respiracion": "Tomá aire al bajar y soltalo al subir.",
+    "errores": [
+      {
+        "error": "Paso corto",
+        "detectar": "El talón de adelante se levanta y la rodilla se va muy adelante: alargá el paso."
+      },
+      {
+        "error": "Rodilla de adelante hacia adentro",
+        "detectar": "Filmate de frente: la rodilla tiene que seguir la dirección del pie."
+      },
+      {
+        "error": "Torso que se cae hacia adelante",
+        "detectar": "Las mancuernas se te van adelante del cuerpo: mantenelas colgando a los costados."
+      }
+    ],
+    "facil": "zancada-atras",
+    "dificil": "sentadilla-bulgara-mancuernas",
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Agarre neutro, muñeca recta; si molesta, usá correas o menos peso."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Paso hacia atrás en lugar de adelante, recorrido corto y sin dolor."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Las mancuernas cuelgan: no carga el hombro. Si molesta al agarrarlas, menos peso."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Torso derecho y peso moderado; si duele, sin mancuernas."
+      }
+    },
+    "subir": "3 series de 12 por pierna con 2 en reserva en dos sesiones: subí 1 a 2 kg por mano.",
+    "pesoInicial": "Serie de prueba de 10 por pierna con 4 a 8 kg por mano. Ajustá según cuántas te quedaban.",
+    "video": "estocadas con mancuernas tecnica"
+  },
+  {
+    "id": "sentadilla-bulgara-mancuernas",
+    "nombre": "Sentadilla búlgara con mancuernas",
+    "patron": "zancada",
+    "principal": [
+      "cuádriceps",
+      "glúteos"
+    ],
+    "secundarios": [
+      "aductores",
+      "antebrazos"
+    ],
+    "equipo": [
+      "mancuernas",
+      "banco"
+    ],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      6,
+      12
+    ],
+    "inicial": "De espaldas a un banco, el empeine de un pie apoyado atrás, el otro pie un paso largo adelante. Una mancuerna en cada mano.",
+    "pasos": [
+      "Bajá hasta que el muslo de adelante quede casi paralelo al piso.",
+      "Torso apenas inclinado y la rodilla de adelante en la dirección del pie.",
+      "Subí empujando con el pie de adelante. Todas de un lado y cambiá."
+    ],
+    "respiracion": "Tomá aire al bajar y soltalo al subir.",
+    "errores": [
+      {
+        "error": "Pie de adelante muy cerca del banco",
+        "detectar": "El talón de adelante se levanta al bajar: alejalo."
+      },
+      {
+        "error": "Empujar con la pierna de atrás",
+        "detectar": "Sentís que trabaja más el pie apoyado en el banco."
+      },
+      {
+        "error": "Perder el equilibrio",
+        "detectar": "Empezá con poco peso o agarrado de algo con una mano."
+      }
+    ],
+    "facil": "sentadilla-bulgara",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Agarre neutro o una sola mancuerna contra el pecho."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Recorrido corto y sin dolor; si molesta, cambiá por prensa."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Una sola mancuerna contra el pecho (goblet) si molesta llevarlas colgando."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Peso moderado y torso firme; si duele, hacela sin peso."
+      }
+    },
+    "subir": "3 series de 12 por pierna con 2 en reserva en dos sesiones: subí 1 a 2 kg por mano.",
+    "pesoInicial": "Serie de prueba de 8 por pierna con 4 a 6 kg por mano.",
+    "video": "sentadilla bulgara con mancuernas tecnica"
+  },
+  {
+    "id": "peso-muerto-rumano-barra",
+    "familia": "peso-muerto-rumano",
+    "nombre": "Peso muerto rumano con barra",
+    "patron": "bisagra",
+    "principal": [
+      "isquiotibiales",
+      "glúteos"
+    ],
+    "secundarios": [
+      "zona lumbar",
+      "antebrazos"
+    ],
+    "equipo": [
+      "barra"
+    ],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      6,
+      12
+    ],
+    "inicial": "De pie con la barra en las manos delante de los muslos, agarre un poco más ancho que la cadera, rodillas apenas dobladas.",
+    "pasos": [
+      "Llevá la cola hacia atrás con la espalda recta, como para cerrar una puerta con ella.",
+      "Bajá la barra pegada a las piernas hasta sentir que se estira atrás del muslo (suele ser debajo de la rodilla).",
+      "Subí empujando la cadera hacia adelante, sin echar el cuerpo para atrás arriba."
+    ],
+    "respiracion": "Tomá aire arriba, bajá con la panza firme y soltalo al terminar de subir.",
+    "errores": [
+      {
+        "error": "Espalda redonda",
+        "detectar": "Filmate de costado: la espalda tiene que quedar recta todo el tiempo."
+      },
+      {
+        "error": "Barra lejos de las piernas",
+        "detectar": "La barra se separa de los muslos y sentís tirón en la cintura."
+      },
+      {
+        "error": "Doblar mucho las rodillas",
+        "detectar": "Se transforma en sentadilla: las rodillas casi no se mueven."
+      }
+    ],
+    "facil": "peso-muerto-rumano-mancuernas",
+    "dificil": "peso-muerto-barra",
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Muñeca recta; con mancuernas y agarre neutro suele molestar menos."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Rodillas apenas dobladas, no trabadas."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Los brazos cuelgan: casi no carga el hombro. Hombros abajo y atrás."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Poco peso, recorrido corto y espalda recta. Si duele, cambiá por puente de glúteos."
+      }
+    },
+    "subir": "3 series de 12 con 2 en reserva en dos sesiones: subí 2,5 a 5 kg en total.",
+    "pesoInicial": "Serie de prueba de 10 con la barra sola (suele pesar 20 kg; hay de 10 a 15 kg). Sumá discos de a poco.",
+    "video": "peso muerto rumano con barra tecnica"
+  },
+  {
+    "id": "hip-thrust-barra",
+    "nombre": "Hip thrust con barra",
+    "patron": "bisagra",
+    "principal": [
+      "glúteos"
+    ],
+    "secundarios": [
+      "isquiotibiales",
+      "cuádriceps"
+    ],
+    "equipo": [
+      "barra",
+      "banco"
+    ],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      8,
+      12
+    ],
+    "inicial": "Sentado en el piso con la espalda alta apoyada en el borde del banco, la barra sobre la cadera con una almohadilla, rodillas dobladas.",
+    "pasos": [
+      "Mentón un poco hacia el pecho y las manos sujetando la barra.",
+      "Subí la cadera hasta que el torso quede paralelo al piso y las rodillas a 90°.",
+      "Pausa de 1 segundo arriba apretando la cola y bajá controlado."
+    ],
+    "respiracion": "Soltá el aire al subir y tomalo al bajar.",
+    "errores": [
+      {
+        "error": "Arquear la espalda arriba",
+        "detectar": "Las costillas se abren y la cabeza se va para atrás: mirá hacia adelante."
+      },
+      {
+        "error": "Pies muy adelante",
+        "detectar": "Sentís más el atrás del muslo que la cola: acercalos."
+      },
+      {
+        "error": "Barra sin almohadilla",
+        "detectar": "Te duele el hueso de la cadera: usá la almohadilla o una toalla doblada."
+      }
+    ],
+    "facil": "hip-thrust",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Las manos solo sujetan la barra: no hace falta apretar."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Pies un poco más lejos para doblar menos la rodilla."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Apoyá bien la parte de arriba de la espalda; los brazos solo sujetan."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Peso moderado y sin arquear arriba; si duele, puente de glúteos en el piso."
+      }
+    },
+    "subir": "3 series de 12 con 2 en reserva en dos sesiones: subí 5 kg en total.",
+    "pesoInicial": "Serie de prueba de 10 con la barra sola o la barra más 10 kg.",
+    "video": "hip thrust con barra tecnica"
+  },
+  {
+    "id": "elevacion-talones-mancuernas",
+    "familia": "talones-carga",
+    "nombre": "Elevación de talones con mancuernas",
+    "patron": "accesorio",
+    "principal": [
+      "pantorrillas"
+    ],
+    "secundarios": [
+      "antebrazos"
+    ],
+    "equipo": [
+      "mancuernas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      10,
+      20
+    ],
+    "inicial": "Parado con las puntas de los pies en un escalón o disco, una mancuerna en una mano y la otra mano apoyada en la pared.",
+    "pasos": [
+      "Bajá los talones por debajo del escalón hasta sentir el estiramiento.",
+      "Subí lo más alto que puedas sobre las puntas.",
+      "Pausa de 1 segundo arriba y bajá despacio."
+    ],
+    "respiracion": "Respirá normal, sin aguantar el aire.",
+    "errores": [
+      {
+        "error": "Rebotar abajo",
+        "detectar": "No hay pausa: el talón rebota y sube solo."
+      },
+      {
+        "error": "Medio recorrido",
+        "detectar": "No bajás del nivel del escalón o no llegás arriba del todo."
+      },
+      {
+        "error": "Doblar las rodillas para ayudarte",
+        "detectar": "Las rodillas se mueven: tienen que quedar casi estiradas y quietas."
+      }
+    ],
+    "facil": "elevacion-talones",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Una mancuerna de un solo lado o la máquina, sin apretar fuerte."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Rodillas apenas dobladas y quietas."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Mancuerna colgando al costado: no carga el hombro."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Parado derecho; si duele, hacelo sentado con la mancuerna sobre el muslo."
+      }
+    },
+    "subir": "3 series de 20 con 2 en reserva: subí 2 kg o hacelo a una pierna.",
+    "pesoInicial": "Serie de prueba de 15 con 8 a 12 kg en una mano.",
+    "video": "elevacion de talones con mancuernas"
+  },
+  {
+    "id": "elevacion-talones-maquina",
+    "familia": "talones-carga",
+    "nombre": "Elevación de talones en máquina",
+    "patron": "accesorio",
+    "principal": [
+      "pantorrillas"
+    ],
+    "secundarios": [],
+    "equipo": [
+      "maquinas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      10,
+      20
+    ],
+    "inicial": "En la máquina de pantorrillas (de pie, sentado o en la prensa), las puntas de los pies en el borde de la plataforma.",
+    "pasos": [
+      "Bajá los talones hasta sentir el estiramiento.",
+      "Subí lo más alto que puedas sobre las puntas.",
+      "Pausa de 1 segundo arriba y bajá en 2 segundos."
+    ],
+    "respiracion": "Respirá normal, sin aguantar el aire.",
+    "errores": [
+      {
+        "error": "Rebotar abajo",
+        "detectar": "El peso cae y rebota: frená abajo un segundo."
+      },
+      {
+        "error": "Medio recorrido",
+        "detectar": "Usás tanto peso que solo movés unos centímetros: bajalo."
+      },
+      {
+        "error": "Doblar las rodillas",
+        "detectar": "En la de pie, las rodillas se mueven y empujan: tienen que quedar quietas."
+      }
+    ],
+    "facil": "elevacion-talones",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Casi no usa las manos: solo apoyalas."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Rodillas apenas dobladas, nunca trabadas."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Si la de pie te carga los hombros, usá la sentada o la prensa."
+      },
+      "espalda-baja": {
+        "nivel": "evitar",
+        "texto": "La de pie carga la columna: usá la versión sentada o la prensa."
+      }
+    },
+    "subir": "3 series de 20 con 2 en reserva: subí el peso un escalón.",
+    "pesoInicial": "Elegí un peso con el que hagas 15 lentas y te queden 3 o 4.",
+    "video": "elevacion de talones en maquina tecnica"
+  },
+  {
+    "id": "abductores-maquina",
+    "nombre": "Abductores en máquina",
+    "patron": "accesorio",
+    "principal": [
+      "glúteo medio",
+      "glúteos"
+    ],
+    "secundarios": [],
+    "equipo": [
+      "maquinas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      12,
+      20
+    ],
+    "inicial": "Sentado en la máquina con la espalda apoyada, las almohadillas por fuera de las rodillas y las piernas juntas.",
+    "pasos": [
+      "Abrí las piernas hacia afuera empujando con la parte de afuera de las rodillas.",
+      "Pausa de 1 segundo con las piernas abiertas.",
+      "Cerrá despacio, en 2 segundos, sin que las pesas choquen."
+    ],
+    "respiracion": "Soltá el aire al abrir y tomalo al cerrar.",
+    "errores": [
+      {
+        "error": "Ir con impulso",
+        "detectar": "Las pesas golpean al volver: bajá el peso."
+      },
+      {
+        "error": "Despegar la espalda",
+        "detectar": "Te inclinás hacia adelante para empujar: apoyate."
+      },
+      {
+        "error": "Medio recorrido",
+        "detectar": "Abrís solo un poco: menos peso y abrí lo que puedas sin dolor."
+      }
+    ],
+    "facil": "puente-gluteo",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "No usa las muñecas: solo apoyá las manos."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Si molesta la parte de afuera de la rodilla, almohadillas más arriba y menos peso."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "No carga el hombro."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Espalda bien apoyada en el respaldo y peso moderado."
+      }
+    },
+    "subir": "3 series de 20 con 2 en reserva: subí el peso un escalón.",
+    "pesoInicial": "Elegí un peso con el que hagas 15 lentas y te queden 3 o 4.",
+    "video": "maquina abductores tecnica"
+  },
+  {
+    "id": "aductores-maquina",
+    "nombre": "Aductores en máquina",
+    "patron": "accesorio",
+    "principal": [
+      "aductores"
+    ],
+    "secundarios": [],
+    "equipo": [
+      "maquinas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      12,
+      20
+    ],
+    "inicial": "Sentado en la máquina con la espalda apoyada, las almohadillas por dentro de las rodillas y las piernas abiertas hasta donde estés cómodo.",
+    "pasos": [
+      "Cerrá las piernas apretando con la parte de adentro de los muslos.",
+      "Pausa de 1 segundo con las piernas juntas.",
+      "Abrí despacio, en 2 segundos, sin pasar de donde sentís un estiramiento suave."
+    ],
+    "respiracion": "Soltá el aire al cerrar y tomalo al abrir.",
+    "errores": [
+      {
+        "error": "Abrir demasiado",
+        "detectar": "Sentís tirón en la ingle: empezá con menos apertura."
+      },
+      {
+        "error": "Ir con impulso",
+        "detectar": "Las pesas golpean al volver: bajá el peso."
+      },
+      {
+        "error": "Despegar la espalda",
+        "detectar": "Te inclinás para empujar: apoyate en el respaldo."
+      }
+    ],
+    "facil": "aductores-mariposa",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "No usa las muñecas: solo apoyá las manos."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Si molesta la parte de adentro de la rodilla, menos apertura y menos peso."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "No carga el hombro."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Espalda bien apoyada en el respaldo y peso moderado."
+      }
+    },
+    "subir": "3 series de 20 con 2 en reserva: subí el peso un escalón.",
+    "pesoInicial": "Elegí un peso con el que hagas 15 lentas y te queden 3 o 4.",
+    "video": "maquina aductores tecnica"
+  },
+  {
+    "id": "press-inclinado-mancuernas",
+    "nombre": "Press inclinado con mancuernas",
+    "patron": "empuje",
+    "principal": [
+      "pecho",
+      "hombros"
+    ],
+    "secundarios": [
+      "tríceps"
+    ],
+    "equipo": [
+      "mancuernas",
+      "banco"
+    ],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      8,
+      12
+    ],
+    "inicial": "Acostado en un banco inclinado (entre 30° y 45°), pies firmes en el piso, una mancuerna en cada mano a la altura de los hombros.",
+    "pasos": [
+      "Juntá un poco los omóplatos y apoyalos en el banco.",
+      "Empujá hacia arriba hasta estirar los brazos, con las mancuernas sobre los hombros.",
+      "Bajá en 2 segundos hasta que queden a los costados de la parte de arriba del pecho."
+    ],
+    "respiracion": "Soltá el aire al subir y tomalo al bajar.",
+    "errores": [
+      {
+        "error": "Banco muy parado",
+        "detectar": "Con más de 45° trabaja casi todo el hombro: bajalo un punto."
+      },
+      {
+        "error": "Codos muy abiertos",
+        "detectar": "Los codos quedan en línea con los hombros: cerralos un poco."
+      },
+      {
+        "error": "Bajar sin control",
+        "detectar": "Las mancuernas caen rápido y rebotan."
+      }
+    ],
+    "facil": "press-banca-mancuernas",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Agarre neutro (palmas enfrentadas) y muñeca recta."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Pies firmes en el piso: no carga la rodilla."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Banco más bajo (30°), agarre neutro y sin bajar más allá del pecho."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Cola y espalda apoyadas en el banco, sin arquear."
+      }
+    },
+    "subir": "3 series de 12 con 2 en reserva en dos sesiones: subí 1 a 2 kg por mano.",
+    "pesoInicial": "Serie de prueba de 10 con un peso un poco menor al que usás en el press plano.",
+    "video": "press inclinado con mancuernas tecnica"
+  },
+  {
+    "id": "aperturas-mancuernas",
+    "familia": "aperturas",
+    "nombre": "Aperturas con mancuernas",
+    "patron": "accesorio",
+    "principal": [
+      "pecho"
+    ],
+    "secundarios": [
+      "hombros"
+    ],
+    "equipo": [
+      "mancuernas",
+      "banco"
+    ],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      10,
+      15
+    ],
+    "inicial": "Acostado en el banco, las mancuernas arriba del pecho con las palmas enfrentadas y los codos apenas doblados.",
+    "pasos": [
+      "Abrí los brazos hacia los costados, como para dar un abrazo grande, sin cambiar el ángulo de los codos.",
+      "Bajá hasta sentir que se estira el pecho, sin pasar la línea de los hombros.",
+      "Volvé a cerrar arriba, como abrazando un árbol."
+    ],
+    "respiracion": "Tomá aire al abrir y soltalo al cerrar.",
+    "errores": [
+      {
+        "error": "Bajar demasiado",
+        "detectar": "Las manos pasan por debajo del banco y el hombro molesta: bajá menos."
+      },
+      {
+        "error": "Convertirlo en press",
+        "detectar": "Los codos se doblan y se estiran: dejalos fijos, apenas doblados."
+      },
+      {
+        "error": "Peso muy alto",
+        "detectar": "Las mancuernas caen de golpe al abrir: menos peso."
+      }
+    ],
+    "facil": "press-banca-mancuernas",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Agarre neutro, muñeca recta."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "No carga la rodilla."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Recorrido corto (codos a la altura del banco) y poco peso; si duele, cambiá por press de pecho en máquina."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Cola y espalda apoyadas; si arqueás, poné los pies sobre el banco."
+      }
+    },
+    "subir": "3 series de 15 con 2 en reserva: subí 1 kg por mano.",
+    "pesoInicial": "Empezá liviano: más o menos la mitad del peso que usás en el press de banco con mancuernas.",
+    "video": "aperturas con mancuernas tecnica"
+  },
+  {
+    "id": "cruce-poleas",
+    "familia": "aperturas",
+    "nombre": "Cruce de poleas",
+    "patron": "accesorio",
+    "principal": [
+      "pecho"
+    ],
+    "secundarios": [
+      "hombros"
+    ],
+    "equipo": [
+      "poleas"
+    ],
+    "espacio": "2x2",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      10,
+      15
+    ],
+    "inicial": "Parado en el medio de las dos poleas altas, un pie adelante, una manija en cada mano, brazos abiertos y codos apenas doblados.",
+    "pasos": [
+      "Inclinate un poco hacia adelante con la espalda recta.",
+      "Juntá las manos delante del pecho en un arco, como abrazando un árbol.",
+      "Volvé a abrir despacio, en 2 segundos, hasta sentir el pecho estirado."
+    ],
+    "respiracion": "Soltá el aire al cerrar y tomalo al abrir.",
+    "errores": [
+      {
+        "error": "Doblar y estirar los codos",
+        "detectar": "Se transforma en press: los codos quedan fijos."
+      },
+      {
+        "error": "Dejar que la polea te lleve",
+        "detectar": "Los brazos se van muy para atrás al abrir: frená antes."
+      },
+      {
+        "error": "Encorvarte",
+        "detectar": "Los hombros se van hacia adelante: pecho arriba."
+      }
+    ],
+    "facil": "aperturas-mancuernas",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Muñeca recta y en línea con el antebrazo."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Paso corto y parado firme."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Abrí poco y con poco peso; con las poleas a la altura del pecho suele molestar menos."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Pie adelante y panza firme para no arquear."
+      }
+    },
+    "subir": "3 series de 15 con 2 en reserva: subí el peso un escalón.",
+    "pesoInicial": "Elegí un peso con el que hagas 15 lentas y te queden 3 o 4.",
+    "video": "cruce de poleas tecnica"
+  },
+  {
+    "id": "remo-maquina",
+    "familia": "remo-sentado",
+    "nombre": "Remo en máquina",
+    "patron": "traccion",
+    "principal": [
+      "espalda alta",
+      "dorsales"
+    ],
+    "secundarios": [
+      "bíceps",
+      "hombros (parte de atrás)"
+    ],
+    "equipo": [
+      "maquinas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      8,
+      12
+    ],
+    "inicial": "Sentado en la máquina con el pecho apoyado en el respaldo, los brazos estirados agarrando las manijas.",
+    "pasos": [
+      "Bajá los hombros y juntá un poco los omóplatos.",
+      "Tirá de las manijas llevando los codos hacia atrás, pegados al cuerpo.",
+      "Volvé a estirar los brazos despacio, en 2 segundos."
+    ],
+    "respiracion": "Soltá el aire al tirar y tomalo al volver.",
+    "errores": [
+      {
+        "error": "Despegar el pecho del respaldo",
+        "detectar": "Usás el cuerpo para tirar: bajá el peso."
+      },
+      {
+        "error": "Hombros que suben",
+        "detectar": "Los hombros se acercan a las orejas: bajalos antes de tirar."
+      },
+      {
+        "error": "Medio recorrido",
+        "detectar": "No estirás los brazos al volver."
+      }
+    ],
+    "facil": "remo-polea",
+    "dificil": "remo-barra",
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Manijas con agarre neutro y muñeca recta."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "No carga la rodilla."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Codos pegados al cuerpo y sin tirar más atrás de la línea del torso."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "El respaldo sostiene el pecho: suele ser la opción más cómoda para la espalda."
+      }
+    },
+    "subir": "3 series de 12 con 2 en reserva en dos sesiones: subí el peso un escalón.",
+    "pesoInicial": "Elegí un peso con el que hagas 12 limpias y te queden 2 o 3.",
+    "video": "remo en maquina tecnica"
+  },
+  {
+    "id": "pullover-polea",
+    "nombre": "Pullover en polea",
+    "patron": "accesorio",
+    "principal": [
+      "dorsales"
+    ],
+    "secundarios": [
+      "abdomen",
+      "tríceps"
+    ],
+    "equipo": [
+      "poleas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      10,
+      15
+    ],
+    "inicial": "Parado frente a la polea alta, con una barra recta o soga, un paso atrás, inclinado un poco hacia adelante con los brazos estirados arriba.",
+    "pasos": [
+      "Con los codos apenas doblados y fijos, bajá la barra en un arco hasta los muslos.",
+      "Apretá la espalda abajo un segundo.",
+      "Volvé a subir despacio hasta la altura de la cabeza."
+    ],
+    "respiracion": "Soltá el aire al bajar y tomalo al subir.",
+    "errores": [
+      {
+        "error": "Doblar los codos",
+        "detectar": "Se transforma en tríceps: los codos quedan fijos."
+      },
+      {
+        "error": "Usar el cuerpo",
+        "detectar": "Te inclinás y te parás en cada repetición: menos peso."
+      },
+      {
+        "error": "Arquear la espalda",
+        "detectar": "La cintura se hunde: panza firme y rodillas apenas dobladas."
+      }
+    ],
+    "facil": "jalon-polea",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Con soga, las muñecas quedan más rectas."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Rodillas apenas dobladas."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Subí solo hasta donde no moleste (no más arriba de la cabeza)."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Panza firme y peso moderado."
+      }
+    },
+    "subir": "3 series de 15 con 2 en reserva: subí el peso un escalón.",
+    "pesoInicial": "Elegí un peso con el que hagas 15 lentas y te queden 3 o 4.",
+    "video": "pullover en polea tecnica"
+  },
+  {
+    "id": "triceps-polea",
+    "familia": "extension-triceps",
+    "nombre": "Tríceps en polea (soga o barra)",
+    "patron": "accesorio",
+    "principal": [
+      "tríceps"
+    ],
+    "secundarios": [],
+    "equipo": [
+      "poleas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      10,
+      15
+    ],
+    "inicial": "Parado frente a la polea alta, con la soga o la barra corta, codos pegados al cuerpo y doblados a 90°.",
+    "pasos": [
+      "Empujá hacia abajo hasta estirar los brazos, sin mover los codos.",
+      "Con soga, abrí un poco las manos abajo.",
+      "Volvé despacio hasta que el antebrazo quede paralelo al piso."
+    ],
+    "respiracion": "Soltá el aire al empujar y tomalo al volver.",
+    "errores": [
+      {
+        "error": "Codos que se mueven",
+        "detectar": "Los codos se van adelante o se abren: pegalos al cuerpo."
+      },
+      {
+        "error": "Usar el cuerpo",
+        "detectar": "Te inclinás sobre la barra para empujar: menos peso."
+      },
+      {
+        "error": "Volver muy arriba",
+        "detectar": "Las manos suben hasta la cara y los codos se despegan."
+      }
+    ],
+    "facil": "extension-triceps-banda",
+    "dificil": "fondos",
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Con soga la muñeca queda más recta que con barra."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "No carga la rodilla."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Codos pegados y peso moderado."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Parado derecho, panza firme, sin inclinarte."
+      }
+    },
+    "subir": "3 series de 15 con 2 en reserva: subí el peso un escalón.",
+    "pesoInicial": "Elegí un peso con el que hagas 15 limpias y te queden 2 o 3.",
+    "video": "triceps en polea con soga tecnica"
+  },
+  {
+    "id": "curl-polea",
+    "familia": "curl-biceps",
+    "nombre": "Curl de bíceps en polea",
+    "patron": "accesorio",
+    "principal": [
+      "bíceps"
+    ],
+    "secundarios": [
+      "antebrazos"
+    ],
+    "equipo": [
+      "poleas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      10,
+      15
+    ],
+    "inicial": "Parado frente a la polea baja, con la barra corta o la soga, brazos estirados y codos al costado del cuerpo.",
+    "pasos": [
+      "Doblá los codos y subí las manos hacia los hombros, sin mover los codos.",
+      "Apretá el bíceps un segundo arriba.",
+      "Bajá despacio, en 2 segundos, hasta estirar los brazos."
+    ],
+    "respiracion": "Soltá el aire al subir y tomalo al bajar.",
+    "errores": [
+      {
+        "error": "Balancear el cuerpo",
+        "detectar": "Te echás para atrás para subir: menos peso."
+      },
+      {
+        "error": "Codos que se van adelante",
+        "detectar": "Los codos se despegan del cuerpo al subir."
+      },
+      {
+        "error": "Medio recorrido",
+        "detectar": "No estirás los brazos abajo."
+      }
+    ],
+    "facil": "curl-banda",
+    "dificil": "curl-barra",
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Con soga (agarre de martillo) la muñeca queda más cómoda."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "No carga la rodilla."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Codos pegados y sin subirlos al final."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Parado derecho, sin echarte para atrás."
+      }
+    },
+    "subir": "3 series de 15 con 2 en reserva: subí el peso un escalón.",
+    "pesoInicial": "Elegí un peso con el que hagas 15 limpias y te queden 2 o 3.",
+    "video": "curl de biceps en polea tecnica"
+  },
+  {
+    "id": "press-arnold",
+    "nombre": "Press Arnold",
+    "patron": "empuje-vertical",
+    "principal": [
+      "hombros"
+    ],
+    "secundarios": [
+      "tríceps",
+      "hombros (parte del costado)"
+    ],
+    "equipo": [
+      "mancuernas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      8,
+      12
+    ],
+    "inicial": "Sentado en un banco con respaldo (o de pie), las mancuernas delante de la cara con las palmas mirando hacia vos y los codos adelante.",
+    "pasos": [
+      "Mientras empujás hacia arriba, girá las manos hasta que las palmas miren al frente.",
+      "Estirá los brazos arriba, sin trabar los codos.",
+      "Bajá deshaciendo el giro hasta la posición del inicio."
+    ],
+    "respiracion": "Soltá el aire al subir y tomalo al bajar.",
+    "errores": [
+      {
+        "error": "Arquear la espalda",
+        "detectar": "La panza se va hacia adelante: apoyate en el respaldo y apretá la cola."
+      },
+      {
+        "error": "Girar de golpe",
+        "detectar": "El giro pasa todo al final: tiene que ser parejo en la subida."
+      },
+      {
+        "error": "Peso muy alto",
+        "detectar": "No llegás a estirar los brazos: usá menos que en el press militar."
+      }
+    ],
+    "facil": "press-hombros-mancuernas",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Si el giro molesta, hacé press militar con agarre neutro."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Sentado en el banco: no carga la rodilla."
+      },
+      "hombro": {
+        "nivel": "evitar",
+        "texto": "El giro lleva el hombro a una posición exigente: usá press con agarre neutro."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Sentado con la espalda apoyada."
+      }
+    },
+    "subir": "3 series de 12 con 2 en reserva en dos sesiones: subí 1 a 2 kg por mano.",
+    "pesoInicial": "Serie de prueba de 10 con un poco menos de lo que usás en el press de hombros.",
+    "video": "press arnold tecnica"
+  },
+  {
+    "id": "elevacion-piernas-colgado",
+    "nombre": "Elevación de piernas colgado",
+    "patron": "core",
+    "principal": [
+      "abdomen",
+      "flexores de cadera"
+    ],
+    "secundarios": [
+      "antebrazos",
+      "dorsales"
+    ],
+    "equipo": [
+      "barra-dominadas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "corporal",
+    "rango": [
+      6,
+      15
+    ],
+    "inicial": "Colgado de la barra con las manos al ancho de los hombros, hombros activos (un poco abajo) y el cuerpo quieto.",
+    "pasos": [
+      "Subí las rodillas hacia el pecho, enrollando un poco la cadera.",
+      "Pausa de 1 segundo arriba.",
+      "Bajá despacio, sin balancearte. Más difícil: con las piernas estiradas."
+    ],
+    "respiracion": "Soltá el aire al subir y tomalo al bajar.",
+    "errores": [
+      {
+        "error": "Balancearte",
+        "detectar": "El cuerpo se mueve como péndulo: frená abajo antes de la siguiente."
+      },
+      {
+        "error": "Solo subir las piernas",
+        "detectar": "La cadera no se enrolla: llevá la cola un poco hacia adelante al final."
+      },
+      {
+        "error": "Hombros colgados",
+        "detectar": "Los hombros se pegan a las orejas: bajalos un poco antes de empezar."
+      }
+    ],
+    "facil": "dead-bug",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "evitar",
+        "texto": "Colgarse carga la muñeca: hacé crunch en polea o dead bug."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Rodillas dobladas: cuesta menos."
+      },
+      "hombro": {
+        "nivel": "evitar",
+        "texto": "Colgarse carga el hombro: hacé dead bug o crunch."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Rodillas dobladas y sin balanceo; si molesta, dead bug."
+      }
+    },
+    "subir": "3 series de 15 con rodillas dobladas: pasá a piernas estiradas.",
+    "video": "elevacion de piernas colgado tecnica"
+  },
+  {
+    "id": "crunch-polea",
+    "nombre": "Crunch en polea",
+    "patron": "core",
+    "principal": [
+      "abdomen"
+    ],
+    "secundarios": [
+      "oblicuos"
+    ],
+    "equipo": [
+      "poleas"
+    ],
+    "espacio": "1x1",
+    "tipo": "reps",
+    "carga": "externa",
+    "rango": [
+      10,
+      15
+    ],
+    "inicial": "De rodillas frente a la polea alta, la soga sujeta a los costados de la cabeza.",
+    "pasos": [
+      "Enrollá el tronco llevando los codos hacia los muslos, como haciendo bolita.",
+      "Apretá la panza un segundo abajo.",
+      "Volvé despacio hasta quedar derecho."
+    ],
+    "respiracion": "Soltá el aire al bajar y tomalo al volver.",
+    "errores": [
+      {
+        "error": "Moverse con la cadera",
+        "detectar": "La cola sube y baja: la cadera queda quieta, se mueve el tronco."
+      },
+      {
+        "error": "Tirar con los brazos",
+        "detectar": "Los brazos empujan la soga: quedan fijos junto a la cabeza."
+      },
+      {
+        "error": "Peso muy alto",
+        "detectar": "No podés enrollar la espalda: bajá el peso."
+      }
+    ],
+    "facil": "crunch",
+    "dificil": null,
+    "limitaciones": {
+      "muneca": {
+        "nivel": "adaptar",
+        "texto": "Las manos solo sujetan la soga."
+      },
+      "rodilla": {
+        "nivel": "adaptar",
+        "texto": "Poné algo blando debajo de las rodillas."
+      },
+      "hombro": {
+        "nivel": "adaptar",
+        "texto": "Codos cerca de la cabeza y peso moderado."
+      },
+      "espalda-baja": {
+        "nivel": "adaptar",
+        "texto": "Peso liviano y recorrido corto; si duele, cambiá por dead bug."
+      }
+    },
+    "subir": "3 series de 15 con 2 en reserva: subí el peso un escalón.",
+    "pesoInicial": "Elegí un peso con el que hagas 15 lentas y te queden 3 o 4.",
+    "video": "crunch en polea tecnica"
+  }
+]
