@@ -5,8 +5,8 @@ import { NOMBRES_DIAS } from '../../lib/perfil'
 import { analizarRutina, type Analisis } from '../../lib/plan/analisis'
 import { asegurarCiclo } from '../../lib/plan/ciclo'
 import type { PlanSemana } from '../../lib/plan/generador'
-import { NOMBRE_ORIGEN, borrarRutina, combinarPlanes, guardarRutina, leerRutinas, type RutinaGuardada } from '../../lib/plan/rutinas'
-import { semanaSistema } from '../../lib/plan/sistemaSemana'
+import { borrarRutina, combinarPlanes, guardarRutina, leerRutinas } from '../../lib/plan/rutinas'
+import { fuentesRutinas, type FuenteRutina } from '../../lib/plan/fuentes'
 import { SOMBRA_VS_SISTEMA } from '../../lib/plan/marcial'
 import { armarEntrada, guardarPlan, leerPlan } from '../../lib/plan/usarPlan'
 import e from '../Evaluacion/evaluacion.module.css'
@@ -15,13 +15,7 @@ import h from '../Hoy/hoy.module.css'
 import { Volver } from '../Combate/comun'
 import { VistaAnalisis, usarContextoAnalisis } from './Analisis'
 
-interface Fuente {
-  clave: string
-  nombre: string
-  detalle: string
-  plan: PlanSemana
-  rutina?: RutinaGuardada
-}
+type Fuente = FuenteRutina
 
 const minutosSemana = (p: PlanSemana) => p.dias.reduce((a, d) => a + d.sesiones.filter((s) => !s.titulo.includes('opcional')).reduce((b, s) => b + s.minutos, 0), 0)
 const diasCon = (p: PlanSemana) => p.dias.filter((d) => d.sesiones.some((s) => !s.titulo.includes('opcional'))).length
@@ -39,11 +33,7 @@ export function CombinarRutinas() {
 
   useEffect(() => {
     void Promise.all([leerRutinas(), leerPlan(), armarEntrada()]).then(([rutinas, actual, entrada]) => {
-      const f: Fuente[] = []
-      if (actual) f.push({ clave: 'actual', nombre: 'Tu plan actual', detalle: 'El que usás hoy en Plan.', plan: actual })
-      for (const r of [...rutinas].reverse()) f.push({ clave: r.id, nombre: r.nombre, detalle: `${NOMBRE_ORIGEN[r.origen]} · guardada el ${new Date(r.creado).toLocaleDateString('es-AR')}`, plan: r.plan, rutina: r })
-      if (entrada) f.push({ clave: 'sistema', nombre: 'Sistema completo de combate', detalle: 'Boxeo, muay thai y kick, suelo, krav magá e integración, en tus días y horarios.', plan: semanaSistema(entrada) })
-      setFuentes(f)
+      setFuentes(fuentesRutinas({ actual, rutinas, entrada }))
     })
   }, [recarga])
 
