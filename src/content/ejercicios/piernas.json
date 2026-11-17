@@ -358,6 +358,7 @@
   },
   {
     "id": "peso-muerto-rumano-mancuernas",
+    "familia": "peso-muerto-rumano",
     "nombre": "Peso muerto rumano con mancuernas",
     "patron": "bisagra",
     "principal": ["isquiotibiales", "glúteos"],

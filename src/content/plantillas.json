@@ -18,8 +18,8 @@
           "ejercicios": [
             { "opciones": ["sentadilla-barra", "sentadilla-goblet", "prensa", "sentadilla-bulgara", "sentadilla"], "series": 3 },
             { "opciones": ["press-banca-barra", "press-banca-mancuernas", "press-pecho-maquina", "press-piso-mancuernas", "press-banda", "flexion"], "series": 3 },
-            { "opciones": ["remo-barra", "remo-inclinado-mancuernas", "remo-polea", "remo-mancuerna", "remo-invertido", "remo-inclinado-banda"], "series": 3 },
-            { "opciones": ["hip-thrust", "peso-muerto-rumano-mancuernas", "puente-una-pierna", "puente-gluteo"], "series": 2 },
+            { "opciones": ["remo-barra", "remo-inclinado-mancuernas", "remo-maquina", "remo-polea", "remo-mancuerna", "remo-invertido", "remo-inclinado-banda"], "series": 3 },
+            { "opciones": ["hip-thrust-barra", "hip-thrust", "peso-muerto-rumano-mancuernas", "puente-una-pierna", "puente-gluteo"], "series": 2 },
             { "opciones": ["plancha"], "series": 2 }
           ]
         },
@@ -29,9 +29,9 @@
             { "opciones": ["peso-muerto-barra", "peso-muerto-rumano-mancuernas", "swing-kettlebell", "peso-muerto-una-pierna", "puente-gluteo"], "series": 3 },
             { "opciones": ["press-militar-barra", "press-hombros-mancuernas", "press-militar-banda", "flexion-pica"], "series": 3 },
             { "opciones": ["dominada", "jalon-polea", "dominada-asistida-banda", "dominada-negativa", "remo-invertido", "remo-banda"], "series": 3 },
-            { "opciones": ["zancada-atras", "subida-banco"], "series": 2 },
-            { "opciones": ["curl-martillo", "curl-martillo-banda", "curl-biceps", "curl-banda"], "series": 2 },
-            { "opciones": ["extension-triceps", "extension-triceps-banda", "fondos"], "series": 2 }
+            { "opciones": ["estocadas-mancuernas", "zancada-atras", "subida-banco"], "series": 2 },
+            { "opciones": ["curl-martillo", "curl-martillo-banda", "curl-biceps", "curl-polea", "curl-banda"], "series": 2 },
+            { "opciones": ["extension-triceps", "triceps-polea", "extension-triceps-banda", "fondos"], "series": 2 }
           ]
         }
       }
@@ -48,19 +48,19 @@
           "titulo": "Torso 1",
           "ejercicios": [
             { "opciones": ["press-banca-barra", "press-banca-mancuernas", "press-pecho-maquina", "press-piso-mancuernas", "press-banda", "flexion"], "series": 3 },
-            { "opciones": ["remo-barra", "remo-inclinado-mancuernas", "remo-polea", "remo-mancuerna", "remo-inclinado-banda"], "series": 3 },
+            { "opciones": ["remo-barra", "remo-inclinado-mancuernas", "remo-maquina", "remo-polea", "remo-mancuerna", "remo-inclinado-banda"], "series": 3 },
             { "opciones": ["press-militar-barra", "press-hombros-mancuernas", "press-militar-banda", "flexion-pica"], "series": 3 },
-            { "opciones": ["curl-barra", "curl-biceps", "curl-banda"], "series": 2 },
-            { "opciones": ["extension-triceps", "extension-triceps-banda"], "series": 2 }
+            { "opciones": ["curl-barra", "curl-biceps", "curl-polea", "curl-banda"], "series": 2 },
+            { "opciones": ["extension-triceps", "triceps-polea", "extension-triceps-banda"], "series": 2 }
           ]
         },
         "Pierna 1": {
           "titulo": "Pierna 1",
           "ejercicios": [
             { "opciones": ["sentadilla-barra", "sentadilla-goblet", "prensa", "sentadilla-bulgara", "sentadilla"], "series": 4 },
-            { "opciones": ["peso-muerto-rumano-mancuernas", "hip-thrust", "peso-muerto-una-pierna", "puente-una-pierna"], "series": 3 },
-            { "opciones": ["zancada-atras", "subida-banco"], "series": 2 },
-            { "opciones": ["elevacion-talones"], "series": 3 },
+            { "opciones": ["peso-muerto-rumano-barra", "peso-muerto-rumano-mancuernas", "hip-thrust", "peso-muerto-una-pierna", "puente-una-pierna"], "series": 3 },
+            { "opciones": ["estocadas-mancuernas", "zancada-atras", "subida-banco"], "series": 2 },
+            { "opciones": ["elevacion-talones-mancuernas", "elevacion-talones-maquina", "elevacion-talones"], "series": 3 },
             { "opciones": ["plancha-lateral", "plancha"], "series": 2 }
           ]
         },
@@ -68,7 +68,7 @@
           "titulo": "Torso 2",
           "ejercicios": [
             { "opciones": ["dominada", "jalon-polea", "dominada-asistida-banda", "dominada-negativa", "remo-banda"], "series": 3 },
-            { "opciones": ["press-banca-mancuernas", "press-piso-mancuernas", "fondos", "press-banda", "flexion"], "series": 3 },
+            { "opciones": ["press-inclinado-mancuernas", "press-banca-mancuernas", "press-piso-mancuernas", "fondos", "press-banda", "flexion"], "series": 3 },
             { "opciones": ["elevaciones-laterales", "elevaciones-laterales-banda"], "series": 3 },
             { "opciones": ["pajaro-mancuernas", "pajaro-banda", "face-pull-banda"], "series": 2 },
             { "opciones": ["curl-martillo", "curl-martillo-banda"], "series": 2 }
@@ -78,10 +78,10 @@
           "titulo": "Pierna 2",
           "ejercicios": [
             { "opciones": ["peso-muerto-barra", "peso-muerto-rumano-mancuernas", "swing-kettlebell", "puente-gluteo"], "series": 3 },
-            { "opciones": ["sentadilla-bulgara", "zancada-atras"], "series": 3 },
-            { "opciones": ["hip-thrust", "puente-una-pierna", "puente-gluteo"], "series": 3 },
+            { "opciones": ["sentadilla-bulgara-mancuernas", "sentadilla-bulgara", "zancada-atras"], "series": 3 },
+            { "opciones": ["hip-thrust-barra", "hip-thrust", "puente-una-pierna", "puente-gluteo"], "series": 3 },
             { "opciones": ["curl-femoral", "peso-muerto-una-pierna"], "series": 2 },
-            { "opciones": ["pallof-banda", "dead-bug"], "series": 2 }
+            { "opciones": ["elevacion-piernas-colgado", "crunch-polea", "pallof-banda", "dead-bug"], "series": 2 }
           ]
         }
       }
@@ -99,18 +99,18 @@
           "ejercicios": [
             { "opciones": ["press-banca-barra", "press-banca-mancuernas", "press-pecho-maquina", "press-piso-mancuernas", "press-banda", "flexion"], "series": 3 },
             { "opciones": ["press-militar-barra", "press-hombros-mancuernas", "press-militar-banda", "flexion-pica"], "series": 3 },
-            { "opciones": ["fondos", "flexion-pies-elevados", "flexion"], "series": 2 },
+            { "opciones": ["fondos", "press-inclinado-mancuernas", "cruce-poleas", "aperturas-mancuernas", "flexion-pies-elevados", "flexion"], "series": 2 },
             { "opciones": ["elevaciones-laterales", "elevaciones-laterales-banda"], "series": 3 },
-            { "opciones": ["extension-triceps", "extension-triceps-banda"], "series": 2 }
+            { "opciones": ["extension-triceps", "triceps-polea", "extension-triceps-banda"], "series": 2 }
           ]
         },
         "Tirón": {
           "titulo": "Tirón (espalda, bíceps)",
           "ejercicios": [
             { "opciones": ["dominada", "jalon-polea", "dominada-asistida-banda", "dominada-negativa", "remo-banda"], "series": 3 },
-            { "opciones": ["remo-barra", "remo-inclinado-mancuernas", "remo-polea", "remo-mancuerna", "remo-invertido", "remo-inclinado-banda"], "series": 3 },
+            { "opciones": ["remo-barra", "remo-inclinado-mancuernas", "remo-maquina", "remo-polea", "remo-mancuerna", "remo-invertido", "remo-inclinado-banda"], "series": 3 },
             { "opciones": ["pajaro-mancuernas", "pajaro-banda", "face-pull-banda"], "series": 2 },
-            { "opciones": ["curl-barra", "curl-biceps", "curl-banda"], "series": 2 },
+            { "opciones": ["curl-barra", "curl-biceps", "curl-polea", "curl-banda"], "series": 2 },
             { "opciones": ["curl-martillo", "curl-martillo-banda"], "series": 2 }
           ]
         },
@@ -118,9 +118,9 @@
           "titulo": "Piernas y tronco",
           "ejercicios": [
             { "opciones": ["sentadilla-barra", "sentadilla-goblet", "prensa", "sentadilla-bulgara", "sentadilla"], "series": 3 },
-            { "opciones": ["peso-muerto-rumano-mancuernas", "peso-muerto-barra", "hip-thrust", "puente-una-pierna", "puente-gluteo"], "series": 3 },
-            { "opciones": ["zancada-atras", "subida-banco"], "series": 2 },
-            { "opciones": ["elevacion-talones"], "series": 3 },
+            { "opciones": ["peso-muerto-rumano-barra", "peso-muerto-rumano-mancuernas", "peso-muerto-barra", "hip-thrust", "puente-una-pierna", "puente-gluteo"], "series": 3 },
+            { "opciones": ["estocadas-mancuernas", "zancada-atras", "subida-banco"], "series": 2 },
+            { "opciones": ["elevacion-talones-mancuernas", "elevacion-talones-maquina", "elevacion-talones"], "series": 3 },
             { "opciones": ["plancha", "dead-bug"], "series": 2 }
           ]
         }

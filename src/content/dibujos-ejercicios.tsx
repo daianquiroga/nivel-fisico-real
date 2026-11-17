@@ -1133,6 +1133,228 @@ const DIBUJOS: Record<string, () => ReactNode> = {
       textos={['No llegás: en menos', 'Pasás la punta: en más']}
     />
   ),
+
+  /* Más gimnasio (0.45.0) */
+  'estocadas-mancuernas': () => (
+    <Dos
+      etiqueta="Estocadas con mancuernas: un paso largo adelante y la rodilla de atrás casi toca el piso"
+      a={{ pose: pose({ ...DE_PIE, mano: [82, 102] }), adelante: <><Mancuerna en={[82, 106]} /><Flecha de={[100, 150]} a={[132, 150]} /></> }}
+      b={{ pose: pose({ cabeza: [86, 54], cuello: [86, 68], cadera: [84, 120], rod: [108, 128], pie: [110, 165], punta: [124, 165], rodI: [62, 156], pieI: [36, 160], puntaI: [30, 165], codo: [86, 94], mano: [86, 120] }), adelante: <Mancuerna en={[86, 124]} /> }}
+      textos={['Parado', 'Abajo']}
+    />
+  ),
+  'sentadilla-bulgara-mancuernas': () => (
+    <Dos
+      etiqueta="Sentadilla búlgara con mancuernas, el pie de atrás sobre un banco"
+      a={{ atras: <Banco x={4} ancho={40} alto={46} />, pose: pose({ cabeza: [84, 30], cuello: [84, 44], cadera: [82, 96], rod: [94, 130], pie: [100, 165], punta: [114, 165], rodI: [58, 118], pieI: [34, 120], codo: [86, 70], mano: [84, 96] }), adelante: <Mancuerna en={[84, 100]} /> }}
+      b={{ atras: <Banco x={4} ancho={40} alto={46} />, pose: pose({ cabeza: [92, 62], cuello: [90, 76], cadera: [80, 126], rod: [112, 128], pie: [104, 165], punta: [118, 165], rodI: [62, 156], pieI: [34, 120], codo: [94, 102], mano: [92, 126] }), adelante: <Mancuerna en={[92, 130]} /> }}
+    />
+  ),
+  'peso-muerto-rumano-barra': () => (
+    <Dos
+      etiqueta="Peso muerto rumano con barra: la cadera va atrás y la barra baja pegada a las piernas"
+      a={{ pose: pose({ ...DE_PIE, mano: [84, 100] }), adelante: <Disco en={[84, 102]} r={16} /> }}
+      b={{ pose: bisagra(1), adelante: <Disco en={[116, 134]} r={16} /> }}
+      textos={['Parado', 'Cadera atrás']}
+    />
+  ),
+  'hip-thrust-barra': () => (
+    <Dos
+      etiqueta="Hip thrust con barra: la espalda en el banco y la barra sobre la cadera"
+      a={{ atras: <Banco x={2} ancho={40} alto={48} />, pose: pose({ cabeza: [24, 108], cuello: [38, 120], cadera: [74, 150], rod: [112, 128], pie: [120, 165], codo: [58, 136], mano: [74, 140] }), adelante: <Disco en={[76, 136]} r={16} /> }}
+      b={{ atras: <Banco x={2} ancho={40} alto={48} />, pose: pose({ cabeza: [24, 110], cuello: [38, 120], cadera: [84, 120], rod: [116, 124], pie: [120, 165], codo: [62, 112], mano: [84, 108] }), adelante: <Disco en={[84, 104]} r={16} /> }}
+      textos={['Cadera abajo', 'Cadera arriba']}
+    />
+  ),
+  'elevacion-talones-mancuernas': () => (
+    <Dos
+      etiqueta="Elevación de talones con una mancuerna, en un escalón y agarrado de la pared"
+      a={{ atras: <><Caja x={66} ancho={60} alto={18} /><ParedL x={130} /></>, pose: pose({ ...DE_PIE, cabeza: [80, 16], cuello: [80, 30], cadera: [80, 84], rod: [80, 118], pie: [76, 156], punta: [92, 150], codo: [80, 58], mano: [80, 84], codoI: [104, 46], manoI: [129, 50] }), adelante: <Mancuerna en={[80, 88]} /> }}
+      b={{ atras: <><Caja x={66} ancho={60} alto={18} /><ParedL x={130} /></>, pose: pose({ ...DE_PIE, cabeza: [82, 12], cuello: [82, 26], cadera: [82, 80], rod: [82, 112], pie: [84, 142], punta: [94, 150], codo: [82, 54], mano: [82, 80], codoI: [106, 42], manoI: [129, 46] }), adelante: <Mancuerna en={[82, 84]} /> }}
+      textos={['Talones abajo', 'En puntas de pie']}
+    />
+  ),
+  'elevacion-talones-maquina': () => {
+    const maquina = (dy: number) => (
+      <>
+        <Caja x={66} ancho={44} alto={18} />
+        <path d={`M92,${29 + dy} L134,${29 + dy} M134,20 L134,168`} stroke={metal} strokeWidth={5} strokeLinecap="round" fill="none" />
+        <rect x={68} y={26 + dy} width={26} height={8} rx={3} fill={metal} />
+      </>
+    )
+    return (
+      <Dos
+        etiqueta="Elevación de talones en máquina: los hombros debajo de las almohadillas, de talones abajo a puntas de pie"
+        a={{ adelante: maquina(0), pose: pose({ ...DE_PIE, cabeza: [80, 16], cuello: [80, 30], cadera: [80, 84], rod: [80, 118], pie: [76, 156], punta: [92, 150], codo: [96, 48], mano: [92, 32] }) }}
+        b={{ adelante: maquina(-8), pose: pose({ ...DE_PIE, cabeza: [82, 11], cuello: [82, 23], cadera: [82, 76], rod: [82, 110], pie: [84, 142], punta: [94, 150], codo: [98, 40], mano: [94, 24] }) }}
+        textos={['Talones abajo', 'En puntas de pie']}
+      />
+    )
+  },
+  'abductores-maquina': () => <SillonPiernas abre etiqueta="Abductores en máquina, vista de frente: las piernas se abren contra las almohadillas" />,
+  'aductores-maquina': () => <SillonPiernas etiqueta="Aductores en máquina, vista de frente: las piernas se cierran contra las almohadillas" />,
+  'press-inclinado-mancuernas': () => {
+    const banco = (
+      <g>
+        <path d="M18,96 L60,128 L112,128" stroke="var(--line)" strokeWidth={10} strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <line x1={60} x2={60} y1={133} y2={168} stroke={metal} strokeWidth={3} />
+        <line x1={104} x2={104} y1={133} y2={168} stroke={metal} strokeWidth={3} />
+      </g>
+    )
+    const base = { cabeza: [20, 80] as P, cuello: [32, 92] as P, cadera: [70, 120] as P, rod: [104, 124] as P, pie: [110, 165] as P, punta: [122, 165] as P }
+    return (
+      <Dos
+        etiqueta="Press inclinado con mancuernas: banco inclinado, de los costados del pecho a brazos estirados"
+        a={{ atras: banco, pose: pose({ ...base, codo: [28, 116], mano: [40, 92] }), adelante: <Mancuerna en={[40, 88]} /> }}
+        b={{ atras: banco, pose: pose({ ...base, codo: [40, 68], mano: [44, 44] }), adelante: <Mancuerna en={[44, 40]} /> }}
+        textos={['Abajo', 'Arriba']}
+      />
+    )
+  },
+  'aperturas-mancuernas': () => {
+    const banco = <rect x={68} y={24} width={24} height={100} rx={4} fill="var(--surface-2)" stroke="var(--line)" />
+    const cuerpo = { cabeza: [80, 34] as P, cuello: [80, 48] as P, cadera: [80, 102] as P, rod: [72, 134] as P, pie: [70, 164] as P, rodI: [88, 134] as P, pieI: [90, 164] as P }
+    return (
+      <Dos
+        etiqueta="Aperturas con mancuernas, vista desde arriba: los brazos se abren como en un abrazo grande y se vuelven a cerrar"
+        a={{ atras: banco, pose: pose({ ...cuerpo, codo: [64, 62], mano: [74, 54], codoI: [96, 62], manoI: [86, 54] }), adelante: <><Mancuerna en={[72, 52]} vertical /><Mancuerna en={[88, 52]} vertical /></> }}
+        b={{ atras: banco, pose: pose({ ...cuerpo, codo: [54, 52], mano: [28, 58], codoI: [106, 52], manoI: [132, 58] }), adelante: <><Mancuerna en={[26, 58]} vertical /><Mancuerna en={[134, 58]} vertical /></> }}
+        textos={['Cerrados (desde arriba)', 'Abiertos']}
+      />
+    )
+  },
+  'cruce-poleas': () => {
+    const torres = (
+      <g fill="var(--surface-2)" stroke="var(--line)">
+        <rect x={6} y={18} width={8} height={150} />
+        <rect x={146} y={18} width={8} height={150} />
+      </g>
+    )
+    const piernas = { cabeza: [80, 30] as P, cuello: [80, 44] as P, cadera: [80, 98] as P, rod: [72, 132] as P, pie: [70, 165] as P, rodI: [88, 132] as P, pieI: [90, 165] as P }
+    return (
+      <Dos
+        etiqueta="Cruce de poleas, vista de frente: de brazos abiertos a las manos juntas delante del pecho"
+        a={{ atras: torres, pose: pose({ ...piernas, codo: [56, 54], mano: [34, 42], codoI: [104, 54], manoI: [126, 42] }), adelante: <><Cable de={[14, 24]} a={[34, 42]} /><Cable de={[146, 24]} a={[126, 42]} /></> }}
+        b={{ atras: torres, pose: pose({ ...piernas, codo: [62, 70], mano: [76, 84], codoI: [98, 70], manoI: [84, 84] }), adelante: <><Cable de={[14, 24]} a={[76, 84]} /><Cable de={[146, 24]} a={[84, 84]} /></> }}
+        textos={['Brazos abiertos', 'Manos juntas']}
+      />
+    )
+  },
+  'remo-maquina': () => {
+    const maquina = (
+      <g>
+        <rect x={142} y={30} width={10} height={138} fill="var(--surface-2)" stroke="var(--line)" />
+        <rect x={96} y={62} width={8} height={40} rx={3} fill="var(--surface-2)" stroke="var(--line)" />
+        <line x1={100} x2={100} y1={102} y2={168} stroke={metal} strokeWidth={3} />
+        <Banco x={30} ancho={44} alto={46} />
+      </g>
+    )
+    const base = { cabeza: [84, 52] as P, cuello: [78, 66] as P, cadera: [56, 116] as P, rod: [92, 122] as P, pie: [96, 165] as P, punta: [108, 165] as P }
+    return (
+      <Dos
+        etiqueta="Remo en máquina: el pecho apoyado, de brazos estirados a codos atrás"
+        a={{ atras: maquina, pose: pose({ ...base, codo: [104, 72], mano: [130, 74] }), adelante: <Cable de={[142, 74]} a={[130, 74]} /> }}
+        b={{ atras: maquina, pose: pose({ ...base, codo: [54, 82], mano: [80, 80] }), adelante: <Cable de={[142, 74]} a={[80, 80]} /> }}
+        textos={['Brazos estirados', 'Codos atrás']}
+      />
+    )
+  },
+  'pullover-polea': () => {
+    const torre = <rect x={146} y={14} width={10} height={154} fill="var(--surface-2)" stroke="var(--line)" />
+    const base = { cabeza: [98, 38] as P, cuello: [90, 50] as P, cadera: [76, 100] as P, rod: [82, 132] as P, pie: [80, 165] as P, punta: [94, 165] as P }
+    return (
+      <Dos
+        etiqueta="Pullover en polea: brazos casi estirados, la barra baja en un arco hasta los muslos"
+        a={{ atras: torre, pose: pose({ ...base, codo: [110, 32], mano: [128, 18] }), adelante: <Cable de={[146, 20]} a={[128, 18]} /> }}
+        b={{ atras: torre, pose: pose({ ...base, codo: [100, 74], mano: [98, 100] }), adelante: <Cable de={[146, 20]} a={[98, 100]} /> }}
+        textos={['Brazos arriba', 'Barra a los muslos']}
+      />
+    )
+  },
+  'triceps-polea': () => {
+    const torre = <rect x={142} y={14} width={10} height={154} fill="var(--surface-2)" stroke="var(--line)" />
+    return (
+      <Dos
+        etiqueta="Tríceps en polea: los codos quietos al costado y las manos bajan hasta estirar los brazos"
+        a={{ atras: torre, pose: pose({ ...DE_PIE, codo: [84, 72], mano: [108, 66] }), adelante: <Cable de={[142, 22]} a={[108, 66]} /> }}
+        b={{ atras: torre, pose: pose({ ...DE_PIE, codo: [84, 72], mano: [90, 98] }), adelante: <Cable de={[142, 22]} a={[90, 98]} /> }}
+        textos={['Codos doblados', 'Brazos estirados']}
+      />
+    )
+  },
+  'curl-polea': () => {
+    const torre = <rect x={142} y={14} width={10} height={154} fill="var(--surface-2)" stroke="var(--line)" />
+    return (
+      <Dos
+        etiqueta="Curl de bíceps en polea baja: codos quietos al costado, las manos suben hacia los hombros"
+        a={{ atras: torre, pose: pose({ ...DE_PIE, mano: [84, 100] }), adelante: <Cable de={[142, 156]} a={[84, 100]} /> }}
+        b={{ atras: torre, pose: pose({ ...DE_PIE, codo: [82, 72], mano: [98, 50] }), adelante: <Cable de={[142, 156]} a={[98, 50]} /> }}
+      />
+    )
+  },
+  'press-arnold': () => {
+    const piernas = { cabeza: [80, 34] as P, cuello: [80, 48] as P, cadera: [80, 102] as P, rod: [72, 134] as P, pie: [70, 165] as P, rodI: [88, 134] as P, pieI: [90, 165] as P }
+    return (
+      <Dos
+        etiqueta="Press Arnold, vista de frente: las mancuernas delante de la cara con las palmas hacia vos, y arriba con las palmas al frente"
+        a={{ pose: pose({ ...piernas, codo: [70, 72], mano: [72, 50], codoI: [90, 72], manoI: [88, 50] }), adelante: <><Mancuerna en={[72, 48]} /><Mancuerna en={[88, 48]} /></> }}
+        b={{ pose: pose({ ...piernas, codo: [60, 32], mano: [62, 8], codoI: [100, 32], manoI: [98, 8] }), adelante: <><Mancuerna en={[62, 8]} /><Mancuerna en={[98, 8]} /></> }}
+        textos={['Palmas hacia vos', 'Palmas al frente']}
+      />
+    )
+  },
+  'elevacion-piernas-colgado': () => (
+    <Dos
+      etiqueta="Elevación de piernas colgado de la barra: de piernas abajo a rodillas al pecho"
+      a={{ atras: <BarraFija />, pose: colgado(0) }}
+      b={{ atras: <BarraFija />, pose: { ...colgado(0), rodD: [106, 100], pieD: [110, 132], rodI: [103, 98], pieI: [107, 130] } }}
+      textos={['Colgado', 'Rodillas arriba']}
+    />
+  ),
+  'crunch-polea': () => {
+    const torre = <rect x={146} y={14} width={10} height={154} fill="var(--surface-2)" stroke="var(--line)" />
+    const piernas = { rod: [72, 164] as P, pie: [40, 164] as P, cadera: [72, 128] as P }
+    return (
+      <Dos
+        etiqueta="Crunch en polea: de rodillas, la soga junto a la cabeza, enrollás el tronco hacia los muslos"
+        a={{ atras: torre, pose: pose({ ...piernas, cabeza: [84, 62], cuello: [80, 76], codo: [92, 84], mano: [90, 66] }), adelante: <Cable de={[146, 22]} a={[90, 66]} /> }}
+        b={{ atras: torre, pose: pose({ ...piernas, cabeza: [122, 118], cuello: [108, 112], codo: [106, 134], mano: [118, 126] }), adelante: <Cable de={[146, 22]} a={[118, 126]} /> }}
+        textos={['Derecho', 'Enrollado']}
+      />
+    )
+  },
+}
+
+/** Sillón de abductores o aductores visto de frente: almohadillas por fuera (abre) o por dentro de las rodillas. */
+function SillonPiernas({ abre, etiqueta }: { abre?: boolean; etiqueta: string }) {
+  const sillon = (
+    <g>
+      <rect x={64} y={40} width={32} height={74} rx={4} fill="var(--surface-2)" stroke="var(--line)" />
+      <rect x={54} y={110} width={52} height={8} rx={3} fill="var(--surface-2)" stroke="var(--line)" />
+      <line x1={80} x2={80} y1={118} y2={168} stroke={metal} strokeWidth={3} />
+    </g>
+  )
+  const cuerpo = { cabeza: [80, 40] as P, cuello: [80, 54] as P, cadera: [80, 108] as P, codo: [64, 84] as P, mano: [58, 110] as P, codoI: [96, 84] as P, manoI: [102, 110] as P }
+  const juntas = { rod: [74, 124] as P, pie: [74, 162] as P, rodI: [86, 124] as P, pieI: [86, 162] as P }
+  const abiertas = { rod: [48, 122] as P, pie: [54, 162] as P, rodI: [112, 122] as P, pieI: [106, 162] as P }
+  const almohadillas = (r: P, rI: P) => {
+    const dx = abre ? 9 : -9
+    return (
+      <g fill={metal}>
+        <rect x={r[0] - dx - 3} y={r[1] - 8} width={6} height={18} rx={2} />
+        <rect x={rI[0] + dx - 3} y={rI[1] - 8} width={6} height={18} rx={2} />
+      </g>
+    )
+  }
+  const [ini, fin] = abre ? [juntas, abiertas] : [abiertas, juntas]
+  return (
+    <Dos
+      etiqueta={etiqueta}
+      a={{ atras: sillon, pose: pose({ ...cuerpo, ...ini }), adelante: almohadillas(ini.rod, ini.rodI) }}
+      b={{ atras: sillon, pose: pose({ ...cuerpo, ...fin }), adelante: <>{almohadillas(fin.rod, fin.rodI)}{abre ? <><Flecha de={[60, 140]} a={[40, 140]} /><Flecha de={[100, 140]} a={[120, 140]} /></> : <><Flecha de={[44, 140]} a={[64, 140]} /><Flecha de={[116, 140]} a={[96, 140]} /></>}</> }}
+      textos={abre ? ['Piernas juntas', 'Abiertas'] : ['Piernas abiertas', 'Juntas']}
+    />
+  )
 }
 
 /** Corre una posición hacia abajo (para colgarse de algo más largo que la barra). */
