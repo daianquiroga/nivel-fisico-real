@@ -143,8 +143,11 @@ export function Combate() {
         <p className={estilos.texto2}>
           {nivelSombra >= NIVELES_SOMBRA.length ? 'Completaste los 5 niveles. Seguí con rounds de reacción.' : `Ahora: nivel ${sigSombra.nivel}, ${sigSombra.nombre.toLowerCase()}. ${sigSombra.objetivo}`}
         </p>
-        <Link to="/combate/rondas/sombra" className={h.botonPrincipal}>
-          Hacer rounds de sombra
+        <Link to={`/combate/guiada?d=${d.id === 'completo' ? 'hibrido' : d.id}&min=30&mov=1`} className={h.botonPrincipal}>
+          Sesión guiada de 30 minutos
+        </Link>
+        <Link to="/combate/rondas/sombra" className={estilos.boton}>
+          Solo rounds de sombra
         </Link>
         {nivelSombra < NIVELES_SOMBRA.length && (
           <Link to="/combate/evaluar" className={estilos.boton}>
@@ -154,7 +157,11 @@ export function Combate() {
       </Tarjeta>
 
       <div className={s.lista}>
-        <Link to="/combate/sistema" className={s.item} style={{ borderColor: 'var(--accent)' }}>
+        <Link to="/plan/marcial" className={s.item} style={{ borderColor: 'var(--accent)' }}>
+          <span className={s.itemNombre}>Armar mi rutina marcial</span>
+          <span className={s.itemDetalle}>Tus días, el tiempo de cada día, las artes que quieras y movilidad; después la combinás con tu fuerza</span>
+        </Link>
+        <Link to="/combate/sistema" className={s.item}>
           <span className={s.itemNombre}>Sistema completo (5 estilos)</span>
           <span className={s.itemDetalle}>Guardia 45/55, modos de peso, niveles, pies, defensas, combos, transiciones, escenarios y sesión guiada de 60 min</span>
         </Link>

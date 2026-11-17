@@ -4,13 +4,15 @@ import { Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
 import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
 import { BarrasAporte } from '../../content/dibujos-rutina'
 import { Implementos } from '../../components/Implementos'
+import { HorariosDia } from '../../components/HorariosDia'
 import { EJERCICIOS, PATRONES, ejercicio, equipoDisponible, implemento, sePuedeHacer, variantesDe } from '../../lib/ejercicios'
 import { normalizar } from '../../lib/aprender'
 import { db } from '../../lib/db/db'
 import { NOMBRES_DIAS, ZONAS } from '../../lib/perfil'
 import { analizarRutina } from '../../lib/plan/analisis'
-import { DURACIONES, EXTRAS, PRIORIDADES, entradaDesdeRespuestas, sinOpcionales, sinVacias, sumarEntrenamiento, respuestasIniciales, type Prioridad, type Respuestas } from '../../lib/plan/asistente'
+import { EXTRAS, completarHorarios, horariosDe, PRIORIDADES, entradaDesdeRespuestas, sinOpcionales, sinVacias, sumarEntrenamiento, respuestasIniciales, type Prioridad, type Respuestas } from '../../lib/plan/asistente'
 import { asegurarCiclo } from '../../lib/plan/ciclo'
+import { guardarRutina } from '../../lib/plan/rutinas'
 import { agregarEjercicio, borrarSesion, quitarEjercicio } from '../../lib/plan/editar'
 import { alternativas, generarPlan, type EntradaPlan, type PlanSemana } from '../../lib/plan/generador'
 import { armarEntrada, guardarPlan } from '../../lib/plan/usarPlan'
@@ -92,7 +94,7 @@ export function AsistenteRutina() {
   const alternar = <T,>(lista: T[], v: T) => (lista.includes(v) ? lista.filter((y) => y !== v) : [...lista, v])
 
   const siguiente = () => {
-    if (pasos[paso + 1] === 'Tu rutina') setPlan(sinOpcionales(generarPlan(entrada)))
+    if (pasos[paso + 1] === 'Tu rutina') setPlan(completarHorarios(sinOpcionales(generarPlan(entrada)), r))
     setPaso(paso + 1)
     window.scrollTo(0, 0)
   }
@@ -139,13 +141,8 @@ export function AsistenteRutina() {
       {nombre === 'Horario' && (
         <>
           <h1 className={e.titulo}>¿A qué hora y cuánto tiempo?</h1>
-          <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-            <span className="etiqueta">Hora</span>
-            <input className={x.buscador} style={{ fontSize: 22, minHeight: 56 }} type="time" value={r.hora} onChange={(ev) => ev.target.value && cambiar({ hora: ev.target.value })} />
-          </label>
-          <p className="etiqueta">Tiempo por día</p>
-          <Chips etiqueta="Minutos" opciones={DURACIONES.map((m) => ({ valor: m, texto: `${m} min` }))} elegidos={[r.minutos]} cambiar={(m) => cambiar({ minutos: m })} />
-          <p className={estilos.chico}>Si un día cambia, después lo movés desde Plan.</p>
+          <p className={e.para}>Poné lo mismo para todos o cambiá cada día. Si un día podés dos veces (mañana y noche), tocá "+ Otro horario".</p>
+          <HorariosDia dias={r.dias} horarios={horariosDe(r)} onCambiar={(horarios) => cambiar({ horarios })} />
         </>
       )}
 
@@ -397,6 +394,16 @@ export function AsistenteRutina() {
           <button type="button" className={h.botonPrincipal} disabled={!plan.dias.some((d) => d.sesiones.length)} onClick={() => void guardar()}>
             Guardar mi rutina
           </button>
+          <Boton
+            ancho
+            disabled={!plan.dias.some((d) => d.sesiones.length)}
+            onClick={async () => {
+              await guardarRutina(`Fuerza: ${r.prioridades.map((v) => PRIORIDADES.find((y) => y.valor === v)?.texto.toLowerCase()).join(' y ')}`, 'fuerza', { ...sinVacias(plan), editado: true })
+              navegar('/plan/combinar')
+            }}
+          >
+            Guardar para combinar con otra (marcial, sistema…)
+          </Boton>
           <p className={estilos.chico}>Se guarda como tu plan de la semana y lo que elegiste en "¿Qué querés lograr?" queda como tu objetivo. Después lo podés cambiar desde Plan o Perfil.</p>
         </>
       )}

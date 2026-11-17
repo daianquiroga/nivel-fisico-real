@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { semanaPorDefecto } from '../perfil'
 import { escalonesIniciales, generarPlan, type EntradaPlan, type PlanSemana } from './generador'
-import { entradaDesdeRespuestas, objetivosDe, respuestasIniciales, sinOpcionales, sinVacias, sumarEntrenamiento } from './asistente'
+import { completarHorarios, entradaDesdeRespuestas, horariosDe, objetivosDe, respuestasIniciales, sinOpcionales, sinVacias, sumarEntrenamiento } from './asistente'
 
 const base: EntradaPlan = {
   objetivos: { estetica: 34, condicion: 33, combate: 33 },
@@ -45,6 +45,24 @@ describe('asistente de rutina', () => {
     expect(r.hora).toBe('20:00')
     expect(r.minutos).toBe(60)
     expect(r.lugar).toBe('Casa')
+  })
+})
+
+describe('horarios por día', () => {
+  it('cada día con su hora y su tiempo, y un segundo horario', () => {
+    const horarios = [[], [{ hora: '07:00', minutos: 30 }], [], [{ hora: '19:00', minutos: 60 }, { hora: '07:00', minutos: 20 }], [], [], []]
+    const r = { dias: [1, 3], hora: '20:00', lugar: 'Casa', minutos: 45, horarios, prioridades: ['cardio' as const], zonas: [] }
+    expect(horariosDe(r)[1]).toEqual([{ hora: '07:00', minutos: 30 }])
+    expect(horariosDe({ ...r, horarios: undefined })[3]).toEqual([{ hora: '20:00', minutos: 45 }])
+    const e = entradaDesdeRespuestas(base, r)
+    expect(e.semana.huecosPorDia?.[3]).toEqual([{ desde: '19:00', hasta: '20:00' }, { desde: '07:00', hasta: '07:20' }])
+    const plan = completarHorarios(sinOpcionales(generarPlan(e)), r)
+    expect(plan.dias[1].sesiones[0].desde).toBe('07:00')
+    expect(plan.dias[1].sesiones[0].minutos).toBeLessThanOrEqual(30)
+    // El jueves: el entrenamiento principal en el horario más largo y uno corto de cardio a la mañana.
+    expect(plan.dias[3].sesiones.map((s) => s.desde)).toEqual(['07:00', '19:00'])
+    expect(plan.dias[3].sesiones[0].titulo).toBe('Cardio')
+    expect(plan.dias[3].sesiones[0].minutos).toBe(20)
   })
 })
 

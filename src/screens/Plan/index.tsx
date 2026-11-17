@@ -181,6 +181,12 @@ export function Plan() {
         <Link to="/plan/asistente" className={estilos.boton}>
           Prefiero armarla paso a paso
         </Link>
+        <Link to="/plan/marcial" className={estilos.boton}>
+          Armar una rutina marcial
+        </Link>
+        <Link to="/plan/combinar" className={estilos.boton}>
+          Combinar rutinas (fuerza + marcial…)
+        </Link>
         <Link to="/plan/plantillas" className={estilos.boton}>
           Elegir una rutina de gimnasio lista
         </Link>
@@ -367,6 +373,12 @@ export function Plan() {
           </Link>
           <Link to="/plan/asistente" className={estilos.boton}>
             Armar una rutina nueva paso a paso
+          </Link>
+          <Link to="/plan/marcial" className={estilos.boton}>
+            Armar una rutina marcial
+          </Link>
+          <Link to="/plan/combinar" className={estilos.boton}>
+            Combinar rutinas y ver el resultado
           </Link>
           <Link to="/combate/sistema?tema=sesion" className={estilos.boton}>
             Semana de combate (sistema completo)

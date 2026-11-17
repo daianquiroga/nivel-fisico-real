@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
 import { Segmentado, Stepper } from '../../components/controles'
 import { Cronometro } from '../../components/tiempo'
 import { Aviso, Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
@@ -195,6 +195,11 @@ export function Entrenar() {
   }, [cargado, run, historial, precargar])
 
   if (!cargado || plan === undefined) return null
+  // Las sesiones de un arte marcial se hacen guiadas, round por round.
+  if (original?.combate && !run) {
+    const c = original.combate
+    return <Navigate replace to={`/combate/guiada?d=${c.arte}&min=${original.minutos}&mov=${c.movilidad ? 1 : 0}&dia=${dia}&idx=${idx}`} />
+  }
 
   const volver = (
     <button type="button" className={e.volver} onClick={() => (run && run.fase !== 'fin' ? setSalir(true) : navegar(-1))} aria-label="Salir">

@@ -6,7 +6,7 @@ import tiposCuerpo from '../../content/tipos-cuerpo.json'
 import type { Tendencia } from '../calc/tipoCuerpo'
 import type { Lugar, MetodoSeries } from '../db/db'
 import { EJERCICIOS, ESCALERAS, equipoDeLugar, escaleraDe, evitarPorLimitacion, sePuedeHacer, type Ejercicio, type Patron } from '../ejercicios'
-import type { Semana } from '../perfil'
+import { huecosDelDia, type Semana } from '../perfil'
 
 export type TipoSesion = 'fuerza' | 'cardio' | 'movilidad'
 export type Metodo = 'clasico' | 'superseries' | 'circuito'
@@ -37,6 +37,8 @@ export interface SesionPlan {
   nota?: string
   /** Frase "cuando… entonces…" escrita por la persona (si no hay, se arma una por defecto). */
   intencion?: string
+  /** Sesión de un arte marcial: al entrenar se abre la sombra guiada round por round. */
+  combate?: { arte: string; movilidad?: boolean }
 }
 
 export interface DiaPlan {
@@ -425,7 +427,7 @@ export function generarPlan(entrada: EntradaPlan, hoy = new Date()): PlanSemana 
   const porNombre = new Map(lugares.map((l) => [l.nombre, l]))
   const dias: DiaPlan[] = Array.from({ length: 7 }, () => ({ sesiones: [] }))
 
-  const huecosDe = (d: number) => [...(semana.tipos[semana.dias[d]]?.huecos ?? [])].sort((a, b) => duracionHueco(b) - duracionHueco(a))
+  const huecosDe = (d: number) => [...(huecosDelDia(semana, d))].sort((a, b) => duracionHueco(b) - duracionHueco(a))
   const lugaresDe = (d: number) =>
     (semana.lugaresPorDia[d] ?? [])
       .map((n) => porNombre.get(n))

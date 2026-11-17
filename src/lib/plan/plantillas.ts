@@ -2,6 +2,7 @@
    En cada lugar de la plantilla se usa la primera opción que se puede hacer con el equipo de ese día y que no
    choca con una limitación. Rangos de repeticiones: los propios de cada ejercicio de la biblioteca. */
 import plantillasJson from '../../content/plantillas.json'
+import { huecosDelDia } from '../perfil'
 import { ejercicio, equipoDeLugar, evitarPorLimitacion, sePuedeHacer } from '../ejercicios'
 import { nuevoEjercicioPlan } from './editar'
 import type { EntradaPlan, PlanSemana } from './generador'
@@ -44,7 +45,7 @@ export function semanaPlantilla(p: Plantilla, entrada: EntradaPlan, creado = new
       })
       return id ? [{ ...nuevoEjercicioPlan(ejercicio(id)!), series: slot.series }] : []
     })
-    const hueco = [...(entrada.semana.tipos[entrada.semana.dias[d]]?.huecos ?? [])].sort((a, b) => aMin(b.hasta) - aMin(b.desde) - (aMin(a.hasta) - aMin(a.desde)))[0]
+    const hueco = [...(huecosDelDia(entrada.semana, d))].sort((a, b) => aMin(b.hasta) - aMin(b.desde) - (aMin(a.hasta) - aMin(a.desde)))[0]
     // Unos 2,5 minutos por serie con descanso, más 8 de entrada en calor (decisión de diseño).
     const minutos = Math.round(8 + ejercicios.reduce((a, x) => a + x.series * 2.5, 0))
     plan.dias[d].sesiones.push({

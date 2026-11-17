@@ -9,6 +9,7 @@ import { analizarRutina } from '../../lib/plan/analisis'
 import { asegurarCiclo } from '../../lib/plan/ciclo'
 import { armarPlanPropio, leerTexto, seleccionDesdePlan, type DiaRutina, type LecturaTexto } from '../../lib/plan/rutinaPropia'
 import { guardarPlan, leerPlan } from '../../lib/plan/usarPlan'
+import { guardarRutina } from '../../lib/plan/rutinas'
 import type { PlanSemana } from '../../lib/plan/generador'
 import { Comparar } from './Plantillas'
 import { usarInicio } from '../../lib/usarInicio'
@@ -400,6 +401,16 @@ export function ArmarRutina() {
 
       <Boton variante="principal" ancho disabled={!sel.some((d) => d.items.length)} onClick={() => (tenePlan ? setConfirmar(true) : void guardar())}>
         Guardar como mi plan
+      </Boton>
+      <Boton
+        ancho
+        disabled={!sel.some((d) => d.items.length)}
+        onClick={async () => {
+          await guardarRutina('Mi rutina armada a mano', 'propia', armarPlanPropio(sel ?? []))
+          navegar('/plan/combinar')
+        }}
+      >
+        Guardar para combinar con otra
       </Boton>
       {confirmar && (
         <Dialogo titulo="¿Reemplazar tu plan?" onCerrar={() => setConfirmar(false)}>

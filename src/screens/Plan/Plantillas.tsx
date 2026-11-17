@@ -10,6 +10,7 @@ import { asegurarCiclo } from '../../lib/plan/ciclo'
 import type { EntradaPlan, PlanSemana } from '../../lib/plan/generador'
 import { FUENTE_PLANTILLAS, PLANTILLAS, diasDeEntrenamiento, semanaPlantilla } from '../../lib/plan/plantillas'
 import { armarEntrada, guardarPlan, leerPlan } from '../../lib/plan/usarPlan'
+import { guardarRutina } from '../../lib/plan/rutinas'
 import e from '../Evaluacion/evaluacion.module.css'
 import s from '../Ejercicios/ejercicios.module.css'
 import h from '../Hoy/hoy.module.css'
@@ -168,6 +169,15 @@ export function Plantillas() {
         <button type="button" className={h.botonPrincipal} onClick={() => (actual ? setConfirmar(true) : void usar())}>
           Usar esta plantilla
         </button>
+        <Boton
+          ancho
+          onClick={async () => {
+            await guardarRutina(p.nombre.split(' · ')[0], 'plantilla', plan)
+            navegar('/plan/combinar')
+          }}
+        >
+          Guardar para combinar con otra
+        </Boton>
         <p className={estilos.chico}>Después la podés cambiar ejercicio por ejercicio en Plan (con barra, mancuernas o banda).</p>
         {confirmar && (
           <Dialogo titulo="¿Reemplazar tu plan?" onCerrar={() => setConfirmar(false)}>

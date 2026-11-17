@@ -168,6 +168,14 @@ export interface Semana {
   tipos: Record<TipoDia, DiaTipo>
   /** Dónde entrena cada día, de lunes (0) a domingo (6). Lista vacía = descanso. Puede haber más de un lugar. */
   lugaresPorDia: string[][]
+  /** Horarios propios de cada día (lunes 0 a domingo 6). Si un día tiene horarios acá, se usan en vez de los de su tipo. */
+  huecosPorDia?: Hueco[][]
+}
+
+/** Horarios libres para entrenar de un día: los propios del día o, si no tiene, los de su tipo (días de semana, sábado, domingo). */
+export function huecosDelDia(semana: Semana, d: number): Hueco[] {
+  const propios = semana.huecosPorDia?.[d]
+  return propios && propios.length ? propios : (semana.tipos[semana.dias[d]]?.huecos ?? [])
 }
 
 export const NOMBRES_DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo']

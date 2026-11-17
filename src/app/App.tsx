@@ -16,6 +16,9 @@ import { PruebasCombate } from '../screens/Combate/Pruebas'
 import { BolsaCompanero } from '../screens/Combate/Bolsa'
 import { FichaTecnica, Tecnicas } from '../screens/Combate/Tecnicas'
 import { RondasCombate } from '../screens/Combate/Rondas'
+import { SombraGuiada } from '../screens/Combate/Guiada'
+import { RutinaMarcial } from '../screens/Plan/Marcial'
+import { CombinarRutinas } from '../screens/Plan/Combinar'
 import { EvaluarSombra } from '../screens/Combate/Evaluar'
 import { VozCombate } from '../screens/Combate/Voz'
 import { ReaccionCombate } from '../screens/Combate/Reaccion'
@@ -104,6 +107,9 @@ export default function App() {
         <Route path="/combate/bolsa" element={<BolsaCompanero />} />
         <Route path="/combate/tecnica/:id" element={<FichaTecnica />} />
         <Route path="/combate/rondas/:tipo" element={<RondasCombate />} />
+        <Route path="/combate/guiada" element={<SombraGuiada />} />
+        <Route path="/plan/marcial" element={<RutinaMarcial />} />
+        <Route path="/plan/combinar" element={<CombinarRutinas />} />
         <Route path="/combate/evaluar" element={<EvaluarSombra />} />
         <Route path="/combate/voz" element={<VozCombate />} />
         <Route path="/combate/reaccion" element={<ReaccionCombate />} />

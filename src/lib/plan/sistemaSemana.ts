@@ -4,6 +4,7 @@
    Si hay menos de 5 días, se priorizan: integración, boxeo, muay thai y kick, suelo, krav magá.
    Si hay más de 5, los que sobran quedan libres (descanso activo). */
 import { ejercicio, equipoDeLugar, evitarPorLimitacion, sePuedeHacer } from '../ejercicios'
+import { huecosDelDia } from '../perfil'
 import { nuevoEjercicioPlan } from './editar'
 import type { EjercicioPlan, EntradaPlan, PlanSemana, SesionPlan } from './generador'
 
@@ -55,7 +56,7 @@ export function semanaSistema(entrada: EntradaPlan, creado = new Date().toISOStr
   for (const [d, tema] of temas) {
     const lugar = lugares.find((l) => l.nombre === semana.lugaresPorDia[d][0]) ?? lugares[0]
     const equipo = lugar ? equipoDeLugar(lugar) : new Set<string>()
-    const hueco = [...(semana.tipos[semana.dias[d]]?.huecos ?? [])].sort((a, b) => aMin(b.hasta) - aMin(b.desde) - (aMin(a.hasta) - aMin(a.desde)))[0]
+    const hueco = [...(huecosDelDia(semana, d))].sort((a, b) => aMin(b.hasta) - aMin(b.desde) - (aMin(a.hasta) - aMin(a.desde)))[0]
     const disponible = hueco ? (((aMin(hueco.hasta) - aMin(hueco.desde)) % 1440) + 1440) % 1440 : 45
     const total = Math.max(30, Math.min(60, disponible))
     const combate = Math.round((total * 0.6) / 3) * 3

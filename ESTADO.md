@@ -8,6 +8,11 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.41.0: armado de rutinas más claro (pedido del dueño).
+  - Horarios por día: componente `HorariosDia` ("igual para todos" o cada día con su hora y sus minutos, de 10 a 180, y hasta 3 horarios por día). `Semana.huecosPorDia` (opcional) y `huecosDelDia` en `lib/perfil.ts`; lo usan el generador, el sistema completo y las plantillas. En el asistente, los horarios que el generador deja libres se llenan con un entrenamiento corto (`completarHorarios`: combate si "Defenderme", cardio si "Más aire" o "Bajar grasa", si no movilidad).
+  - Rutina marcial (`/plan/marcial`, `lib/plan/marcial.ts` con tests): días, tiempo de cada día, artes de a una (la única combinada es "Mi híbrido": boxeo + kickboxing + muay thai; el sistema completo ya no se elige como arte) con % de compatibilidad con la base, y movilidad opcional (al final de cada sesión, o sola si el día tiene un segundo horario). Las artes se turnan día por día.
+  - Sombra guiada (`/combate/guiada`): entrada en calor, rounds de pies y de sombra del nivel aprobado (`programas.json`), movilidad y vuelta a la calma, con reloj que avanza solo, voz, dibujos de técnicas y ejercicios. Los rounds del medio se turnan según el nivel (empezando: forma, desplazamiento y combinaciones; con nivel: combinaciones, velocidad y reacción). Las sesiones con `combate` en el plan abren esta pantalla al tocar Entrenar. MET 5,3 (Compendium 2024, 15425) o 7,8 desde el nivel 4 de sombra.
+  - Combinar rutinas (`/plan/combinar`, `lib/plan/rutinas.ts` con tests): cada armador (paso a paso, marcial, plantillas, a mano) tiene "Guardar para combinar con otra" (se guarda en `ajustes.rutinas`, solo en el celular). Se eligen 2 o 3 (incluidos "Tu plan actual" y el sistema completo con tus días) y se ve el análisis de las rutinas juntas, cada una sola contra la combinación, avisos (horarios movidos, días de más de 120 minutos, semana sin descanso) y la semana. Se puede usar como plan o guardar.
 - Versión 0.40.1: artículo "Los 6 pilares: qué cambia de verdad tu cuerpo" (a partir de un texto del usuario, revisado): fuerza que progresa, proteína (Morton 2018), balance de energía (0,5 a 1 %/semana, Helms 2014), sueño, pasos (Paluch 2022) y cardio (OMS 2020), y tiempo; capacidad aeróbica y mortalidad (Mandsager 2018). Lo que no es estándar publicado (rango de grasa, kg de músculo por mes, superávit de 200 a 300 kcal) se presenta como referencia aproximada. Dibujo nuevo `pilares`.
 - Confirmado en el celular (16/11/2026): la app de Android se actualizó sola hasta la 0.40.0. La actualización sola funciona desde la 0.38.0 (con la huella SHA-256 y los arreglos de 0.33.0 a 0.35.0).
 - Versión 0.40.0: rutinas de gimnasio listas y comparar rutinas.
@@ -100,6 +105,8 @@ Claude Code actualiza este archivo al final de cada sesión.
 - Ideas para más adelante: más ejercicios de gimnasio en la biblioteca; que el análisis compare dos rutinas lado a lado.
 
 ## Decisiones tomadas
+
+- 0.41.0: si al combinar rutinas dos entrenamientos se pisan, el segundo empieza 15 minutos después del primero; a la misma hora va primero la técnica de combate, después fuerza, cardio y movilidad. Partes de la sesión guiada (entrada en calor de 5 min, vuelta a la calma de 3, movilidad de 4 a 8, 1 o 2 rounds de pies), rotación de las artes y aviso de día largo de más de 120 minutos: decisiones de diseño.
 
 - React 19 en lugar de 18 (es la versión actual del generador de Vite).
 - Fuentes cargadas solo con caracteres latinos para que la app pese menos.
