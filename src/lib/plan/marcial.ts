@@ -78,7 +78,7 @@ export function bloquesSesion(arteId: string, minutos: number, movilidad: boolea
   })
 
   // Juego de pies: rounds del nivel de pies (content/combate/programas.json).
-  const piesQue = [...np.pasos, ...(d.pies?.[String(np.nivel)] ?? [])]
+  const piesQue = rondaPies(d.id, nivelPies).que
   for (let i = 0; i < p.rondasPies; i++) {
     out.push({ tipo: 'pies', titulo: `Juego de pies ${i + 1} de ${p.rondasPies}: ${np.nombre.toLowerCase()}`, segundos: np.rounds.trabajo, que: piesQue, nivelPies: np.nivel })
     out.push(descanso(np.rounds.descanso, i + 1 < p.rondasPies ? 'otro round de pies' : 'la sombra', 'pies'))
@@ -88,35 +88,10 @@ export function bloquesSesion(arteId: string, minutos: number, movilidad: boolea
   const usado = (p.calor + p.calma + p.movilidad) * 60 + p.rondasPies * (np.rounds.trabajo + np.rounds.descanso)
   const { trabajo, descanso: pausa } = ns.rounds
   const rondas = Math.max(1, Math.floor((minutos * 60 - usado + pausa) / (trabajo + pausa)))
-  const combos = combinacionesDe(d.id)
-  const tips = (n: number) => d.sombra?.[String(n)] ?? NIVELES_SOMBRA[n - 1]?.pasos ?? []
-  // Rounds del medio: se turnan según el nivel. Empezando, más forma y desplazamiento; con nivel, más combinaciones.
-  const conDesplazamiento = { titulo: NIVELES_SOMBRA[1].nombre, que: [NIVELES_SOMBRA[1].objetivo, ...tips(2)], tecnicas: d.basicas.slice(0, 4) }
-  const forma = { titulo: 'Forma', que: ['Cada técnica lenta y perfecta, y volvé a la guardia.', ...tips(1)], tecnicas: d.basicas.slice(0, 4) }
-  const turnos = nivelSombra <= 0 ? ['desplazamiento', 'forma', 'combos'] : nivelSombra === 1 ? ['combos', 'desplazamiento'] : ['combos']
-  let c = 0
-  let m = 0
-  for (let k = 0; k < rondas; k++) {
-    let b: Omit<Bloque, 'tipo' | 'segundos'>
-    const ultimo = k === rondas - 1 && rondas >= 4
-    if (k === 0) b = forma
-    else if (k === 1 && nivelSombra >= 2) b = { titulo: ns.nombre, que: [ns.objetivo, ...tips(ns.nivel)], tecnicas: d.basicas.slice(0, 6) }
-    else if (ultimo) b = nivelSombra >= 3 ? { titulo: 'Reacción', que: tips(5) } : { titulo: 'Sombra libre', que: ['Mezclá todo lo de hoy, a tu ritmo.', 'Después de cada ataque, salí de la línea: ángulo o paso atrás.', 'Guardia arriba también cuando estás cansado.'] }
-    else if (k === rondas - 2 && rondas >= 5 && nivelSombra >= 2) b = { titulo: 'A velocidad', que: tips(4) }
-    else {
-      const turno = combos.length ? turnos[m++ % turnos.length] : 'desplazamiento'
-      if (turno === 'forma') b = forma
-      else if (turno === 'desplazamiento') b = conDesplazamiento
-      else {
-        const dos = [combos[c % combos.length], combos[(c + 1) % combos.length]].filter((v, i, a) => a.indexOf(v) === i)
-        c += 2
-        b = { titulo: 'Combinaciones', que: [...dos, 'Repetí cada una 10 veces; terminá siempre con una defensa o una salida.'] }
-      }
-    }
+  rondasSombra(d.id, rondas, nivelSombra).forEach((b, k) => {
     out.push({ tipo: 'sombra', segundos: trabajo, ...b, titulo: `Round ${k + 1} de ${rondas}: ${b.titulo}` })
     if (k + 1 < rondas) out.push(descanso(pausa, `round ${k + 2}`, 'sombra'))
-  }
-
+  })
   if (p.movilidad) {
     out.push({ tipo: 'movilidad', titulo: 'Movilidad', segundos: p.movilidad * 60, que: ['Despacio, sin dolor, respirando largo.', 'Unos 2 minutos por ejercicio.'], ejercicios: movilidadPara(d.id) })
   }
@@ -269,4 +244,48 @@ export function sumarSombraGuiada(plan: PlanSemana, dia: number, arteId: string,
   p.dias[dia].sesiones.push(sesionMarcial(`sombra-${dia}-${n}`, arteId, { hora: desde, minutos }, movilidad, undefined, lugar))
   p.dias[dia].sesiones.sort((a, b) => (a.desde ?? '99').localeCompare(b.desde ?? '99'))
   return p
+}
+
+export type Ronda = Omit<Bloque, 'tipo' | 'segundos'>
+
+/** Qué hacer en cada round de sombra de un arte, según el nivel (lo usan la sesión guiada y la sombra dentro de cualquier entrenamiento).
+    Empezando: forma, desplazamiento y combinaciones simples, turnándose; con nivel: más combinaciones, velocidad y reacción (decisión de diseño). */
+export function rondasSombra(arteId: string, rondas: number, nivelSombra = 0): Ronda[] {
+  const d = disciplina(arteId) ?? DISCIPLINAS[0]
+  const ns = NIVELES_SOMBRA[Math.min(nivelSombra, NIVELES_SOMBRA.length - 1)]
+  const combos = combinacionesDe(d.id)
+  const tips = (n: number) => d.sombra?.[String(n)] ?? NIVELES_SOMBRA[n - 1]?.pasos ?? []
+  const conDesplazamiento: Ronda = { titulo: NIVELES_SOMBRA[1].nombre, que: [NIVELES_SOMBRA[1].objetivo, ...tips(2)], tecnicas: d.basicas.slice(0, 4) }
+  const forma: Ronda = { titulo: 'Forma', que: ['Cada técnica lenta y perfecta, y volvé a la guardia.', ...tips(1)], tecnicas: d.basicas.slice(0, 4) }
+  const turnos = nivelSombra <= 0 ? ['desplazamiento', 'forma', 'combos'] : nivelSombra === 1 ? ['combos', 'desplazamiento'] : ['combos']
+  const out: Ronda[] = []
+  let c = 0
+  let m = 0
+  for (let k = 0; k < rondas; k++) {
+    const ultimo = k === rondas - 1 && rondas >= 4
+    let b: Ronda
+    if (k === 0) b = forma
+    else if (k === 1 && nivelSombra >= 2) b = { titulo: ns.nombre, que: [ns.objetivo, ...tips(ns.nivel)], tecnicas: d.basicas.slice(0, 6) }
+    else if (ultimo) b = nivelSombra >= 3 ? { titulo: 'Reacción', que: tips(5) } : { titulo: 'Sombra libre', que: ['Mezclá todo lo de hoy, a tu ritmo.', 'Después de cada ataque, salí de la línea: ángulo o paso atrás.', 'Guardia arriba también cuando estás cansado.'] }
+    else if (k === rondas - 2 && rondas >= 5 && nivelSombra >= 2) b = { titulo: 'A velocidad', que: tips(4) }
+    else {
+      const turno = combos.length ? turnos[m++ % turnos.length] : 'desplazamiento'
+      if (turno === 'forma') b = forma
+      else if (turno === 'desplazamiento') b = conDesplazamiento
+      else {
+        const dos = [combos[c % combos.length], combos[(c + 1) % combos.length]].filter((v, i, a) => a.indexOf(v) === i)
+        c += 2
+        b = { titulo: 'Combinaciones', que: [...dos, 'Repetí cada una 10 veces; terminá siempre con una defensa o una salida.'] }
+      }
+    }
+    out.push(b)
+  }
+  return out
+}
+
+/** Qué hacer en los rounds de juego de pies: los pasos del nivel de pies y los consejos del arte. */
+export function rondaPies(arteId: string, nivelPies = 0): Ronda {
+  const d = disciplina(arteId) ?? DISCIPLINAS[0]
+  const np = NIVELES_PIES[Math.min(nivelPies, NIVELES_PIES.length - 1)]
+  return { titulo: np.nombre, que: [...np.pasos, ...(d.pies?.[String(np.nivel)] ?? [])], nivelPies: np.nivel }
 }

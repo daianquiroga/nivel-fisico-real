@@ -70,3 +70,13 @@ describe('rutina marcial', () => {
     expect(plan.dias[4].sesiones[0].hasta).toBe('20:00')
   })
 })
+
+import { rondaPies, rondasSombra } from './marcial'
+describe('rounds para la sombra dentro de cualquier entrenamiento', () => {
+  it('un round por cada uno, con qué hacer y empezando por la forma', () => {
+    const r = rondasSombra('boxeo', 3, 0)
+    expect(r.map((x) => x.titulo)).toEqual(['Forma', 'Con desplazamiento', 'Forma'])
+    expect(r.every((x) => x.que.length > 0)).toBe(true)
+    expect(rondaPies('kick', 0).nivelPies).toBe(1)
+  })
+})

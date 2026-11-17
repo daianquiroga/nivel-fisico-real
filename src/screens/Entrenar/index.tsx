@@ -25,6 +25,8 @@ import x from '../Ejercicios/ejercicios.module.css'
 import p from '../Plan/plan.module.css'
 import t from '../../components/tiempo.module.css'
 import { Rondas } from './Rondas'
+import { GuiaCombate, guiaRondas, textoVoz, type EstadoRonda } from './GuiaCombate'
+import { usarCombate } from '../Combate/comun'
 
 type Fase = 'inicio' | 'serie' | 'descanso' | 'fin'
 
@@ -111,6 +113,8 @@ export function Entrenar() {
   const [voz, setVoz] = useState(vozActiva())
   const [esfuerzo, setEsfuerzo] = useState<number | null>(null)
   const [diario, setDiario] = useState({ bien: '', mejorar: '', sentir: '' })
+  const combate = usarCombate()
+  const [ronda, setRonda] = useState<EstadoRonda | null>(null)
   usarPantallaEncendida(run !== null && run.fase !== 'fin')
 
   const clave = `${fechaLocal()}-${diaTxt}-${idx}`
@@ -194,6 +198,7 @@ export function Entrenar() {
     }
   }, [cargado, run, historial, precargar])
 
+  useEffect(() => setRonda(null), [run?.pos])
   if (!cargado || plan === undefined) return null
   // Las sesiones de un arte marcial se hacen guiadas, round por round.
   if (original?.combate && !run) {
@@ -502,7 +507,7 @@ export function Entrenar() {
       <div className={e.dibujo}>
         <DibujoEjercicio id={ej.id} />
       </div>
-      <details className={x.detalle}>
+      <details className={x.detalle} hidden={ej.id === 'sombra' || ej.id === 'juego-pies'}>
         <summary>Cómo se hace</summary>
         <ol className={x.seccion}>
           {ej.pasos.map((y) => (
@@ -515,6 +520,17 @@ export function Entrenar() {
           <b>Por tu {nombreLim(a.limitacion)}:</b> {a.texto}
         </p>
       ))}
+
+      {(ej.id === 'sombra' || ej.id === 'juego-pies') && (
+        <GuiaCombate
+          tipo={ej.id === 'sombra' ? 'sombra' : 'pies'}
+          arte={combate.disciplina}
+          nivelSombra={combate.nivelSombra}
+          nivelPies={combate.nivelPies}
+          estado={ronda}
+          rondas={ej.id === 'sombra' ? Math.max(1, Math.round(ejPlan.rango[0] / 3)) : Math.max(1, Math.round(ejPlan.rango[0] / 1.5))}
+        />
+      )}
 
       {ej.tipo === 'minutos' ? (
         <Rondas
@@ -531,6 +547,15 @@ export function Entrenar() {
                   : undefined
           }
           onFin={(m) => serieHecha({ reps: m, rir: 2 })}
+          onRonda={
+            ej.id === 'sombra' || ej.id === 'juego-pies'
+              ? (r) => {
+                  setRonda(r)
+                  const tipo = ej.id === 'sombra' ? 'sombra' : 'pies'
+                  if (r) hablar(textoVoz(tipo, guiaRondas(tipo, combate.disciplina, r.rondas, combate.nivelSombra, combate.nivelPies), r))
+                }
+              : undefined
+          }
         />
       ) : (
         <Tarjeta>

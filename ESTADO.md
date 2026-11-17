@@ -8,6 +8,7 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.44.0: sombra y juego de pies guiados dentro de cualquier entrenamiento (pedido del dueño, principiante). Al tocar Entrenar en una sesión con "Sombra" o "Juego de pies": antes de empezar, qué es, la guardia con dibujo y la lista de tus rounds; en cada round, qué hacer, las técnicas con dibujo y, con la voz activada, lo dice al empezar el round, a la mitad y en el descanso ("Sigue: …"). Usa tu arte de Combate y tus niveles. La lógica de los rounds quedó compartida con la sesión guiada (`rondasSombra` y `rondaPies` en `lib/plan/marcial.ts`, con tests; componente `screens/Entrenar/GuiaCombate.tsx`).
 - Versión 0.43.0: lo que faltaba del área 2 (Salud y capacidades físicas).
   - Equilibrio: escalera nueva `equilibrio` (caminata talón-punta → un pie → ojos cerrados → sobre almohadón → alcances en estrella), con dibujos. El escalón que toca va en cada sesión de movilidad del generador (Sherrington 2019, Cochrane; Hübscher 2010).
   - Agilidad: saltos en hexágono, escalera de coordinación en el piso y desplazamiento lateral con toque (patrón `potencia`, 2 × 2 m, con dibujos; el generador no los elige solo).
