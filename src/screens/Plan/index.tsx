@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { Aviso, Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
 import { DibujoEjercicio } from '../../content/dibujos-ejercicios'
@@ -137,6 +137,54 @@ function Sesion({
   )
 }
 
+type Forma = { to: string; texto: string; para: string }
+
+/* Las formas de armar una rutina van plegadas para que Plan muestre una sola acción principal. */
+const FORMAS_SIN_PLAN: Forma[] = [
+  { to: '/plan/asistente', texto: 'Paso a paso', para: 'Te hago 4 preguntas y elegís cada parte.' },
+  { to: '/plan/plantillas', texto: 'Rutina de gimnasio lista', para: 'Si entrenás en un gimnasio con máquinas y pesas.' },
+  { to: '/plan/marcial', texto: 'Rutina marcial', para: 'Si querés entrenar boxeo, kick o muay thai.' },
+  { to: '/plan/armar', texto: 'Ya tengo una rutina: cargarla', para: 'Pegás o escribís la tuya.' },
+  { to: '/plan/combinar', texto: 'Combinar rutinas', para: 'Para juntar, por ejemplo, fuerza y marcial.' },
+  { to: '/plan/comparar', texto: 'Comparar dos rutinas', para: 'Para ver dos opciones lado a lado antes de elegir.' },
+]
+
+const FORMAS_CON_PLAN: Forma[] = [
+  { to: '/plan/armar', texto: 'Editar mi rutina a mano', para: 'Cambiás ejercicios, series o días.' },
+  { to: '/plan/asistente', texto: 'Armar una rutina nueva paso a paso', para: 'Te hago 4 preguntas y elegís cada parte.' },
+  { to: '/plan/plantillas', texto: 'Rutinas de gimnasio listas', para: 'Si entrenás en un gimnasio con máquinas y pesas.' },
+  { to: '/plan/marcial', texto: 'Rutina marcial', para: 'Si querés entrenar boxeo, kick o muay thai.' },
+  { to: '/combate/sistema?tema=sesion', texto: 'Semana de combate (sistema completo)', para: 'Una semana entera pensada para pelear.' },
+  { to: '/plan/combinar', texto: 'Combinar rutinas', para: 'Para juntar, por ejemplo, fuerza y marcial.' },
+  { to: '/plan/comparar', texto: 'Comparar dos rutinas', para: 'Para ver dos opciones lado a lado antes de elegir.' },
+]
+
+function OtrasFormas({ titulo, formas, children }: { titulo: string; formas: Forma[]; children?: ReactNode }) {
+  const [abierto, setAbierto] = useState(false)
+  return (
+    <>
+      <Boton ancho aria-expanded={abierto} onClick={() => setAbierto(!abierto)}>
+        {abierto ? 'Ocultar opciones' : `${titulo} (${formas.length})`}
+      </Boton>
+      {abierto && (
+        <Tarjeta>
+          {formas.map((f) => (
+            <div key={f.to} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+              <Link to={f.to} className={estilos.boton}>
+                {f.texto}
+              </Link>
+              <p className={estilos.chico} style={{ margin: 0 }}>
+                {f.para}
+              </p>
+            </div>
+          ))}
+          {children}
+        </Tarjeta>
+      )}
+    </>
+  )
+}
+
 export function Plan() {
   const [params, setParams] = useSearchParams()
   const navegar = useNavigate()
@@ -199,24 +247,7 @@ export function Plan() {
             Armame el plan
           </Boton>
         </Tarjeta>
-        <Link to="/plan/asistente" className={estilos.boton}>
-          Prefiero armarla paso a paso
-        </Link>
-        <Link to="/plan/marcial" className={estilos.boton}>
-          Armar una rutina marcial
-        </Link>
-        <Link to="/plan/combinar" className={estilos.boton}>
-          Combinar rutinas (fuerza + marcial…)
-        </Link>
-        <Link to="/plan/comparar" className={estilos.boton}>
-          Comparar dos rutinas
-        </Link>
-        <Link to="/plan/plantillas" className={estilos.boton}>
-          Elegir una rutina de gimnasio lista
-        </Link>
-        <Link to="/plan/armar" className={estilos.boton}>
-          Ya tengo una rutina: cargarla
-        </Link>
+        <OtrasFormas titulo="Otras formas de armarla" formas={FORMAS_SIN_PLAN} />
       </>
     )
   }
@@ -412,33 +443,14 @@ export function Plan() {
           <Link to="/plan/analisis" className={h.botonPrincipal}>
             Analizar mi rutina
           </Link>
-          <Link to="/plan/asistente" className={estilos.boton}>
-            Armar una rutina nueva paso a paso
-          </Link>
-          <Link to="/plan/marcial" className={estilos.boton}>
-            Armar una rutina marcial
-          </Link>
-          <Link to="/plan/combinar" className={estilos.boton}>
-            Combinar rutinas y ver el resultado
-          </Link>
-          <Link to="/plan/comparar" className={estilos.boton}>
-            Comparar dos rutinas lado a lado
-          </Link>
-          <Link to="/combate/sistema?tema=sesion" className={estilos.boton}>
-            Semana de combate (sistema completo)
-          </Link>
-          <Link to="/plan/plantillas" className={estilos.boton}>
-            Rutinas de gimnasio listas y comparar
-          </Link>
-          <Link to="/plan/armar" className={estilos.boton}>
-            Cargar o editar mi rutina a mano
-          </Link>
           <Boton ancho onClick={() => setCalendario(true)}>
             Agregar mis sesiones a Google Calendar
           </Boton>
-          <Boton ancho onClick={() => setRearmar(true)}>
-            Volver a armar el plan
-          </Boton>
+          <OtrasFormas titulo="Cambiar o armar otra rutina" formas={FORMAS_CON_PLAN}>
+            <Boton ancho onClick={() => setRearmar(true)}>
+              Volver a armar el plan
+            </Boton>
+          </OtrasFormas>
           <p className={estilos.chico}>Si cambiás días, lugares u horarios en Perfil, volvé a armarlo para que se actualice.</p>
         </>
       )}

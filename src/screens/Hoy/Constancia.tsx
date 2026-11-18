@@ -49,3 +49,20 @@ export function Constancia({ plan }: { plan: PlanSemana }) {
     </Tarjeta>
   )
 }
+
+/** Racha de semanas en una línea, para tenerla siempre a la vista en Hoy. */
+export function RachaChip({ plan, className }: { plan: PlanSemana; className?: string }) {
+  const [fechas, setFechas] = useState<string[] | null>(null)
+  useEffect(() => {
+    void sesionesHechas().then((l) => setFechas(l.map((s) => s.fecha.slice(0, 10))))
+  }, [])
+  if (!fechas) return null
+  const planeadas = sesionesQueCuentan(plan).length
+  const estaSemana = hechasPorSemana(fechas).get(lunesDe(fechaLocal())) ?? 0
+  const r = racha(fechas, planeadas)
+  return (
+    <span className={className}>
+      Racha: {r} {r === 1 ? 'semana' : 'semanas'} · esta semana {estaSemana} de {planeadas}
+    </span>
+  )
+}
