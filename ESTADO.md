@@ -8,6 +8,9 @@ Claude Code actualiza este archivo al final de cada sesión.
 
 ## Hecho
 
+- Versión 0.47.0: Plan y Hoy más simples (pedido del dueño: "abro todo pero me abruma"; sale del análisis de producto y UX del 18/11/2026).
+  - Plan: una sola acción principal ("Armame el plan" sin plan; "Analizar mi rutina" con plan). Las otras formas de armar o cambiar la rutina quedan plegadas en un botón ("Otras formas de armarla" / "Cambiar o armar otra rutina"), cada una con una línea que dice para quién es. "Volver a armar el plan" va adentro de ese bloque. Componente `OtrasFormas` en `screens/Plan/index.tsx`.
+  - Hoy: la tarjeta "Hoy te toca" va primero; los avisos de actualización y de respaldo pasan abajo de la sesión. Dentro de la tarjeta: botón "Solo tengo 10 minutos" (abre Entrenar con la versión mínima ya elegida, `?version=minima`) y la racha de semanas siempre a la vista (`RachaChip` en `screens/Hoy/Constancia.tsx`).
 - Versión 0.46.0: comparar dos rutinas lado a lado (pedido del dueño). Plan → "Comparar dos rutinas" (`/plan/comparar`, `screens/Plan/CompararRutinas.tsx`): elegís la A y la B entre tu plan actual, las rutinas guardadas, las 3 plantillas de gimnasio y el sistema completo con tus días. Muestra la tabla de `Comparar` que ya existía (reutilizada: aporte, días, minutos, series por músculo, cardio y veredicto), abajo la semana de cada una en dos columnas día por día, y "Usar A" / "Usar B" con diálogo propio de confirmación. La lista de rutinas quedó en una función compartida con Combinar (`lib/plan/fuentes.ts`: `fuentesRutinas` y `semanaLadoALado`, con tests). Probado a 390 px sin scroll de costado.
 - Versión 0.45.0: más ejercicios de gimnasio (pedido del dueño). 18 ejercicios nuevos con ficha completa (posición inicial, pasos, respiración, 3 errores con cómo detectarlos, más fácil y más difícil, y qué hacer con muñeca, rodilla, hombro o espalda limitados) y dibujo propio, en `content/ejercicios/gimnasio-mas.json`:
   - Piernas: estocadas con mancuernas, sentadilla búlgara con mancuernas, peso muerto rumano con barra, hip thrust con barra, elevación de talones con mancuernas y en máquina, abductores y aductores en máquina (dibujo nuevo `SillonPiernas`, vista de frente).
@@ -124,6 +127,8 @@ Claude Code actualiza este archivo al final de cada sesión.
 - Ideas para más adelante: ninguna anotada por ahora.
 
 ## Decisiones tomadas
+
+- 0.47.0: el botón "Solo tengo 10 minutos" no aparece en sesiones de movilidad (ya son cortas) ni en días de descanso. El bloque plegado de Plan se abre cerrado cada vez (no se recuerda), para que la pantalla arranque simple.
 
 - 0.46.0: en Comparar dos rutinas se eligen con dos listas desplegables (A y B) porque entran cómodas en 390 px; por defecto, A es la primera de la lista (tu plan) y B la siguiente. Si A y B son la misma, se pide cambiar una. "Usar" no aparece para la que ya es tu plan.
 

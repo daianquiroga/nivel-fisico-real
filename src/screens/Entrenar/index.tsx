@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Link, Navigate, useNavigate, useParams } from 'react-router-dom'
+import { Link, Navigate, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { Segmentado, Stepper } from '../../components/controles'
 import { Cronometro } from '../../components/tiempo'
 import { Aviso, Boton, Dialogo, Tarjeta, estilos } from '../../components/ui'
@@ -124,7 +124,10 @@ export function Entrenar() {
   const descarga = !micro && ciclo?.fase === 'descarga'
   const esHoy = dia === diaDeHoy()
   const zona = esHoy && control?.hoy && control.hoy.dolor !== 'ninguno' ? control.hoy.zona : undefined
-  const versionInicial: Version = (esHoy && control?.hoy?.version) || 'completa'
+  const [params] = useSearchParams()
+  const pedida = params.get('version')
+  const versionPedida = pedida === 'minima' || pedida === 'reducida' ? (pedida as Version) : undefined
+  const versionInicial: Version = versionPedida || (esHoy && control?.hoy?.version) || 'completa'
 
   // Retomar una sesión empezada hoy.
   useEffect(() => {

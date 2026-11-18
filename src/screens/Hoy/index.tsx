@@ -11,7 +11,7 @@ import { ControlDiario } from './ControlDiario'
 import { Coach, type CoachRef } from './Coach'
 import { Pasos } from './Pasos'
 import { TuDia } from './TuDia'
-import { Constancia } from './Constancia'
+import { Constancia, RachaChip } from './Constancia'
 import { Actividad, Agua } from './Actividad'
 import { usarInicio } from '../../lib/usarInicio'
 import { leerEstadoActualizacion, olvidarActualizada, type EstadoActualizacion } from '../../lib/actualizarNativo'
@@ -79,34 +79,6 @@ export function Hoy() {
         <h1 className="titulo-pantalla">Hoy</h1>
       </header>
 
-      {act.actualizadaDesde && <Aviso tipo="ok">¡La app se actualizó sola a la versión {__VERSION_APP__}! Tus datos siguen igual.</Aviso>}
-
-      {act.apkNueva && (
-        <Aviso tipo="error">
-          Hay una versión nueva ({act.apkNueva}) que necesita instalar la app una vez más. {act.apkUrl && <a href={act.apkUrl}>Bajar la app</a>}
-        </Aviso>
-      )}
-
-      {listo && (plan || ultima) && sinRespaldo !== null && sinRespaldo >= DIAS_AVISO && (
-        <Tarjeta>
-          <p className="etiqueta" style={{ color: 'var(--accent)' }}>
-            Tus datos
-          </p>
-          <p className={estilos.texto2}>
-            {sinRespaldo === Infinity ? 'Todavía no guardaste una copia de tus datos afuera del celular.' : `Hace ${sinRespaldo} días que no guardás una copia afuera del celular.`} Si se pierde o se rompe, se pierde todo.
-          </p>
-          <button
-            type="button"
-            className={estilos.boton}
-            onClick={async () => {
-              if (await mandarAfuera()) setSinRespaldo(0)
-            }}
-          >
-            Guardar copia (Drive, mail o WhatsApp)
-          </button>
-        </Tarjeta>
-      )}
-
       {!listo && (
         <Tarjeta destacada>
           <p className="etiqueta" style={{ color: 'var(--accent)' }}>
@@ -157,6 +129,12 @@ export function Hoy() {
                 Entrenar
               </Link>
             )}
+            {ses && ses.tipo !== 'movilidad' && (
+              <Link to={`/entrenar/${diaDeHoy()}/${i}?version=minima`} className={estilos.boton}>
+                Solo tengo 10 minutos
+              </Link>
+            )}
+            <RachaChip plan={plan} className={`${s.chip} ${s.chipSolo}`} />
             <Link to={`/plan?dia=${diaDeHoy()}`} className={estilos.boton}>
               {ses ? 'Ver los ejercicios' : 'Ver mi semana'}
             </Link>
@@ -172,6 +150,34 @@ export function Hoy() {
           </Tarjeta>
         )
       })()}
+
+      {act.actualizadaDesde && <Aviso tipo="ok">¡La app se actualizó sola a la versión {__VERSION_APP__}! Tus datos siguen igual.</Aviso>}
+
+      {act.apkNueva && (
+        <Aviso tipo="error">
+          Hay una versión nueva ({act.apkNueva}) que necesita instalar la app una vez más. {act.apkUrl && <a href={act.apkUrl}>Bajar la app</a>}
+        </Aviso>
+      )}
+
+      {listo && (plan || ultima) && sinRespaldo !== null && sinRespaldo >= DIAS_AVISO && (
+        <Tarjeta>
+          <p className="etiqueta" style={{ color: 'var(--accent)' }}>
+            Tus datos
+          </p>
+          <p className={estilos.texto2}>
+            {sinRespaldo === Infinity ? 'Todavía no guardaste una copia de tus datos afuera del celular.' : `Hace ${sinRespaldo} días que no guardás una copia afuera del celular.`} Si se pierde o se rompe, se pierde todo.
+          </p>
+          <button
+            type="button"
+            className={estilos.boton}
+            onClick={async () => {
+              if (await mandarAfuera()) setSinRespaldo(0)
+            }}
+          >
+            Guardar copia (Drive, mail o WhatsApp)
+          </button>
+        </Tarjeta>
+      )}
 
       {listo && !ultima && (
         <Link to="/evaluacion" className={estilos.boton}>
@@ -202,7 +208,7 @@ export function Hoy() {
 
       {listo && (
         <button type="button" className={estilos.boton} aria-expanded={mas} onClick={() => guardarMas(!mas)}>
-          {mas ? 'Ver menos' : 'Ver más: nivel, racha, pasos, agua y tu día'}
+          {mas ? 'Ver menos' : 'Ver más: nivel, constancia, pasos, agua y tu día'}
         </button>
       )}
 
